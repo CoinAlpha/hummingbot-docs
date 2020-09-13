@@ -18,17 +18,19 @@ module.exports = {
             'intro/ecosystem', 
             'intro/support'
           ],
-          'Tutorial': [
-            'tutorial/overview',
-            'tutorial/install',
-            'tutorial/configure',
-            'tutorial/run',
-          ],
           'Installation': [
             'installation/overview',
             'installation/download',
             'installation/docker',
             'installation/source',
+          ],
+          'Connectors': [
+            'connectors/overview',
+            'connectors/binance',
+          ],
+          'Strategies': [
+            'strategies/overview',
+            'strategies/pure-market-making',
           ],
           'Resources': [
             'resources/faq',
@@ -48,10 +50,10 @@ module.exports = {
             description:
               'Documentation for Hummingbot Miner, the decentralized market making platform'
           },
-          'Hummingbot for Developers': {
+          'Hummingbot Academy': {
             url: 'https:/docs.hummingbot.io/developers',
             description:
-              "Learn how to build Hummingbot trading strategies and connectors for any exchange or protocol"
+              "Guides and tutorials that teach you how to use Hummingbot and Hummingbot Miner"
           },
         },
         footerNavConfig: {

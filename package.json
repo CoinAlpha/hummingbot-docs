@@ -1,4 +1,7 @@
 {
+  "name": "hummingbot-docs",
+  "description": "This is the documentation **source** for this repository.",
+  "version": "1.0.0",
   "scripts": {
     "prestart": "gatsby clean",
     "start": "gatsby develop",
@@ -20,5 +23,13 @@
     "husky": "^4.3.0",
     "prettier": "^2.1.1",
     "pretty-quick": "^3.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CoinAlpha/hummingbot-docs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CoinAlpha/hummingbot-docs/issues"
+  },
+  "homepage": "https://github.com/CoinAlpha/hummingbot-docs#readme"
 }

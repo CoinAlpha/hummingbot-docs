@@ -1,5 +1,3 @@
-const themeOptions = require("gatsby-theme-apollo-docs/theme-options");
-
 const sidebarCategories = {
   null: ["index", "intro/ecosystem", "intro/support"],
   Installation: [
@@ -55,24 +53,31 @@ const footerNavConfig = {
 };
 
 module.exports = {
+  siteMetadata: {
+    headerButtonText: "Launch Hummingbot Miners",
+    headerButtonLink: "https://miners.hummingbot.io/",
+  },
   pathPrefix: "/",
   plugins: [
     {
       resolve: "gatsby-theme-apollo-docs",
       options: {
-        ...themeOptions,
         root: __dirname,
-        subtitle: "Hummingbot docs",
+        siteName: "Hummingbot Docs",
         description:
           "Documentation for Hummingbot, the open source framework that helps you build and run crypto trading bots",
-        githubRepo: "coinalpha/hummingbot",
-        spectrumPath: "/",
         sidebarCategories,
+        subtitle: "Hummingbot Documentation",
+        githubRepo: "coinalpha/hummingbot",
+        baseDir: "/",
+        contentDir: "source",
         navConfig,
         footerNavConfig,
         twitterHandle: "hummingbot_io",
         youtubeUrl: "https://www.youtube.com/channel/UCxzzdEnDRbylLMWmaMjywOA",
         logoLink: "http://docs.hummingbot.io",
+        algoliaApiKey: "768e823959d35bbd51e4b2439be13fb7",
+        algoliaIndexName: "apollodata",
       },
     },
   ],

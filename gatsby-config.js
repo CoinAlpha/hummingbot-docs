@@ -70,6 +70,7 @@ module.exports = {
         sidebarCategories,
         subtitle: "Hummingbot Docs",
         githubRepo: "coinalpha/hummingbot",
+        baseUrl: "https://docs.hummingbot.io",
         baseDir: "/",
         contentDir: "source",
         navConfig,

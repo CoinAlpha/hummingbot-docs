@@ -79,9 +79,21 @@ module.exports = {
         logoLink: "http://docs.hummingbot.io",
         /**
          * @todo Replace these two keys with own keys
+         * @see https://github.com/apollographql/gatsby-theme-apollo/tree/master/packages/gatsby-theme-apollo-docs#algolia-configuration
          */
         algoliaApiKey: "768e823959d35bbd51e4b2439be13fb7",
         algoliaIndexName: "apollodata",
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "Hummingbot Docs",
+        short_name: "Hummingbot",
+        start_url: "/",
+        background_color: "#0D999E",
+        theme_color: "#0D999E",
+        icon: "src/images/brand-logo.png",
       },
     },
   ],

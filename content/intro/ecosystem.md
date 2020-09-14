@@ -5,7 +5,6 @@ description: A open source community working together to democratize algo tradin
 
 The Hummingbot ecosystem is a globally distributed community of algorithmic traders and developers who utilize and contribute to the open source Hummingbot codebase.
 
-
 ## Hummingbot
 
 Hummingbot is an open source trading engine that helps you run automated, algorithmic trading strategies (**"bots"**) that can run on centralized and decentralized exchanges. Hummingbot utilizes a modular architecture that enables exchange connectors and trading strategies to be written independently.
@@ -16,6 +15,6 @@ Hummingbot Miner is a liquidity mining platform that allows sponsors to incentiv
 
 ## Join the community
 
-* [Discord](https://discord.hummingbot.io)
-* [Reddit](https://www.reddit.com/r/Hummingbot/) 
-* [Twitter](https://twitter.com/hummingbot_io)
+- [Discord](https://discord.hummingbot.io)
+- [Reddit](https://www.reddit.com/r/Hummingbot/)
+- [Twitter](https://twitter.com/hummingbot_io)

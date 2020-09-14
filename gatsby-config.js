@@ -72,7 +72,6 @@ module.exports = {
         githubRepo: "coinalpha/hummingbot",
         baseUrl: "https://docs.hummingbot.io",
         baseDir: "/",
-        contentDir: "source",
         navConfig,
         footerNavConfig,
         twitterHandle: "hummingbot_io",

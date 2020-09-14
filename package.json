@@ -5,10 +5,20 @@
     "build": "gatsby build",
     "serve": "gatsby serve"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "dependencies": {
     "gatsby": "2.24.53",
     "gatsby-theme-apollo-docs": "4.4.3",
     "react": "16.13.1",
     "react-dom": "16.12.0"
+  },
+  "devDependencies": {
+    "husky": "^4.3.0",
+    "prettier": "^2.1.1",
+    "pretty-quick": "^3.0.2"
   }
 }

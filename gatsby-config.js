@@ -16,19 +16,19 @@ const sidebarCategories = {
 };
 
 const navConfig = {
-  "Hummingbot Basics": {
-    url: "https:/docs.hummingbot.io",
+  "Hummingbot Docs": {
+    url: "https://docs.hummingbot.io",
     description:
       "Documentation for Hummingbot, the open source framework that helps you build and run crypto trading bots",
     omitLandingPage: true,
   },
-  "Hummingbot Miner docs": {
-    url: "https:/docs.hummingbot.io/miner",
+  "Hummingbot Miner Docs": {
+    url: "https://docs.hummingbot.io/miner",
     description:
       "Documentation for Hummingbot Miner, the decentralized market making platform",
   },
   "Hummingbot Academy": {
-    url: "https:/docs.hummingbot.io/developers",
+    url: "https://docs.hummingbot.io/developers",
     description:
       "Guides and tutorials that teach you how to use Hummingbot and Hummingbot Miner",
   },

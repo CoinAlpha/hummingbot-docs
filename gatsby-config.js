@@ -64,11 +64,11 @@ module.exports = {
       resolve: "gatsby-theme-apollo-docs",
       options: {
         root: __dirname,
-        siteName: "Hummingbot Docs",
+        siteName: "Hummingbot Ecosystem",
         description:
           "Documentation for Hummingbot, the open source framework that helps you build and run crypto trading bots",
         sidebarCategories,
-        subtitle: "Hummingbot Documentation",
+        subtitle: "Hummingbot Docs",
         githubRepo: "coinalpha/hummingbot",
         baseDir: "/",
         contentDir: "source",

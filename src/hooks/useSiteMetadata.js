@@ -5,9 +5,10 @@ export default function useSiteMetadata() {
     {
       site {
         siteMetadata {
+          description
+          discordUrl
           headerButtonLink
           headerButtonText
-          description
           siteName
           title
         }

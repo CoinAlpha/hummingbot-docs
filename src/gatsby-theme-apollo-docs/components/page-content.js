@@ -8,6 +8,7 @@ import { PageNav, breakpoints, colors } from "gatsby-theme-apollo-core";
 import { ReactComponent as DiscordLogo } from "gatsby-theme-apollo-docs/src/assets/discord.svg";
 import { ReactComponent as GithubLogo } from "gatsby-theme-apollo-docs/src/assets/github.svg";
 import { withPrefix } from "gatsby";
+import useSiteMetadata from "../../hooks/useSiteMetadata";
 
 const Wrapper = styled.div({
   display: "flex",
@@ -138,6 +139,8 @@ export default function PageContent(props) {
   const [imagesToLoad, setImagesToLoad] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(0);
 
+  const metadata = useSiteMetadata();
+
   useMount(() => {
     if (props.hash) {
       // turn numbers at the beginning of the hash to unicode
@@ -205,9 +208,11 @@ export default function PageContent(props) {
           />
         )}
         {editLink}
-        <AsideLink href="https://discord.hummingbot.io">
-          <DiscordLogo /> Discuss on Discord
-        </AsideLink>
+        {metadata.discordUrl && (
+          <AsideLink href={metadata.discordUrl}>
+            <DiscordLogo /> Discuss on Discord
+          </AsideLink>
+        )}
       </Aside>
     </Wrapper>
   );

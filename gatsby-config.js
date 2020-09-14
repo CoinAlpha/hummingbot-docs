@@ -56,6 +56,7 @@ module.exports = {
   siteMetadata: {
     headerButtonText: "Launch Hummingbot Miners",
     headerButtonLink: "https://miners.hummingbot.io/",
+    discordUrl: "https://discord.hummingbot.io",
   },
   pathPrefix: "/",
   plugins: [
@@ -76,6 +77,9 @@ module.exports = {
         twitterHandle: "hummingbot_io",
         youtubeUrl: "https://www.youtube.com/channel/UCxzzdEnDRbylLMWmaMjywOA",
         logoLink: "http://docs.hummingbot.io",
+        /**
+         * @todo Replace these two keys with own keys
+         */
         algoliaApiKey: "768e823959d35bbd51e4b2439be13fb7",
         algoliaIndexName: "apollodata",
       },

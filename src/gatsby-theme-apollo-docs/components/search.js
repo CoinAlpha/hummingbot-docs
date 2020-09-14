@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
 import useKey from "react-use/lib/useKey";
-import { HEADER_HEIGHT } from "../utils";
+import { HEADER_HEIGHT } from "gatsby-theme-apollo-docs/src/utils";
 import { TextField } from "@apollo/space-kit/TextField";
 import { breakpoints, colors, smallCaps } from "gatsby-theme-apollo-core";
 import { css } from "@emotion/core";
@@ -195,6 +195,11 @@ export default function Search(props) {
               style={{
                 fontSize: 16,
                 boxShadow: resultsShown ? boxShadow : "none",
+              }}
+              css={{
+                "&:focus, &[data-force-focus-state]": {
+                  borderColor: `${colors.primaryLight} !important`,
+                },
               }}
             />
           }

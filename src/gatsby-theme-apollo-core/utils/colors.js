@@ -6,4 +6,5 @@ export const colors = {
   primary: spaceKitColors.green.dark,
   primaryLight: spaceKitColors.green.light,
   primaryDark: spaceKitColors.green.darkest,
+  secondary: spaceKitColors.green.dark,
 };

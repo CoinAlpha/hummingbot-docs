@@ -16,7 +16,7 @@ const sidebarCategories = {
 };
 
 const navConfig = {
-  "Hummingbot docs": {
+  "Hummingbot Basics": {
     url: "https:/docs.hummingbot.io",
     description:
       "Documentation for Hummingbot, the open source framework that helps you build and run crypto trading bots",

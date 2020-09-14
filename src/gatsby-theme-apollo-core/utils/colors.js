@@ -3,6 +3,8 @@ import { colors as spaceKitColors } from "@apollo/space-kit/colors";
 
 /**
  * @todo Find a way to hook the brand colors up to this
+ *
+ * @see https://github.com/apollographql/gatsby-theme-apollo/tree/master/packages/gatsby-theme-apollo-core#customizing-colors
  */
 const hummingbot = {
   darkest: "#013D54",

@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "gatsby": "2.24.53",
-    "gatsby-theme-apollo-docs": "4.4.3",
+    "gatsby-theme-apollo-docs": "^4.4.3",
     "react": "16.13.1",
     "react-dom": "16.12.0"
   },

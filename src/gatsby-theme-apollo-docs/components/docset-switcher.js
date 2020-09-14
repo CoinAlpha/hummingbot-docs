@@ -3,12 +3,13 @@ import React, { Fragment, useEffect, useMemo, useRef } from "react";
 import styled from "@emotion/styled";
 import useKey from "react-use/lib/useKey";
 import useWindowSize from "react-use/lib/useWindowSize";
-import { IconTwitter } from "@apollo/space-kit/icons/IconTwitter";
-import { IconYoutube } from "@apollo/space-kit/icons/IconYoutube";
-import { ReactComponent as SpectrumIcon } from "../assets/spectrum.svg";
-import { boxShadow } from "./search";
+import { boxShadow } from "gatsby-theme-apollo-docs/src/components/search";
 import { breakpoints, colors, smallCaps } from "gatsby-theme-apollo-core";
 import { size, transparentize } from "polished";
+import useSiteMetadata from "../../hooks/useSiteMetadata";
+import { ReactComponent as DiscordLogo } from "gatsby-theme-apollo-docs/src/assets/discord.svg";
+import { ReactComponent as IconYoutube } from "gatsby-theme-apollo-docs/src/assets/youtube.svg";
+import { ReactComponent as IconTwitter } from "gatsby-theme-apollo-docs/src/assets/twitter.svg";
 
 const Wrapper = styled.div({
   width: "100%",
@@ -181,9 +182,12 @@ export default function DocsetSwitcher(props) {
     }
   }
 
+  const metadata = useSiteMetadata();
+
   const hasSocialUrls = Boolean(
-    props.spectrumUrl || props.twitterUrl || props.youtubeUrl
+    props.twitterUrl || props.youtubeUrl || metadata.discordUrl
   );
+
   return (
     <Wrapper
       onClick={handleWrapperClick}
@@ -223,13 +227,13 @@ export default function DocsetSwitcher(props) {
                 ))}
               {hasSocialUrls && (
                 <SocialLinks>
-                  {props.spectrumUrl && (
+                  {metadata.discordUrl && (
                     <SocialLink
-                      href={props.spectrumUrl}
-                      title="Spectrum"
+                      href={metadata.discordUrl}
+                      title="Discord"
                       target="_blank"
                     >
-                      <SpectrumIcon />
+                      <DiscordLogo />
                     </SocialLink>
                   )}
                   {props.twitterUrl && (
@@ -267,7 +271,6 @@ DocsetSwitcher.propTypes = {
   siteName: PropTypes.string.isRequired,
   navItems: PropTypes.array.isRequired,
   footerNavConfig: PropTypes.object.isRequired,
-  spectrumUrl: PropTypes.string,
   twitterUrl: PropTypes.string,
   youtubeUrl: PropTypes.string,
 };

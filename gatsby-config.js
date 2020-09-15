@@ -1,12 +1,15 @@
 const sidebarCategories = {
   null: ["index", "intro/ecosystem", "intro/support"],
   Installation: [
+    "installation/system-req",
     "installation/overview",
     "installation/download",
     "installation/docker",
     "installation/source",
+    "installation/cloud",
+    "installation/updating",
   ],
-  Connectors: ["connectors/overview", "connectors/binance"],
+  Connectors: ["connectors/overview", "connectors/hummingbot-supported-connector","connectors/community-supported-connector"],
   Strategies: ["strategies/overview", "strategies/pure-market-making"],
   Resources: [
     "resources/faq",

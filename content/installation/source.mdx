@@ -1,8 +1,373 @@
 ---
-title: "Install from source"
-description: Connect to your API from your frontend
+title: "Install from Source"
+description: Source installation
 ---
 
-import Example from "../../shared/example.mdx";
+import {MultiCodeBlock} from 'gatsby-theme-apollo-docs';
 
-<Example />
+This guide walks you through how to prepare your development environment and get started developing for Hummingbot.
+
+Select your operating system below to see the relevant detailed guide.
+
+- [Linux](/developers/gettingstarted/linux) – Ubuntu 16.04 or later
+- [Mac](/developers/gettingstarted/mac) – macOS 10.12.6 (Sierra) or later
+- [Windows](/developers/gettingstarted/windows) – Windows 10 or later
+
+For more information on system requirements, view [minimum system requirements](/installation/#minimum-system-requirements).
+
+> Info "Recommended for Developers Only" : [Installation using Docker](/installation/docker) is more efficient for running Hummingbot.  Installing from source is only recommended for developers who want to access and modify the software code.
+
+You can install Hummingbot with ***either*** of the following options:
+
+1. **Easy Install**: download and use automated install scripts.
+2. **Manual Installation**: run install commands manually.
+
+## Ubuntu
+
+*Supported versions: 16.04 LTS, 18.04 LTS, 19.04*
+
+<MultiCodeBlock>
+
+```Easy Install
+# 1) Download install script
+wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/install-from-source/install-source-ubuntu.sh
+
+# 2) Enable script permissions
+chmod a+x install-source-ubuntu.sh
+
+# 3) Run installation
+./install-source-ubuntu.sh
+```
+
+```bash tab="Option 2: Manual Installation"
+# 1) Install dependencies
+sudo apt-get update
+sudo apt-get install -y build-essential
+
+# 2) Install Miniconda3
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+sh Miniconda3-latest-Linux-x86_64.sh
+
+# 3) Reload .bashrc to register "conda" command
+exec bash
+
+# 4) Clone Hummingbot
+git clone https://github.com/CoinAlpha/hummingbot.git
+
+# 5) Install Hummingbot
+cd hummingbot && ./clean && ./install
+
+# 6) Activate environment and compile code
+conda activate hummingbot && ./compile
+
+# 7) Start Hummingbot
+bin/hummingbot.py
+```
+</MultiCodeBlock>
+
+Next: [Using Hummingbot](##Using Hummingbot)
+
+## Debian
+
+*Supported version: Debian GNU/Linux 9*
+
+<MultiCodeBlock>
+
+```Easy Install
+# 1) Download install script
+wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/install-from-source/install-source-debian.sh
+
+# 2) Enable script permissions
+chmod a+x install-source-debian.sh
+
+# 3) Run installation
+./install-source-debian.sh
+```
+
+```Manual Installation
+# 1) Install dependencies
+sudo apt-get update
+sudo apt-get install -y build-essential git
+
+# 2) Install Miniconda3
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+sh Miniconda3-latest-Linux-x86_64.sh
+
+# 3) Reload .bashrc to register "conda" command
+exec bash
+
+# 4) Clone Hummingbot
+git clone https://github.com/CoinAlpha/hummingbot.git
+
+# 5) Install Hummingbot
+cd hummingbot && ./clean && ./install
+
+# 6) Activate environment and compile code
+conda activate hummingbot && ./compile
+
+# 7) Start Hummingbot
+bin/hummingbot.py
+```
+</MultiCodeBlock>
+
+
+Next: [Using Hummingbot](##Using Hummingbot)
+
+## CentOS
+
+*Supported version: 7*
+
+<MultiCodeBlock>
+
+```Easy Install"
+# 1) Download install script
+wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/install-from-source/install-source-centos.sh
+
+# 2) Enable script permissions
+chmod a+x install-source-centos.sh
+
+# 3) Run installation
+./install-source-centos.sh
+```
+
+```Manual Installation
+# 1) Install dependencies
+sudo yum install -y wget bzip2 git
+sudo yum groupinstall -y 'Development Tools'
+
+# 2) Install Miniconda3
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+sh Miniconda3-latest-Linux-x86_64.sh
+
+# 3) Reload .bashrc to register "conda" command
+exec bash
+
+# 4) Clone Hummingbot
+git clone https://github.com/CoinAlpha/hummingbot.git
+
+# 5) Install Hummingbot
+cd hummingbot && ./clean && ./install
+
+# 6) Activate environment and compile code
+conda activate hummingbot && ./compile
+
+# 7) Start Hummingbot
+bin/hummingbot.py
+```
+</MultiCodeBlock>
+
+Next: [Using Hummingbot](##Using Hummingbot)
+
+##  MacOS 
+
+**Prerequisites**
+
+This section walks you through how to prepare your development environment.
+
+1. Install Xcode command line tools
+
+Running Hummingbot on **macOS** requires [Xcode](https://developer.apple.com/xcode/) and Xcode command line tools.
+
+```
+xcode-select --install
+```
+
+2. Install Anaconda3
+
+Hummingbot requires Python 3 and other Python libraries. To manage these dependencies, Hummingbot uses Anaconda, an open source environment and package manager for Python that is the current industry standard for data scientists and data engineers.
+
+To install Anaconda, go to [the Anaconda site](https://www.anaconda.com/distribution/) and download the **Python 3.7 installer** for your operating system. Both the graphical installer and the command line installer will work. Run the installer, and it will guide you through the installation process.
+
+Afterwards, open a Terminal window and try the `conda` command. If the command is valid, then Anaconda has been successfully installed, even if the graphical installer says that it failed.
+
+> Warning: If you use ZSH or another Unix shell, copy the code snippet below to your `.zshrc` or similar file. By default, Anaconda only adds it to your `.bash_profile` file. This makes the `conda` command available in your root path.
+
+```bash
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/anaconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+```
+
+## Windows 
+
+This section walks you through how to prepare your development environment and install Hummingbot from source manually.
+
+The Hummingbot code base is designed and optimized for UNIX-based systems such as macOS and Linux. We recommend that Windows users:
+
+* Install in [the cloud](/installation/cloud) by using a native Linux virtual machine.
+
+Hummingbot can also be installed by utilizing the built-in Windows Subsystem for Linux. However, this is only recommended for users familiar with development.
+
+
+The following instructions are summarized for installing Hummingbot from source on Windows 10, using Windows Subsystem for Linux (WSL).
+
+1. Install Ubuntu in Windows Subsystem for Linux
+
+Follow these [instructions](https://docs.microsoft.com/en-us/windows/wsl/install-win10) for installing Windows Subsystem for Linux, and then Ubuntu.
+
+2. Install Hummingbot on Linux Subsystem
+
+![Bash for Windows](bash-for-windows.png)
+
+You can install Hummingbot as shown below:
+
+```Manual Installation
+# 1) Navigate to root folder
+cd ~
+
+# 2) Install dependencies
+sudo apt-get update
+sudo apt-get install -y build-essential
+
+# 3) Install Miniconda3
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+sh Miniconda3-latest-Linux-x86_64.sh
+
+# 4) Log out and log back into shell to register "conda" command
+exit
+
+# 5) Log back into or open a new Linux terminal
+
+# 6) Clone Hummingbot
+git clone https://github.com/CoinAlpha/hummingbot.git
+
+# 7) Install Hummingbot
+cd hummingbot && ./install
+
+# 8) Activate environment and compile code
+conda activate hummingbot && ./compile
+
+# 9) Start Hummingbot
+bin/hummingbot.py
+```
+
+## Using Hummingbot 
+
+### What you'll need to start:
+
+#### Crypto Inventory
+
+**Why this is needed**: In order to run trading bot, you'll need some inventory of crypto assets available on the exchange, or in your Ethereum wallet (for Ethereum-based decentralized exchanges).
+
+Remember that you need inventory of both the **base asset** (the asset that you are buying and selling) and the **quote asset** (the asset that you exchange for it). For example, if you are making a market in a `BTC/USDT` trading pair, you'll need some `BTC` and `USDT`.
+
+In addition, be aware of the minimum order size requirements on different exchanges. For more information, please see [Connectors](/connectors).
+
+#### API Keys
+
+**Why this is needed**: In order to run a bot on a centralized exchange like Binance, you will need to enter the exchange API keys during the Hummingbot configuration process.
+
+For more information on how to get the API keys for each exchange, please see the individual exchange pages in [Connectors](/connectors).
+
+#### Ethereum Wallet
+
+**Why this is needed**: In order to earn rewards from Liquidity Bounties, you need an Ethereum wallet. In addition, you'll need to import an Ethereum wallet when you run a trading bot on an Ethereum-based decentralized exchange.
+
+For more information on creating or importing an Ethereum wallet, see [Ethereum wallet](/advanced/wallet).
+
+#### Ethereum Node (DEX only)
+**Why this is needed**: When you run a trading bot on a Ethereum-based decentralized exchange, your wallet sends signed transactions to the blockchain via an Ethereum node.
+
+For more information, see [Ethereum node](/installation/node/).
+
+### Operation
+
+Relevant User Manual Links
+
+- [Using the Client](/operation/client)
+- [Configuring Hummingbot](/operation/configuration)
+- [Running Trading Bots](/operation/running-bots)
+
+## Re-compiling
+
+This section walks you through re-compiling Hummingbot after a code change.
+
+```bash tab="Re-Compiling Hummingbot"
+# 1) Clean intermediate and compiled files from Cython compilation.
+./clean
+
+# 2) Install
+./install
+
+# 3) Deactivate old conda environment
+conda deactivate
+
+# 4) Activate conda environment
+conda activate hummingbot
+
+# 5) Compile
+./compile
+
+# 6) Run Hummingbot
+bin/hummingbot.py
+```
+
+## The Debug Console
+
+The debug console is a powerful tool for Hummingbot developers to inspect and modify the live states in Hummingbot while it's running. It gives access to a live Python console living in the same process as Hummingbot. It can be thought of as similar to the developer console found in most modern browsers.
+
+### Activating the Debug Console
+
+The debug console is disabled by default. You need to enable it by setting `debug_console: true` in `conf/conf_global.yml`.
+
+![Enabling debug console in global config](debug1.png)
+
+### Entering the Debug Console
+
+When you start Hummingbot with debug console enabled, it will print out a "Started debug console" log message at start.
+
+![Started debug console logm essage](debug2.png)
+
+Note the port number printed in the debug message (port 8211 in the example above), you can use `telnet` or `nc` to access the debug console by connecting to the TCP port described in the log message.
+
+![Entering the debug console](debug3.png)
+
+### Accessing Python Modules and Exposed Objects
+
+Once you've entered the debug console, you have access to a fully featured Python interpreter living in the Hummingbot process.
+
+You can access all the exposed properties under the `HummingbotApplication` class via the `hb` object.
+
+Here are some of the exposed properties you can access from the debug console:
+
+- `hb.strategy`: The currently active strategy object
+- `hb.markets`: A dictionary of active market connectors
+- `hb.acct`: The currently active Ethereum wallet object
+- `hb.clock`: The clock object that's driving all the Hummingbot components
+
+![Some exposed variables under 'hb'](debug4.png)
+
+### Sample Ways to Use the Console
+
+Below is an example where a developer queries the currently active bids/asks under the strategy, and the current best ask price on Binance.
+
+![Example](debug5.png)
+
+You should refer to the source code of the exposed objects to see what properties you can inspect and modify inside the debug console.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Developer Notes
+
+- Additional details of the scripts can be found on [Github: Hummingbot Install Scripts](https://github.com/CoinAlpha/hummingbot/tree/development/installation/install-from-source).
+- The installation instructions above use [Miniconda3](https://docs.conda.io/en/latest/miniconda.html), a lighter version of [Anaconda](https://www.anaconda.com/) which is sufficient to run Hummingbot.  To learn more about the differences and what works best for you, see [this post](http://deeplearning.lipingyang.org/2018/12/23/anaconda-vs-miniconda-vs-virtualenv/).

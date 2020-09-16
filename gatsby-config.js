@@ -9,6 +9,14 @@ const sidebarCategories = {
     "installation/cloud",
     "installation/updating",
   ],
+  Operation: [
+    "operation/client",
+    "operation/configuration",
+    "operation/command-ref",
+    "operation/adv-command-ref",
+    "operation/docker-commands",
+    "operation/keyboard-shortcuts",
+  ],
   Connectors: ["connectors/overview", "connectors/hummingbot-supported-connector","connectors/community-supported-connector"],
   Strategies: ["strategies/overview", "strategies/pure-market-making"],
   Resources: [

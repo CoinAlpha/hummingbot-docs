@@ -1,32 +1,29 @@
 ---
-title: "Community Supported Connectors"
+title: "Community-supported Connectors"
 description: Information about Community Supported Connector
 ---
 
 ## Community-Contributed Exchange Connectors
 
-| Exchange | Github Contact | Support Contact | Last Version Tested | Last Updated | Status | Known Issues |
-| --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| Bamboo Relay | [Arctek](https://github.com/Arctek) | [Online Chat](https://bamboorelay.com/) | 0.21.0 | 0.21.0 | <span style="color:green; font-size:25px">⬤</span> |  |
-| Dolomite | [zrubenst](https://github.com/zrubenst) | [Telegram](https://t.me/dolomite_official) | 0.20.0 | 0.21.0 | <span style="color:green; font-size:25px"> ⬤</span> |  |
+| Exchange     |             Github Contact              |              Support Contact               | Last Version Tested | Last Updated |                       Status                        | Known Issues |
+| ------------ | :-------------------------------------: | :----------------------------------------: | :-----------------: | :----------: | :-------------------------------------------------: | :----------: |
+| Bamboo Relay |   [Arctek](https://github.com/Arctek)   |  [Online Chat](https://bamboorelay.com/)   |       0.21.0        |    0.21.0    | <span style="color:green; font-size:25px">⬤</span>  |              |
+| Dolomite     | [zrubenst](https://github.com/zrubenst) | [Telegram](https://t.me/dolomite_official) |       0.20.0        |    0.21.0    | <span style="color:green; font-size:25px"> ⬤</span> |              |
 
-* Last Version Tested - Last reported Hummingbot version that the exchange connector maintainer has confirmed has been tested and is operational.
-* Last Updated - Last Hummingbot release which included an update to the exchange connector code.
-
+- Last Version Tested - Last reported Hummingbot version that the exchange connector maintainer has confirmed has been tested and is operational.
+- Last Updated - Last Hummingbot release which included an update to the exchange connector code.
 
 ## Bamboo Relay Connector
 
-### About Bamboo Relay
-
 [Bamboo Relay](https://bamboorelay.com/) is an exchange application specializing in ERC-20 tokens that uses the [0x Protocol](https://0x.org/).
- Currently, Bamboo Relay allows any user to connect their wallet and trade between any coin pair combination.
+Currently, Bamboo Relay allows any user to connect their wallet and trade between any coin pair combination.
 
 ### Using the Connector
 
 Because Bamboo Relay is a decentralized exchange, you will need an independent cryptocurrency wallet and an ethereum node in order to use Hummingbot. See below for information on how to create these:
 
-* [Creating a crypto wallet](/advanced/wallet)
-* [Creating an ethereum node](/advanced/node)
+- [Creating a crypto wallet](/advanced/wallet)
+- [Creating an ethereum node](/advanced/node)
 
 ### Connector Operating Modes
 
@@ -41,7 +38,7 @@ Orders may only be cancelled by submitting a transaction and paying gas network 
 
 Open orders are syndicated through the [0x Mesh Network](https://0x-org.gitbook.io/mesh/) as well as directly submitted to the [0x API](https://0x.org/docs/api).
 
-#### Coordinated order book 
+#### Coordinated order book
 
 The coordinated order book mode extends the open order book mode by adding the ability to soft-cancel orders and a selective delay on order fills, while preserving network and contract fillable liquidity.
 This is achieved by the use of a coordinator server component and coordinator smart contracts.
@@ -97,7 +94,7 @@ The minimum acceptable order size is 0.004 WETH for pairs traded against WETH, t
 
 Currently Bamboo Relay does not charge trading or withdrawal fees. This is set to change February 1st, 2020 with the introduction of relayer fees. See the [fee schedule](https://bamboorelay.com/fees) for the latest information.
 
-0x Protocol V3 levies an additional protocol fee for each order filled, this is calculated as 150,000 * gasPrice per order.
+0x Protocol V3 levies an additional protocol fee for each order filled, this is calculated as 150,000 \* gasPrice per order.
 This is in addition to the standard Ethereum transaction fees.
 
 ### Contact
@@ -109,10 +106,7 @@ This connector is maintained by [Bamboo Relay](https://bamboorelay.com), which c
 
 ## Dolomite Connector
 
-### About Dolomite
-
 [Dolomite](https://beta.dolomite.io/exchange) is a decentralized exchange powered by the Loopring Protocol that allows you to trade dozens of ERC20 token assets securely, right from your own wallet.
-
 
 ### Using the Connector
 
@@ -120,17 +114,17 @@ Dolomite streamlines the decentralized exchange experience so that users can uti
 
 An ethereum node is required in order to use Hummingbot with Dolomite. Luckily, an Ethereum node is only needed for approving tokens, which is a one-time process. So, users of the Dolomite connector can rest assured it will add virtually no extra stress to their node. See below for information on how to create an Ethereum node and wallet:
 
-* [Creating a crypto wallet](/advanced/wallet)
-* [Creating an ethereum node](/advanced/node)
+- [Creating a crypto wallet](/advanced/wallet)
+- [Creating an ethereum node](/advanced/node)
 
 In addition to the above, the user must also create an account on Dolomite. As of now, this takes 1 of 2 forms:
-1) For users **inside** the US, they must create an account from the site [https://app.dolomite.io](https://app.dolomite.io).
-2) For users **outside** the US, they simply must submit a trade. When Dolomite sees the first trade from a new wallet, it automatically creates an account for it.
 
-**Note**: The above 2 criteria hold true for where *Hummingbot* is running. For example, if you live *outside* the US, but you are running Hummingbot from within the US in the cloud (IE AWS or Azure), you still must create an account. Please reach out to us if you face any problems doing so!
+1. For users **inside** the US, they must create an account from the site [https://app.dolomite.io](https://app.dolomite.io).
+2. For users **outside** the US, they simply must submit a trade. When Dolomite sees the first trade from a new wallet, it automatically creates an account for it.
 
-For users who have little to no prior experience using a decentralized exchange, Dolomite also has a simple account system that does not require users to setup and manage their own private keys.  Read more through here in [Dolomite Traditional Accounts](https://dolomite.io/support/noncustodial-accounts).
+**Note**: The above 2 criteria hold true for where _Hummingbot_ is running. For example, if you live _outside_ the US, but you are running Hummingbot from within the US in the cloud (IE AWS or Azure), you still must create an account. Please reach out to us if you face any problems doing so!
 
+For users who have little to no prior experience using a decentralized exchange, Dolomite also has a simple account system that does not require users to setup and manage their own private keys. Read more through here in [Dolomite Traditional Accounts](https://dolomite.io/support/noncustodial-accounts).
 
 ### Miscellaneous Info
 
@@ -146,13 +140,9 @@ There are no transaction fees required in order to place or cancel trades.
 
 Some additional small flat fees may be applied to your trades. More information can be found in [this page](https://dolomite.io/support/fees).
 
-
 ### Contact
 
 This connector is maintained by [Dolomite](https://beta.dolomite.io/), which can be contacted at:
 
 - [Support Site](https://dolomite.io/support)
 - [Twitter](https://twitter.com/dolomite_io?lang=en) | [Telegram](https://t.me/dolomite_official)
-
-
-

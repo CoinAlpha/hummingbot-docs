@@ -1,17 +1,18 @@
 ---
-title: "Updating Hummingbot"
+title: "Update Hummingbot"
 description: How to update Hummingbot
 ---
 
-import {MultiCodeBlock} from 'gatsby-theme-apollo-docs';
+import { MultiCodeBlock } from "gatsby-theme-apollo-docs";
 
 ## Update via Docker
 
-Hummingbot is regularly updated each month (see [Release Notes](/release-notes/)) and recommend users to regularly update their installations to get the latest version of the software.  
+Hummingbot is regularly updated each month (see [Release Notes](/release-notes/)) and recommend users to regularly update their installations to get the latest version of the software.
 
 Updating to the latest docker image (e.g. `coinalpha/hummingbot:latest`) requires users to (1) delete any instances of Hummingbot using that image, (2) delete the old image, and (3) recreate the Hummingbot instance:
 
 <MultiCodeBlock>
+
 
 ```Script
 # 1) Download update script
@@ -40,7 +41,9 @@ docker run -it \
 --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_data,destination=/data/" \
 coinalpha/hummingbot:latest
 ```
+
 </MultiCodeBlock>
+
 
 ## Update from source
 

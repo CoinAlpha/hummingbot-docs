@@ -1,9 +1,9 @@
 ---
-title: "Install from Source"
+title: "Install on Source"
 description: Source installation
 ---
 
-import {MultiCodeBlock} from 'gatsby-theme-apollo-docs';
+import { MultiCodeBlock } from "gatsby-theme-apollo-docs";
 
 This guide walks you through how to prepare your development environment and get started developing for Hummingbot.
 
@@ -15,18 +15,19 @@ Select your operating system below to see the relevant detailed guide.
 
 For more information on system requirements, view [minimum system requirements](/installation/#minimum-system-requirements).
 
-> Info "Recommended for Developers Only" : [Installation using Docker](/installation/docker) is more efficient for running Hummingbot.  Installing from source is only recommended for developers who want to access and modify the software code.
+> Info "Recommended for Developers Only" : [Installation using Docker](/installation/docker) is more efficient for running Hummingbot. Installing from source is only recommended for developers who want to access and modify the software code.
 
-You can install Hummingbot with ***either*** of the following options:
+You can install Hummingbot with **_either_** of the following options:
 
 1. **Easy Install**: download and use automated install scripts.
 2. **Manual Installation**: run install commands manually.
 
 ## Ubuntu
 
-*Supported versions: 16.04 LTS, 18.04 LTS, 19.04*
+_Supported versions: 16.04 LTS, 18.04 LTS, 19.04_
 
 <MultiCodeBlock>
+
 
 ```Easy Install
 # 1) Download install script
@@ -63,15 +64,18 @@ conda activate hummingbot && ./compile
 # 7) Start Hummingbot
 bin/hummingbot.py
 ```
+
 </MultiCodeBlock>
+
 
 Next: [Using Hummingbot](##Using Hummingbot)
 
 ## Debian
 
-*Supported version: Debian GNU/Linux 9*
+_Supported version: Debian GNU/Linux 9_
 
 <MultiCodeBlock>
+
 
 ```Easy Install
 # 1) Download install script
@@ -108,6 +112,7 @@ conda activate hummingbot && ./compile
 # 7) Start Hummingbot
 bin/hummingbot.py
 ```
+
 </MultiCodeBlock>
 
 
@@ -115,9 +120,10 @@ Next: [Using Hummingbot](##Using Hummingbot)
 
 ## CentOS
 
-*Supported version: 7*
+_Supported version: 7_
 
 <MultiCodeBlock>
+
 
 ```Easy Install"
 # 1) Download install script
@@ -154,11 +160,13 @@ conda activate hummingbot && ./compile
 # 7) Start Hummingbot
 bin/hummingbot.py
 ```
+
 </MultiCodeBlock>
+
 
 Next: [Using Hummingbot](##Using Hummingbot)
 
-##  MacOS 
+## MacOS
 
 **Prerequisites**
 
@@ -197,16 +205,15 @@ fi
 unset __conda_setup
 ```
 
-## Windows 
+## Windows
 
 This section walks you through how to prepare your development environment and install Hummingbot from source manually.
 
 The Hummingbot code base is designed and optimized for UNIX-based systems such as macOS and Linux. We recommend that Windows users:
 
-* Install in [the cloud](/installation/cloud) by using a native Linux virtual machine.
+- Install in [the cloud](/installation/cloud) by using a native Linux virtual machine.
 
 Hummingbot can also be installed by utilizing the built-in Windows Subsystem for Linux. However, this is only recommended for users familiar with development.
-
 
 The following instructions are summarized for installing Hummingbot from source on Windows 10, using Windows Subsystem for Linux (WSL).
 
@@ -250,7 +257,7 @@ conda activate hummingbot && ./compile
 bin/hummingbot.py
 ```
 
-## Using Hummingbot 
+## Using Hummingbot
 
 ### What you'll need to start:
 
@@ -275,6 +282,7 @@ For more information on how to get the API keys for each exchange, please see th
 For more information on creating or importing an Ethereum wallet, see [Ethereum wallet](/advanced/wallet).
 
 #### Ethereum Node (DEX only)
+
 **Why this is needed**: When you run a trading bot on a Ethereum-based decentralized exchange, your wallet sends signed transactions to the blockchain via an Ethereum node.
 
 For more information, see [Ethereum node](/installation/node/).
@@ -354,20 +362,7 @@ Below is an example where a developer queries the currently active bids/asks und
 
 You should refer to the source code of the exposed objects to see what properties you can inspect and modify inside the debug console.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Developer Notes
 
 - Additional details of the scripts can be found on [Github: Hummingbot Install Scripts](https://github.com/CoinAlpha/hummingbot/tree/development/installation/install-from-source).
-- The installation instructions above use [Miniconda3](https://docs.conda.io/en/latest/miniconda.html), a lighter version of [Anaconda](https://www.anaconda.com/) which is sufficient to run Hummingbot.  To learn more about the differences and what works best for you, see [this post](http://deeplearning.lipingyang.org/2018/12/23/anaconda-vs-miniconda-vs-virtualenv/).
+- The installation instructions above use [Miniconda3](https://docs.conda.io/en/latest/miniconda.html), a lighter version of [Anaconda](https://www.anaconda.com/) which is sufficient to run Hummingbot. To learn more about the differences and what works best for you, see [this post](http://deeplearning.lipingyang.org/2018/12/23/anaconda-vs-miniconda-vs-virtualenv/).

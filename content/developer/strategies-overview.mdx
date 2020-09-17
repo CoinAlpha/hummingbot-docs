@@ -1,31 +1,7 @@
 ---
-title: Overview
-description: Learn how to use the different strategies
+title: "Strategies Architecture"
+description: Info on Strategies Architecture
 ---
-
-## For Traders
-
-The current release of Hummingbot comes with 4 strategies:
-
-### Pure Market Making
-
-Post buy and sell offers for an instrument on a single exchange, automatically adjust prices while actively managing inventory.
-
-For experienced users of this strategy, see [Advanced Market Making](./advanced-mm) for how to use more sophisticated features of this strategy.
-
-### Cross Exchange Market Making
-
-Also referred to as _liquidity mirroring_ or _exchange remarketing_. In this strategy, Hummingbot makes markets (creates buy and sell orders) on smaller or less liquid exchanges and does the opposite, back-to-back transaction for any filled trades on a more liquid exchange.
-
-### Arbitrage
-
-Aims to capture price differentials between two different exchanges (buy low on one, sell high on the other).
-
-The [Hummingbot whitepaper](https://www.hummingbot.io/hummingbot.pdf) provides more details about these strategies, as well as additional ones that we are working on for future versions of Hummingbot.
-
-## For Developers
-
-These strategies are meant to be basic templates. We encourage users to extend these templates for their own purposes, and if they so desire, share them with the community.
 
 ![StrategyBase class relations](strategy-uml.svg)
 
@@ -35,7 +11,7 @@ The concrete strategy classes included with Hummingbot, including [`ArbitrageStr
 
 Each `StrategyBase` object may be managing multiple [`MarketBase`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/market/market_base.pyx) and [`WalletBase`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/wallet/wallet_base.pyx) objects.
 
-### How It Works
+## How It Works
 
 All strategy modules are child classes of [`TimeIterator`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/core/time_iterator.pyx), which is called via `c_tick()` every second.
 
@@ -43,7 +19,7 @@ What this means is, a running strategy module is called every second via its `c_
 
 If you're reading or writing a strategy module, the `c_tick()` function should be treated as the entry point of a strategy module. If you're reading a strategy module's code, `c_tick()` should be where you start. If you're writing a new strategy module, `c_tick()` is also going to where you start writing the important bits of your strategy.
 
-### Markets
+## Markets
 
 Each `StrategyBase` object may be associated with multiple markets.
 
@@ -59,7 +35,7 @@ Each `StrategyBase` object may be associated with multiple markets.
 
   List of `MarketBase` objects currently associated with this `StrategyBase` object.
 
-### Market Event Interfaces
+## Market Event Interfaces
 
 The `StrategyBase` class comes with a set of interface functions for handling market events from associated `MarketBase` objects, which may be overridded by child classes to receive and process market events.
 
@@ -97,13 +73,13 @@ The event interface functions are as follows:
 
   A sell order has been completely filled. Argument is a [`SellOrderCompletedEvent`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/core/event/events.py) object.
 
-### Creating and Cancelling Orders
+## Creating and Cancelling Orders
 
 `StrategyBase` includes pre-defined logic for creating and cancelling trading orders - which are the primary ways for a strategy to interact with associated markets.
 
 It is highly encouraged to use these functions to create and remove orders, rather than calling functions like `c_buy()` and `c_sell()` on `MarketBase` objects directly - since the functions from `StrategyBase` provides order tracking functionalities as well.
 
-#### Place order
+### Place order
 
 ```cython
 cdef str c_buy_with_specific_market(self,
@@ -133,7 +109,7 @@ Creates a buy or a sell order in the market specified by `market_trading_pair_tu
 - **price**: an optional `Decimal` object, specifying the price for a limit order. This parameter is ignored if `order_type` is not `OrderType.LIMIT` or `OrderType.LIMIT_MAKER`.
 - **expiration_seconds**: an optional number, which specifies how long a limit should automatically expire. This is only used by Ethereum-based decentralized exchanges like Radar Relay where active order cancellation costs gas. By default, passive cancellation via expiration is used on these exchanges.
 
-#### Cancel order
+### Cancel order
 
 ```cython
  c_cancel_order(self, object market_pair, str order_id)
@@ -146,7 +122,7 @@ Cancels an active order from a market.
 - **market_pair**: a `MarketTradingPairTuple` object specifying the `MarketBase` object and the trading pair to cancel order from.
 - **order_id**: Order ID string returned from a previous call to order creation functions above.
 
-### Order Tracking
+## Order Tracking
 
 Each `StrategyBase` object comes with an internal attribute `_sb_order_tracker`, which is an [`OrderTracker`](https://github.com/CoinAlpha/hummingbot/blob/development/hummingbot/strategy/order_tracker.pyx) object. The `OrderTracker` object is responsible for tracking all active and in-flight orders created by the `StrategyBase` object, and also all in-flight order cancels.
 

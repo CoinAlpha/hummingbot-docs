@@ -14,6 +14,7 @@ const sidebarCategories = {
     "operation/command-ref",
     "operation/adv-command-ref",
     "operation/docker-commands",
+    "operation/telegram",
   ],
   Connectors: [
     "connectors/dev-overview",
@@ -69,6 +70,7 @@ const sidebarCategories = {
     "scripts/perform-trade",
     "scripts/simple-trade",
   ],
+  Release_Notes: [],
   Resources: [
     "resources/faq",
     "resources/glossary",

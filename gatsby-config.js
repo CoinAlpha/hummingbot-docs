@@ -70,7 +70,6 @@ const sidebarCategories = {
     "scripts/perform-trade",
     "scripts/simple-trade",
   ],
-  Release_Notes: [],
   Resources: [
     "resources/faq",
     "resources/glossary",

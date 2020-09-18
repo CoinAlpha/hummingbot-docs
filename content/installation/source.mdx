@@ -9,18 +9,18 @@ This guide walks you through how to prepare your development environment and get
 
 Select your operating system below to see the relevant detailed guide.
 
-- [Linux](/developers/gettingstarted/linux) – Ubuntu 16.04 or later
-- [Mac](/developers/gettingstarted/mac) – macOS 10.12.6 (Sierra) or later
+- [Linux](source/##Ubuntu) – Ubuntu 16.04 or later
+- [Mac](source/##macOS) – macOS 10.12.6 (Sierra) or later
 - [Windows](/developers/gettingstarted/windows) – Windows 10 or later
 
-For more information on system requirements, view [minimum system requirements](/installation/#minimum-system-requirements).
+For more information on system requirements, view [minimum system requirements](system-req).
 
-> Info "Recommended for Developers Only" : [Installation using Docker](/installation/docker) is more efficient for running Hummingbot. Installing from source is only recommended for developers who want to access and modify the software code.
+> Info "Recommended for Developers Only" : [Installation using Docker](docker) is more efficient for running Hummingbot. Installing from source is only recommended for developers who want to access and modify the software code.
 
 You can install Hummingbot with **_either_** of the following options:
 
-1. **Easy Install**: download and use automated install scripts.
-2. **Manual Installation**: run install commands manually.
+- **Scripts**: download and use automated install scripts.
+- **Manual**: run install commands manually.
 
 ## Ubuntu
 
@@ -29,7 +29,7 @@ _Supported versions: 16.04 LTS, 18.04 LTS, 19.04_
 <MultiCodeBlock>
 
 
-```Easy Install
+```Scripts
 # 1) Download install script
 wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/install-from-source/install-source-ubuntu.sh
 
@@ -40,7 +40,7 @@ chmod a+x install-source-ubuntu.sh
 ./install-source-ubuntu.sh
 ```
 
-```bash tab="Option 2: Manual Installation"
+```Manual
 # 1) Install dependencies
 sudo apt-get update
 sudo apt-get install -y build-essential
@@ -77,7 +77,7 @@ _Supported version: Debian GNU/Linux 9_
 <MultiCodeBlock>
 
 
-```Easy Install
+```Scripts
 # 1) Download install script
 wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/install-from-source/install-source-debian.sh
 
@@ -88,7 +88,7 @@ chmod a+x install-source-debian.sh
 ./install-source-debian.sh
 ```
 
-```Manual Installation
+```Manual
 # 1) Install dependencies
 sudo apt-get update
 sudo apt-get install -y build-essential git
@@ -125,7 +125,7 @@ _Supported version: 7_
 <MultiCodeBlock>
 
 
-```Easy Install"
+```Scripts
 # 1) Download install script
 wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/install-from-source/install-source-centos.sh
 
@@ -136,7 +136,7 @@ chmod a+x install-source-centos.sh
 ./install-source-centos.sh
 ```
 
-```Manual Installation
+```Manual
 # 1) Install dependencies
 sudo yum install -y wget bzip2 git
 sudo yum groupinstall -y 'Development Tools'
@@ -166,7 +166,7 @@ bin/hummingbot.py
 
 Next: [Using Hummingbot](##Using Hummingbot)
 
-## MacOS
+## macOS
 
 **Prerequisites**
 
@@ -190,7 +190,7 @@ Afterwards, open a Terminal window and try the `conda` command. If the command i
 
 > Warning: If you use ZSH or another Unix shell, copy the code snippet below to your `.zshrc` or similar file. By default, Anaconda only adds it to your `.bash_profile` file. This makes the `conda` command available in your root path.
 
-```bash
+```
 __conda_setup="$(CONDA_REPORT_ERRORS=false '/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
 if [ $? -eq 0 ]; then
     \eval "$__conda_setup"
@@ -318,51 +318,3 @@ conda activate hummingbot
 # 6) Run Hummingbot
 bin/hummingbot.py
 ```
-
-## The Debug Console
-
-The debug console is a powerful tool for Hummingbot developers to inspect and modify the live states in Hummingbot while it's running. It gives access to a live Python console living in the same process as Hummingbot. It can be thought of as similar to the developer console found in most modern browsers.
-
-### Activating the Debug Console
-
-The debug console is disabled by default. You need to enable it by setting `debug_console: true` in `conf/conf_global.yml`.
-
-![Enabling debug console in global config](debug1.png)
-
-### Entering the Debug Console
-
-When you start Hummingbot with debug console enabled, it will print out a "Started debug console" log message at start.
-
-![Started debug console logm essage](debug2.png)
-
-Note the port number printed in the debug message (port 8211 in the example above), you can use `telnet` or `nc` to access the debug console by connecting to the TCP port described in the log message.
-
-![Entering the debug console](debug3.png)
-
-### Accessing Python Modules and Exposed Objects
-
-Once you've entered the debug console, you have access to a fully featured Python interpreter living in the Hummingbot process.
-
-You can access all the exposed properties under the `HummingbotApplication` class via the `hb` object.
-
-Here are some of the exposed properties you can access from the debug console:
-
-- `hb.strategy`: The currently active strategy object
-- `hb.markets`: A dictionary of active market connectors
-- `hb.acct`: The currently active Ethereum wallet object
-- `hb.clock`: The clock object that's driving all the Hummingbot components
-
-![Some exposed variables under 'hb'](debug4.png)
-
-### Sample Ways to Use the Console
-
-Below is an example where a developer queries the currently active bids/asks under the strategy, and the current best ask price on Binance.
-
-![Example](debug5.png)
-
-You should refer to the source code of the exposed objects to see what properties you can inspect and modify inside the debug console.
-
-## Developer Notes
-
-- Additional details of the scripts can be found on [Github: Hummingbot Install Scripts](https://github.com/CoinAlpha/hummingbot/tree/development/installation/install-from-source).
-- The installation instructions above use [Miniconda3](https://docs.conda.io/en/latest/miniconda.html), a lighter version of [Anaconda](https://www.anaconda.com/) which is sufficient to run Hummingbot. To learn more about the differences and what works best for you, see [this post](http://deeplearning.lipingyang.org/2018/12/23/anaconda-vs-miniconda-vs-virtualenv/).

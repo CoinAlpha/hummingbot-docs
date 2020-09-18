@@ -9,8 +9,8 @@ import { MultiCodeBlock } from "gatsby-theme-apollo-docs";
 
 You can install Docker and/or Hummingbot by selecting **_either_** of the following options from the tabs below:
 
-1. **Easy Install**: download and use automated install scripts.
-2. **Manual Installation**: run install commands manually.
+- **Scripts**: download and use automated install scripts.
+- **Manual**: run install commands manually.
 
 ### Ubuntu
 
@@ -23,7 +23,7 @@ Skip this step if you already have Docker installed. Run the following commands:
 <MultiCodeBlock>
 
 
-```Easy Install
+```Scripts
 # 1) Download Docker install script
 wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/install-docker/install-docker-ubuntu.sh
 
@@ -34,7 +34,7 @@ chmod a+x install-docker-ubuntu.sh
 ./install-docker-ubuntu.sh
 ```
 
-```Manual Installation
+```Manual
 # 1) Update Ubuntu's database of software
 sudo apt-get update
 
@@ -67,7 +67,7 @@ Run the following commands:
 <MultiCodeBlock>
 
 
-```Easy Install
+```Scripts
 # 1) Download Hummingbot install, start, and update script
 wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/create.sh
 wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/start.sh
@@ -80,7 +80,7 @@ chmod a+x *.sh
 ./create.sh
 ```
 
-```Manual Installation
+```Manual
 # 1) Create folder for your new instance
 mkdir hummingbot_files
 
@@ -115,7 +115,7 @@ Skip this step if you already have Docker installed. Run the following commands:
 <MultiCodeBlock>
 
 
-```Easy Install
+```Scripts
 # 1) Download Docker install script
 wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/install-docker/install-docker-debian.sh
 
@@ -126,7 +126,7 @@ chmod a+x install-docker-debian.sh
 ./install-docker-debian.sh
 ```
 
-```Manual Installation
+```Manual
 # 1) Update package database
 sudo apt update
 
@@ -161,7 +161,7 @@ Run the following commands:
 <MultiCodeBlock>
 
 
-```Easy Install
+```Scripts
 # 1) Download Hummingbot install, start, and update script
 wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/create.sh
 wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/start.sh
@@ -174,7 +174,7 @@ chmod a+x *.sh
 ./create.sh
 ```
 
-```Manual Installation
+```Manual
 # 1) Create folder for your new instance
 mkdir hummingbot_files
 
@@ -209,7 +209,7 @@ Skip this step if you already have Docker installed. Run the following commands:
 <MultiCodeBlock>
 
 
-```Easy Install
+```Scripts
 # 1) Download Docker install script
 wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/install-docker/install-docker-centos.sh
 
@@ -220,7 +220,7 @@ chmod a+x install-docker-centos.sh
 ./install-docker-centos.sh
 ```
 
-```Manual Installation
+```Manual
 # 1) Update package database
 sudo yum check-update
 
@@ -253,7 +253,7 @@ Run the following commands:
 <MultiCodeBlock>
 
 
-```Easy Install
+```Scripts
 # 1) Download Hummingbot install, start, and update script
 wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/create.sh
 wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/start.sh
@@ -266,7 +266,7 @@ chmod a+x *.sh
 ./create.sh
 ```
 
-```Manual Installation
+```Manual
 # 1) Create folder for your new instance
 mkdir hummingbot_files
 
@@ -300,13 +300,13 @@ Skip this step if you already have Docker installed. You can install Docker by [
 
 You can install Hummingbot by selecting **_either_** of the following options from the tabs below:
 
-1. **Easy Install**: download and use automated install scripts.
-2. **Manual Installation**: run install commands manually.
+- **Scripts**: download and use automated install scripts.
+- **Manual**: run install commands manually.
 
 <MultiCodeBlock>
 
 
-```Easy Install
+```Scripts
 # 1) Download Hummingbot install, start, and update script
 curl https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/create.sh -o create.sh
 curl https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/start.sh -o start.sh
@@ -319,7 +319,7 @@ chmod a+x *.sh
 ./create.sh
 ```
 
-```Manual Installation
+```Manual
 # 1) Create folder for your new instance
 mkdir hummingbot_files
 
@@ -376,13 +376,13 @@ Open Docker Toolbox using the Quickstart shortcut. Move onto the next step when 
 
 Enter the following commands into the command line. You can install Hummingbot by selecting **_either_** of the following options from the tabs below:
 
-1. **Easy Install**: download and use automated install scripts.
-2. **Manual Installation**: run install commands manually.
+- **Scripts**: download and use automated install scripts.
+- **Manual**: run install commands manually.
 
 <MultiCodeBlock>
 
 
-```Easy Install
+```Scripts
 # 1) Navigate to root folder
 cd ~
 
@@ -398,7 +398,7 @@ chmod a+x *.sh
 ./create.sh
 ```
 
-```Manual Installation
+```Manual
 # 1) Navigate to root folder
 cd ~
 
@@ -437,7 +437,7 @@ Press keys `Ctrl+P` then `Ctrl+Q` in sequence to detach from Docker i.e. return 
 
 A previous version can be installed when creating a Hummingbot instance.
 
-```bash
+```
 # 1) Run the script to create a hummingbot instance
 ./create.sh
 

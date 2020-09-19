@@ -9,9 +9,9 @@ This guide walks you through how to prepare your development environment and get
 
 Select your operating system below to see the relevant detailed guide.
 
-- [Linux](source/##Ubuntu) – Ubuntu 16.04 or later
-- [Mac](source/##macOS) – macOS 10.12.6 (Sierra) or later
-- [Windows](/developers/gettingstarted/windows) – Windows 10 or later
+- <a href="#Ubuntu">Ubuntu</a> – Ubuntu 16.04 or later
+- <a href="#macOS">macOS</a> – macOS 10.12.6 (Sierra) or later
+- <a href="#Windows">Windows</a> – Windows 10 or later
 
 For more information on system requirements, view [minimum system requirements](system-req).
 
@@ -22,7 +22,7 @@ You can install Hummingbot with **_either_** of the following options:
 - **Scripts**: download and use automated install scripts.
 - **Manual**: run install commands manually.
 
-## Ubuntu
+<h2 id="Ubuntu">Ubuntu</h2>
 
 _Supported versions: 16.04 LTS, 18.04 LTS, 19.04_
 
@@ -68,7 +68,7 @@ bin/hummingbot.py
 </MultiCodeBlock>
 
 
-Next: [Using Hummingbot](##Using Hummingbot)
+Next: <a href="#Using Hummingbot">Using Hummingbot</a>
 
 ## Debian
 
@@ -116,7 +116,7 @@ bin/hummingbot.py
 </MultiCodeBlock>
 
 
-Next: [Using Hummingbot](##Using Hummingbot)
+Next: <a href="#Using Hummingbot">Using Hummingbot</a>
 
 ## CentOS
 
@@ -164,9 +164,9 @@ bin/hummingbot.py
 </MultiCodeBlock>
 
 
-Next: [Using Hummingbot](##Using Hummingbot)
+Next: <a href="#Using Hummingbot">Using Hummingbot</a>
 
-## macOS
+<h2 id="macOS">macOS</h2>
 
 **Prerequisites**
 
@@ -205,7 +205,9 @@ fi
 unset __conda_setup
 ```
 
-## Windows
+Next: <a href="#Using Hummingbot">Using Hummingbot</a>
+
+<h2 id="Windows">Windows</h2>
 
 This section walks you through how to prepare your development environment and install Hummingbot from source manually.
 
@@ -257,7 +259,7 @@ conda activate hummingbot && ./compile
 bin/hummingbot.py
 ```
 
-## Using Hummingbot
+<h2 id="Using Hummingbot">Using Hummingbot</h2>
 
 ### What you'll need to start:
 
@@ -267,39 +269,37 @@ bin/hummingbot.py
 
 Remember that you need inventory of both the **base asset** (the asset that you are buying and selling) and the **quote asset** (the asset that you exchange for it). For example, if you are making a market in a `BTC/USDT` trading pair, you'll need some `BTC` and `USDT`.
 
-In addition, be aware of the minimum order size requirements on different exchanges. For more information, please see [Connectors](/connectors).
+In addition, be aware of the minimum order size requirements on different exchanges. For more information, please see [Connectors](/connectors/overview).
 
 #### API Keys
 
 **Why this is needed**: In order to run a bot on a centralized exchange like Binance, you will need to enter the exchange API keys during the Hummingbot configuration process.
 
-For more information on how to get the API keys for each exchange, please see the individual exchange pages in [Connectors](/connectors).
+For more information on how to get the API keys for each exchange, please see the individual exchange pages in [Connectors](/connectors/overview).
 
 #### Ethereum Wallet
 
 **Why this is needed**: In order to earn rewards from Liquidity Bounties, you need an Ethereum wallet. In addition, you'll need to import an Ethereum wallet when you run a trading bot on an Ethereum-based decentralized exchange.
 
-For more information on creating or importing an Ethereum wallet, see [Ethereum wallet](/advanced/wallet).
+For more information on creating or importing an Ethereum wallet, see [Ethereum wallet](/operation/adv-command-ref).
 
 #### Ethereum Node (DEX only)
 
 **Why this is needed**: When you run a trading bot on a Ethereum-based decentralized exchange, your wallet sends signed transactions to the blockchain via an Ethereum node.
 
-For more information, see [Ethereum node](/installation/node/).
+For more information, see [Ethereum node](/operation/adv-command-ref).
 
 ### Operation
 
 Relevant User Manual Links
 
-- [Using the Client](/operation/client)
-- [Configuring Hummingbot](/operation/configuration)
-- [Running Trading Bots](/operation/running-bots)
+- [Using and configuring the Client](/operation/client)
 
 ## Re-compiling
 
 This section walks you through re-compiling Hummingbot after a code change.
 
-```bash tab="Re-Compiling Hummingbot"
+```
 # 1) Clean intermediate and compiled files from Cython compilation.
 ./clean
 

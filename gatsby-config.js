@@ -44,7 +44,8 @@ const sidebarCategories = {
     "strategies/price-band",
     "strategies/ping-pong",
     "strategies/order-optimization",
-    "strategies/add-transcation-costs",
+    "strategies/add-transaction-costs",
+    "strategies/external-price-source",
     "strategies/cross-exchange",
     "strategies/cross-exchange-market-making",
     "strategies/arbitrage",
@@ -157,6 +158,20 @@ module.exports = {
         background_color: "#0D999E",
         theme_color: "#0D999E",
         icon: "src/images/brand-logo.png",
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
+              strict: `ignore`,
+            },
+          },
+        ],
       },
     },
   ],

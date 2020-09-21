@@ -9,7 +9,7 @@ Hummingbot uses a command-line interface (CLI) that helps users configure and ru
 
 ### Installed from Docker
 
-Creating a new instance of Hummingbot with `docker run` will automatically start the Hummingbot client (see Docker installation guides for [Windows](/installation/docker/windows), [Linux](/installation/docker/linux) and [MacOS](/installation/docker/macOS)).
+Creating a new instance of Hummingbot with `docker run` will automatically start the Hummingbot client (see [Docker](/installation/docker) installation guides for Windows, Linux and macOS.
 
 To run a previously created, stopped container where \$NAME is the name of your instance of Hummingbot:
 
@@ -17,7 +17,7 @@ To run a previously created, stopped container where \$NAME is the name of your 
 docker start $NAME && docker attach $NAME
 ```
 
-For additional information on useful commands, see the [commands](/operation/commands) to running Hummingbot on Docker.
+For additional information on useful commands, see the [commands](/operation/command-ref) to running Hummingbot on Docker.
 
 ### Installed from Source
 
@@ -28,6 +28,14 @@ Open a Terminal window and go to the root of the directory that contains Humming
 ```
 bin/hummingbot.py
 ```
+
+## Create a secure password
+
+If you are using Hummingbot for the first time on this machine, the system will prompt you to create a password. This password will be used to encrypt sensitive configuration settings e.g. API keys, secret keys and wallet private keys.
+
+![](welcome.gif)
+
+> Warning: For security reasons, the password is only stored locally in encrypted form. **We do not have access to your password.**
 
 ## User Interface
 
@@ -221,12 +229,12 @@ _\* Used for text edit in input pane only._
 
 ### Linux
 
-| Keyboard Combo              | Command |
-| --------------------------- | ------- |
-| CTRL + C                    | Copy    |
-| SHIFT + RMB ![rmb](rmb.png) | Paste   |
+| Keyboard Combo                   | Command |
+| -------------------------------- | ------- |
+| CTRL + C                         | Copy    |
+| SHIFT + RMB (right-mouse button) | Paste   |
 
-To highlight, hold **SHIFT + LMB** ![lmb](lmb.svg) and drag across the text you want to select.
+To highlight, hold **SHIFT + LMB** (left-mouse button) and drag across the text you want to select.
 
 ### macOS
 
@@ -239,7 +247,7 @@ To highlight, hold **SHIFT + LMB** ![lmb](lmb.svg) and drag across the text you 
 
 ![allowmouse](allow_mouse_reporting.png)
 
-Then you should be able to select text by holding **`LMB`** ![lmb](lmb.svg) and drag. You can also hold down **`⌥ + shift`** to select specific lines like the image below.
+Then you should be able to select text by holding **`LMB`** (left-mouse button) and drag. You can also hold down **`⌥ + shift`** to select specific lines like the image below.
 
 ![highlightmacos](highlight_macos.png)
 

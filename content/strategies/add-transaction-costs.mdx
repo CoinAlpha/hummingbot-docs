@@ -9,7 +9,7 @@ This feature lets you take into account the transaction cost incurred on the exc
 
 Note that this puts your order prices further away from the mid price.
 
-##How It Works
+## How It Works
 
 When the `add_transaction_costs` parameter is set to True, the client adds the transaction costs to the prices and adjusts the price proposal.
 
@@ -17,17 +17,17 @@ Type `config add_transaction_costs` to set the value for the parameter. If you r
 
 Note that we currently display warnings if the adjusted price post adding the transaction costs is 10% away from the original price. If the buy price with the transaction cost is zero or negative, it is not profitable to place orders and orders will not be placed.
 
-##Order Price Calculation with Transaction Cost
+## Order Price Calculation with Transaction Cost
 
 Below `fee_pct` refers to the percentage maker fees per order (generally common in Centralized exchanges) while `fixed_fees` refers to the flat fees (generally common in Decentralized exchanges).
 
-###Calculating the Bid Order Price
+### Calculating the Bid Order Price
 
-![Bid price with transaction cost](/assets/img/trans_cost_bid.PNG)
+![Bid price with transaction cost](trans_cost_bid.PNG)
 
 ###Calculating the Ask Order Price
 
-![Ask price with transaction cost](/assets/img/trans_cost_ask.PNG)
+![Ask price with transaction cost](trans_cost_ask.PNG)
 
 ###Example - When Transaction Cost is Important
 

@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { breakpoints, colors } from "gatsby-theme-apollo-core";
 import React from "react";
 import useSiteMetadata from "../../hooks/useSiteMetadata";
+import "katex/dist/katex.min.css";
 
 const Container = styled.div({
   display: "flex",

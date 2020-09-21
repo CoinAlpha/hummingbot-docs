@@ -10,6 +10,7 @@ import useSiteMetadata from "../../hooks/useSiteMetadata";
 import { ReactComponent as DiscordLogo } from "gatsby-theme-apollo-docs/src/assets/discord.svg";
 import { ReactComponent as IconYoutube } from "gatsby-theme-apollo-docs/src/assets/youtube.svg";
 import { ReactComponent as IconTwitter } from "gatsby-theme-apollo-docs/src/assets/twitter.svg";
+import "katex/dist/katex.min.css";
 
 const Wrapper = styled.div({
   width: "100%",

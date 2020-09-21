@@ -3,17 +3,15 @@ title: Pure Market Making
 description: Learn how to use pure market making strategies
 ---
 
-## For Traders
-
-### How it Works
+## How it Works
 
 In the pure market making strategy, Hummingbot continually posts limit bid and ask offers on a market and waits for other market participants ("takers") to fill their orders.
 
 Users can specify how far away ("spreads") from the mid price the bid and asks are, the order quantity, and how often prices should be updated (order cancels + new orders posted).
 
-> Warning: Please exercise caution while running this strategy and set appropriate [kill switch](/advanced/kill-switch/) rate. The current version of this strategy is intended to be a basic template that users can test and customize. Running the strategy with substantial capital without additional modifications may result in losses.
+> Warning: Please exercise caution while running this strategy and set appropriate [kill switch](operation/command-ref/#kill-switch) rate. The current version of this strategy is intended to be a basic template that users can test and customize. Running the strategy with substantial capital without additional modifications may result in losses.
 
-### Schematic
+## Schematic
 
 The diagram below illustrates how market making works. Hummingbot makes a market by placing buy and sell orders on a single exchange, specifying prices and sizes.
 
@@ -23,14 +21,14 @@ The diagram below illustrates how market making works. Hummingbot makes a market
 
 ![Figure 1: Hummingbot makes a market on an exchange](pure-mm.png)
 
-### Prerequisites
+## Prerequisites
 
-#### Inventory
+### Inventory
 
 1. You will need to hold sufficient inventory of quote and/or base currencies on the exchange to place orders of the exchange's minimum order size.
 2. You will also need some ETH to pay gas for transactions on a decentralized exchange (if applicable).
 
-#### Minimum Order Size
+### Minimum Order Size
 
 When placing orders, if the size of the order determined by the order price and quantity is below the exchange's minimum order size, then the orders will not be created.
 
@@ -41,7 +39,7 @@ When placing orders, if the size of the order determined by the order price and 
 
 Only a sell order will be created but no buy order.
 
-### Basic and Advanced Configuration
+## Basic and Advanced Configuration
 
 We aim to teach new users the basics of market making, while enabling experienced users to exercise more control over how their bots behave. By default, when you run `create` we ask you to enter the basic parameters needed for a market making bot.
 

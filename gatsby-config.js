@@ -7,6 +7,7 @@ const sidebarCategories = {
     "installation/docker",
     "installation/cloud",
     "installation/source",
+    "installation/raspberry",
     "installation/debug",
     "installation/updating",
   ],

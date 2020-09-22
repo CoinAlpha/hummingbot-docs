@@ -4,41 +4,41 @@ title: "Version 0.21.0 - 0.30.0"
 
 ## Version 0.30.0
 
-🚀 Welcome to `hummingbot` version 0.30.0!
+Welcome to `hummingbot` version 0.30.0!
 
-### 💵 New command: Balance Limit
+### New command: Balance Limit
 
 As described in feature request [#1443](https://github.com/CoinAlpha/hummingbot/issues/1443), users can now apply a limit to the total balance to allocate how much the bot can access in an exchange.
 
 This command is useful when running multiple bots sharing the same assets in an account e.g. setting a 50% USDT limit to each bot running BTC-USDT and ETH-USDT pair.
 
-Run the command `balance limit [exchange] [asset] [amount]` to do this. More information in [balance command](/operation/commands/balance/#balance-limit-exchange-asset-amount).
+Run the command `balance limit [exchange] [asset] [amount]` to do this. More information in [balance command](/operation/command-ref#balance).
 
-### 📜 New command: Balance Paper
+### New command: Balance Paper
 
 Adding paper trade balances can now be done easier from the Hummingbot client by running `balance paper [asset] [amount]`. Also, users can now check paper trading account balances by running `balance paper` command.
 
-For more information and sample usage, refer to [balance command](/operation/commands/balance/#balance-paper) in our documentation.
+For more information and sample usage, refer to [balance command](/operation/command-ref#balance) in our documentation.
 
-### 📖 New command: Order Book
+### New command: Order Book
 
-Users can now see the market's order book by running the [order_book](/operation/commands/order_book) command from the Hummingbot CLI while a strategy is running.
+Users can now see the market's order book by running the [order_book](//operation/command-ref#order_book) command from the Hummingbot CLI while a strategy is running.
 
 By default, this command shows the top 5 bid/ask prices with order volume. It can be used with optional arguments like `--lines` to specify the number of lines to show, `--markets` and `--exchange` if running on cross-exchange and arbitrage strategy.
 
-### 📝 Continuously saving trades in CSV file
+### Continuously saving trades in CSV file
 
 In the previous versions, users can only see the list of trades in the current session from the `history` command i.e. restarting Hummingbot will start a fresh list of trades in the new session.
 
 Starting this release, all trades are now continuously saved in a CSV file that can be accessed in the `data` folder.
 
-### 🗄 Improved trades list management in database
+### Improved trades list management in database
 
 We changed how Hummingbot manages trades stored in the local database. This allows users to run multiple bots from the same parent directory without mixing up the list of trades in the history output.
 
 This will also allow running multiple windows of Hummingbot via binary without errors when running the `history` command.
 
-### 🔧 Other Enhancements
+### Other Enhancements
 
 - Ethereum node and websocket can now be configured using the `config` command [#2011](https://github.com/CoinAlpha/hummingbot/issues/2011)
 - Removed `hang` column from `status` output [#2037](https://github.com/CoinAlpha/hummingbot/pull/2037)
@@ -48,7 +48,7 @@ This will also allow running multiple windows of Hummingbot via binary without e
 - Completely removed Bitcoin.com connector from codebase [#2095](https://github.com/CoinAlpha/hummingbot/pull/2095)
 - Implemented Huobi websocket API as part of maintaining user account balances in market connectors [#2140](https://github.com/CoinAlpha/hummingbot/pull/2140)
 
-### 🐞 Bug Fixes
+### Bug Fixes
 
 - Removed failing unit test `test_deposit_info` in Liquid [#1574](https://github.com/CoinAlpha/hummingbot/issues/1574)
 - Fixed duplicate trades bug appearing in `history` output [#1663](https://github.com/CoinAlpha/hummingbot/issues/1663)
@@ -90,30 +90,30 @@ This will also allow running multiple windows of Hummingbot via binary without e
 
 - Added `test_limit_maker_rejections` and `test_limit_makers_unfilled` - to test new LIMIT_MAKER order type.
 
-See [Building Connectors](/documentation/docs/developers/connectors/tutorial.md) for details.
+See [Building Connectors](/developers/tutorial.md) for details.
 
 ## Version 0.29.0
 
-🚀 Welcome to `hummingbot` version 0.29.0! In this release, we introduce a new feature that allows users to run custom scripts, new advanced pure market making parameter, a new connector and bug fixes.
+Welcome to `hummingbot` version 0.29.0! In this release, we introduce a new feature that allows users to run custom scripts, new advanced pure market making parameter, a new connector and bug fixes.
 
-### 🤖 New feature: Scripts
+### New feature: Scripts
 
-The new Scripts feature allows the user to create mini-Python functions that adjust how Hummingbot behaves. For example, users can automate changes to bot params when certain conditions are met. Read more about the scripts feature in the [Scripts](/advanced/scripts/) section in the documentation.
+The new Scripts feature allows the user to create mini-Python functions that adjust how Hummingbot behaves. For example, users can automate changes to bot params when certain conditions are met. Read more about the scripts feature in the [Scripts](/scripts) section in the documentation.
 
 !!! warning
 Currently, Scripts can only be used when running Hummingbot from source or with Docker. Using this feature in the Mac or Windows installers will crash the bot.
 
-### 🔗 New connector: Eterbase
+### New connector: Eterbase
 
 Hummingbot now supports [Eterbase](https://www.eterbase.com/) exchange! Eterbase claims to be the first regulation-compliant European cryptocurrency exchange. Read more about how to use Eterbase connector [here](/connectors/eterbase/).
 
-### 📊 New param: Take Crossed Orders
+### New param: Take Crossed Orders
 
 When using an external price source with pure market making, we added the `take_if_crossed` parameter that allows the strategy to fill the matching maker order when it results in a crossed market.
 
 In certain cases, this behavior may be desirable even if the fee is higher because of the likely future price mitigation.
 
-### 🐞 Other Enhancements and Bug Fixes
+### Other Enhancements and Bug Fixes
 
 - Additional debugging message for websocket connection issues [#1426](https://github.com/CoinAlpha/hummingbot/issues/1426) and when orders get stuck in Bittrex [#1340](https://github.com/CoinAlpha/hummingbot/issues/1340)
 - Limit orders as LIMIT orders instead of makers and market orders are MARKET instead of takers [#1980](https://github.com/CoinAlpha/hummingbot/issues/1980)
@@ -132,7 +132,7 @@ In certain cases, this behavior may be desirable even if the fee is higher becau
 
 ## Version 0.28.1
 
-This release is a hotfix to version [0.28.0](/release-notes/0.28.0).
+This release is a hotfix to version 0.28.0
 
 ### Enhancements
 
@@ -149,38 +149,38 @@ This release is a hotfix to version [0.28.0](/release-notes/0.28.0).
 
 ## Version 0.28.0
 
-🚀 Welcome to `hummingbot` version 0.28.0! This release contains the new Celo connector and the new `celo-arb` strategy, new parameters like Ping Pong and Minimum Spread, along with a number of bug fixes and enhancements.
+Welcome to `hummingbot` version 0.28.0! This release contains the new Celo connector and the new `celo-arb` strategy, new parameters like Ping Pong and Minimum Spread, along with a number of bug fixes and enhancements.
 
 !!! tip "Help shape the direction of the Hummingbot codebase"
 In order to communicate the status of bug fixes and planned improvements, we recently began to publish the [Hummingbot Public Roadmap](https://github.com/CoinAlpha/hummingbot/projects/2). Help us prioritize stories by commenting on the ones you want, and feel free to submit new stories.
 
-### 🌞 New Celo connector and strategy
+### New Celo connector and strategy
 
 We are excited to release a Hummingbot connector for Celo blockchain and exchange. Celo is a new Layer 1 protocol that relies upon arbitrageurs to maintain the peg on their cUSD stablecoin. Now, you can run the new `celo-arb` strategy to help stabilize their token price while arbitraging differences between centralized exchanges and the Celo blockchain.
 
-For more information, see the [celo-arb strategy page](/strategies/celo-arb) and the [Celo quickstart guide](/strategies/celo-arb/quickstart).
+For more information, see the [celo-arb strategy page](/strategies/celo-arb)
 
-### 🏓 New parameter: ping_pong
+### New parameter: ping_pong
 
-We introduce a new parameter that allow your bot to alternate placing buy and sell orders, a simple way to keep your inventory levels constant. For more information, please see the [ping pong documentation page](/strategies/advanced-mm/ping-pong).
+We introduce a new parameter that allow your bot to alternate placing buy and sell orders, a simple way to keep your inventory levels constant. For more information, please see the [ping pong documentation page](/strategies/ping-pong).
 
 **We want to thank 🙏 community member [petrioptrv](https://github.com/petioptrv) for this contribution!**
 
-### 🔄 Redesigned pure market making strategy
+### Redesigned pure market making strategy
 
 We have greatly simplified how the pure market making strategy works in this release, including the sequence of how parameters are applied and fee calculations. This allows external contributors to customize this strategy more easily.
 
-### 📡 Removed dependency on external data feeds
+### Removed dependency on external data feeds
 
 Past versions of Hummingbot used the CoinGecko and CoinCap public APIs to fetch asset prices. However, this dependency caused issues for users when those APIs were unavailable. In this release, we have refactored Hummingbot so that the bot uses exchange order books to perform necessary conversions rather than data feeds.
 
 _Note: Assets listed in the `balance` command are now listed in alphabetical order rather than in USD terms._
 
-### ☝️ Trade notifications
+### Trade notifications
 
-When the Hummingbot client makes a trade, it now appends a trade notification message to the lefthand output screen. Users of the [Telegram integration](/advanced/telegram/) should also see these notifications in the Telegram interface.
+When the Hummingbot client makes a trade, it now appends a trade notification message to the lefthand output screen. Users of the [Telegram integration](/operation/telegram/) should also see these notifications in the Telegram interface.
 
-### 🐞 Other Enhancements and Fixes
+### Other Enhancements and Fixes
 
 - Added a `minimum_spread` parameter that auto-cancels orders below a certain spread [#1712](https://github.com/CoinAlpha/hummingbot/issues/1712)
 - Paper trading mode now correctly applies fees charged by the exchange used [#1722](https://github.com/CoinAlpha/hummingbot/issues/1722)
@@ -192,48 +192,48 @@ When the Hummingbot client makes a trade, it now appends a trade notification me
 
 ## Version 0.27.0
 
-🚀 Welcome to `hummingbot` version 0.27.0! This release contains a number of new features for advanced users, along with many core stability improvements and bug fixes to the Hummingbot client.
+Welcome to `hummingbot` version 0.27.0! This release contains a number of new features for advanced users, along with many core stability improvements and bug fixes to the Hummingbot client.
 
 We're also starting to see more external contributions from the Hummingbot community. See [Community](/community) for more information on how to contribute to Hummingbot.
 
-!!! tip "Introducing the Hummingbot Public Roadmap"
-In order to communicate the status of bug fixes and planned improvements, we recently began to publish the [Hummingbot Public Roadmap](https://github.com/CoinAlpha/hummingbot/projects/2). We will keep this page updated, so please bookmark this page to see the newest updates to the Hummingbot codebase.
+> Tip "Introducing the Hummingbot Public Roadmap"
+> In order to communicate the status of bug fixes and planned improvements, we recently began to publish the [Hummingbot Public Roadmap](https://github.com/CoinAlpha/hummingbot/projects/2). We will keep this page updated, so please bookmark this page to see the newest updates to the Hummingbot codebase.
 
-### 🔄 Order Refresh Tolerance
+### Order Refresh Tolerance
 
 In [#1673](https://github.com/CoinAlpha/hummingbot/pull/1673), we introduce a new parameter in the Pure Market Making (PMM) strategy: `order_tolerance_refresh_pct`. This allows you to set an tolerance level for refreshing orders, so that the bot only cancels and replaces orders if the market price has moved by more than a certain threshold.
 
-This feature should help users create more custom bots and manage exchange rate limits better. See [Order Refresh Tolerance](/strategies/advanced-mm/order-refresh-tolerance/) for more information.
+This feature should help users create more custom bots and manage exchange rate limits better. See [Order Refresh Tolerance](/strategies/order-refresh-tolerance/) for more information.
 
-### 📊 Price Band
+### Price Band
 
 In [#1713](https://github.com/CoinAlpha/hummingbot/issues/1713), we introduce two new parameters in the Pure Market Making (PMM) strategy: `price_ceiling` and `price_floor`. These parameters allow you set a price band within which your bot acts normally, but the bot behaves differently if the market price moves out of the band.
 
-This feature should help users express a view that the market will stay range-bound. See [Price Band](/strategies/advanced-mm/price-band/) for more information.
+This feature should help users express a view that the market will stay range-bound. See [Price Band](/strategies/price-band/) for more information.
 
 **We want to thank 🙏 community member [petrioptrv](https://github.com/petioptrv) for this contribution!**
 
-### 🐞Fixed Memory Leak Bug
+### Fixed Memory Leak Bug
 
 We fixed a critical bug [#1683](https://github.com/CoinAlpha/hummingbot/issues/1683) that caused the bot to leak memory after users run the `stop` command. This caused the bot to crash unexpectedly after running for a while. This issue is now fixed.
 
-### 🐙 Kraken Bug Fixes
+### Kraken Bug Fixes
 
 The Kraken exchange connector, which we released in `v0.26.0`, had a number of bugs. In this release, we have fixed a number of Kraken related bugs, including [#1664](https://github.com/CoinAlpha/hummingbot/issues/1664), [#1671](https://github.com/CoinAlpha/hummingbot/issues/1671), [#1676](https://github.com/CoinAlpha/hummingbot/issues/1676), [#1696](https://github.com/CoinAlpha/hummingbot/pull/1696), and [#1693](https://github.com/CoinAlpha/hummingbot/issues/1693).
 
 This connector should be much more stable going forward.
 
-### ⏱ LIMIT_MAKER order type in Binance
+### LIMIT_MAKER order type in Binance
 
 To fix [#1633](https://github.com/CoinAlpha/hummingbot/pull/1633), we now use the `LIMIT_MAKER` order type by default for maker orders on Binance. This order type prevents your bot from making crossed orders that would be taken automatically. This feature should help users set tight spreads more effectively.
 
-### 🐞 External DB Support
+### External DB Support
 
 After [#1596](https://github.com/CoinAlpha/hummingbot/issues/1596), you can hook up the Hummingbot client to external SQL databases. See [External Database](/advanced/db-config/) for more information.
 
 **We want to thank 🙏 community member [fengkiej](https://github.com/fengkiej) for this contribution!**
 
-### 🐞 Other Enhancements and Fixes
+### Other Enhancements and Fixes
 
 - Fixed a bug in which buy and sell order refreshes could sometimes get out of sync [#1446](https://github.com/CoinAlpha/hummingbot/pull/1446)
 - Fixed a bug that prevented the XEMM strategy from starting [#1657](https://github.com/CoinAlpha/hummingbot/pull/1657)
@@ -251,24 +251,23 @@ After [#1596](https://github.com/CoinAlpha/hummingbot/issues/1596), you can hook
 
 ## Version 0.26.1
 
-This release is a hotfix to version [0.26.0](/release-notes/0.26.0).
+This release is a hotfix to version 0.26.0
 
 - Added a [fix (#1732)](https://github.com/CoinAlpha/hummingbot/pull/1732) in configuration module to address a [bug (#1731)](https://github.com/CoinAlpha/hummingbot/issues/1731) that caused bot to spam trading error.
 
 ## Version 0.26.0
 
-🚀 Welcome to `hummingbot` version 0.26.0! This release contains a lot of changes in the Hummingbot client, aimed at improving the user experience for new and existing users alike.
+Welcome to `hummingbot` version 0.26.0! This release contains a lot of changes in the Hummingbot client, aimed at improving the user experience for new and existing users alike.
 
-!!! note "Old config files won't work"
-This release contains many changes to the import process, so previous strategy configuration files will not be compatible with this version.
+> Note "Old config files won't work": This release contains many changes to the import process, so previous strategy configuration files will not be compatible with this version.
 
-### 🔐 New password screen
+### New password screen
 
-![](/assets/img/welcome.gif)
+![](welcome.gif)
 
 Now, you are asked to enter your password when you start the Hummingbot client.
 
-### ⌨️ Revamped commands
+### Revamped commands
 
 We have extensively revamped the commands in Hummingbot. New commands include:
 
@@ -277,33 +276,33 @@ We have extensively revamped the commands in Hummingbot. New commands include:
 - `create`: create a bot
 - `import`: import an existing bot configurationn
 
-See the [Command Reference](/operation/commands) for all commands.
+See the [Command Reference](/operation/command-ref) for all commands.
 
-### 🍱 Standardized parameter names and spread/percent inputs
+### Standardized parameter names and spread/percent inputs
 
-We have changed parameter names in the Pure Market Making strategy to make them clearer. For example, the frequency used to cancel and refresh orders is now `order_refresh_time` (old name: `cancel_order_wait_time`). Here are all the new [Basic](/strategies/pure-market-making/#basic-configuration-parameters-and-walkthrough) and [Advanced](/strategies/advanced-mm/#advanced-configuration-parameters) parameters.
+We have changed parameter names in the Pure Market Making strategy to make them clearer. For example, the frequency used to cancel and refresh orders is now `order_refresh_time` (old name: `cancel_order_wait_time`). Here are all the new [Basic](/strategies/pure-market-making) and [Advanced](/strategies/adv-market-making) parameters.
 
 In addition, we have standardized all **spread** and **percent** inputs, so that users enter percentage values. For example, to set a 1% `bid_spread`, enter `1` instead of `0.01`. To set a 5% `kill_switch_pct`, enter `5` instead of `0.05`.
 
 Any parameter names that ends with `-pct` or `-spread` use this format.
 
-#### 💸 Change spreads on the fly
+#### Change spreads on the fly
 
 An often-requested feature is the ability to adjust the bot without stopping it. We have started to make more parameters adjustable on the fly, starting with spreads.
 
-Now you can use the revamped [config](/operation/commands/config) command to adjust spreads without stopping the bot. We plan to extend this functionality to other parameters such as order amount in the future.
+Now you can use the revamped [config](/operation/command-ref) command to adjust spreads without stopping the bot. We plan to extend this functionality to other parameters such as order amount in the future.
 
-### 🔗 New Kraken connector
+### New Kraken connector
 
 Hummingbot now supports [Kraken](https://www.kraken.com/) exchange! Kraken is a centralized exchange where users can trade not only several cryptocurrencies but as well as various fiat currencies such as USD, CAD, EUR, GBP, CHF and JPY.
 
 Read more about how to use Kraken connector [here](https://docs.hummingbot.io/connectors/kraken/).
 
-### 📱 Improved Telegram integration
+### Improved Telegram integration
 
 The Telegram integration now has a smaller keyboard that doesn't block the main view. Displayed messages are now in HTML instead of Markdown to improve readability.
 
-### 🐞 Bug fixes
+### Bug fixes
 
 - Added Microsoft Visual C++ redist package as part of the setup process to fix binary installer for Windows: [#1598](https://github.com/CoinAlpha/hummingbot/pull/1598)
 - Fixed broken trading pair fetcher in Radar Relay: [#1441](https://github.com/CoinAlpha/hummingbot/issues/1441)
@@ -312,7 +311,7 @@ The Telegram integration now has a smaller keyboard that doesn't block the main 
 - Fixed error invalid value `[]` when using discovery strategy: [#1587](https://github.com/CoinAlpha/hummingbot/issues/1587)
 - Fixed how `history` shows prices of executed trades in Liquid connector: [#1415](https://github.com/CoinAlpha/hummingbot/issues/1415), [#1589](https://github.com/CoinAlpha/hummingbot/issues/1589)
 
-### 🚀 Coming soon
+### Coming soon
 
 Here's what we currently working on that we expect to ship in the 1-2 releases:
 
@@ -321,22 +320,19 @@ Here's what we currently working on that we expect to ship in the 1-2 releases:
 
 ## Version 0.25.0
 
-🚀 Welcome to `hummingbot` version 0.25.0! In this release, we continued working on the stability of Liquidity Mining backend, scaling/optimizing the infrastructure for quicker updates and incrased capacity. There are also major improvements in pure market making strategy including inventory skew, status outputs, hanging order mode, and filled order delays.
+Welcome to `hummingbot` version 0.25.0! In this release, we continued working on the stability of Liquidity Mining backend, scaling/optimizing the infrastructure for quicker updates and incrased capacity. There are also major improvements in pure market making strategy including inventory skew, status outputs, hanging order mode, and filled order delays.
 
-### 🚰 Updated dependencies to improve stability
+### Updated dependencies to improve stability
 
 In order to address memory leaks that cause the bot to crash, we upgraded Python to version 3.8 as well as `prompt-toolkit`, the client interface framework. These fixes should greatly improve bot stability and reduce crashes due to memory leaks.
 
 In addition, we advise users to not `stop` and `start` the bot frequently before running it long-term. This appears to elevate memory usage and cause the bot to crash more frequently. We continue to monitor this issue.
 
-!!! tip "Updating from source"
-Due to the updated Python version, users who install Hummingbot from source need to run `./uninstall` and `./clean` before updating.
+> Tip "Updating from source" :Due to the updated Python version, users who install Hummingbot from source need to run `./uninstall` and `./clean` before updating.
 
 ### 💥 New `status` command
 
 We made some changes to how bot `status` is displayed to make it more informative for users.
-
-![](/assets/img/inventory-skew-2.png)
 
 - Added a new section if **Inventory Skew** is enabled
 - Added **Spread** to show the order's spread from the mid price
@@ -344,23 +340,23 @@ We made some changes to how bot `status` is displayed to make it more informativ
 - Added **Hang** column to indicate if the active order is a hanging order
 - Shows the current **Mid price**
 
-### 📊 New Advanced Market Marketing section
+### New Advanced Market Marketing section
 
 Due to the extreme market volatility in the last 2 weeks, many users have reporting losing money due to market swings. In this release, we have made major improvements to advanced market making features. We believe that these features will enable users to configure their bots so that they respond better to market volatility.
 
-See the new [Advanced Market Marketing](/strategies/advanced-mm) section to learn more about how these features work. We have described the main changes below.
+See the new [Advanced Market Marketing](/strategies/adv-market-making) section to learn more about how these features work. We have described the main changes below.
 
 #### Inventory skew
 
 We changed the inventory skew algorithm to a better behaved one to limit the user's trading exposure within a defined range. This prevents users from being over-exposed from the risks of a single side of the trade when the market keeps hitting limit orders on one side only.
 
-More information can be found in our documentation for [Inventory Skew](/strategies/advanced-mm/inventory-skew) with sample scenarios.
+More information can be found in our documentation for [Inventory Skew](/strategies/inventory-skew) with sample scenarios.
 
 #### Hanging orders
 
 Hanging orders are now tracked as active orders when sending the `status` command. These orders will get cancelled after sending the `stop` or `exit` command. Also, users can now specify through `cancel_hanging_order_pct` to cancel hanging orders when their spreads are above a certain value.
 
-Read through [Hanging Orders](/strategies/advanced-mm/hanging-orders) in our documentation for more information.
+Read through [Hanging Orders](/strategies/hanging-orders) in our documentation for more information.
 
 #### Safer defaults
 
@@ -369,7 +365,7 @@ In addition to these advanced features, we also changed the default values of th
 - `cancel_order_wait_time`: now **30** seconds (previously 60 seconds)
 - `filled_order_replenish_wait_time`: now **60** seconds (previously 10 seconds)
 
-### 🐞 Other bug fixes
+### Other bug fixes
 
 - Fixed Hummingbot resetting to a command line screen when errors are shown: [#1519](https://github.com/CoinAlpha/hummingbot/issues/1519)
 
@@ -379,7 +375,7 @@ In addition to these advanced features, we also changed the default values of th
 - Minimum order amount validation now applies to `order_start_size` prompt in multiple order mode
 - `start` command no longer cancels and replaces orders if the strategy is already running
 
-### 🚀 Coming soon
+### Coming soon
 
 Here's what we currently working on that we expect to ship in the next 2-8 weeks:
 
@@ -397,7 +393,7 @@ Here's what we currently working on that we expect to ship in the next 2-8 weeks
 
 ## Version 0.24.1
 
-This release is a hotfix to version [0.24.0](/release-notes/0.24.0).
+This release is a hotfix to version 0.24.0
 
 - Added a [fix (#1481)](https://github.com/CoinAlpha/hummingbot/pull/1481) in configuration module to address a [bug (#1100)](https://github.com/CoinAlpha/hummingbot/issues/1473) that was preventing bot restart.
 
@@ -407,9 +403,9 @@ This release is a hotfix to version [0.24.0](/release-notes/0.24.0).
 
 ## Version 0.24.0
 
-🚀 Welcome to `hummingbot` version 0.24.0! In this release, we continuously worked on backend to improve Liquidity Mining in preparation for the upcoming launch, modified order amount to improve first time user experience, and addressed a couple of bugs in the Binance connector.
+Welcome to `hummingbot` version 0.24.0! In this release, we continuously worked on backend to improve Liquidity Mining in preparation for the upcoming launch, modified order amount to improve first time user experience, and addressed a couple of bugs in the Binance connector.
 
-### 🌊⛏ Liquidity mining going live on March 3rd
+### Liquidity mining going live on March 3rd
 
 We will be launching Liquidity Mining officially on Tuesday, March 3rd, 2020 12:00 AM UTC! We welcome anyone who’s interested to earn token rewards on the [Hummingbot Miners App](https://miners.hummingbot.io).
 
@@ -420,11 +416,11 @@ Please refer to the following links and resources for more information:
 - [Liquidity Mining FAQs](https://docs.hummingbot.io/faq/liquidity-mining/)
 - [Liquidity Mining Policy](https://hummingbot.io/liquidity-mining-policy/)
 
-### 📊 Minimum order amount
+### Minimum order amount
 
 The `order_amount` parameter in pure market making and cross-exchange strategy now displays during prompt a default minimum value. This allows users to prevent entering a value below the exchange’s minimum order size resulting in no orders being created. Advanced users who want more flexibility can change or zero out the minimums in the global config file.
 
-### 📓 Documentation updates
+### Documentation updates
 
 Here we list other recent major changes to Hummingbot docs:
 
@@ -432,7 +428,7 @@ Here we list other recent major changes to Hummingbot docs:
 - Added information in FAQ on how to submit a feature/feedback request
 - Added instructions in [Common ‘How To’ Questions](https://docs.hummingbot.io/faq/troubleshooting/) on how to locate the data file in Hummingbot installed via binary, checking status of multiple bots simultaneously, adding paper trade balance from inside the client, refresh Hummingbot window pane.
 
-### 🐞 Other bug fixes
+### Other bug fixes
 
 Thanks to everyone who reported bugs! **Note that we pay bug bounties to anyone who reports a bug that we end up fixing.**
 
@@ -440,11 +436,11 @@ Thanks to everyone who reported bugs! **Note that we pay bug bounties to anyone 
 - Added reduced polling logic for Binance API limit: [#1379](https://github.com/CoinAlpha/hummingbot/issues/1379)
 - Fixed Binance clock desync in Windows resulting to problems with orders: [#1388](https://github.com/CoinAlpha/hummingbot/issues/1388)
 
-### 🈲 Exchange Deprecation - DDEX and IDEX
+### Exchange Deprecation - DDEX and IDEX
 
 We are making DDEX and IDEX exchange connectors as deprecated. The connector code will be removed from the codebase.
 
-### 🚀 Coming soon
+### Coming soon
 
 Here's what we currently working on that we expect to ship in the next 2-8 weeks:
 
@@ -455,15 +451,15 @@ Here's what we currently working on that we expect to ship in the next 2-8 weeks
 
 ## Version 0.23.0
 
-🚀 Welcome to `hummingbot` version 0.23.0! In this release, we are excited to announce the open beta of Liquidity Mining, a new connector, easier to use pure market making strategy, and addressed a number of bugs.
+Welcome to `hummingbot` version 0.23.0! In this release, we are excited to announce the open beta of Liquidity Mining, a new connector, easier to use pure market making strategy, and addressed a number of bugs.
 
-### 🌊⛏ Liquidity mining open beta
+### Liquidity mining open beta
 
 We are excited to launch the Liquidity Mining Open Beta today! During the 4-week testing period, we welcome anyone who’s interested to join us and try the [Hummingbot Miners App](https://miners.hummingbot.io). We will work hard to collect user feedback and fix bugs so that we can provide a great user experience when we go live on March 2, 2020.
 
 - [Learn more](https://hummingbot.io/liquidity-mining/)
 
-#### 🧪 User testing during open beta
+#### User testing during open beta
 
 We are inviting interested users to join our dedicated user testing program during the Open Beta period. Testers will receive **0.1 ETH** for their time.
 
@@ -476,33 +472,33 @@ Please refer to the following links and resources for more information:
 - [Liquidity Mining FAQs](https://docs.hummingbot.io/faq/liquidity-mining/)
 - [Liquidity Mining Policy](https://hummingbot.io/liquidity-mining-policy/)
 
-### 📊 Pure market making configuration simplified
+### Pure market making configuration simplified
 
 Pure market making now has a basic/advanced split that will only prompt during configuration of the basic parameters such as the exchange name, trading pair, bid/ask spreads, cancel order wait time, and order amount.
 
 Users can configure the advanced features of this strategy by entering `Yes` when prompted, via `config <parameter>` command in Hummingbot, or by editing the strategy config file.
 
-More information about [Basic Mode](https://docs.hummingbot.io/strategies/pure-market-making/#basic-mode) and [Advanced Mode](https://docs.hummingbot.io/strategies/pure-market-making/#advanced-mode) of Pure Market Making in our User Manual.
+More information about [Basic Mode](https://docs.hummingbot.io/strategies/pure-market-making/) and [Advanced Mode](https://docs.hummingbot.io/strategies/adv-market-making) of Pure Market Making in our User Manual.
 
-### 🔗 New KuCoin connector
+### New KuCoin connector
 
 Hummingbot now supports [KuCoin](https://www.kucoin.com/) exchange! Nicknamed the "People's Exchange"​, Kucoin is easy to use for novice investors and in-depth enough for crypto enthusiasts. It has one of the world’s most impressive trading pair selections, a wide range of alt coins with more than 300 trading pairs and are adding new ones regularly.
 
 Read more about how to use KuCoin connector in the [User Manual](https://docs.hummingbot.io/connectors/kucoin/).
 
-### 📜 Error log collection
+### Error log collection
 
 Instead of using the old `hummingbot_logs.yml` templates for sending logs, we now added a prompt in Hummingbot that allows users to enable or disabled sending errors logs.
 
-Read through [Logs and Logging](https://docs.hummingbot.io/advanced/logging/#error-log-collection) section of our Utilities page for more information.
+Read through [Logs and Logging](https://docs.hummingbot.io/advanced/operation/adv-command-ref) section of our Utilities page for more information.
 
-### 🤓 Developer documentation
+### Developer documentation
 
 We created a guide that walks you through how to prepare your development environment and get started developing for Hummingbot using Linux, macOS and Windows.
 
 Read through our [Developer Manual](https://docs.hummingbot.io/developers/gettingstarted) for more information.
 
-### 📓 Documentation updates
+### Documentation updates
 
 Here we list other recent major changes to Hummingbot docs:
 
@@ -512,7 +508,7 @@ Here we list other recent major changes to Hummingbot docs:
 - Added information in [Binance troubleshooting](https://docs.hummingbot.io/faq/troubleshooting/#http-status-429-and-418-return-codes) about Binance HTTP return codes 429 and 418, Binance API trading limits, and how to avoid these return codes when running Hummingbot.
 - More examples with images and explanation for [best bid ask jumping](https://docs.hummingbot.io/strategies/pure-market-making/#best-bid-ask-jumping) in pure market making strategy.
 
-### 🐞 Other bug fixes
+### Other bug fixes
 
 Thanks to everyone who reported bugs! **Note that we pay bug bounties to anyone who reports a bug that we end up fixing.**
 
@@ -522,7 +518,7 @@ Thanks to everyone who reported bugs! **Note that we pay bug bounties to anyone 
 - Fixed bug in Liquid connector on non-fiat quote asset: [#1331](https://github.com/CoinAlpha/hummingbot/issues/1331)
 - Fixed intermittent index errors with pure market making strategy causing orders not created: [#1317](https://github.com/CoinAlpha/hummingbot/issues/1317)
 
-### ⚙️ Miscellaneous updates
+### Miscellaneous updates
 
 - Added helpful links for liquidity mining and support to welcome screen
 - Handled crossed order on Bamboo Relay
@@ -530,7 +526,7 @@ Thanks to everyone who reported bugs! **Note that we pay bug bounties to anyone 
 - Quick fix on trading pair fetcher
 - Updated all `y/n` prompts to `Yes/No` in Hummingbot client
 
-### 🚀 Coming soon
+### Coming soon
 
 Here's what we currently working on that we expect to ship in the next 2-8 weeks:
 
@@ -540,19 +536,19 @@ Here's what we currently working on that we expect to ship in the next 2-8 weeks
 
 ## Version 0.22.0
 
-🚀 Welcome to `hummingbot` version 0.22.0! In this release, we added an external pricing source feature, addressed a number of bugs, and continuously working on the Liquidity Mining infrastructure.
+Welcome to `hummingbot` version 0.22.0! In this release, we added an external pricing source feature, addressed a number of bugs, and continuously working on the Liquidity Mining infrastructure.
 
-### 📊 External Pricing Source
+### External Pricing Source
 
 By default, pure market making strategy uses the order book’s mid price to calculate limit order prices. We added a feature that allows you to use another mid price from external sources such as another exchange, data feed, or an external API.
 
-You may read through [External Pricing Source Configuration](https://docs.hummingbot.io/strategies/advanced-mm/price-source/) in the user manual for more information.
+You may read through [External Pricing Source Configuration](https://docs.hummingbot.io/strategies/price-source/) in the user manual for more information.
 
-### 🔗 Radar Relay upgrade to 0x v3
+### Radar Relay upgrade to 0x v3
 
 The Radar Relay connector is broken right now because they recently moved their API to a new version. You may encounter errors or bugs when using the connector in this version. We will send an announcement in future release notes once Hummingbot’s connector is updated.
 
-### 📓 Documentation updates
+### Documentation updates
 
 Here we list recent major changes to Hummingbot docs:
 
@@ -562,7 +558,7 @@ Here we list recent major changes to Hummingbot docs:
 - Added information in Troubleshooting section about Binance [HTTP status 429 and 418 return codes](https://docs.hummingbot.io/faq/troubleshooting/)
 - Removed Bitcoin.com Exchange since this is no longer supported
 
-### 🐞 Other bug fixes
+### Other bug fixes
 
 Thanks to everyone who reported bugs! **Note that we pay bug bounties to anyone who reports a bug that we end up fixing.**
 
@@ -574,7 +570,7 @@ Thanks to everyone who reported bugs! **Note that we pay bug bounties to anyone 
 - Fixed clock de-sync with Binance timestamp on Windows: [#1262](https://github.com/CoinAlpha/hummingbot/issues/1262)
 - Fixed KeyError: ‘ETH-CNY’ on Liquid connector: [#1251](https://github.com/CoinAlpha/hummingbot/issues/1251)
 
-### ⚙️ Miscellaneous updates
+### Miscellaneous updates
 
 - Added `list encrypted` command to display all encrypted files in conf folder
 - Added order expiration feature to pure market making for 0x Mesh orders
@@ -583,7 +579,7 @@ Thanks to everyone who reported bugs! **Note that we pay bug bounties to anyone 
 - Updated docker scripts to map data folder to easily access SQLite local database file where orders and trade data are stored
 - Minor fix on Bamboo Relay unit tests
 
-### 🚀 Coming soon
+### Coming soon
 
 Here's what we currently working on that we expect to ship in the next 2-8 weeks:
 
@@ -595,13 +591,13 @@ Here's what we currently working on that we expect to ship in the next 2-8 weeks
 
 ## Version 0.21.0
 
-🚀 Welcome to `hummingbot` version 0.21.0! In this release, we mainly addressed a number of bugs.
+Welcome to `hummingbot` version 0.21.0! In this release, we mainly addressed a number of bugs.
 
-## 🤓 Developer usability
+## Developer usability
 
 We are officially announcing the TWAP custom strategy, a common algorithmic execution strategy used for splitting up large orders over time. Read more through the documentation about this strategy in [Developer Manual](/developers/strategies/twap).
 
-## 🐞 Other bug fixes and miscellaneous updates
+## Other bug fixes and miscellaneous updates
 
 Thanks to everyone who reported bugs! **Note that we pay bug bounties to anyone who reports a bug that we end up fixing.**
 
@@ -617,7 +613,7 @@ Thanks to everyone who reported bugs! **Note that we pay bug bounties to anyone 
 - Minor changes to Bittrex market testing to address some failing unit tests
 - Better error handling for detecting wallet is ‘None’ / market not initialized
 
-## 🚀 Coming soon
+## Coming soon
 
 Here's what we currently working on that we expect to ship in the next 2-8 weeks:
 

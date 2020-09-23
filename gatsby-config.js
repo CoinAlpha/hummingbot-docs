@@ -32,7 +32,7 @@ const sidebarCategories = {
     "connectors/bamboo-relay",
     "connectors/dolomite",
   ],
-  Strategies: [
+  Market_Making_Strategies: [
     "strategies/overview",
     "strategies/pure-market-making",
     "strategies/adv-market-making",
@@ -49,9 +49,8 @@ const sidebarCategories = {
     "strategies/external-price-source",
     "strategies/cross-exchange",
     "strategies/cross-exchange-market-making",
-    "strategies/arbitrage",
-    "strategies/celo-arb",
   ],
+  Arbitrage_Strategies: ["strategies/arbitrage", "strategies/celo-arb"],
   Developer_Guide: [
     "developer/overview",
     "developer/architecture",

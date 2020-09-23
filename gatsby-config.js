@@ -32,7 +32,7 @@ const sidebarCategories = {
     "connectors/bamboo-relay",
     "connectors/dolomite",
   ],
-  Market_Making_Strategies: [
+  "Market Making Strategies": [
     "strategies/overview",
     "strategies/pure-market-making",
     "strategies/adv-market-making",
@@ -50,8 +50,8 @@ const sidebarCategories = {
     "strategies/cross-exchange",
     "strategies/cross-exchange-market-making",
   ],
-  Arbitrage_Strategies: ["strategies/arbitrage", "strategies/celo-arb"],
-  Developer_Guide: [
+  "Arbitrage Strategies": ["strategies/arbitrage", "strategies/celo-arb"],
+  "Developer Guide": [
     "developer/overview",
     "developer/architecture",
     "developer/tutorial",
@@ -71,7 +71,7 @@ const sidebarCategories = {
     "scripts/perform-trade",
     "scripts/simple-trade",
   ],
-  Release_Notes: [
+  "Release Notes": [
     "release-notes/0.31.0",
     "release-notes/0.21.0-0.30",
     "release-notes/0.11.0-0.20",
@@ -97,7 +97,7 @@ const navConfig = {
       "Documentation for Hummingbot Miner, the decentralized market making platform",
   },
   "Hummingbot Academy": {
-    url: "https://docs.hummingbot.io/developers",
+    url: "https://hummingbot.io/academy",
     description:
       "Guides and tutorials that teach you how to use Hummingbot and Hummingbot Miner",
   },
@@ -123,7 +123,7 @@ const footerNavConfig = {
 
 module.exports = {
   siteMetadata: {
-    headerButtonText: "Launch Hummingbot Miners",
+    headerButtonText: "Launch Hummingbot Miner",
     headerButtonLink: "https://miners.hummingbot.io/",
     discordUrl: "https://discord.hummingbot.io",
   },
@@ -133,7 +133,7 @@ module.exports = {
       resolve: "gatsby-theme-apollo-docs",
       options: {
         root: __dirname,
-        siteName: "Hummingbot Ecosystem",
+        siteName: "All Hummingbot Documentation",
         description:
           "Documentation for Hummingbot, the open source framework that helps you build and run crypto trading bots",
         sidebarCategories,

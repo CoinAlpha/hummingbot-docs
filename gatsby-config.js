@@ -1,7 +1,6 @@
 const sidebarCategories = {
   null: ["index", "intro/ecosystem", "intro/support"],
   Installation: [
-    "installation/system-req",
     "installation/overview",
     "installation/download",
     "installation/docker",
@@ -32,9 +31,14 @@ const sidebarCategories = {
     "connectors/bamboo-relay",
     "connectors/dolomite",
   ],
-  "Market Making Strategies": [
+  Strategies: [
     "strategies/overview",
     "strategies/pure-market-making",
+    "strategies/cross-exchange-market-making",
+    "strategies/arbitrage",
+    "strategies/celo-arb",
+  ],
+  "Advanced Market Making": [
     "strategies/adv-market-making",
     "strategies/order-levels",
     "strategies/inventory-skew",
@@ -47,10 +51,7 @@ const sidebarCategories = {
     "strategies/order-optimization",
     "strategies/add-transaction-costs",
     "strategies/external-price-source",
-    "strategies/cross-exchange",
-    "strategies/cross-exchange-market-making",
   ],
-  "Arbitrage Strategies": ["strategies/arbitrage", "strategies/celo-arb"],
   "Developer Guide": [
     "developer/overview",
     "developer/architecture",

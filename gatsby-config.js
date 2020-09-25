@@ -52,7 +52,7 @@ const sidebarCategories = {
     "strategies/add-transaction-costs",
     "strategies/external-price-source",
   ],
-  "Develop Connector": [
+  "Developing Connector": [
     "developer/overview",
     "developer/architecture",
     "developer/tutorial",
@@ -62,7 +62,7 @@ const sidebarCategories = {
     "developer/task4",
     "developer/miscellaneous",
   ],
-  "Develop Strategies": [
+  "Developing Strategies": [
     "developer/strategies-overview",
     "developer/pure-market-making",
     "developer/cross-exchange-market-making",
@@ -77,8 +77,6 @@ const sidebarCategories = {
   "Release Notes": [
     "release-notes/0.31.0",
     "release-notes/0.30.0",
-    "release-notes/0.29.0",
-    "release-notes/0.29.1",
     "release-notes/0.29.0",
     "release-notes/0.28.1",
     "release-notes/0.28.0",

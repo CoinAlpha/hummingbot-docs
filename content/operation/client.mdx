@@ -1,0 +1,265 @@
+---
+title: Access and Configure Hummingbot
+description: How to start Hummingbot and UI Menu items
+---
+
+Hummingbot uses a command-line interface (CLI) that helps users configure and run the bot, as well as generate logs of the trades performed.
+
+## Starting Hummingbot
+
+### Installed from Docker
+
+Creating a new instance of Hummingbot with `docker run` will automatically start the Hummingbot client (see [Docker](/installation/docker) installation guides for Windows, Linux and macOS.
+
+To run a previously created, stopped container where \$NAME is the name of your instance of Hummingbot:
+
+```sh
+docker start $NAME && docker attach $NAME
+```
+
+For additional information on useful commands, see the [commands](/operation/command-ref) to running Hummingbot on Docker.
+
+### Installed from Source
+
+> note: Make sure that you activate the Anaconda environment with `conda activate hummingbot` prior to running Hummingbot.
+
+Open a Terminal window and go to the root of the directory that contains Hummingbot. From there, run:
+
+```
+bin/hummingbot.py
+```
+
+## Create a secure password
+
+If you are using Hummingbot for the first time on this machine, the system will prompt you to create a password. This password will be used to encrypt sensitive configuration settings e.g. API keys, secret keys and wallet private keys.
+
+![](welcome.gif)
+
+> Warning: For security reasons, the password is only stored locally in encrypted form. **We do not have access to your password.**
+
+## User Interface
+
+![Hummingbot CLI](hummingbot-cli.png)
+
+The CLI is divided into three panes:
+
+- **Input pane (lower left)**: where users enter commands
+- **Output pane (upper left)**: prints the output of the user's commands
+- **Log pane (right)**: log messages
+
+## Strategy-specific Files
+
+The `create` command walks you through the process of initializing and configuring the global and strategy-specific settings necessary to run the bot. Running the command will create the following files in the `conf/` folder:
+
+| File                   | Description                                                                                          |
+| ---------------------- | ---------------------------------------------------------------------------------------------------- |
+| `conf_global.yml`      | Global configuration settings, e.g. Binance API keys and Ethereum node.                              |
+| `conf_arb_[#].yml`     | Settings for the [arbitrage](/strategies/arbitrage/) strategy.                                       |
+| `conf_xemm_[#].yml`    | Settings for the [cross-exchange market making](/strategies/cross-exchange-market-making/) strategy. |
+| `conf_pure_mm_[#].yml` | Settings for the [pure market making](/strategies/pure-market-making/) strategy.                     |
+
+> Tip "Editing Configuration Files Directly": Once they are created, you may find it easier to edit the configuration files in the `conf/` folder. Simply open them with a text editor and make any desired modifications.
+
+## Setup Walkthrough
+
+When running `create`, you are asked to select a strategy and enter strategy-specific configuration parameters. We have developed walkthroughs for each strategy:
+
+- [Arbitrage](/strategies/arbitrage#configuration-walkthrough)
+- [Cross-exchange market making](/strategies/cross-exchange-market-making#configuration-walkthrough)
+- [Pure market making](/strategies/pure-market-making#configuration-walkthrough)
+
+> Note "Essential Trading Considerations": When configuring your bot, make sure you are aware of your exchange's minimum order sizes and fees, and check that your trading pair has sufficient order book and trading volumes. You can find more info about specific exchanges in the [Connectors](/connectors) section.
+
+## API keys
+
+In order to trade on a centralized exchange, you will need to import your API key from that exchange to Hummingbot using the `connect [exchange_name]` command. API keys are account specific credentials that allow access to live information and trading outside of the exchange website.
+
+Please see below for instructions to find your API keys for the exchanges that Hummingbot currently supports:
+
+- [Binance](/connectors/binance/#creating-binance-api-keys)
+- [Coinbase Pro](/connectors/coinbase/#creating-coinbase-pro-api-keys)
+- [Huobi Global](/connectors/huobi/#creating-huobi-api-keys)
+- [Bittrex Global](/connectors/bittrex/#creating-bittrex-api-keys)
+- [Liquid](/connectors/liquid/#creating-liquid-api-keys)
+- [KuCoin](/connectors/kucoin/#creating-kucoin-api-keys)
+- [Kraken](/connectors/kraken/#creating-kraken-api-keys)
+- [Eterbase](/connectors/eterbase/#creating-eterbase-api-keys)
+
+> Warning: "API key permissions": We recommend using only **"trade"** enabled API keys; enabling **"withdraw", "transfer", or the equivalent** is unnecessary for current Hummingbot strategies.
+
+## Config File Templates
+
+This configuration files created and used by Hummingbot are saved in the `conf/` directory of your instance, which you can edit directly with a standard text editor.
+
+The template configuration files can be found here: [Config Templates](https://github.com/CoinAlpha/hummingbot/tree/master/hummingbot/templates).
+
+> Warning: Exit Hummingbot and ensure it is not running when you modify the config files. Changes will take effect the next time Hummingbot is started.
+
+import { MultiCodeBlock } from "gatsby-theme-apollo-docs";
+
+## Running Multiple Bots
+
+### Multiple bots via Docker
+
+Create multiple instances using `./create.sh` script. More information can be found in [Hummingbot Docker Scripts](/operation/commands/#docker-scripts). Below commands download the create script and make it executable.
+
+<MultiCodeBlock>
+
+
+```Linux
+wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/create.sh
+chmod a+x *.sh
+```
+
+```MacOS
+curl https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/create.sh -o create.sh
+chmod a+x *.sh
+```
+
+```Windows via Docker Toolbox
+cd ~
+curl https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/create.sh -o create.sh
+chmod a+x *.sh
+```
+
+</MultiCodeBlock>
+
+
+### Running in the background (via Docker)
+
+Press keys `Ctrl+P` then `Ctrl+Q` in sequence to detach from Docker i.e. return to command line. This exits out of Hummingbot without shutting down the container instance.
+
+Restart or connect to a running instance using `./start.sh` script. Below commands download the start script and make it executable.
+
+<MultiCodeBlock>
+
+
+```Linux
+wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/start.sh
+chmod a+x *.sh
+```
+
+```MacOS
+curl https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/start.sh -o start.sh
+chmod a+x *.sh
+```
+
+```Windows via Docker Toolbox
+cd ~
+curl https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/start.sh -o start.sh
+chmod a+x *.sh
+```
+
+</MultiCodeBlock>
+
+
+### Multiple bots from source
+
+> Tip: We recommend that users download and install Hummingbot separately for each instance they wish to run.
+
+Below command downloads the Hummingbot repository from GitHub where `$FOLDER_NAME` is the name of the separate directory.
+
+```
+cd ~
+git clone https://github.com/CoinAlpha/hummingbot.git $FOLDER_NAME
+```
+
+Do another install in the new directory.
+
+```
+cd $FOLDER_NAME
+./install
+conda activate hummingbot
+./compile
+```
+
+### Running in the background (from source)
+
+Use either `tmux` or `screen` to run multiple bots installed from source. Check out these external links how to use them.
+
+- [Getting started with Tmux](https://linuxize.com/post/getting-started-with-tmux/)
+- [How to use Linux Screen](https://linuxize.com/post/how-to-use-linux-screen/)
+
+When using screen to run an instance in the background, run either of the following commands: `screen` or `screen -S $NAME`, where `$NAME` is what you wish to call this background instance. Use the latter to be more explicit if you want to run multiple bots.
+
+Navigate to the folder where your separate Hummingbot is installed, then start the bot like normal.
+
+```
+conda activate hummingbot
+bin/hummingbot.py
+```
+
+To exit the screen (detach), press `Ctrl+A` then `Ctrl+D` in sequence.
+
+To list all running instances, use `screen -ls`.
+
+![List Screen Instances](screen1.png)
+
+Log back into the screen by using either `screen` or `screen -r $NAME` to open a specific instance.
+
+<small>
+  Credits to discord user `@matha` for this question and `@pfj` for the
+  solution.
+</small>
+
+## Keyboard shortcuts
+
+| Keyboard Combo    | Command                    | Description                                   |
+| ----------------- | -------------------------- | --------------------------------------------- |
+| `Double CTRL + C` | Exit                       | Press `CTRL + C` twice to exit the bot.       |
+| `CTRL + S`        | Status                     | Show bot status                               |
+| `CTRL + F`        | Search / <br/> Hide Search | Toggle search in log pane.                    |
+| `CTRL + X`        | Exit Config                | Exit from the current configuration question. |
+| `CTRL + A`        | Select All                 | \* Select all text                            |
+| `CTRL + Z`        | Undo                       | \* Undo action                                |
+| `Single CTRL + C` | Copy                       | \* Copy text                                  |
+| `CTRL + V`        | Paste                      | \* Paste text                                 |
+
+_\* Used for text edit in input pane only._
+
+**Note about search:**
+
+1. Press `CTRL + F` to trigger display the search field
+
+2. Enter your search keyword (not case sensitive)
+
+3. Hit `Enter` to jump to the next matching keyword (incremental search)
+
+4. When you are done. Press `CTRL + F` again to go back to reset.
+
+### Linux
+
+| Keyboard Combo                   | Command |
+| -------------------------------- | ------- |
+| CTRL + C                         | Copy    |
+| SHIFT + RMB (right-mouse button) | Paste   |
+
+To highlight, hold **SHIFT + LMB** (left-mouse button) and drag across the text you want to select.
+
+### macOS
+
+| Keyboard Combo | Command |
+| -------------- | ------- |
+| ⌘ + C          | Copy    |
+| ⌘ + V          | Paste   |
+
+> Note: "Allow Mouse Reporting" - To select text on macOS, you may need to enable the **Allow Mouse Reporting** option by pressing **`⌘ + R`** or selecting **View > Allow Mouse Reporting** in the menu bar.
+
+![allowmouse](allow_mouse_reporting.png)
+
+Then you should be able to select text by holding **`LMB`** (left-mouse button) and drag. You can also hold down **`⌥ + shift`** to select specific lines like the image below.
+
+![highlightmacos](highlight_macos.png)
+
+When accessing Hummingbot on a Linux cloud server through `ssh` using a macOS terminal, hold down the **`Option ⌥`** key or **`⌥ + ⌘`** to highlight text.
+
+### Windows
+
+| Keyboard Combo   | Command |
+| ---------------- | ------- |
+| CTRL + SHIFT + C | Copy    |
+| CTRL + SHIFT + V | Paste   |
+
+To use this shortcut, check this box by doing a right click on the title bar at the top of the Hummingbot window then select **Properties**.
+
+![](properties_windows.png)

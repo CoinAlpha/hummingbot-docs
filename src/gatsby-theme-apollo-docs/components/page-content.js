@@ -9,6 +9,7 @@ import { ReactComponent as DiscordLogo } from "gatsby-theme-apollo-docs/src/asse
 import { ReactComponent as GithubLogo } from "gatsby-theme-apollo-docs/src/assets/github.svg";
 import { withPrefix } from "gatsby";
 import useSiteMetadata from "../../hooks/useSiteMetadata";
+import "katex/dist/katex.min.css";
 
 const Wrapper = styled.div({
   display: "flex",

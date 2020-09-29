@@ -1,0 +1,222 @@
+---
+title: "Task 1"
+description: Info on Data Source & Order Book Tracker
+---
+
+The first 2 components to begin:
+
+- `OrderBookTrackerDataSource`
+- `OrderBookTracker`.
+
+The `OrderBookTracker` contains subsidiary classes that help maintain the real-time order book of a market. Namely, the classes are `OrderBookTrackerDataSource` and `ActiveOrderTracker`.
+
+## OrderBookTrackerDataSource
+
+The `OrderBookTrackerDataSource` class is responsible for making API calls and/or WebSocket queries to obtain order book snapshots, order book deltas, and miscellaneous information on order book.
+
+Integrating your own data source component requires you to extend from the `OrderBookTrackerDataSource` base class [here](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/core/data_type/order_book_tracker_data_source.py).
+
+The following details the **required** functions in `OrderBookTrackerDataSource`:
+
+### `get_last_traded_prices`
+
+Performs the necessary API request(s) to get last traded price for the given markets (trading_pairs) and return a dictionary of trading_pair and last traded price.
+
+**Input Parameter:** trading_pairs: List[str]<br/>
+**Expected Output(s):** `Dict[str, float]`
+
+### `get_snapshot`
+
+Fetches order book snapshot for a particular trading pair from the exchange REST API.<br/>
+
+> Note: Certain exchanges do not add a timestamp/nonce to the snapshot response. In this case, to maintain a real-time order book would require generating a timestamp for every order book snapshot and delta messages received and applying them accordingly.<br/><br/>In [Bittrex](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/market/bittrex/bittrex_api_order_book_data_source.py), this is performed by invoking the `queryExchangeState` topic on the SignalR WebSocket client.<br/>
+
+**Input Parameter:** client: `aiohttp.ClientSession`, trading_pair: `str` <br/>
+**Expected Output(s):** `Dict[str, any]`
+
+### `get_new_order_book`
+
+Create a new order book instance and populate its `bids` and `asks` by applying the order_book snapshot to the order book, you might need to involve `ActiveOrderTracker` below.
+
+**Input Parameter:** trading_pair: `str` <br/>
+**Expected Output(s):** `OrderBook`
+
+### `listen_for_trades`
+
+Subscribes to the trade channel of the exchange. Adds incoming messages(of filled orders) to the `output` queue, to be processed by `OrderBookTracker` (in `_emit_trade_event_loop`)
+
+**Input Parameter:** ev_loop: `asyncio.BaseEventLoop`, output: `asyncio.Queue` <br/>
+**Expected Output(s):** None
+
+### `listen_for_order_book_diffs`
+
+Fetches or Subscribes to the order book snapshots for each trading pair. Additionally, parses the incoming message into a `OrderBookMessage` and appends it into the `output` Queue.
+
+**Input Parameter:** ev_loop: `asyncio.BaseEventLoop`, output: `asyncio.Queue` <br/>
+**Expected Output(s):** None
+
+### `listen_for_order_book_snapshots`
+
+Fetches or Subscribes to the order book deltas(diffs) for each trading pair. Additionally, parses the incoming message into a `OrderBookMessage` and appends it into the `output` Queue. |
+
+**Input Parameter:** ev_loop: `asyncio.BaseEventLoop`, output: `asyncio.Queue` <br/>
+**Expected Output(s):** None
+
+## ActiveOrderTracker
+
+The `ActiveOrderTracker` class is responsible for parsing raw data responses from the exchanges API servers.<br/> This is **not** required on all exchange connectors depending on API responses from the exchanges. This class is mainly used by DEXes to facilitate the tracking of orders
+
+The table below details the **required** functions in `ActiveOrderTracker`:
+
+### `active_asks`
+
+Get all asks on the order book in dictionary format. <br/>
+
+**Input Parameter:** None <br/>
+**Expected Output(s):** `Dict[Decimal, Dict[str, Dict[str, any]]]`
+
+### `active_bids`
+
+Get all bids on the order book in dictionary format. <br/>
+
+**Input Parameter:** None <br/>
+**Expected Output(s):** `Dict[Decimal, Dict[str, Dict[str, any]]]`
+
+### `convert_snapshot_message_to_order_book_row`
+
+Convert an incoming snapshot message to Tuple of `np.arrays`, and then convert to `OrderBookRow`. <br/>
+
+**Input Parameter:** `object`: message <br/>
+**Expected Output(s):** `Tuple[List[OrderBookRow],List[OrderBookRow]]`
+
+### `convert_diff_message_to_order_book_row`
+
+Convert an incoming diff message to Tuple of `np.arrays`, and then convert to `OrderBookRow`. <br/>
+
+**Input Parameter:** `object`: message <br/>
+**Expected Output(s):** `Tuple[List[OrderBookRow],List[OrderBookRow]]`
+
+### `convert_trade_message_to_order_book_row`
+
+Convert an incoming trade message to Tuple of `np.arrays`, and then convert to `OrderBookRow`. <br/>
+
+**Input Parameter:** `object`: message <br/>
+**Expected Output(s):** `Tuple[List[OrderBookRow],List[OrderBookRow]]`
+
+### `c_convert_snapshot_message_to_np_arrays`
+
+Parses an incoming snapshot messages into `numpy.array` data type to be used by `convert_snapshot_message_to_order_book_row()`. <br/>
+
+**Input Parameter:** `object`: message <br/>
+**Expected Output(s):** `Tuple[numpy.array, numpy.array]`
+
+### `c_convert_diff_message_to_np_arrays`
+
+Parses an incoming delta("diff") messages into `numpy.array` data type to be used by `convert_diff_message_to_order_book_row()`. <br/>
+
+**Input Parameter:** `object`: message <br/>
+**Expected Output(s):** `Tuple[numpy.array, numpy.array]`
+
+### `c_convert_trade_message_to_np_arrays`
+
+Parses an incoming trade messages into `numpy.array` data type to be used by `convert_diff_message_to_order_book_row()`. <br/>
+
+**Input Parameter:** `object`: message <br/>
+**Expected Output(s):** `numpy.array`
+
+> Warning: `OrderBookRow` should only be used in the `ActiveOrderTracker` class, while `ClientOrderBookRow` should only be used in the `Market` class. This is due to improve performance especially since calculations in `float` fair better than that of `Decimal`.
+
+## OrderBookTracker
+
+The `OrderBookTracker` class is responsible for maintaining a real-time order book on the Hummingbot client. By using the subsidiary classes like `OrderBookTrackerDataSource` and `ActiveOrderTracker`(as required), it applies the market snapshot/delta messages onto the order book.
+
+Integrating your own tracker would require you to extend from the `OrderBookTracker` base class [here](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/core/data_type/order_book_tracker.py).
+
+The following details the **required** functions to be implemented in `OrderBookTracker`:
+
+### `exchange_name`
+
+Returns the exchange name. <br/>
+
+**Input Parameter:** None <br/>
+**Expected Output(s):** `str`
+
+### `_order_book_diff_router`
+
+Route the real-time order book diff messages to the correct order book.<br/><br/>Each trading pair has their own `_saved_message_queues`, this would subsequently be used by `_track_single_book` to apply the messages onto the respective order book. <br/>
+
+**Input Parameter:** None <br/>
+**Expected Output(s):** None
+
+### `_order_book_snapshot_router`
+
+Route the real-time order book snapshot messages to the correct order book.<br/><br/>Each trading pair has their own `_saved_message_queues`, this would subsequently be used by `_track_single_book` to apply the messages onto the respective order book. <br/>
+
+**Input Parameter:** None <br/>
+**Expected Output(s):** None
+
+### `_track_single_book`
+
+Update an order book with changes from the latest batch of received messages.<br/>Constantly attempts to retrieve the next available message from `_save_message_queues` and applying the message onto the respective order book.<br/>
+
+> Note: Might require `convert_[snapshot/diff]_message_to_order_book_row` from the `ActiveOrderTracker` to convert the messages into `OrderBookRow`<br/>
+
+**Input Parameter:** None <br/>
+**Expected Output(s):** None
+
+### `start`
+
+Start all custom listeners and tasks in the `OrderBookTracker` component.<br/>
+
+> Note: You may be required to call `start` in the base class by using `await super().start()`. This is **optional** as long as there is a task listening for trade messages and emitting the `TradeEvent` as seen in `c_apply_trade` in [`OrderBook`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/core/data_type/order_book.pyx)<br/>
+
+**Input Parameter:** None <br/>
+**Expected Output(s):** None
+
+## Additional Useful Function(s)
+
+The following details some functions already implemented in the [`OrderBookTracker`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/core/data_type/order_book_tracker.py) base class:
+
+### `order_books`
+
+Retrieves all the order books being tracked by `OrderBookTracker`. <br/>
+
+**Input Parameter:** None <br/>
+**Expected Output(s):** `Dict[str, OrderBook]`
+
+### `ready`
+
+Returns a boolean variable to determine if the `OrderBookTracker` is in a state such that the Hummingbot client can begin its operations.<br/>
+
+**Input Parameter:** None <br/>
+**Expected Output(s):** `bool`
+
+### `snapshot`
+
+Returns the bids and asks entries in the order book of the respective trading pairs. <br/>
+
+**Input Parameter:** None <br/>
+**Expected Output(s):** `Dict[str, Tuple[pd.DataFrame, pd.DataFrame]]`
+
+### `start`
+
+Start listening on trade messages.<br/>
+
+> Note: This is to be overridden and called by running `super().start()` in the custom implementation of `start`. <br/>
+
+**Input Parameter:** None <br/>
+**Expected Output(s):** None
+
+### `stop`
+
+Stops all tasks in `OrderBookTracker`. <br/>
+
+**Input Parameter:** None <br/>
+**Expected Output(s):** None
+
+### `_emit_trade_event_loop`
+
+Attempts to retrieve trade_messages from the Queue `_order_book_trade_stream` and apply the trade onto the respective order book. <br/>
+
+**Input Parameter:** None <br/>
+**Expected Output(s):** None

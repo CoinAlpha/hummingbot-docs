@@ -1,0 +1,644 @@
+---
+title: "Hummingbot-supported Connectors"
+description: Information about Hummingbot-supported-connectors
+---
+
+## Binance
+
+Binance is a global cryptocurrency exchange that provides a platform for trading more than 100 cryptocurrencies. It is considered one of the top cryptocurrency trading platforms by volume. It also serves as a wallet for users who hold accounts on the exchange.
+
+### Using the Connector
+
+Because Binance is a centralized exchange, you will need to generate and provide your API key in order to trade using Hummingbot.
+
+```
+Enter your Binance API key >>>
+Enter your Binance secret key >>>
+```
+
+Private keys and API keys are stored locally for the operation of the Hummingbot client only. At no point will private or API keys be shared to CoinAlpha or be used in any way other than to authorize transactions required for the operation of Hummingbot.
+
+> Tip "Copying and pasting into Hummingbot: See [this page](/faq/troubleshooting/#paste-items-from-clipboard-in-putty) for more instructions in our Support section.
+
+#### Creating Binance API Keys
+
+1 - Log into your account at https://www.binance.com, then select **Account** (If you do not have an account, you will have to create one and verify your ID).
+
+> Tip "Important tip": You must enable 2FA in your Binance account to create the API key. [How to enable 2FA?](https://support.binance.com/hc/en-us/sections/360000011592-Two-Factor-Authentication)
+
+2 - Click on **API Setting**.
+![binance1](binance1.png)
+
+3 - Enter a key name and click on **Create New Key**.
+
+![binance2](binance2.png)
+
+4 - Enter your 2FA code. Once you pass the authentication, Binance will send a confirmation mail to your registered email inbox. Please click “Confirm Create” to make the confirmation for the new API creation.
+
+![binance3](binance3.png)
+
+5 - Now you have created an API key. Please note that to trade on Binance using Hummingbot, **Enable Trading** must be selected.
+
+> Warning "API key permissions": We recommend using only **"trade"** enabled API keys; enabling **"withdraw", "transfer", or the equivalent is unnecessary** for current Hummingbot strategies.
+
+![binance4](binance4.png)
+
+Make sure you store your Secret Key somewhere secure, and do not share it with anyone. Your Secret Key will only be displayed once at the time when you create the API.
+
+> warning: If you lose your Secret Key, you can delete the API and create a new one. However, it will be impossible to reuse the same API.
+
+### Miscellaneous Info
+
+#### Minimum Order Sizes
+
+See [this page](https://www.binance.com/en/trade-rule) for the minimum order size per trading pair. Typically, the minimum is around \$10 equivalent of whichever currency you are trading in.
+
+#### Transaction Fees
+
+By default, trading fees are 0.1% on Binance for both market makers and takers. However, users who trade high volumes and own substantial amounts of Binance Coin can receive discounts. More details can be found [here](https://www.binance.com/en/support/articles/115000429332-Fee-Structure-on-Binance).
+
+Users can override the default fees by editing [`conf_fee_overrides.yml`](/advanced/fee-overrides/).
+
+#### Sub-Accounts
+
+You can use an API key from a [Binance sub-account](https://medium.com/binanceexchange/binance-introduces-sub-account-support-d7bf2f95e28c) just like you do for a normal Binance account. Please ensure that you use the **sub-account API key** and not the master account API key.
+
+If you are participating in [Liquidity Mining](/liquidity-mining), please also use the **sub-account read-only API key** when you sign up.
+
+## Bittrex
+
+Bittrex is a global, centralized cryptocurrency exchange based in Seattle, USA. It was founded in 2013 and began its operations in 2014. It is an intuitive and easy to navigate exchange platform often finding its way into the top 3 US exchanges in terms of trading volume.
+
+### Using the Connector
+
+[Bittrex](https://international.bittrex.com/) is a centralized exchange and an API key is required in order to trade using Hummingbot.
+
+```
+Enter your Bittrex API key >>>
+Enter your Bittrex secret key >>>
+```
+
+Private keys and API keys are stored locally for the operation of the Hummingbot client only. At no point will private or API keys be shared to CoinAlpha or be used in any way other than to authorize transactions required for the operation of Hummingbot.
+
+> Tip: "Copying and pasting into Hummingbot": See [this page](/faq/troubleshooting/#paste-items-from-clipboard-in-putty) for more instructions in our Support section.
+
+#### Creating Bittrex API Keys
+
+1 - Log in to https://international.bittrex.com/ or create an account in [this page](https://international.bittrex.com/account/register).
+
+> Note: Ensure first that 2FA is enabled to proceed with the next steps. Refer to [this page](https://bittrex.zendesk.com/hc/en-us/articles/115000198612-Two-Factor-Authentication-2FA-) for more information.
+
+2 - Click **Account** then select **API Keys** under the site settings section.
+
+![bittrex-api-key](bittrex_api_key.png)
+
+3 - Add a new key, enable **Read Info** and **Trade** then save to enter 2FA code.
+
+> Warning: "API key permissions": We recommend using only **"trade"** enabled API keys; enabling **"withdraw", "transfer", or the equivalent** is unnecessary for current Hummingbot strategies.
+
+4 - The secret key will only be shown once. Make sure to save and keep this information somewhere safe as it can be used to recover a lost 2FA. In case of a lost security key, delete the API and create a new one. However, it will be impossible to reuse the same API.
+
+### Miscellaneous Info
+
+#### Minimum Order Sizes
+
+Minimum order size varies per market. All minimum trade quantities can be found in the following public API:
+
+```
+https://bittrex.com/api/v1.1/public/getmarkets
+```
+
+`MinTradeSize` denotes the minimum order size for each market. For example, trading pair ETH-ZRX minimum order size is 5.81577937 ZRX.
+
+```
+"MarketCurrency": "ZRX",
+"BaseCurrency": "ETH",
+"MarketCurrencyLong": "0x Protocol",
+"BaseCurrencyLong": "Ethereum",
+"MinTradeSize": 5.81577937,
+"MarketName": "ETH-ZRX",
+"IsActive": true,
+"IsRestricted": false,
+"Created": "2018-02-15T23:33:55.923",
+"Notice": null,
+"IsSponsored": null,
+"LogoUrl": "https://bittrexblobstorage.blob.core.windows.net/public/60b380a9-5161-4afe-a8f8-dbf3a8210033.png"
+```
+
+#### Transaction Fees
+
+Bittrex charges 0.25% in both maker and taker fees for most users. However, those who trade in high volumes can trade at discounted rates. Refer to [Fee Schedule](https://bittrex.zendesk.com/hc/en-us/articles/115000199651-What-fees-does-Bittrex-charge-/) section for more details.
+
+Users can override the default fees by editing [`conf_fee_overrides.yml`](https://docs.hummingbot.io/advanced/fee-overrides/).
+
+## Coinbase Pro Connector
+
+Based in San Francisco, CA, Coinbase Pro is a widely-used, global cryptocurrency exchange designed for professional traders. It has a reputation for being secure and trustworthy, is [regulated in all the jurisdictions in which it operates](https://www.coinbase.com/legal/insurance), and maintains some [insurance on assets and deposits](https://www.coinbase.com/legal/insurance).
+
+### Using the Connector
+
+Because Coinbase Pro is a centralized exchange, you will need to generate and provide your API key in order to trade using Hummingbot.
+
+```
+Enter your Coinbase API key >>>
+Enter your Coinbase secret key >>>
+Enter your Coinbase passphrase >>>
+```
+
+Private keys and API keys are stored locally for the operation of the Hummingbot client only. At no point will private or API keys be shared to CoinAlpha or be used in any way other than to authorize transactions required for the operation of Hummingbot.
+
+> Tip "Copying and pasting into Hummingbot": See [this page](/faq/troubleshooting/#paste-items-from-clipboard-in-putty) for more instructions in our Support section.
+
+#### Creating Coinbase Pro API Keys
+
+1 - Log into your Coinbase Pro account, click your avatar and then select **API** (If you do not have an account, you will have to create one and verify your ID).
+
+![coinbase1](coinbase1.png)
+
+> Tip "Important tip": You must enable 2FA in your Coinbase account to create the API key. [How to enable 2FA?](https://support.coinbase.com/customer/en/portal/articles/1658338-how-do-i-set-up-2-factor-authentication-)
+
+2 - Click on **+ NEW API KEY**.
+
+![coinbase2](coinbase2.png)
+
+Make sure you give permissions to **View** and **Trade**, and enter your 2FA code.
+
+> Warning "API key permissions": We recommend using only **"trade"** enabled API keys; enabling **"withdraw", "transfer", or the equivalent** is unnecessary for current Hummingbot strategies.
+
+![coinbase3](coinbase3.png)
+
+Once you pass the authentication, you’ve created a new API Key!
+
+Your API Secret will be displayed on the screen. Make sure you store your API Secret somewhere secure, and do not share it with anyone.
+
+![coinbase4](coinbase4.png)
+
+When you close the API Secret screen, your API key will be shown in **My API Keys**. The code highlighted in red is your API key.
+
+![coinbase5](coinbase5.png)
+
+The API Key, Secret, and Passphrase are required for using Hummingbot.
+
+> Warning: If you lose your Secret Key, you can delete the API and create a new one. However, it will be impossible to reuse the same API.
+
+### Miscellaneous Info
+
+#### Trading Pair Limitations
+
+Coinbase Pro has trading pair limitations on certain regions. Some countries have access to crypto/fiat trading pairs while other countries can only access crypto/crypto trading pairs.
+
+Running Hummingbot with this connector on a pair that your country has no access to will result to this error:
+
+```
+OSError: Error fetching data from https://api.pro.coinbase.com/orders.
+HTTP status is 400. {'message': 'Trading pair not available'}
+```
+
+For more information, read through their article below.
+
+- [Locations and trading pairs](https://help.coinbase.com/en/pro/trading-and-funding/cryptocurrency-trading-pairs/locations-and-trading-pairs)
+
+#### Minimum Order Sizes
+
+All Market Orders, Limit Orders, and Stop Orders placed on Coinbase Markets are subject to the minimum order size requirements listed in their [Market Information](https://pro.coinbase.com/markets) page.
+
+![coinbase6](coinbase6.png)
+
+#### Transaction Fees
+
+Coinbase Pro charges 0.50% fees for both maker and taker orders. However, users who trade in high volumes can trade at discounted rates.
+
+Read through their article below related to trading fees and discounts.
+
+- [What are the fees on Coinbase Pro?](https://help.coinbase.com/en/pro/trading-and-funding/trading-rules-and-fees/fees.html)
+
+Users can override the default fees by editing [`conf_fee_overrides.yml`](/advanced/fee-overrides/).
+
+## Eterbase Connector
+
+ETERBASE is the first regulation-compliant European cryptocurrency exchange, offering fast, secure trading on a clean, powerful, user interface.
+
+### Using the Connector
+
+Eterbase is a centralized exchange, you will need to generate and provide your API key in order to trade using Hummingbot.
+
+```
+Enter your Eterbase API key >>>
+Enter your Eterbase secret key >>>
+Enter your Eterbase Account >>>
+```
+
+Private keys and API keys are stored locally for the operation of the Hummingbot client only. At no point will private or API keys be shared to CoinAlpha or be used in any way other than to authorize transactions required for the operation of Hummingbot.
+
+> Tip "Copying and pasting into Hummingbot": See [this page](/faq/troubleshooting/#i-cant-copy-and-paste-my-api-keys) for more instructions in our Support section.
+
+#### Creating Eterbase API Keys
+
+1. Log into your account at [https://eterbase.exchange](https://eterbase.exchange/), then click on your account name in top right corner of the screen and select **Api Keys** from the menu (If you do not have an account, you will have to create one and verify your ID).
+
+2. Click on **API Keys**.
+   [![eterbase1](eterbase1.png)](eterbase1.png)
+
+3. Click on **New Api Key**.
+   [![eterbase2](eterbase2.png)](eterbase2.png)
+
+4. Insert Api Key description and give permissions.
+   Make sure you give permissions to **View** and **Trade**
+   [![eterbase3](eterbase3.png)](eterbase3.png)
+
+> Warning "API key permissions": We recommend using only **"trade"** enabled API keys; enabling **"withdraw", "transfer", or the equivalent is unnecessary** for current Hummingbot strategies.
+
+5. Now you have created an API key.
+   Copy and paste **Account Id**, **Key** and **Secret** to Hummingbot
+   [![eterbase4](eterbase4.png)](eterbase4.png)
+
+Make sure you store your Secret Key somewhere secure, and do not share it with anyone. Your Secret Key will only be displayed once at the time when you create the API.
+
+Tip: If you lose your Secret Key, you can delete the API and create a new one. However, it will be impossible to reuse the same API.
+
+### Miscellaneous Info
+
+#### Minimum Order Sizes
+
+Minimum order size varies per market. All minimum trade quantities can be found in the following public API:
+
+```
+https://api.eterbase.exchange/api/markets
+```
+
+Rule with attributes values `Qty` and `Min` denotes the minimum order size for each market. For example, trading pair ETH-USDT minimum order size is 0.006 USDT.
+
+```
+{
+  "id": 33,
+  "symbol": "ETHUSDT",
+  "base": "ETH",
+  "quote": "USDT",
+  "priceSigDigs": 5,
+  "qtySigDigs": 8,
+  "costSigDigs": 8,
+  "verificationLevelUser": 0,
+  "verificationLevelCorporate": 10,
+  "group": "USDT",
+  "tradingRules": [
+    {
+      "attribute": "Qty",
+      "condition": "Min",
+      "value": 0.006
+    },
+    {
+      "attribute": "Qty",
+      "condition": "Max",
+      "value": 1000
+    },
+    {
+      "attribute": "Cost",
+      "condition": "Min",
+      "value": 1
+    },
+    {
+      "attribute": "Cost",
+      "condition": "Max",
+      "value": 210000
+    }
+  ],
+  "allowedOrderTypes": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "state": "Trading"
+}
+```
+
+#### Transaction Fees
+
+Eterbase charges 0.35% in both maker and taker fees for basic tier. However, users with deposited XBASE tokens can trade at discounted rates. Refer to [Eterbase Trading Fees](https://www.eterbase.com/exchange/fees/) section for more details.
+
+Users can override the default fees by editing [`conf_fee_overrides.yml`](https://docs.hummingbot.io/advanced/fee-overrides/).
+
+## Huobi Global Connector
+
+Huobi is a global, centralized cryptocurrency exchange that was started in Singapore, and has since expanded its offices to Hong Kong, Korea, Japan, and the United States. As of March 2018, Huobi processed around US \$1 billion in trades daily.
+
+### Using the Connector
+
+Because [Huobi](https://www.hbg.com/) is a centralized exchange, you will need to generate and provide your API key in order to trade using Hummingbot.
+
+```
+Enter your Huobi API key >>>
+Enter your Huobi secret key >>>
+```
+
+Private keys and API keys are stored locally for the operation of the Hummingbot client only. At no point will private or API keys be shared to CoinAlpha or be used in any way other than to authorize transactions required for the operation of Hummingbot.
+
+Tip "Copying and pasting into Hummingbot": See [this page](https://docs.hummingbot.io/faq/troubleshooting/#paste-items-from-clipboard-in-putty) for more instructions in our Support section.
+
+#### Creating Huobi API Keys
+
+1 - Log in to https://www.hbg.com/ or sign up for an account in [this page](https://www.hbg.com/en-us/register/?backUrl=%2Fen-us%2F) and go to **API Management** under **Account** section.
+
+![huobi1](/huobi-account.png)
+
+2 - Add notes (required) and make sure the checkbox for **Trade** is selected to trade on Hummingbot.
+
+> Warning "API key permissions": We recommend using only **"trade"** enabled API keys; enabling **"withdraw", "transfer", or the equivalent** is unnecessary for current Hummingbot strategies.
+
+![huobi2](huobi-create-api-key.png)
+
+> Tip: You will receive a notification and email when your API keys are about to expire.
+
+3 - **Click to send** and enter the verification code sent to the registered email address.
+
+![huobi3](huobi-verification-code.png)
+
+4 - Your Access Key and Secret Key will only be shown to you once. Make sure to save and keep this information somewhere safe. If you lose your Secret Key, you can delete the API and create a new one. However, it will be impossible to reuse the same API.
+
+5 - Information related to your API keys such as create date, notes, permissions, bind IP address, days remaining before expiration, status are shown under **My API Key**. Click **Edit** button to change the permission setting or bind/unbind to an IP address anytime.
+
+![huobi4](huobi-my-api-key.png)
+
+### Miscellaneous Info
+
+#### Minimum Order Sizes
+
+You may refer to [this page](https://huobiglobal.zendesk.com/hc/en-us/articles/360000304441-Trade-Limits) for the minimum order size per trading pair.
+
+#### Transaction Fees
+
+Huobi charges 0.2% on both maker and taker for most pairs. However, Huobi VIP users can also enjoy fees at discounted rate.
+
+No maker and taker fees for trading on stablecoins with HUSD (PAX/HUSD, USDC/HUSD, TUSD/HUSD, USDT/HUSD).
+
+See [this page](https://www.hbg.com/en-us/about/fee/) for more information about their fees.
+
+Users can override the default fees by editing [`conf_fee_overrides.yml`](/advanced/fee-overrides/).
+
+## KuCoin Connector
+
+KuCoin is a centralized exchange based in Hong Kong that opened for cryptocurrency trading in September 2017. Nicknamed the "People's Exchange"​, Kucoin is claimed to be easy to use for novice investors while being in-depth enough for crypto enthusiasts.
+
+KuCoin claims to have one of the world’s most impressive trading pair selections, a wide range of alt coins with more than 300 trading pairs, and is regularly adding new pairs. The exchange also has its own cryptocurrency, [KuCoin Shares (KCS)](https://coinmarketcap.com/currencies/kucoin-shares/).
+
+### Using the Connector
+
+Because [KuCoin](https://www.kucoin.com/) is a centralized exchange, you will need to generate and provide your API keys in order to trade using Hummingbot.
+
+```
+Enter your KuCoin API key >>>
+Enter your KuCoin secret key >>>
+Enter your KuCoin passphrase >>>
+```
+
+Private keys and API keys are stored locally for the operation of the Hummingbot client only. At no point will private or API keys be shared to CoinAlpha or be used in any way other than to authorize transactions required for the operation of Hummingbot.
+
+> Tip: "Copying and pasting into Hummingbot": See [this page](/faq/troubleshooting/#paste-items-from-clipboard-in-putty) for more instructions in our Support section.
+
+#### Creating KuCoin API keys
+
+This FAQ article below in their documentation shows step-by-step instructions on how to create API keys in KuCoin exchange.
+
+- [How to create an API](https://kucoin.zendesk.com/hc/en-us/articles/360015102174-How-to-Create-an-API)
+
+> Warning "API key permissions": We recommend using only **"trade"** enabled API keys; enabling **"withdraw", "transfer", or the equivalent** is unnecessary for current Hummingbot strategies.
+
+### Miscellaneous Info
+
+#### Minimum Order Sizes
+
+Minimum order size varies per market. All minimum trade quantities can be found in the following public API:
+
+```
+https://api.kucoin.com/api/v1/symbols
+```
+
+The size must be greater than the `baseMinSize` for the symbol and no larger than the `baseMaxSize`. For example, trading pair ETH-USDT minimum order size is 0.0001 ETH.
+
+```
+"symbol": "ETH-USDT",
+"quoteMaxSize": "999999999",
+"enableTrading": true,
+"priceIncrement": "0.01",
+"feeCurrency": "USDT",
+"baseMaxSize": "10000000000",
+"baseCurrency": "ETH",
+"quoteCurrency": "USDT",
+"market": "USDS",
+"quoteIncrement": "0.000001",
+"baseMinSize": "0.0001",
+"quoteMinSize": "0.01",
+"name": "ETH-USDT",
+"baseIncrement": "0.0000001",
+"isMarginEnabled": true
+```
+
+### Transaction Fees
+
+Generally, KuCoin charges 0.10% on both maker and taker while a user can get 20% discount on trading fees if paid in KCS. However, users who trade high volumes and own substantial amounts of KuCoin Shares can receive more discounts.
+
+Read through their articles below related to trading fees, and rebates.
+
+- [VIP Level](https://www.kucoin.com/vip/level)
+- [Pay Fees via KCS & Enjoy 20% Off](https://kucoin.zendesk.com/hc/en-us/articles/360037007974-Pay-Fees-via-KCS-Enjoy-20-Off)
+
+Users can override the default fees by editing [`conf_fee_overrides.yml`](/advanced/fee-overrides/).
+
+## Kraken Connector
+
+Kraken is a centralized exchange based in San Francisco, CA founded in 2011 where users can trade not only several cryptocurrencies but as well as various fiat currencies such as USD, CAD, EUR, GBP, CHF and JPY.
+
+It was the first bitcoin exchange to have its market data displayed on the [Bloomberg Terminal](https://www.investopedia.com/terms/b/bloomberg_terminal.asp), the first to pass a cryptographically verifiable proof-of-reserves audit, and one of the first exchanges to offer leveraged bitcoin margin trading.
+
+### Using the Connector
+
+Because [Kraken](https://www.kraken.com/) is a centralized exchange, you will need to generate and provide your API keys in order to trade using Hummingbot.
+
+```
+Enter your Kraken API key >>>
+Enter your Kraken secret key >>>
+```
+
+Private keys and API keys are stored locally for the operation of the Hummingbot client only. At no point will private or API keys be shared to CoinAlpha or be used in any way other than to authorize transactions required for the operation of Hummingbot.
+
+> Tip "Copying and pasting into Hummingbot": See [this page](/faq/troubleshooting/#paste-items-from-clipboard-in-putty) for more instructions in our Support section.
+
+#### Creating Kraken API keys
+
+This article below in their documentation shows step-by-step instructions on how to create API keys in Kraken exchange.
+
+- [How to create an API](https://support.kraken.com/hc/en-us/articles/360000919966-How-to-generate-an-API-key-pair-)
+
+Take note that for your API keys to work with Hummingbot, **set the Nonce Window to at least 10**.
+
+![kraken](kraken_nonce_window.png)
+
+> Warning "API key permissions": We recommend using only **"trade"** enabled API keys; enabling **"withdraw", "transfer", or the equivalent** is unnecessary for current Hummingbot strategies.
+
+Shows nonce reminder when adding API keys to Kraken.
+
+![Kraken](/kraken_nonce.png)
+
+Also note that your account must have funds to avoid getting this error when trying to connect your Kraken API on Hummingbot.
+
+```
+Failed connections:                                                                                      |
+    kraken: {'error': {'error': []}}
+
+10:12:24 - kraken_market - Error received from https://api.kraken.com/0/private/Balance. Response is {'error': []}.
+```
+
+### Asset Codes
+
+Kraken uses asset codes in front of some pairs as a classification system. Asset codes starting with **'X'** represent cryptocurrencies, though this is no longer followed for the newest coins. Asset codes starting with **'Z'** represent fiat currencies.
+
+BTC is represented as XBT in this exchange. Therefore trading on this pair is viewed as XXBT e.g. XXBT-USDT. However Hummingbot uses symbol conversion so it will be entered as `BTC-USDT`. For e.g.
+![](/kraken_sample.png)
+
+This article shows the complete list assets and their corresponding asset codes.
+
+- [How to interpret asset codes](https://support.kraken.com/hc/en-us/articles/360001185506-How-to-interpret-asset-codes)
+
+### Miscellaneous Info
+
+#### Minimum Order Sizes
+
+Kraken's minimum order volume is denominated in **base currency**. Refer to their article below for the minimum order size per market.
+
+- [Minimum order size for trading](https://support.kraken.com/hc/en-us/articles/205893708-Minimum-order-size-volume-for-trading)
+
+#### Transaction Fees
+
+Kraken charges 0.16% on maker fees and 0.26% on taker orders for almost all of their cryptocurrency pairs. While they charge 0.20% on both maker and taker orders if trading on fiat and stablecoin base currency pairs.
+
+Users who trade high volumes can receive more discounts on trading fees. Read through below for more information.
+
+- [Kraken Fee Schedule](https://www.kraken.com/features/fee-schedule)
+
+Hummingbot users can override the default fees by editing [`conf_fee_overrides.yml`](/advanced/fee-overrides/).
+
+## Liquid Connector
+
+Liquid is a centralized exchange based in Tokyo, Japan launched by Quione in 2017. It also has offices in Singapore but is regulated and licensed by the Financial Services Agency of Japan. Over the past 12 months (as at May 2019) it has more than USD 50 billion in transactions on their exchanges.
+
+### Using the Connector
+
+The connector is for [Liquid](https://www.liquid.com/) based in Singapore (i.e. not for the local Japanese Liquid exchange). Because it is a centralized exchange, you will need to generate and provide your API key in order to trade using Hummingbot.
+
+```
+Enter your Liquid API key >>>
+Enter your Liquid secret key >>>
+```
+
+Private keys and API keys are stored locally for the operation of the Hummingbot client only. At no point will private or API keys be shared to CoinAlpha or be used in any way other than to authorize transactions required for the operation of Hummingbot.
+
+> Tip "Copying and pasting into Hummingbot":See [this page](/faq/troubleshooting/#paste-items-from-clipboard-in-putty) for more instructions in our Support section.
+
+#### Creating Liquid API keys
+
+This article below in their website under API information shows step-by-step instructions on how to create API keys in Liquid exchange.
+
+- [How to create API tokens](https://help.liquid.com/en/articles/2285018-how-to-create-api-tokens)
+
+> Warning "API key permissions": We recommend using only **"trade"** enabled API keys; enabling **"withdraw", "transfer", or the equivalent** is unnecessary for current Hummingbot strategies.
+
+### Miscellaneous Info
+
+#### Exchange Status
+
+Users can go to https://status.liquid.com/ to check the status of the exchange and review past or ongoing incidents.
+
+Developers can query the current status using the API, see documentation in https://status.liquid.com/api/.
+
+#### Minimum Order Sizes
+
+There is no minimum order quantity for trading fiat currency. See [this page](https://help.liquid.com/en/articles/3339119-minimum-order-quantity) for minimum order sizes on crypto trading pairs.
+
+If the token or trading pair isn't listed in the article, you can also get this information through their public API.
+
+```
+https://api.liquid.com/currencies
+```
+
+The minimum order size is the value next to `minimum_order_quantity`. For example, let's say you're trading ETH-BTC and ETH which is your **base currency** is not listed in the article above. Liquid's public API shows the minimum order size of ETH currency is `0.01`.
+
+```
+"currency_type": "crypto",
+"currency": "ETH",
+"symbol": "Ξ",
+"assets_precision": 18,
+"quoting_precision": 8,
+"minimum_withdrawal": 0.02,
+"withdrawal_fee": 0.0,
+"minimum_fee": null,
+"minimum_order_quantity": 0.01,
+"display_precision": 5,
+"depositable": true,
+"withdrawable": true,
+"discount_fee": 0.5,
+"lendable": true,
+"position_fundable": true,
+"has_memo": false
+```
+
+### Transaction Fees
+
+In this [blog post](https://blog.liquid.com/liquid-progressive-fee-update), Liquid announced their [new fee structure](https://www.liquid.com/fees/) that offers 0 trading fees on maker orders if a user's 30-day trading volume is less than \$10,000 and 0.30% on taker. All users can get a 50% discount on trading fees if paid in QASH.
+
+QASH is an ERC20 token designed to be used services on the Quione and Liquid platform. Effective April 1 2019, high-volume traders can also get rebates on trading fees.
+
+Read through their articles below related to trading fees, and rebates.
+
+- [Trading Fees](https://help.liquid.com/en/articles/2273126-trading-fees)
+- [Trading fee rebate for high-volume traders](https://help.liquid.com/en/articles/2825019-trading-fee-rebate-for-high-volume-traders)
+
+Users can override the default fees. See [Fee Overrides](/advanced/fee-overrides/).
+
+## Radar Relay Connector
+
+[Radar Relay](https://radarrelay.com/) is an exchange application specializing in ERC-20 tokens that uses the [0x Protocol](https://0x.org/). Founded in 2017, it is a newer exchange that has rapidly gained users and features continuous trading with its off-chain order book.
+
+### Using the Connector
+
+Because Radar Relay is a decentralized exchange, you will need an independent cryptocurrency wallet and an ethereum node in order to use Hummingbot. See below for information on how to create these:
+
+- [Creating a crypto wallet](/advanced/wallet)
+- [Creating an ethereum node](/advanced/node)
+
+### Miscellaneous Info
+
+#### Minimum Order Size
+
+Each trading pair has a unique minimum order size denominated in the _base currency_. You can access the minimum order size for a specific token pair using [Radar Relay's API](https://developers.radarrelay.com/api/feed-api/markets), at the following URL:
+
+```
+https://api.radarrelay.com/v3/markets/{marketId}
+```
+
+For example, for `ZRX-WETH`, navigate to: [https://api.radarrelay.com/v3/markets/**`ZRX-WETH`**](https://api.radarrelay.com/v3/markets/ZRX-WETH).
+
+Sample output:
+
+```
+{
+  "id": "ZRX-WETH",
+  "displayName": "ZRX/WETH",
+  "baseTokenAddress": "0xe41d2489571d322189246dafa5ebde1f4699f498",
+  "quoteTokenAddress": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+  "baseTokenDecimals": 18,
+  "quoteTokenDecimals": 18,
+  "quoteIncrement": 8,
+  "minOrderSize": "0.04568281", <== ** MINIMUM ORDER SIZE **
+  "maxOrderSize": "1000000000",
+  "score": 66.7,
+  "active": 1
+}
+```
+
+In this example, the minimum order size is 0.04568281 ZRX.
+
+For additional information, see [this page](https://support.radarrelay.com/en/support/solutions/articles/42000022036-do-you-have-a-minimum-or-maximum-order-size-). For the most part, the smallest order size allowed is about the equivalent of \$1.
+
+#### Transaction Fees
+
+Presently, Radar Relay does [not charge](https://support.radarrelay.com/en/support/solutions/articles/42000022033-what-are-your-fees-) trading or withdrawal fees, and the only additional cost for transactions is the gas network costs. This may change in the future as the exchange develops a larger user base.

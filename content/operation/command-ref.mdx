@@ -1,0 +1,808 @@
+---
+title: Operation Commands
+description: Info and usage about Basic Operation Commands
+---
+
+## Commands Overview
+
+Below are the available commands in the current Hummingbot release.
+
+| Command     | Function                                                   |
+| ----------- | ---------------------------------------------------------- |
+| connect     | List available exchanges and add API keys to them          |
+| create      | Create a new bot                                           |
+| Import      | Import an existing bot by loading the configuration file   |
+| help        | List available commands                                    |
+| balance     | Display your asset balances across all connected exchanges |
+| config      | Display the current bot's configuration                    |
+| start       | Start the current bot                                      |
+| stop        | Stop the current bot                                       |
+| status      | Get the market status of the current bot                   |
+| history     | See the past performance of the current bot                |
+| exit        | Exit and cancel all outstanding orders                     |
+| paper_trade | Toggle paper trading mode                                  |
+| export      | Export your bot's trades or private keys                   |
+| order_book  | Displays the top 5 bid/ask prices and volume               |
+| kill switch | Automatically stops the bot                                |
+
+## Connect
+
+List available exchanges and check whether API keys have been added correctly.
+
+```
+>>>  connect
+
+Testing connections, please wait...
+         Exchange   Keys Added   Keys Confirmed
+          binance          Yes              Yes
+          bittrex          Yes              Yes
+     coinbase_pro           No               No
+         eterbase           No               No
+         ethereum          Yes              Yes
+            huobi           No               No
+           kraken           No               No
+           kucoin           No               No
+           liquid           No               No
+```
+
+** connect [ exchange ] **
+
+Connect to an exchange by adding API keys.
+
+```
+>>>  connect binance
+
+Enter your Binance API key >>>
+Enter your Binance secret >>>
+
+You are now connected to binance.
+```
+
+Replace existing API keys to an exchange connection.
+
+```
+>>>  connect binance
+
+Would you like to replace your existing binance API key ...abc1 (Yes/No)? >>>
+
+Enter your Binance API key >>>
+Enter your Binance secret >>>
+```
+
+Connect to an Ethereum wallet and Ethereum node.
+
+```
+>>>  connect ethereum
+
+Enter your wallet private key >>>
+Which Ethereum node would you like your client to connect to? >>>
+Enter the Websocket Address of your Ethereum Node >>>
+
+Wallet 0x8D10...def2 connected to hummingbot.
+```
+
+Replace existing Ethereum wallet.
+
+```
+>>>  connect ethereum
+
+Would you like to replace your existing Ethereum wallet [address] (Yes/No)? >>>
+Enter your wallet private key >>>
+Which Ethereum node would you like your client to connect to? >>>
+Enter the Websocket Address of your Ethereum Node >>>
+
+Wallet 0xC20...8bFa connected to hummingbot.
+```
+
+## Create
+
+Create a new bot and walk through the strategy configuration.
+
+```
+>>>  create
+
+What is your market making strategy? >>>
+```
+
+** create [ file_name ] **
+
+Specify first the name of the file before going though the strategy configuration.
+
+```
+>>>  create conf_pure_mm_1.yml
+
+What is your market making strategy? >>>
+```
+
+## Import
+
+Import an existing bot by loading the configuration file.
+
+```
+>>>  import
+
+Enter path to your strategy file (e.g. "conf_pure_mm_1.yml") >>>
+
+Configuration from conf_pure_mm_1.yml file is imported.
+
+Preliminary checks:
+  - Exchange check: All connections confirmed.
+  - Strategy check: All required parameters confirmed.
+  - All checks: Confirmed.
+
+Enter "start" to start market making.
+```
+
+** import [ file_name ] **
+
+Specify the file name to import and skip the prompt.
+
+```
+>>>  import conf_pure_mm_1.yml
+
+Configuration from conf_pure_mm_1.yml file is imported.
+
+Preliminary checks:
+  - Exchange check: All connections confirmed.
+  - Strategy check: All required parameters confirmed.
+  - All checks: Confirmed.
+
+Enter "start" to start market making.
+```
+
+## Help
+
+List available commands.
+
+```
+>>>  help
+usage: {connect,create,import,help,balance,config,start,stop,status,history,exit,paper_trade,export}
+..
+
+positional arguments:
+  {connect,create,import,help,balance,config,start,stop,status,history,exit,paper_trade,export}
+    connect             List available exchanges and add API keys to them
+    create              Create a new bot
+    import              Import an existing bot by loading the configuration file
+    help                List available commands
+    balance             Display your asset balances across all connected exchanges
+    config              Display the current bot's configuration
+    start               Start the current bot
+    stop                Stop the current bot
+    status              Get the market status of the current bot
+    history             See the past performance of the current bot
+    exit                Exit and cancel all outstanding orders
+    paper_trade         Toggle paper trade mode on and off
+    export              Export secure information
+    order_book          Display current order book
+
+```
+
+** help [ command_name ] **
+
+Displays command usage and function.
+
+```
+>>>  help connect
+
+usage:  connect [-h] [{liquid,coinbase_pro,binance,kraken,bittrex,huobi,ethereum,kucoin}]
+
+positional arguments:
+  {liquid,coinbase_pro,binance,kraken,bittrex,huobi,ethereum,kucoin}
+                        Name of the exchange that you want to connect
+```
+
+## Balance
+
+Display your asset balances across all connected exchanges.
+
+```
+>>>  balance
+Updating balances, please wait...
+
+binance:
+     Asset    Amount Limit
+       BNB    0.0000     -
+       BTC    0.0000     -
+       ETH    0.0000     -
+     TFUEL    0.0187     -
+     THETA    0.5880     -
+      USDC    0.0090     -
+      USDT  158.8197     -
+       XRP    0.8440     -
+       XZC    0.0076     -
+
+bittrex:
+      Asset     Amount Limit
+        BTC     0.0020     -
+     BTXCRD  1025.2352     -
+        XZC     5.1501     -
+
+coinbase_pro:
+    Asset   Amount Limit
+      BAT  10.0000     -
+      ETH   0.2059     -
+     LINK  15.0500     -
+     USDC   0.0033     -
+
+ethereum:
+    asset  amount
+      ETH  0.0453
+```
+
+** balance limit [ exchange ] [ asset ] [ amount ] **
+
+Set the amount limit on how much assets Hummingbot can use in an exchange or wallet. This can be useful when running multiple bots on different trading pairs with same tokens e.g. running a BTC-USDT pair and another bot on ETH-USDT using the same account.
+
+```
+>>>  balance limit binance USDT 100
+Limit for USDT on binance exchange set to 100.0
+```
+
+Run the `balance` command again to confirm the limit has been applied.
+
+```
+>>>  balance
+Updating balances, please wait...
+
+binance:
+     Asset    Amount     Limit
+       BNB    0.0000         -
+       BTC    0.0000         -
+       ETH    0.0000         -
+     TFUEL    0.0187         -
+     THETA    0.5880         -
+      USDC    0.0090         -
+      USDT  158.8197  100.0000
+       XRP    0.8440         -
+       XZC    0.0076         -
+```
+
+** balance paper **
+
+Show existing paper account balance setting.
+
+```
+>>>  balance paper
+Paper account balances:
+    Asset    Balance
+      DAI  1000.0000
+      ETH    10.0000
+      ONE  1000.0000
+     TUSD  1000.0000
+     USDC  1000.0000
+     USDQ  1000.0000
+     USDT  1000.0000
+     WETH    10.0000
+      ZRX  1000.0000
+```
+
+** balance paper [ asset ] [ amount ] **
+
+Set the amount of asset balance for paper trading mode. For example, we want to add 0.5 BTC to our paper account balance.
+
+```
+>>>  balance paper BTC 0.5
+Paper balance for BTC token set to 0.5
+
+>>>  balance paper
+Paper account balances:
+    Asset    Balance
+      BTC     0.5000
+      DAI  1000.0000
+      ETH    10.0000
+      ONE  1000.0000
+     TUSD  1000.0000
+     USDC  1000.0000
+     USDQ  1000.0000
+     USDT  1000.0000
+     WETH    10.0000
+      ZRX  1000.0000
+```
+
+## Config
+
+Display the current bot's configuration.
+
+```
+>>>  config
+
+Global Configurations:
+                     Key   Value
+     kill_switch_enabled   False
+        kill_switch_rate    -100
+        telegram_enabled   False
+          telegram_token    None
+        telegram_chat_id    None
+         send_error_logs    True
+       0x_active_cancels   False
+          script_enabled   False
+        script_file_path    None
+
+Strategy Configurations:
+                              Key               Value
+                         strategy  pure_market_making
+                         exchange             binance
+                           market             ETH-BTC
+                       bid_spread                   1
+                       ask_spread                   1
+                   minimum_spread                -100
+               order_refresh_time                  30
+      order_refresh_tolerance_pct                   0
+                     order_amount                   1
+                    price_ceiling                  -1
+                      price_floor                  -1
+                ping_pong_enabled                True
+                     order_levels                   1
+               order_level_amount                   0
+               order_level_spread                   1
+           inventory_skew_enabled               False
+        inventory_target_base_pct                  50
+       inventory_range_multiplier                   1
+               filled_order_delay                  60
+           hanging_orders_enabled               False
+        hanging_orders_cancel_pct                  10
+       order_optimization_enabled               False
+     ask_order_optimization_depth                   0
+     bid_order_optimization_depth                   0
+            add_transaction_costs               False
+             price_source_enabled               False
+                price_source_type                None
+            price_source_exchange                None
+              price_source_market                None
+              price_source_custom                None
+                  take_if_crossed                None
+```
+
+** config [ key ] **
+
+Reconfigure a parameter value.
+
+```
+>>>  config order_refresh_time
+
+How often do you want to cancel and replace bids and asks (in seconds)? >>>
+```
+
+** config [ key ] [ value ] **
+
+Reconfigure a parameter value without going through the prompts. These can be reconfigured without stopping the bot however, it will only take effect after restarting the strategy.
+
+```
+>>>  config order_refresh_time 30
+
+New configuration saved:
+order_refresh_time: 30.0
+```
+
+** Configure spreads on the fly **
+
+The parameters `bid_spread` and `ask_spread` can be reconfigured without stopping the bot. The changes to spread will take effect in the next order refresh.
+
+```
+>>>  config bid_spread 0.001
+Please follow the prompt to complete configurations:
+
+New configuration saved:
+bid_spread: 0.001
+
+The current pure_market_making strategy has been updated to reflect the new configuration.
+
+>>>  config ask_spread 0.001
+Please follow the prompt to complete configurations:
+
+New configuration saved:
+ask_spread: 0.001
+
+The current pure_market_making strategy has been updated to reflect the new configuration.
+```
+
+## Start
+
+Start the current bot.
+
+```
+>>>  start
+
+Preliminary checks:
+  - All checks: Confirmed.
+
+Status check complete. Starting 'pure_market_making' strategy...
+
+'pure_market_making' strategy started.
+Run `status` command to query the progress.
+```
+
+## Stop
+
+Stops the current bot. This cancels all active and hanging orders.
+
+```
+>>>  stop
+
+Winding down...
+Cancelling outstanding orders...
+All outstanding orders cancelled.
+```
+
+## Status
+
+Get the market status of the current bot.
+
+```
+>>>  status
+
+  Markets:
+    Exchange  Market  Best Bid Price  Best Ask Price  Mid Price
+     binance  ETHBTC        0.025521        0.025527   0.025524
+
+  Assets:
+                            ETH    BTC
+     Total Balance       4.3725 0.1274
+     Available Balance   3.3725 0.1021
+     Current Value (BTC) 0.1116 0.1274
+     Current %            46.7%  53.3%
+
+  Orders:
+     Level  Type      Price Spread  Amount (Orig)  Amount (Adj)       Age Hang
+         1  sell  0.0257747  0.98%              1             1  00:00:02   no
+         1   buy 0.02526431  1.02%              1             1  00:00:02   no
+```
+
+## History
+
+See the past performance of the current bot.
+
+```
+>>>  history
+
+  Recent trades:
+                     Timestamp Exchange   Market   Order_type  Side     Price  Amount     Age
+    Index
+    1      2020-08-14 05:22:09  binance  ETHUSDT  limit_maker   buy  415.0885       1  00:00:23
+    2      2020-08-14 05:23:14  binance  ETHUSDT  limit_maker   buy  415.3635       1  00:00:13
+    3      2020-08-14 05:23:30  binance  ETHUSDT  limit_maker  sell  415.5504       1  00:00:14
+    4      2020-08-14 05:24:31  binance  ETHUSDT  limit_maker   buy  415.8884       1  00:00:25
+
+  Inventory:
+         Market  Asset   Starting   Current  Net Delta  Trade Delta
+    0   binance    ETH    10.0000   12.0000     2.0000       1.9970
+    1   binance   USDT  1000.0000  169.2100  -830.7900    -831.2056
+
+  Markets:
+         Market     Pair  Start Price    End Price  Trades    Trade Value Delta
+    0   binance  ETHUSDT     415.0885 415.99000000       4     -0.47352040 USDT
+
+  Performance:
+    Started: 2020-08-14 05:22:03
+    Duration: 0 days 00:02:32
+    Total Trade Value Delta: -0.4735204 USDT
+    Return %: -0.0092 %
+```
+
+** How It Works **
+
+The `history` command in Hummingbot will show the current session's past trades, inventory, duration, market trading pair performance, and return percentage.
+
+** Trade Value Delta **
+
+Total Trade Value Delta is calculated as the difference between the total assets acquired and total assets spent, specified in quote value.
+
+$trade\_value\_delta = (acquired - spent)$
+
+To get the quote value of base asset (acquired or spent), multiply the base value to end price.
+
+```
+Inventory:
+       Market  Asset   Starting   Current  Net Delta  Trade Delta
+  0   binance    ETH    10.0000   12.0000     2.0000       1.9970
+  1   binance   USDT  1000.0000  169.2100  -830.7900    -831.2056
+
+Markets:
+       Market     Pair  Start Price    End Price  Trades   Trade Value Delta
+  0   binance  ETHUSDT     415.0885 415.99000000       4    -0.47352040 USDT
+```
+
+After executing these trades we acquired **1.9970 ETH** equivalent to 830.73 USDT `(1.9970 ETH * 415.99)` and spent **831.2056 USDT** tokens.
+
+```
+Trade Value Delta = (830.73 USDT - 831.2056 USDT)
+Trade Value Delta = -0.47357
+```
+
+** Return Percentage **
+
+Return is calculated based on assets spent and acquired during trades, i.e. balance changes due to the inventory like deposits, withdrawals, and manual trades outside of Hummingbot do not affect the calculation.
+
+$Return\ \% = trade\_value\_delta / starting\_quote\_value$
+
+```
+Inventory:
+       Market  Asset   Starting   Current  Net Delta Trade Delta
+  0   binance    ETH    10.0000   12.0000     2.0000      1.9970
+  1   binance   USDT  1000.0000  169.2100  -830.7900   -831.2056
+
+Markets:
+       Market     Pair  Start Price    End Price Trades  Trade Value Delta
+  0   binance  ETHUSDT     415.0885 415.99000000      4   -0.47352040 USDT
+```
+
+Using the same example, get the starting quote value. Convert the starting ETH amount to USDT by multiplying to the start price and add the amount of quote assets. So we started with 4,150.89 USDT worth of ETH `(10 ETH * 415.0885)` and 1000 USDT total of **5,150.89 USDT**.
+
+```
+ Return%: -0.4735204 USDT / 5150.89 USDT
+ Return %: -0.0092 %
+```
+
+## Net Delta
+
+Net Delta is the difference of your starting balance and current balance i.e. it takes into calculation assets spent & acquired during trades, deposits and withdrawals.
+
+Trade Delta does not take into account deposits and withdrawals, only balance changes after executing trades in Hummingbot.
+
+$net\_delta = starting\_balance - current\_balance$
+
+```
+Inventory:
+       Market  Asset    Starting   Current  Net Delta Trade Delta
+  0   binance    ETH     10.0000   12.0000     2.0000      1.9970
+  1   binance   USDT   1000.0000  169.2100  -830.7900   -831.2056
+```
+
+Using the same example, after executing these trades we can calculate Net Delta for base and quote assets, so Net Delta for base asset is **2.0000** because we started with `10.0000 ETH` and the current is `12.000 ETH`. Net Delta for quote asset is **-830.79 USDT** because we started with `1000.0000 USDT` and current is `169.21 USDT`, it means we lost **-830.79 USDT** on quote asset.
+
+## Exit
+
+Exit and cancel all outstanding orders. This cancels all active and hanging orders.
+
+```
+>>>  exit
+
+Winding down...
+Cancelling outstanding orders...
+All outstanding orders cancelled.
+```
+
+#### exit -f
+
+Force exit and cancel all outstanding orders.
+
+```
+>>>  exit -f
+```
+
+## Paper_trade
+
+Toggle paper trade mode on and off. When paper trade mode is enabled, all orders are simulated and no real orders are placed.
+
+This feature allows users to test Hummingbot and simulate trading strategies without risking any actual assets. Enter the command `paper_trade` to enable this feature.
+
+<!--
+```
+>>>  paper_trade
+
+Enable paper trading mode (Yes/No) ? >>> Yes
+
+New configuration saved:
+paper_trade_enabled: True
+```
+-->
+
+![papertrade](paper_trade.gif)
+
+** Enabling and Disabling **
+
+Paper trading mode can be enabled/disabled inside Hummingbot by doing `paper_trade` or `config paper_trade_enabled`.
+
+Alternatively, you can edit the `conf_global.yml` file using a text editor and set `paper_trade_enabled:` value to `true` or `false`.
+
+- Locating your global configuration:<br />
+  - Installed from source: `hummingbot/conf`<br />
+  - Installed via Docker: `hummingbot_files/hummingbot_conf`<br />
+    `hummingbot_files` is the default name of the parent directory. This can be different depending on the setup
+    when the instance was created.<br />
+  - Installed via Binary (Windows): `%localappdata%\hummingbot.io\Hummingbot\conf`<br />
+  - Installed via Binary (MacOS): `~/Library/Application\ Support/Hummingbot/Conf`<br />
+
+The top bar shows the status to indicate if paper trading mode is on or off.
+
+![papertrade2](paper_trade_mode2.png)
+
+Also shows a reminder that paper trade was enabled when doing a `status` or `history` command.
+
+![papertrade3](paper_trade_warning.png)
+
+** Account Balance **
+
+By default, the paper trade account has the following tokens and balances:
+
+```
+paper_trade_account_balance:
+  BTC: 1
+  USDT: 1000
+  ONE: 1000
+  USDQ: 1000
+  TUSD: 1000
+  ETH: 10
+  WETH: 10
+  USDC: 1000
+  DAI: 1000
+```
+
+Paper trade assets can be added in two ways:
+
+1. Run `balance paper [asset] [amount]`. See more information in [balance](/operation/commands/balance/#balance-paper-asset-amount) command.
+2. Edit `conf_global.yml` in the `/conf` or `hummingbot_conf` folder using a text editor. **Strictly follow the same format above**.
+
+> Note: When making changes to the global config file, make sure to exit and restart Hummingbot to take effect.
+
+** Supported Connectors **
+
+- Binance
+- Coinbase Pro
+- Huobi
+- Bamboo Relay
+- Radar Relay
+- Bittrex
+- Dolomite
+- Liquid
+- KuCoin
+- Kraken
+
+## Export
+
+Exports secure information.
+
+** export keys **
+
+Displays API keys, secret keys and wallet private key in the command output pane.
+
+```
+>>>  export keys
+
+Enter your password >>> *****
+
+Warning: Never disclose API keys or private keys. Anyone with your keys can steal any assets held in your account.
+
+API keys:
+binance_api_key:
+binance_api_secret:
+
+Ethereum wallets:
+Public address:
+Private key:
+```
+
+** export trades **
+
+Exports all trades in the current session to a .csv file.
+
+```
+>>>  export trades
+
+Enter a new csv file name >>> trade_list
+Successfully exported trades to logs/trade_list.csv
+```
+
+## Order_book
+
+Displays the top 5 bid/ask prices and volume of the current market, similar to how they're displayed in the exchange's order book.
+
+```
+>>>  order_book
+  market: binance ETHUSDT
+
+     bid_price  bid_volume  ask_price  ask_volume
+        395.87     0.73244     395.89    34.37802
+        395.86           7      395.9      10.786
+        395.85    71.36763     395.91        0.19
+        395.84      12.786     395.92     2.02141
+        395.83     16.5706     395.93     3.29861
+```
+
+> Note: This command will only work while a strategy is running.
+
+Run `order_book --lines [value]` to specify the number of lines displayed.
+
+```
+>>>  order_book --lines 15
+  market: binance ETHUSDT
+
+     bid_price  bid_volume  ask_price  ask_volume
+        395.91           6     395.93          30
+         395.9     0.02764     395.94      10.786
+        395.89       8.292     395.95     0.11719
+        395.87    25.13292     395.96     8.53205
+        395.86    61.26264     395.97      0.0007
+        395.84    12.40548     395.98     7.52538
+        395.83     20.7474     395.99     8.61834
+        395.82          11        396    13.53414
+        395.81     8.61536     396.02    12.92161
+         395.8    60.38759     396.03     6.26138
+        395.79     25.5767     396.04    21.61688
+        395.78    31.94231     396.05    44.45931
+        395.77    41.51229     396.06     0.19829
+        395.76    24.17199     396.07    12.26197
+        395.75      2.9788     396.08     1.21638
+```
+
+By default, the `order_book` command shows only the maker market in cross-exchange strategy or primary market when using arbitrage.
+
+Optional arguments `--exchange` and `--market` allows you to check the order book of the taker market or secondary market.
+
+Sample usage:
+
+```
+>>>  order_book --exchange kucoin --market ETH-USDT
+  market: kucoin ETH-USDT
+
+     bid_price  bid_volume  ask_price  ask_volume
+         395.8        1.07     395.81        2.02
+        395.79    22.95406     395.82   0.0505293
+        395.77    7.668467     395.84    0.554996
+        395.75        0.05     395.85    3.644207
+         395.7           1     395.86       1.825
+```
+
+## Kill Switch
+
+Automatically stops the bot when it reaches a certain performance threshold, which can be either positive or negative. This feature uses the same performance calculation methodology as the [history](/operation/commands/history) command.
+
+```
+Would you like to enable the kill switch? (Yes/No) >>>
+At what profit/loss rate would you like the bot to stop? (e.g. -5 equals 5 percent loss) >>>
+```
+
+You can always reconfigure this feature in two ways:
+
+1. Inside Hummingbot run command `config kill_switch_enabled` and/or `config kill_switch_rate`.
+2. Edit `conf_global.yml` file using a text editor.
+
+Note that when the market prices changes, so does the bot's performance and may trigger the kill switch. For example, we executed 13 trades and our performance are shown below.
+
+```json
+- kill_switch_enabled: True
+- kill_switch_rate: -0.3
+```
+
+```
+Inventory:
+      Market Asset  Starting   Current  Net Delta Trade Delta
+  0  binance   ETH   10.0000   11.0000     1.0000      3.0000
+  1  binance  USDT  500.0000  297.1580  -202.8420   -610.6340
+
+Markets:
+      Market     Pair Start Price       End Price  Trades Trade Value Delta
+  0  binance  ETHUSDT     203.913  202.7150000000      13  -2.48900000 USDT
+
+Performance:
+  Started: 2020-05-26 10:28:03
+  Duration: 0 days 00:07:06
+  Total Trade Value Delta: -2.489 USDT
+  Return %: -0.0985 %
+```
+
+After a while, the end price changed from 202.715 to 200.54 and so did our bot's performance even without making more trades. Since `kill_switch_rate` is set to `-0.3` this will stop the strategy.
+
+```
+Inventory:
+      Market Asset  Starting   Current  Net Delta Trade Delta
+  0  binance   ETH   10.0000   11.0000     1.0000      3.0000
+  1  binance  USDT  500.0000  297.1580  -202.8420   -610.6340
+
+Markets:
+      Market     Pair Start Price       End Price  Trades Trade Value Delta
+  0  binance  ETHUSDT     203.913  200.5400000000      13  -9.01400000 USDT
+
+Performance:
+  Started: 2020-05-26 10:28:03
+  Duration: 0 days 02:09:13
+  Total Trade Value Delta: -9.014 USDT
+  Return %: -0.3598 %
+```
+
+```
+[Kill switch triggered]
+Current profitability is -0.003550034854458‬. Stopping the bot...
+kill_switch - Kill switch threshold reached. Stopping the bot...
+```

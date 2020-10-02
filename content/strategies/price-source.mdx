@@ -9,7 +9,55 @@ By default, Hummingbot uses the order book you're trading in to generate the **m
 
 With this feature, you can now use a different order book for the starting mid price, such as an external **exchange** or a **custom API**.
 
-##How It Works
+## `price_source_enabled`
+
+When enabled, allows users to use an external pricing source for the mid price.
+
+** Prompt: **
+
+`Would you like to use an external pricing source for mid-market price? (Yes/No)`
+
+## `price_source_type`
+
+The type of external pricing source.
+
+** Prompt: **
+
+`Which type of external price source to use? (exchange/custom_api)`
+
+## `price_source_exchange`
+
+Name of exchange to be used for external pricing source.
+
+** Prompt: **
+
+`Enter external price source exchange name`
+
+## `price_source_market`
+
+The trading pair for the price source exchange.
+
+** Prompt: **
+
+`Enter the token pair on [price_source_exchange]`
+
+## `price_source_custom`
+
+An external API that returns price.
+
+** Prompt: **
+
+`Enter pricing API URL`
+
+## `take_if_crossed`
+
+Take order if they cross orderbook when external price source is enabled.
+
+** Prompt: **
+
+`Do you want to let your maker orders match and fill if they cross the order book?`
+
+## How It Works
 
 In a situation where the calculation of maker order prices from external sources would result in the order matching any existing orders on the order book, such order will be ignored.
 
@@ -17,8 +65,7 @@ Type `config price_source_enabled` to start the configuration process.
 
 First, set `price_source_type`: choose whether you want to use another exchange (`exchange`) or a custom API (`custom`). Based on your answer, you can set the exchange order book or enter an API endpoint.
 
-!!! note
-Currently, the external price source cannot be the same as the maker exchange (i.e. if the bot is trading on Binance, the `price_source_exchange` cannot be Binance).
+> Note: Currently, the external price source cannot be the same as the maker exchange (i.e. if the bot is trading on Binance, the `price_source_exchange` cannot be Binance).
 
 ## When to use an external price source
 
@@ -87,14 +134,3 @@ Sample API Output:
 ```json
 207.8
 ```
-
-## Relevant Parameters
-
-| Parameter                 | Prompt                                                                              | Definition                                                                      |
-| ------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| **price_source_enabled**  | `Would you like to use an external pricing source for mid-market price? (Yes/No)`   | When enabled, allows users to use an external pricing source for the mid price. |
-| **price_source_type**     | `Which type of external price source to use? (exchange/custom_api)`                 | The type of external pricing source.                                            |
-| **price_source_exchange** | `Enter external price source exchange name`                                         | Name of exchange to be used for external pricing source.                        |
-| **price_source_market**   | `Enter the token pair on [price_source_exchange]`                                   | The trading pair for the price source exchange.                                 |
-| **price_source_custom**   | `Enter pricing API URL`                                                             | An external API that returns price.                                             |
-| **take_if_crossed**       | `Do you want to let your maker orders match and fill if they cross the order book?` | Take order if they cross orderbook when external price source is enabled.       |

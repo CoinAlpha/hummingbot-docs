@@ -52,11 +52,7 @@ const sidebarCategories = {
     "strategies/add-transaction-costs",
     "strategies/external-price-source",
   ],
-  Scripts: [
-    "scripts/overview",
-    "scripts/perform-trade",
-    "scripts/simple-trade",
-  ],
+  Scripts: ["scripts/overview"],
   "Developing Connectors": [
     "developer/overview",
     "developer/architecture",
@@ -73,6 +69,7 @@ const sidebarCategories = {
     "developer/cross-exchange-market-making",
     "developer/twap",
     "developer/arbitrage",
+    "developer/build-strategy",
   ],
   "Release Notes": [
     "release-notes/0.31.0",

@@ -7,6 +7,14 @@ By default, Hummingbot places orders as soon as there are no active orders; i.e.
 
 The `filled_order_delay` parameter allows for a delay when placing a new order in the event of an order being filled, which will help mitigate the above scenarios.
 
+## `filled_order_delay`
+
+How long to wait before placing the next set of orders in case at least one of your orders gets filled.
+
+** Prompt: **
+
+`How long do you want to wait before placing the next order if your order gets filled (in seconds)?`
+
 ## How It Works
 
 As an example, our buy and sell orders are created at exactly `00:00:00`.
@@ -119,9 +127,3 @@ Notice the timestamps. Since the refresh time is longer than the filled order de
 00:01:10 - (BTCUSDT) Creating 1 bid order at ['0.005 BTC, 9047.709 USDT']
 00:01:10 - (BTCUSDT) Creating 1 ask order at ['0.005 BTC, 9093.266 USDT']
 ```
-
-## Relevant Parameters
-
-| Parameter              | Prompt                                                                                               | Definition                                                                                              |
-| ---------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| **filled_order_delay** | `How long do you want to wait before placing the next order if your order gets filled (in seconds)?` | How long to wait before placing the next set of orders in case at least one of your orders gets filled. |

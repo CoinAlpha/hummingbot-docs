@@ -3,11 +3,17 @@ title: Ping Pong
 description: Info on ping pong
 ---
 
-# Ping Pong
-
 **Updated as of `v0.28.0`**
 
 This feature enables the ping pong strategy, in which Hummingbot alternates buy and sell orders.
+
+## `ping_pong_enabled`
+
+Whether to alternate between buys and sells.
+
+** Prompt: **
+
+`Would you like to use the ping pong feature and alternate between buy and sell orders after fills?`
 
 ## How It Works
 
@@ -41,9 +47,3 @@ Let's say initially we have 2 orders on each side, buy orders $b1$, $b2$, and se
 6. Buy order $b5$ is created
 7. $b5$ gets filled
 8. Buy orders $b6$, $b7$ and sell orders $s6$, $s7$ are created
-
-## Relevant Parameters
-
-| Parameter             | Prompt                                                                                               | Definition                                   |
-| --------------------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| **ping_pong_enabled** | `Would you like to use the ping pong feature and alternate between buy and sell orders after fills?` | Whether to alternate between buys and sells. |

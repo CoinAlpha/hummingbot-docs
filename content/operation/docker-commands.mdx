@@ -7,13 +7,13 @@ import { MultiCodeBlock } from "gatsby-theme-apollo-docs";
 
 ## Docker commands
 
-| Command                          | Description                                                              |
-| -------------------------------- | ------------------------------------------------------------------------ |
-| `docker ps`                      | List all running containers                                              |
-| `docker ps -a`                   | List all created containers (including stopped containers)               |
-| `docker attach [instance_name]`  | Connect to a running Docker container                                    |
-| `docker start [instance_name]`   | Start a stopped container                                                |
-| `docker inspect [instance_name]` | View details of a Docker container, including details of mounted folders |
+| Command                        | Description                                                              |
+| ------------------------------ | ------------------------------------------------------------------------ |
+| docker ps                      | List all running containers                                              |
+| docker ps -a                   | List all created containers (including stopped containers)               |
+| docker attach [instance_name]  | Connect to a running Docker container                                    |
+| docker start [instance_name]   | Start a stopped container                                                |
+| docker inspect [instance_name] | View details of a Docker container, including details of mounted folders |
 
 More commands can be found in [Docker Documentation](https://docs.docker.com/engine/reference/commandline/docker/).
 
@@ -21,11 +21,11 @@ More commands can be found in [Docker Documentation](https://docs.docker.com/eng
 
 These commands execute the helper scripts for running Hummingbot and are performed from the terminal or shell. Ensure that the scripts are located in your current directory before running these commands.
 
-| Command       | Function                                                               |
-| ------------- | ---------------------------------------------------------------------- |
-| `./create.sh` | Creates a new instance of Hummingbot                                   |
-| `./start.sh`  | Connect to a running instance or restart an exited Hummingbot instance |
-| `./update.sh` | Update Hummingbot version                                              |
+| Command     | Function                                                               |
+| ----------- | ---------------------------------------------------------------------- |
+| ./create.sh | Creates a new instance of Hummingbot                                   |
+| ./start.sh  | Connect to a running instance or restart an exited Hummingbot instance |
+| ./update.sh | Update Hummingbot version                                              |
 
 > Tip: Run the command `ls -l` to check the files in your current working directory.
 

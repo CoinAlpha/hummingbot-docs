@@ -7,6 +7,14 @@ description: Info on minimum spread
 
 This parameter allows Hummingbot to cancel the active order right away when its spread dips below the specified value.
 
+## `minimum_spread`
+
+If the spread of any active order fall below this param value, it will be automatically cancelled.
+
+** Prompt: **
+
+`At what minimum spread should the bot automatically cancel orders?`
+
 ## How It Works
 
 The strategy checks the active order's spread on every tick (1 second).
@@ -54,9 +62,3 @@ Orders:
 ```
 
 In the next order refresh new buy and sell orders with 0.5% spreads will be created.
-
-## Relevant Parameters
-
-| Parameter          | Prompt                                                               | Definition                                                                                         |
-| ------------------ | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| **minimum_spread** | `At what minimum spread should the bot automatically cancel orders?` | If the spread of any active order fall below this param value, it will be automatically cancelled. |

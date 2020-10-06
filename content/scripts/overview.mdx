@@ -1,104 +1,168 @@
 ---
 title: Overview
-description: Overview on scripts
+description: Learn how to use scripts
 ---
 
-## Introduction
+Offers dynamic bot controls by running a user defined script alongside a strategy.
 
-This tutorial is intended to get you familiarized with basic structure of a strategy for Hummingbot. It will guide you through the scope of creating a simple strategy that only fetches market status to building a more complex strategy that can perform trade.
+> Warning: Currently, Scripts can only be used when running Hummingbot from source or with Docker. Using this feature in the Mac or Windows installers will crash the bot.
 
-By the end of this tutorial, you should:
+## Language
 
-- Have a general understanding of the base classes that serve as building blocks of the strategies
-- Have a working strategy
-- Be able to build new custom strategies from scratch
+As with Hummingbot source code, the script is fully compatible with Python 3.7.
 
-## 1. Hello World Strategy
+## How it works
 
-We will start out with a simple strategy that can perform `status` command and displays the user’s token balance in a given market. This part should expose you to different parts of the Hummingbot codebase, help you understand some core classes that are frequently referred to when building strategies, and provide a starting point for developing custom strategies.
+After configured, the script will start automatically once a strategy starts and it stops when the strategy stops.
+The script is run on a new dedicated process, in case where the script fails or has a bug, your main Hummingbot
+application can still function.
 
-#### Directory Breakdown
+## Create your own script
 
-Take a look at the directory for hello world strategy:
+1. Create a new script file, you can see examples in the Examples section below, and save it into `scripts` folder
+1. Configure your Hummingbot
+   1. Inside Hummingbot run command `config script_enabled` and/or `config script_file_path`
+   1. Editing `conf_global.yml` file using a text editor.
+   ```json
+   script_enabled: true
+   script_file_path: spreads_adjusted_on_volatility_script.py
+   ```
+1. Start running a strategy
 
-- **\_\_init\_\_.py**  
-  This file allows one to expose certain variables to all modules inside the package by placing the strategy object under `__all__` field.
-- **{strategy name}.pxd**  
-  This file contains type declaration about some variables that are specified in the `{strategy name}.pyx` file.
-- **{strategy name}.pyx**  
-  This file contains a bulk of functions that define the behavior of strategy. The `__init__` function defines the variables that were declared in the `{strategy name}.pxd` file and initializes fields inherited from `StrategyBase` class. All other functions can be customized depending on the behavior that the developer wants to create. A function that is especially important is `format_status()` because this function chooses which data to render when `status` is called on the client.
-- **{strategy name}\_config_map.py**  
-  This file handles prompting user for config values when the strategy is called. Each key value of the `config_map` has a `ConfigVar` assigned where developer can specify the prompt and assign validators to check for accepted values.
-- **start.py**  
-  The `start()` function is what gets called when user calls the strategy on client side. This function should handle initialization of configs by calling `config_map`, set market names and wallets, and eventually execute the strategy.
+## ScriptBase
 
-#### Important commands
+This is the base class (`hummingbot/script/script_base.py`) for your script, it provides data, events and functions
+as below.
 
-Important commands on Hummingbot client:
+### Data
 
-- `status` : Renders information about the current strategy and markets. The information that you want displayed can be customized with `format_status()` function in `{strategy name}.pyx`
-- `config` : Prompts users asking for details about strategy set up (e.g. token, market name, etc). Prompts can be modified in `{strategy name}_config_map.py`
+At every tick, the script gets current market price (`mid_price`), strategy configuration (`pmm_parameters`) and
+total balances (`all_total_balances`). The `mid_price` is stored in a list (`mid_prices`) where a new `mid_price`
+is added to the end of the list, whereas strategy configuration and total balances are replaced every time.
 
-#### StrategyBase class
+Note: The current script feature supports only _pure market making_ strategy configuration.
 
-All strategies extend `StrategyBase` class. This class allows extraction of logic that would be repetitively written in all strategies otherwise.
+#### pmm_parameters
 
-- **Event listeners** : The client’s prompt eventually leads to changes on server with the help of event listeners. Depending on action taken by the client, corresponding event listeners are called to execute the appropriate job.
-- **Data frames** : The base class handles creation of data frames for market status, `market_status_data_frame()`, and wallet balance, `wallet_balance_data_frame()`, so it is easy for developers to create and access about particular markets.
+To set a pure market making strategy parameter to a new value, simply assign a new value to it.
 
-The base class also contains methods that are meant to be freshly implemented when new strategies are created.
+Usage Example: `self.pmm_parameters.bid_spread = Decimal("0.03")` - to update bid spread to 3%
 
-- `logger()` : set up logger for strategy session
-- `format_status()` : define format of status that will be rendered on Hummingbot client
+These below are configurable parameters:
 
-To assist in the development of custom strategies, there are many overridable functions that respond to various events detected by EventListeners.
+- buy_levels (a number of buy orders to place, initially set to `order_levels` when the strategy starts)
+- sell_levels (a number of sell orders to place, initially set to `order_levels` when the strategy starts)
+- order_levels
+- bid_spread
+- ask_spread
+- order_amount
+- order_level_spread
+- order_level_amount
+- order_refresh_time
+- order_refresh_tolerance_pct
+- filled_order_delay
+- hanging_orders_enabled
+- hanging_orders_cancel_pct
 
-- `c_did_create_buy_order()`: called in response to an `order_created_event`
-- `c_did_create_sell_order()`: called in response to an `order_created_event`
-- `c_did_fail_order()`: called in response to an `order_filled_event`
-- `c_did_create_sell_order()`: called in response to an `order_failed_event`
-- `c_did_cancel_order()`: called in response to a `cancelled_event`
-- `c_did_expire_order()`: called in response to an `expired_event`
-- `c_did_complete_buy_order()`: called in response to an `order_completed_event`
-- `c_did_complete_sell_order()`: called in response to an `order_completed_event`
-- `c_did_fail_order_tracker()`: called in response to an `order_failed_event`
-- `c_did_cancel_order_tracker()`: called in response to an `order_cancelled_event`
-- `c_did_expire_order_tracker()`: called in response to an `order_expired_event`
-- `c_did_complete_buy_order_tracker()`: called in response to an `order_completed_event`
-- `c_did_complete_sell_order_tracker()`: called in response to an `order_completed_event`
+### Events
 
-#### Market class
+- **on_tick**
 
-The `market_base` class contains overridable functions that can help get basic information about an exchange that a strategy is operating on, which can include the balance, prices, and order books for any particular asset traded on the exchange.
+  The code here will be executed on every tick which is every second on a default Hummingbot configuration.
 
-- `c_buy()`: called when the user wants to place a buy order
-- `c_sell()`: called when the user wants to place a sell order
-- `c_cancel()`: called when the user wants to place an order cancellation
-- `c_get_balance()`: called to get the user’s balance of assets
-- `c_get_available_balance()`: called to get the user’s available balance of assets
-- `c_withdraw()`: called when the user wants to withdraw assets
-- `c_get_order_book()`: called to get the order book for any particular asset
-- `c_get_price()`: called to get the price for any particular asset
-- `c_get_order_price_quantum()`: called to get the quantum price of an order
-- `c_get_order_size_quantum()`: called to get the quantum size of an order
-- `c_quantize_order_price()`: called to quantize the price of an order
-- `c_quantize_order_amount()`: called to quantize the amount of an order
-- `c_get_fee()`: called to get the fee for exchange use
+- **on_buy_order_completed**
 
-Additionally, this strategy leverages the `Market` class’s `EventReporter` listener object, in order to check if buy/sell orders have been filled or completed, the user has enough balance to place certain orders, and if there are any order cancellations. The `EventLogger` object is also used to log the specific events when they occur.
+  The script will be notified every time a buy order of yours is fully filled. Put in your code logic here to handle such
+  situation if needed.
 
-#### Exposing new strategy to Hummingbot client
+- **on_sell_order_completed**
 
-Make strategy name known to the client by adding name to [hummingbot/client/settings.py](https://github.com/CoinAlpha/hummingbot/blob/development/hummingbot/client/settings.py) under `STRATEGIES` variable. There should also be a template file that contains config variables and its documentation in the [hummingbot/templates](https://github.com/CoinAlpha/hummingbot/tree/development/hummingbot/templates) directory. The naming convention for this yml file is `conf_{strategy name}_TEMPLATE`.
+  The script will be notified every time a sell order of yours is fully filled. Put in your code logic here to handle such
+  situation if needed.
 
-#### Setting question prompts for strategy parameters
+- **on_status**
 
-Strategy parameters can be set in the `config_map` file. Each parameter (represented as dictionary key) is mapped to a `ConfigVar` type where developer can specify the name of the parameter, prompts that will be provided to the user, and validator that will check the values entered.
+  This is called upon `status` command issued on the Hummingbot application. You can provide your custom status message
+  here.
 
-## 2. Get Order Book Strategy
+### Functions
 
-We will extend on what we built on step 1 and add a feature that will load the order book for a market. This part will help developers understand how to read data from different data frames.
+- **notify**
 
-#### Order book data
+  Notifies the user, the message will appear on top left panel of HB application.
+  If Telegram integration enabled, the message will also be sent to the telegram user.
 
-This strategy extends the Hello World Strategy by loading an order book in a given market. When the command `status` is executed, the strategy fetches and enumerates the order book data (maker orders) by retrieving the `active_orders` data frame for the market that the strategy is operating on. If there are no active orders, " No active maker orders." is printed.
+  Usage Example: `self.notify("Hello world")`
+
+- **log**
+
+  Logs message to the strategy log file and display it on Running Logs section of HB.
+
+  Usage Example: `self.log("Hello world")`
+
+- **avg_mid_price**
+
+  Calculates average (mean) of the stored mid prices.
+
+  Usage Example: `avg_value = self.avg_mid_price(60, 30)` - to calculate average mid price at a minute interval for the
+  last 30 minutes
+
+- **avg_price_volatility**
+
+  Calculates average (mean) price volatility, volatility is a price change compared to the previous cycle regardless of
+  its direction, e.g. if price changes -3% (or 3%), the volatility is 3%.
+
+  Usage Example: `avg_value = self.avg_price_volatility(60, 30)` - to calculate average price volatility at a minute
+  interval for the last 30 minutes
+
+- **median_price_volatility**
+
+  Calculates median (middle value) price volatility.
+
+  Usage Example: `median_value = self.median_price_volatility(60, 30)` - to calculate median price volatility at
+  a minute interval for the last 30 minutes
+
+- **locate_central_price_volatility**
+
+  Calculates central located price volatility based on a given mean function. The mean function can be one
+  that is supported by `statistics` library e.g. mean, median, geometric_mean and many more.
+
+  Usage Example: `median_value = self.locate_central_price_volatility(60, 30, median)` - to calculate median price
+  volatility at a minute interval for the last 30 minutes
+
+- **round_by_step**
+
+  Rounds a given number down by a given step size.
+
+  Usage Example: `rounded_value = self.round_by_step(1.8, 0.25)` will give you 1.75
+
+- **take_samples**
+
+  Takes samples out of a given list where the last item is the most recent.
+  Example List `a_list = [1, 2, 3, 4, 5, 6, 7]`
+
+  Usage Example: `samples = self.take_samples(a_list, 3, 2)` will give you `[4, 7]`
+
+## Examples
+
+All below examples can be found in `scripts\` folder.
+
+1. **hello_world_script.py**
+
+   The most basic example only a few lines of code.
+
+1. **ping_pong_script.py**
+
+   Replicates our current ping pong strategy using script.
+
+1. **price_band_script.py**
+
+   Replicates our current price band strategy using script.
+
+1. **dynamic_price_band_script.py**
+
+   Demonstrates how to set the band around mid price moving average, the band moves as the average moves.
+
+1. **spreads_adjusted_on_volatility_script.py**
+
+   Demonstrates how to adjust bid and ask spreads dynamically based on price volatility.

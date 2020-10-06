@@ -7,6 +7,22 @@ description: Info on price band
 
 This feature allows you to set a price band within which your bot places both buy and sell orders normally.
 
+## `price_ceiling`
+
+Place only sell orders when mid price goes above this price.
+
+** Prompt: **
+
+`Enter the price point above which only sell orders will be placed`
+
+## `price_floor`
+
+Place only buy orders when mid price falls below this price.
+
+** Prompt: **
+
+`Enter the price below which only buy orders will be placed`
+
 ## How It Works
 
 `price_ceiling` and `price_floor` are two optional parameters that you can set. By default, these parameters have a value of -1, which means that they are not used.
@@ -89,10 +105,3 @@ When it's time to refresh orders, the price band will take priority over the tol
 ## Price Band with External Pricing Source
 
 If `price_source` is enabled then the mid price reference point will be the external mid price.
-
-## Relevant Parameters
-
-| Parameter         | Prompt                                                              | Definition                                                   |
-| ----------------- | ------------------------------------------------------------------- | ------------------------------------------------------------ |
-| **price_ceiling** | `Enter the price point above which only sell orders will be placed` | Place only sell orders when mid price goes above this price. |
-| **price_floor**   | `Enter the price below which only buy orders will be placed`        | Place only buy orders when mid price falls below this price. |

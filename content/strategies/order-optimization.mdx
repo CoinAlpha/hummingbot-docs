@@ -5,6 +5,30 @@ description: Info on order optimization
 
 Users now have the option to automatically adjust the prices to right just above the top bid and just below the top ask.
 
+## `order_optimization_enabled`
+
+Allows your bid and ask order prices to be adjusted based on the current top bid and ask prices in the market.
+
+** Prompt: **
+
+`Do you want to enable best bid ask jumping? (Yes/No)`
+
+## `ask_order_optimization_depth`
+
+The depth in base asset amount to be used for finding top ask.
+
+** Prompt: **
+
+`How deep do you want to go into the order book for calculating the top ask, ignoring dust orders on the top (expressed in base asset amount)?`
+
+## `bid_order_optimization_depth`
+
+The depth in base asset amount to be used for finding top bid.
+
+** Prompt: **
+
+`How deep do you want to go into the order book for calculating the top bid, ignoring dust orders on the top (expressed in base asset amount)?`
+
 ## How It Works
 
 This feature works best in single order mode. Take note that this does not automatically jump your orders from the bottom to the top. Instead, if your orders are already the best in the orderbook (at the top) this will adjust your prices right next to the next best orders.
@@ -66,11 +90,3 @@ Then we reconfigure and set `ask_order_optimization_depth` and `bid_order_optimi
 Doing this ignores the first 50,000 units of orders on each side in the orderbook and places our orders right next to them.
 
 ![jump_orders_4](jump_orders4.png)
-
-## Relevant Parameters
-
-| Parameter                        | Prompt                                                                                                                                          | Definition                                                                                                     |
-| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| **order_optimization_enabled**   | `Do you want to enable best bid ask jumping? (Yes/No)`                                                                                          | Allows your bid and ask order prices to be adjusted based on the current top bid and ask prices in the market. |
-| **ask_order_optimization_depth** | `How deep do you want to go into the order book for calculating the top ask, ignoring dust orders on the top (expressed in base asset amount)?` | The depth in base asset amount to be used for finding top bid ask.                                             |
-| **bid_order_optimization_depth** | `How deep do you want to go into the order book for calculating the top bid, ignoring dust orders on the top (expressed in base asset amount)?` | The depth in base asset amount to be used for finding top bid.                                                 |

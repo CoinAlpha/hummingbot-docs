@@ -79,6 +79,38 @@ Solution 2: make sure you have conda section in ~/.bashrc. Run `conda init` if i
 
 ## Configuration
 
+### I can't copy and paste my API keys!
+
+Copying and pasting your API keys into Hummingbot may be problematic, especially in Docker installations or for PuTTY users. See below for how to copy/paste in different environments.
+
+### other ways to copy and paste
+
+**COPY on Windows or Linux**
+
+```
+Ctrl + C
+Ctrl + Insert
+Ctrl + Shift + C
+```
+
+**PASTE on Windows or Linux**
+
+```
+Ctrl + V
+Shift + Insert
+Ctrl + Shift + V
+```
+
+### paste items from clipboard in putty
+
+You should be able to paste items from your clipboard by doing mouse right-click or `SHIFT + right-click`. If that doesn't work, follow the steps below.
+
+1. If you are currently logged in a session, left-click on the upper left hand corner of the PuTTY window or a right-click anywhere on the title bar then select "Change Settings". If not, proceed to next step.
+2. In PuTTY configuration under Window category go to "Selection". Select the "Window" radio button for action of mouse buttons.
+3. You can now paste items from clipboard by doing a right-click to bring up the menu and select "Paste".
+
+![](putty_copy_paste.gif)
+
 ### Where are my config and log files?
 
 Hummingbot saves user data in the following directories:

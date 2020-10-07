@@ -20,6 +20,7 @@ const sidebarCategories = {
   Connectors: [
     "connectors/overview",
     "connectors/binance",
+    "connectors/bitfinex",
     "connectors/bittrex",
     "connectors/cryto-com",
     "connectors/eterbase",
@@ -27,6 +28,7 @@ const sidebarCategories = {
     "connectors/kraken",
     "connectors/kucoin",
     "connectors/liquid",
+    "connectors/loopring",
     "connectors/radar-relay",
     "connectors/bamboo-relay",
     "connectors/dolomite",
@@ -51,6 +53,7 @@ const sidebarCategories = {
     "strategies/order-optimization",
     "strategies/add-transaction-costs",
     "strategies/external-price-source",
+    "strategies/order-override",
   ],
   Scripts: ["scripts/overview"],
   "Developing Connectors": [
@@ -72,6 +75,7 @@ const sidebarCategories = {
     "developer/build-strategy",
   ],
   "Release Notes": [
+    "release-notes/0.32.0",
     "release-notes/0.31.0",
     "release-notes/0.30.0",
     "release-notes/0.29.0",

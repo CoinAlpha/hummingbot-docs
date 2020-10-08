@@ -2,10 +2,9 @@ const sidebarCategories = {
   null: ["index", "intro/ecosystem", "intro/support"],
   Installation: [
     "installation/overview",
-    "installation/download",
-    "installation/docker",
-    "installation/cloud",
-    "installation/source",
+    "installation/windows",
+    "installation/mac",
+    "installation/linux",
     "installation/raspberry",
     "installation/updating",
   ],

@@ -5,6 +5,84 @@ description: Raspberry installation Guide
 
 import { MultiCodeBlock } from "gatsby-theme-apollo-docs";
 
+## Install via Docker
+
+You can install Hummingbot with **_either_** of the following options:
+
+- **Easy Install**: download and use automated install scripts.
+- **Manual Installation**: run install commands manually.
+
+1. Install Docker and change permissions.
+
+```
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -a -G docker $USER
+```
+
+2. Start and automate docker.
+
+```
+sudo systemctl start docker && sudo systemctl enable docker
+```
+
+3. Exit terminal/shell to refresh shell.
+
+```
+Exit
+```
+
+> Warning "Restart terminal": Close and restart your terminal window to enable the correct permissions for `docker` command before proceeding to [Step 2](#step-2-install-hummingbot).
+
+4. Install Hummingbot:
+
+<MultiCodeBlock>
+
+
+```Scripts
+# 1) Download Hummingbot install, start, and update script
+wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/create.sh
+wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/start.sh
+wget https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/update.sh
+
+# 2) Enable script permissions
+chmod a+x *.sh
+
+# 3) Create a hummingbot instance
+./create.sh
+
+# 4) Pull Hummingbot ARM image when asked what version to use [ Enter Hummingbot version: [latest|development] (default = "latest")]
+dev-0.31.0-arm_beta
+```
+
+```Manual
+# 1) Create folder for your new instance
+mkdir hummingbot_files
+
+# 2) Create folders for logs, config files and database file
+mkdir hummingbot_files/hummingbot_conf
+mkdir hummingbot_files/hummingbot_logs
+mkdir hummingbot_files/hummingbot_data
+mkdir hummingbot_files/hummingbot_scripts
+
+# 3) Launch a new instance of hummingbot
+docker run -it \
+--network host \
+--name hummingbot-instance \
+--mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_conf,destination=/conf/" \
+--mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_logs,destination=/logs/" \
+--mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_data,destination=/data/" \
+--mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_scripts,destination=/scripts/" \
+coinalpha/hummingbot:dev-0.31.0-arm_beta
+```
+
+</MultiCodeBlock>
+
+
+> Note: This image `dev-0.31.0-arm_beta` only works for Raspberry Pi, other branches of Hummingbot are not built for ARM architecture.
+
+## Install from Source
+
 This guide walks you through how to prepare your development environment and get started developing for Hummingbot.
 
 Running Hummingbot on a Raspberry Pi has the same main benefit of running it on a cloud server: having a dedicated machine for Hummingbot. Raspberry Pi’s are relatively low cost, easy to set up, and, of course, don’t have the monthly charges associated with a cloud provider.

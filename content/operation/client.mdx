@@ -5,9 +5,7 @@ description: How to start Hummingbot and understanding the various configuration
 
 Hummingbot uses a command-line interface (CLI) that helps users configure and run the bot, as well as generate logs of the trades performed.
 
-## Starting Hummingbot
-
-### Run from Docker
+## Start Hummingbot via Docker
 
 Creating a new instance of Hummingbot with `docker run` will automatically start the Hummingbot client.
 
@@ -23,37 +21,19 @@ Use the start script by running the command `./start.sh` to attach to a Hummingb
 
 For additional information on useful commands, see the [commands](/operation/command-ref) to running Hummingbot on Docker.
 
-### Run from Source
+### Start Hummingbot from Source
 
-What you'll need to start:
+> Prerequisites:
 
-#### Crypto Inventory
-
-**Why this is needed**: In order to run trading bot, you'll need some inventory of crypto assets available on the exchange, or in your Ethereum wallet (for Ethereum-based decentralized exchanges).
-
-Remember that you need inventory of both the **base asset** (the asset that you are buying and selling) and the **quote asset** (the asset that you exchange for it). For example, if you are making a market in a `BTC/USDT` trading pair, you'll need some `BTC` and `USDT`.
-
-In addition, be aware of the minimum order size requirements on different exchanges. For more information, please see [Connectors](/connectors/overview).
-
-#### API Keys
-
-**Why this is needed**: In order to run a bot on a centralized exchange like Binance, you will need to enter the exchange API keys during the Hummingbot configuration process.
-
-For more information on how to get the API keys for each exchange, please see the individual exchange pages in [Connectors](/connectors/overview).
-
-#### Ethereum Wallet
-
-**Why this is needed**: In order to earn rewards from Liquidity Bounties, you need an Ethereum wallet. In addition, you'll need to import an Ethereum wallet when you run a trading bot on an Ethereum-based decentralized exchange.
-
-For more information on creating or importing an Ethereum wallet, see [Ethereum wallet](/operation/adv-command-ref).
-
-#### Ethereum Node (DEX only)
-
-**Why this is needed**: When you run a trading bot on a Ethereum-based decentralized exchange, your wallet sends signed transactions to the blockchain via an Ethereum node.
-
-For more information, see [Ethereum node](/operation/adv-command-ref).
-
-### Start Hummingbot
+- Crypto Inventory: In order to run trading bot, you'll need some inventory of crypto assets available on the exchange, or in your Ethereum wallet (for Ethereum-based decentralized exchanges).
+  Remember that you need inventory of both the **base asset** (the asset that you are buying and selling) and the **quote asset** (the asset that you exchange for it). For example, if you are making a market in a `BTC/USDT` trading pair, you'll need some `BTC` and `USDT`.
+  In addition, be aware of the minimum order size requirements on different exchanges. For more information, please see [Connectors](/connectors/overview).
+- API Keys: In order to run a bot on a centralized exchange like Binance, you will need to enter the exchange API keys during the Hummingbot configuration process.
+  For more information on how to get the API keys for each exchange, please see the individual exchange pages in [Connectors](/connectors/overview).
+- Ethereum Wallet: In order to earn rewards from Liquidity Bounties, you need an Ethereum wallet. In addition, you'll need to import an Ethereum wallet when you run a trading bot on an Ethereum-based decentralized exchange.
+  For more information on creating or importing an Ethereum wallet, see [Ethereum wallet](/operation/adv-command-ref).
+- Ethereum Node (DEX only): When you run a trading bot on a Ethereum-based decentralized exchange, your wallet sends signed transactions to the blockchain via an Ethereum node.
+  For more information, see [Ethereum node](/operation/adv-command-ref).
 
 > note: Make sure that you activate the Anaconda environment with `conda activate hummingbot` prior to running Hummingbot.
 

@@ -63,7 +63,7 @@ chmod a+x *.sh
 
 ### Multiple bots from source
 
-> Tip: We recommend that users download and install Hummingbot separately for each instance they wish to run.
+> **Tip:** We recommend that users download and install Hummingbot separately for each instance they wish to run.
 
 Below command downloads the Hummingbot repository from GitHub where `$FOLDER_NAME` is the name of the separate directory.
 
@@ -153,7 +153,7 @@ kraken_maker_fee:
 kraken_taker_fee:
 ```
 
-> Note: Make sure Hummingbot is not running on background or exit Hummingbot first before editing `conf/conf_fee_overrides.yml`.
+> **Note:** Make sure Hummingbot is not running on background or exit Hummingbot first before editing `conf/conf_fee_overrides.yml`.
 
 ## Logs and Logging
 
@@ -177,8 +177,8 @@ If the user answers "No", then no data will be collected.
 
 You can always enable/disable sending error logs in two ways:
 
-1. Editing `conf_global.yml` file using a text editor.
-1. Inside Hummingbot enter: `config send_error_logs`.
+- Editing `conf_global.yml` file using a text editor.
+- Inside Hummingbot enter: `config send_error_logs`.
 
 ### Viewing Individual Log Files
 
@@ -222,7 +222,7 @@ There are two ways to import your Hummingbot wallet from other wallets like Meta
 
 We recommend using the keyfile method over copying and pasting the private key. If your private key remains in your clipboard, there is a risk that a malicious website that you visit may utilize Javascript to access your clipboard and copy its contents.
 
-> Tip "Metamask wallet": Using a wallet that is available in your Metamask (i.e. importing a wallet from Metamask) allows you to view orders created and trades filled by Hummingbot on the decentralized exchange's website.
+> **Tip:** "Metamask wallet": Using a wallet that is available in your Metamask (i.e. importing a wallet from Metamask) allows you to view orders created and trades filled by Hummingbot on the decentralized exchange's website.
 
 #### Keyfile (recommended)
 
@@ -281,7 +281,7 @@ Running your own node may require dedicated storage and compute, as well as some
 - [Geth (go-ethereum)](https://github.com/ethereum/go-ethereum/wiki/Building-Ethereum)
 - [Parity](https://github.com/paritytech/parity-ethereum)
 
-> Note: These may require several hours to days to sync and may require some troubleshooting when first running.
+> **Note:** These may require several hours to days to sync and may require some troubleshooting when first running.
 
 ### Option 3. Dedicated blockchain hardware
 
@@ -378,4 +378,4 @@ For example, the minimum order size(on the exchange) for LINK/ETH is 0.01 ETH an
 2. Scroll down to the **Minimum default order amount** section.
 3. Enter or edit the values accordingly.
 
-> Note: Take note of the previous example that using a value near to the exchange's minimum order size may cause orders not created due to volatility.
+> **Note:** Take note of the previous example that using a value near to the exchange's minimum order size may cause orders not created due to volatility.

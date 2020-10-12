@@ -55,7 +55,7 @@ const sidebarCategories = {
     "strategies/external-price-source",
     "strategies/order-override",
   ],
-  Scripts: ["scripts/overview"],
+  Scripts: ["scripts/overview", "scripts/script-base"],
   "Developing Connectors": [
     "developer/overview",
     "developer/architecture",

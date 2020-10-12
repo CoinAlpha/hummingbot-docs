@@ -48,7 +48,7 @@ Order tracking starts when `c_buy()` or `c_sell()` is called. It happens for bot
 
 ### Order Lifecycle Flowchart
 
-![Figure 1: Order lifecycle flowchart](connector-order-lifecycle.svg)
+![Figure 1: Order lifecycle flowchart](/img/connector-order-lifecycle.svg)
 
 ### Creating an Order
 
@@ -88,7 +88,7 @@ On some exchanges, it is possible for an order to fail or rejected without havin
 
 Hummingbot comes with a built-in helper class for market connectors to track their order states, the `InFlightOrderBase` class.
 
-![Figure 2: InFlightOrderBase class](/connector-in-flight-uml.svg)
+![Figure 2: InFlightOrderBase class](/img/connector-in-flight-uml.svg)
 
 While market connector authors are free to extend or modify from `InFlightOrderBase` to suit their own logic. There are a few conventions within Hummingbot's built-in market connectors for extending `InFlightOrderBase`, and it is recommended that new market connectors should stick with the same conventions.
 

@@ -21,7 +21,7 @@ Use the start script by running the command `./start.sh` to attach to a Hummingb
 
 For additional information on useful commands, see the [commands](/operation/command-ref) to running Hummingbot on Docker.
 
-### Start Hummingbot from Source
+## Start Hummingbot from Source
 
 > **Prerequisites:**
 
@@ -35,7 +35,7 @@ For additional information on useful commands, see the [commands](/operation/com
 - Ethereum Node (DEX only): When you run a trading bot on a Ethereum-based decentralized exchange, your wallet sends signed transactions to the blockchain via an Ethereum node.
   For more information, see [Ethereum node](/operation/adv-command-ref).
 
-> **note:** Make sure that you activate the Anaconda environment with `conda activate hummingbot` prior to running Hummingbot.
+> **Note:** Make sure that you activate the Anaconda environment with `conda activate hummingbot` prior to running Hummingbot.
 
 Open a Terminal window and go to the root of the directory that contains Hummingbot. From there, run:
 
@@ -102,9 +102,9 @@ The `create` command walks you through the process of initializing and configuri
 
 When running `create`, you are asked to select a strategy and enter strategy-specific configuration parameters. We have developed walkthroughs for each strategy:
 
-- [Arbitrage](/strategies/arbitrage#configuration-walkthrough)
-- [Cross-exchange market making](/strategies/cross-exchange-market-making#configuration-walkthrough)
-- [Pure market making](/strategies/pure-market-making#configuration-walkthrough)
+- [Arbitrage](/strategies/arbitrage)
+- [Cross-exchange market making](/strategies/cross-exchange-market-making)
+- [Pure market making](/strategies/pure-market-making)
 
 > **Note:** Essential Trading Considerations — When configuring your bot, make sure you are aware of your exchange's minimum order sizes and fees, and check that your trading pair has sufficient order book and trading volumes. You can find more info about specific exchanges in the [Connectors](/connectors) section.
 
@@ -112,16 +112,7 @@ When running `create`, you are asked to select a strategy and enter strategy-spe
 
 In order to trade on a centralized exchange, you will need to import your API key from that exchange to Hummingbot using the `connect [exchange_name]` command. API keys are account specific credentials that allow access to live information and trading outside of the exchange website.
 
-Please see below for instructions to find your API keys for the exchanges that Hummingbot currently supports:
-
-- [Binance](/connectors/binance/#creating-binance-api-keys)
-- [Coinbase Pro](/connectors/coinbase/#creating-coinbase-pro-api-keys)
-- [Huobi Global](/connectors/huobi/#creating-huobi-api-keys)
-- [Bittrex Global](/connectors/bittrex/#creating-bittrex-api-keys)
-- [Liquid](/connectors/liquid/#creating-liquid-api-keys)
-- [KuCoin](/connectors/kucoin/#creating-kucoin-api-keys)
-- [Kraken](/connectors/kraken/#creating-kraken-api-keys)
-- [Eterbase](/connectors/eterbase/#creating-eterbase-api-keys)
+Please see [Connectors](/connectors/overview) for exchanges that Hummingbot currently and instructions to find your API keys.
 
 > **Warning:** We recommend using only **"trade"** enabled API keys; enabling **"withdraw", "transfer", or the equivalent** is unnecessary for current Hummingbot strategies.
 

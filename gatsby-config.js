@@ -122,6 +122,7 @@ const sidebarCategories = {
   Resources: [
     "resources/faq",
     "resources/glossary",
+    "[Hummingbot YouTube](https://www.youtube.com/c/HummingbotChannel)",
     "[Hummingbot whitepaper](https://hummingbot.io/hummingbot.pdf)",
   ],
 };

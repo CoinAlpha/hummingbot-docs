@@ -25,7 +25,7 @@ Below are the available commands in the current Hummingbot release.
 | order_book  | Displays the top 5 bid/ask prices and volume               |
 | kill switch | Automatically stops the bot                                |
 
-## Connect
+## connect
 
 List available exchanges and check whether API keys have been added correctly.
 
@@ -94,7 +94,7 @@ Enter the Websocket Address of your Ethereum Node >>>
 Wallet 0xC20...8bFa connected to hummingbot.
 ```
 
-## Create
+## create
 
 Create a new bot and walk through the strategy configuration.
 
@@ -114,7 +114,7 @@ Specify first the name of the file before going though the strategy configuratio
 What is your market making strategy? >>>
 ```
 
-## Import
+## import
 
 Import an existing bot by loading the configuration file.
 
@@ -150,7 +150,7 @@ Preliminary checks:
 Enter "start" to start market making.
 ```
 
-## Help
+## help
 
 List available commands.
 
@@ -300,7 +300,7 @@ Paper account balances:
       ZRX  1000.0000
 ```
 
-## Config
+## config
 
 Display the current bot's configuration.
 
@@ -397,7 +397,7 @@ ask_spread: 0.001
 The current pure_market_making strategy has been updated to reflect the new configuration.
 ```
 
-## Start
+## start
 
 Start the current bot.
 
@@ -413,7 +413,7 @@ Status check complete. Starting 'pure_market_making' strategy...
 Run `status` command to query the progress.
 ```
 
-## Stop
+## stop
 
 Stops the current bot. This cancels all active and hanging orders.
 
@@ -425,7 +425,7 @@ Cancelling outstanding orders...
 All outstanding orders cancelled.
 ```
 
-## Status
+## status
 
 Get the market status of the current bot.
 
@@ -449,7 +449,7 @@ Get the market status of the current bot.
          1   buy 0.02526431  1.02%              1             1  00:00:02   no
 ```
 
-## History
+## history
 
 See the past performance of the current bot.
 
@@ -534,24 +534,9 @@ Using the same example, get the starting quote value. Convert the starting ETH a
  Return %: -0.0092 %
 ```
 
-## Net Delta
-
-Net Delta is the difference of your starting balance and current balance i.e. it takes into calculation assets spent & acquired during trades, deposits and withdrawals.
-
-Trade Delta does not take into account deposits and withdrawals, only balance changes after executing trades in Hummingbot.
-
-$net\_delta = starting\_balance - current\_balance$
-
-```
-Inventory:
-       Market  Asset    Starting   Current  Net Delta Trade Delta
-  0   binance    ETH     10.0000   12.0000     2.0000      1.9970
-  1   binance   USDT   1000.0000  169.2100  -830.7900   -831.2056
-```
-
 Using the same example, after executing these trades we can calculate Net Delta for base and quote assets, so Net Delta for base asset is **2.0000** because we started with `10.0000 ETH` and the current is `12.000 ETH`. Net Delta for quote asset is **-830.79 USDT** because we started with `1000.0000 USDT` and current is `169.21 USDT`, it means we lost **-830.79 USDT** on quote asset.
 
-## Exit
+## exit
 
 Exit and cancel all outstanding orders. This cancels all active and hanging orders.
 
@@ -571,7 +556,7 @@ Force exit and cancel all outstanding orders.
 >>>  exit -f
 ```
 
-## Paper_trade
+## paper_trade
 
 Toggle paper trade mode on and off. When paper trade mode is enabled, all orders are simulated and no real orders are placed.
 
@@ -634,22 +619,12 @@ Paper trade assets can be added in two ways:
 1. Run `balance paper [asset] [amount]`. See more information in [balance](/operation/commands/balance/#balance-paper-asset-amount) command.
 2. Edit `conf_global.yml` in the `/conf` or `hummingbot_conf` folder using a text editor. **Strictly follow the same format above**.
 
-> Note: When making changes to the global config file, make sure to exit and restart Hummingbot to take effect.
+> **Note:**
 
-** Supported Connectors **
+- When making changes to the global config file, make sure to exit and restart Hummingbot to take effect.
+- For a list of supported connectors, see [Connectors](/connectors/overview)
 
-- Binance
-- Coinbase Pro
-- Huobi
-- Bamboo Relay
-- Radar Relay
-- Bittrex
-- Dolomite
-- Liquid
-- KuCoin
-- Kraken
-
-## Export
+## export
 
 Exports secure information.
 
@@ -684,7 +659,7 @@ Enter a new csv file name >>> trade_list
 Successfully exported trades to logs/trade_list.csv
 ```
 
-## Order_book
+## order_book
 
 Displays the top 5 bid/ask prices and volume of the current market, similar to how they're displayed in the exchange's order book.
 
@@ -744,7 +719,7 @@ Sample usage:
          395.7           1     395.86       1.825
 ```
 
-## Kill Switch
+## kill switch
 
 Automatically stops the bot when it reaches a certain performance threshold, which can be either positive or negative. This feature uses the same performance calculation methodology as the [history](/operation/commands/history) command.
 
@@ -805,4 +780,37 @@ Performance:
 [Kill switch triggered]
 Current profitability is -0.003550034854458‬. Stopping the bot...
 kill_switch - Kill switch threshold reached. Stopping the bot...
+```
+
+## ticker
+
+Displays market ticker prices such as best bid, best ask, mid price and last trade price. By default, it runs the output 10 times with 1 second in between intervals.
+
+When optional arguments are not used i.e. running `ticker` alone displays the output from the **maker market** of a cross-exchange strategy or **primary market** when using arbitrage.
+
+> **Note:** This command will only work while a strategy is running.
+
+## Optional arguments
+
+| Command Argument | Description                                                  |
+| ---------------- | ------------------------------------------------------------ |
+| `--repeat`       | To specify the number of times the output quote is displayed |
+| `--exchange`     | The specific exchange of the market                          |
+| `--market`       | The market trading pair of the order book                    |
+
+## Sample usage
+
+When running a cross-exchange or arbitrage strategy, you can specify which exchange and market you can display.
+
+```
+>>>  ticker --repeat 3 --exchange binance --market ETH-USDT
+
+   Best Bid  Best Ask  Mid Price  Last Trade
+   351.41    351.42    351.415      351.42
+
+   Best Bid  Best Ask  Mid Price  Last Trade
+   351.41    351.42    351.415      351.42
+
+   Best Bid  Best Ask  Mid Price  Last Trade
+    351.4    351.41    351.405      351.41
 ```

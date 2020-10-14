@@ -14,7 +14,7 @@ const sidebarCategories = {
     "operation/docker-commands",
     "operation/adv-command-ref",
     "operation/telegram",
-    "installation/debug",
+    "operation/debug",
   ],
   Connectors: [
     "connectors/overview",

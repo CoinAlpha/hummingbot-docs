@@ -74,9 +74,9 @@ Hummingbot can automatically start the execution of a previously configured trad
 
 ### Pre-requisites
 
-1. You have Hummingbot installed via Docker
-2. You have already connected exchanges by adding API keys
-3. You have at least one strategy configuration file that has been set up previously
+- You have Hummingbot installed via Docker
+- You have already connected exchanges by adding API keys
+- You have at least one strategy configuration file that has been set up previously
 
 ### Locating config files
 
@@ -86,7 +86,7 @@ If you used the **Manual** method, the configuration folder is `$(pwd)/hummingbo
 
 If your Hummingbot docker instance is already running, you can inspect the volume mount paths of your Hummingbot container with the following command:
 
-```bash
+```
 docker inspect ${HUMMINGBOT_CONTAINER_NAME} --format='{{.Mounts}}'
 ```
 
@@ -132,7 +132,7 @@ unset STRATEGY CONFIG_FILE_NAME CONFIG_PASSWORD
 
 The Hummingbot instance will be running in the background. You can bring it to foreground via
 
-```bash
+```
 docker attach hummingbot-instance
 ```
 
@@ -158,9 +158,9 @@ More information can be found in [Docker documentation](https://docs.docker.com/
 
 ### Pre-requisites
 
-1. You have Hummingbot installed via Source.
-2. You have already connected exchanges by adding API keys
-3. You have at least one strategy configuration file that has been set up previously
+- You have Hummingbot installed via Source.
+- You have already connected exchanges by adding API keys
+- You have at least one strategy configuration file that has been set up previously
 
 ### Locating config files
 
@@ -170,8 +170,8 @@ Whichever you used was it the **Scripts** or **Manual** method from Source, the 
 
 Running unattended Hummingbot is very similar to the running hummingbot manually. The only differences are:
 
-1.  You will read the pre-existing configuration files to the `conf` directory.
-2.  You will pass some parameters telling Hummingbot which strategy configuration to use, and the password to decrypt your API keys and wallets.
+- You will read the pre-existing configuration files to the `conf` directory.
+- You will pass some parameters telling Hummingbot which strategy configuration to use, and the password to decrypt your API keys and wallets.
 
 ```
 bin/hummingbot_quickstart.py -s STRATEGY -f CONFIG_FILE_NAME -p CONFIG_PASSWORD
@@ -182,6 +182,6 @@ Where
 `CONFIG_FILE_NAME` is the strategy config file name  
 `CONFIG_PASSWORD` is the config password
 
-More information on strategy can be found in [Strategy](/strategies/overview).  
-More information on configuration file name can be found in [Configuring Hummingbot](/operation/client).  
-More information on password can be found in [Create a secure password](/operation/client/#create-a-secure-password).
+- More information on strategy can be found in [Strategy](/strategies/overview).
+- More information on configuration file name can be found in [Configuring Hummingbot](/operation/client).
+- More information on password can be found in [Create a secure password](/operation/client/#create-a-secure-password).

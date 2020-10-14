@@ -3,8 +3,6 @@ title: Integrate Telegram
 description: How to integrate Telegram
 ---
 
-## Telegram Integration
-
 ![Telegram](/img/telegram.png)
 
 Integrating Hummingbot with [Telegram Messenger](https://telegram.org/) allows you to get real-time updates and issue commands to your trading bot from any device where you have Telegram installed.
@@ -13,43 +11,37 @@ Whether you are running Hummingbot in the cloud or on your local machine, you ca
 
 > **Note:** Make sure to install Telegram on your system before setting up your Telegram Bot. If not, you can download Telegram for [Windows/MAC/Linux](https://desktop.telegram.org/) and install.
 
-### Set up your Telegram Bot
+To create a Telegram bot that integrates with your Hummingbot deployment:
 
-Below, we show how to create a Telegram bot that integrates with your Hummingbot deployment.
+**Create the Bot**
 
-#### 1. Create the Bot
-
-- Click this link to launch the official **BotFather** bot, a Telegram bot that helps you create and manage Telegram bots: [https://telegram.me/BotFather](https://telegram.me/BotFather).
-
-- In Telegram, go to the newly-created **BotFather** chat pane, and click `Start` or type `/start`.
-
-- Enter `/newbot` to create a bot.
+1. Click this link to launch the official **BotFather** bot, a Telegram bot that helps you create and manage Telegram bots: [https://telegram.me/BotFather](https://telegram.me/BotFather).
+2. In Telegram, go to the newly-created **BotFather** chat pane, and click `Start` or type `/start`.
+3. Enter `/newbot` to create a bot.
 
 ![botfather](/img/botfather-1.png)
 
-- Enter a name for your bot, the title of the bot in Telegram (e.g. `hummingbot`).
+4. Enter a name for your bot, the title of the bot in Telegram (e.g. `hummingbot`).
 
 ![botfather2](/img/botfather-2.png)
 
-- Enter a unique ID that ends with the word `bot` (e.g. `my_awesome_hummingbot`).
+5. Enter a unique ID that ends with the word `bot` (e.g. `my_awesome_hummingbot`).
 
 ![bothfather3](/img/botfather-3.png)
 
-- Take note of the Telegram token in the response above. You'll need it for Step 3 below.
+Take note of the Telegram token that is needed for step 9.
 
-- Click the link to your new bot in the message above launch it: `t.me/<YOUR BOT NAME>`. Click `Start` or type `/start` to start the bot.
+6. Click the link to your new bot in the message above launch it: `t.me/<YOUR BOT NAME>`. Click `Start` or type `/start` to start the bot.
 
-#### 2. Get your Telegram ID
+** Get your Telegram ID**
 
-- Click this following to launch **userinfobot**, a Telegram bot that helps you retrieve your Telegram ID: [https://telegram.me/userinfobot](https://telegram.me/userinfobot).
+7. Click this following to launch **userinfobot**, a Telegram bot that helps you retrieve your Telegram ID: [https://telegram.me/userinfobot](https://telegram.me/userinfobot).
 
-- In Telegram, go to the newly-created **userinfobot** chat pane, and click `Start` or type `/start`.
+8. In Telegram, go to the newly-created **userinfobot** chat pane, and click `Start` or type `/start`. Take note of the `Id` parameter that is needed for step 9.
 
-- Take note of the `Id` parameter provided. You'll need it in a minute for the configuration step.
+**Configure the Telegram Settings in Hummingbot**
 
-#### 3. Configure the Telegram Settings in Hummingbot
-
-- In the directory where you have installed Hummingbot, go to your global configuration file `conf/conf_global.yml` and edit the following parameters inside the file:
+9. In the directory where you have installed Hummingbot, go to your global configuration file `conf/conf_global.yml` and edit the following parameters inside the file:
 
 ```
 telegram_enabled: true
@@ -74,20 +66,15 @@ config telegram_token
 config telegram_chat_id
 ```
 
-#### 4. Startup Hummingbot
+**Startup Hummingbot**
 
-You can now startup Hummingbot and confirm that the integration is properly configured.
+10. You can now startup Hummingbot and confirm that the integration is properly configured. If Hummingbot was running when you configured telegram, make sure to `exit` and restart Hummingbot to reload the telegram configurations.
 
-If Hummingbot was running when you configured telegram, make sure to `exit` and restart Hummingbot to reload the telegram configurations.
+**Use your Telegram Bot**
 
-### Use your Telegram Bot
+Before you start Hummingbot, make sure that the Telegram bot is live. If so, you should see a chat pane with your bot's name in Telegram.
 
-- Before you start Hummingbot, make sure that the Telegram bot is live. If so, you should see a chat pane with your bot's name in Telegram.
-
-- Now you can start hummingbot as you would normally. Telegram will be connected as soon as you enter `start` in
-  your hummingbot CLI window.
-
-- Messages are synchronized in real-time between the Telegram bot and the actual Hummingbot instance running. For example, you can use commands such as `status` and `history` to monitor the bot's performance, `config` shows bot current configurations and you can use `start` and `stop` to control the bot.
+11. Start hummingbot as you would normally. Telegram will be connected as soon as you enter `start` in your hummingbot CLI window.Messages are synchronized in real-time between the Telegram bot and the actual Hummingbot instance running. For example, you can use commands such as `status` and `history` to monitor the bot's performance, `config` shows bot current configurations and you can use `start` and `stop` to control the bot.
 
 ![telegrambuttons](/img/telegram-buttons.png)
 

@@ -11,7 +11,11 @@ The number of order levels to place for each side of the order book.
 
 ** Prompt: **
 
-`How many orders do you want to place on both sides?`
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">
+    How many orders do you want to place on both sides?
+  </font>
+</div>
 
 ## `order_level_amount`
 
@@ -19,7 +23,12 @@ The size can either increase (if set to a value greater than zero) or decrease (
 
 ** Prompt: **
 
-`How much do you want to increase or decrease the order size for each additional order?`
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">
+    How much do you want to increase or decrease the order size for each
+    additional order?
+  </font>
+</div>
 
 ## `order_level_spread`
 
@@ -27,9 +36,13 @@ The incremental spread increases for subsequent order levels after the first lev
 
 ** Prompt: **
 
-`Enter the price increments (as percentage) for subsequent orders?`
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">
+    Enter the price increments (as percentage) for subsequent orders?
+  </font>
+</div>
 
-> Warning "Low values for `order_level_spread`": Setting `order_level_spread` to a very low number may cause multiple orders to be placed on the same price level. For example for an asset like SNM/BTC, if you set an order interval percent of 0.4 (~0.4%) because of low asset value the price of the next order will be rounded to the nearest price supported by the exchange, which in this case might lead to multiple orders being placed at the same price level.
+> **Warning** Setting `order_level_spread` to a very low number may cause multiple orders to be placed on the same price level. For example for an asset like SNM/BTC, if you set an order interval percent of 0.4 (~0.4%) because of low asset value the price of the next order will be rounded to the nearest price supported by the exchange, which in this case might lead to multiple orders being placed at the same price level.
 
 ## How It Works
 

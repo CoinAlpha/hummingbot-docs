@@ -9,6 +9,7 @@ const sidebarCategories = {
     "installation/updating",
   ],
   Operation: [
+    "operation/overview",
     "operation/client",
     "operation/command-ref",
     "operation/docker-commands",
@@ -75,6 +76,7 @@ const sidebarCategories = {
     "developer/build-strategy",
   ],
   "Release Notes": [
+    "release-notes/overview",
     "release-notes/0.32.0",
     "release-notes/0.31.0",
     "release-notes/0.30.0",

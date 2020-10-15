@@ -58,7 +58,16 @@ KEYS = {
 
 > **Note:** If the exchange does not provide trading pairs in `[Base]-[Quote]` format, the following functions needs to be implemented in addition to the previous functions:
 
-| Function<div style="width:200px"/>   | Input Parameter(s)           | Expected Output(s) | Description                                                                                                     |
-| ------------------------------------ | ---------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------- |
-| `convert_from_exchange_trading_pair` | exchange_trading_pair: `str` | `str`              | Converts the exchange's trading pair to `[Base]-[Quote]` formats and return the output.                         |
-| `convert_to_exchange_trading_pair`   | hb_trading_pair: `str`       | `str`              | Converts HB's `[Base]-[Quote]` trading pair format to the exchange's trading pair format and return the output. |
+### `convert_from_exchange_trading_pair`
+
+Converts the exchange's trading pair to `[Base]-[Quote]` formats and return the output.
+
+**Input Parameter:** exchange_trading_pair: `str` <br/>
+**Expected Output(s):** `str`
+
+### `convert_to_exchange_trading_pair`
+
+Converts HB's `[Base]-[Quote]` trading pair format to the exchange's trading pair format and return the output.
+
+**Input Parameter:** hb_trading_pair: `str` <br/>
+**Expected Output(s):** `str`

@@ -34,7 +34,7 @@ As such, it would only make sense to have a module dedicated to handling authent
 
 As briefly mentioned, the `Auth` class is responsible for creating the request parameters and/or data bodies necessary to authenticate an API request.
 
-> Note: Mainly used in the `Market` class, but may be required in the `UserStreamTrackerDataSource` to authenticate subscribing to a WebSocket connection in [`listen_for_user_stream`](../task2/#userstreamtrackerdatasource).
+> **Note:** Mainly used in the `Market` class, but may be required in the `UserStreamTrackerDataSource` to authenticate subscribing to a WebSocket connection in [`listen_for_user_stream`](../task2/#userstreamtrackerdatasource).
 
 ### `generate_auth_dict`
 
@@ -43,7 +43,7 @@ Generates the url and the valid signature to authenticate a particular API reque
 **Input Parameter:** http_method: `str`,url: `str`,params: `Dict[str, any]`,body: `Dict[str, any]` <br/>
 **Expected Output(s):** `Dict[str, any]`
 
-> Tip: The **input parameters** and **return** value(s) can be modified accordingly to suit the exchange connectors. In most cases, the above parameters are required when creating a signature.
+> **Tip:** The **input parameters** and **return** value(s) can be modified accordingly to suit the exchange connectors. In most cases, the above parameters are required when creating a signature.
 
 ## Market
 
@@ -67,8 +67,7 @@ Function that takes the strategy inputs, auto corrects itself with trading rules
 **Input Parameter:** <br/> order_id: `str`,<br/>symbol: `str`,<br/>amount: `Decimal`,<br/>order_type: `OrderType`,<br/>price: `Optional[Decimal] = s_decimal_0` <br/>
 **Expected Output(s):** None
 
-> Tip:
-> The `execute_buy` and `execute_sell` methods verify that the trades would be allowed given the trading rules obtained from the exchange and calculate applicable trading fees. They then must do the following:
+> **Tip:** The `execute_buy` and `execute_sell` methods verify that the trades would be allowed given the trading rules obtained from the exchange and calculate applicable trading fees. They then must do the following:
 
 - Quantize the order amount to ensure that the precision is as required by the exchange
 - Create a `params` dictionary with the necessary parameters for the desired order
@@ -92,7 +91,9 @@ The `execute_cancel` function is the primary function used to cancel any particu
 
 ### `execute_cancel`
 
-Function that makes API request to cancel an active order and returns the `order_id` if it has been successfully cancelled or no longer needs to be tracked.<br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: This function also stops tracking the order by calling the `c_stop_tracking_order` and `c_trigger_event` functions. </td></tr></tbody></table>
+Function that makes API request to cancel an active order and returns the `order_id` if it has been successfully cancelled or no longer needs to be tracked.<br/>
+
+> **Note**: This function also stops tracking the order by calling the `c_stop_tracking_order` and `c_trigger_event` functions.
 
 **Input Parameter:**<br/> symbol: `str`,<br/>order_id: `str` <br/>
 **Expected Output(s):** order_id: `str`
@@ -126,11 +127,10 @@ And, you will need to take `in_flight_orders` snapshot during `_update_balances`
 
 This is so that the connector can use default current balance calculation (in `market_base`) for available balances.
 
-> Tip:
+> **Tip:**
+> Refer to [Order Lifecycle](../tutorial/#order-lifecycle-and-market-events) for a more detailed description on how orders are being tracked in Hummingbot.
 
-    Refer to [Order Lifecycle](../tutorial/#order-lifecycle-and-market-events) for a more detailed description on how orders are being tracked in Hummingbot.
-
-    It is necessary that the above functions adhere to the flow as defined in the order lifecycle for the connector to work as intended.
+It is necessary that the above functions adhere to the flow as defined in the order lifecycle for the connector to work as intended.
 
 ** Trading Rules **
 
@@ -138,9 +138,7 @@ Trading Rules are defined by the respective exchanges. It is crucial that Hummin
 
 A list of some common rules can be seen in [`trading_rule.pyx`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/market/trading_rule.pyx).
 
-> Tip:
-
-    Most exchanges have a minimum trading size. Not all rules need to be defined, however, it is essential to meet the rules as specified by the exchange.
+> **Tip:** Most exchanges have a minimum trading size. Not all rules need to be defined, however, it is essential to meet the rules as specified by the exchange.
 
 All trading rules are stored in `self._trading_rules` in the `Market` class.
 
@@ -162,7 +160,9 @@ Gets the necessary trading rules definitions form the corresponding REST API end
 
 ### `_format_trading_rules`
 
-Parses the raw JSON response into a list of [`TradingRule`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/market/trading_rule.pyx). <table><tbody><tr><td bgcolor="#ecf3ff">**Note**: This is important since exchanges might only accept certain precisions and impose a minimum trade size on the order.</td></tr></tbody></table>
+Parses the raw JSON response into a list of [`TradingRule`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/market/trading_rule.pyx).
+
+> **Note**: This is important since exchanges might only accept certain precisions and impose a minimum trade size on the order.
 
 **Input Parameter:** `List[Any]` <br/>
 **Expected Output(s):** `List[TradingRule]`
@@ -171,9 +171,11 @@ Parses the raw JSON response into a list of [`TradingRule`](https://github.com/C
 
 This, together with the trading rules, ensure that all orders placed by Hummingbot meet the required specifications as defined by the exchange.
 
-> Note: These checks are performed in `execute_buy` and `execute_sell` **before** placing an order.<br/>
-> In the event where the orders proposed by the strategies fail to meet the requirements as defined in the trading rules, the intended behaviour for the `Market` class is simply to raise an error and not place the order.<br/>
-> You may be required to add additional functions to help determine if an order meets the necessary requirements.
+> **Note:**
+
+- These checks are performed in `execute_buy` and `execute_sell` **before** placing an order.
+- In the event where the orders proposed by the strategies fail to meet the requirements as defined in the trading rules, the intended behaviour for the `Market` class is simply to raise an error and not place the order.<br/>
+- You may be required to add additional functions to help determine if an order meets the necessary requirements.
 
 The following details some functions responsible for this.
 
@@ -302,7 +304,9 @@ An asynchronous wrapper function for `_stop_network`. Used by `NetworkBase` clas
 
 ### `get_order`
 
-Gets status update for a particular order via rest API.<br/><br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: You are required to retrieve the exchange order ID for the specified `client_order_id`. You can do this by calling the `get_exchange_order_id` function available in the `InFlightOrderBase`.</td></tr></tbody></table>
+Gets status update for a particular order via rest API.
+
+> **Note**: You are required to retrieve the exchange order ID for the specified `client_order_id`. You can do this by calling the `get_exchange_order_id` function available in the `InFlightOrderBase`.
 
 **Input Parameter:** `client_order_id:str` <br/>
 **Expected Output(s):** `Dict[str, Any]`
@@ -337,7 +341,9 @@ Synchronous function that handles when a single market goes offline.
 
 ### `_http_client`
 
-Returns a shared HTTP client session instance. <table><tbody><tr><td bgcolor="#ecf3ff">**Note**: This prevents the need to establish a new session on every API request.</td></tr></tbody></table>
+Returns a shared HTTP client session instance.
+
+> **Note**: This prevents the need to establish a new session on every API request.
 
 **Input Parameter:** `None` <br/>
 **Expected Output(s):** `aiohttp.ClientSession`
@@ -393,7 +399,9 @@ A synchronous wrapper function that generates a client-side order ID and schedul
 
 ### `c_cancel`
 
-A synchronous wrapper function that schedules an order cancellation. <table><tbody><tr><td bgcolor="#ecf3ff">**Note**: The `order_id` here refers to the client-side order ID as tracked by Hummingbot.</td></tr></tbody></table>
+A synchronous wrapper function that schedules an order cancellation.
+
+> **Note**: The `order_id` here refers to the client-side order ID as tracked by Hummingbot.
 
 **Input Parameter:** `str symbol`,`str order_id` <br/>
 **Expected Output(s):** `str`
@@ -432,3 +440,7 @@ Deletes an order from `_in_flight_orders` class variable. This essentially stops
 
 **Input Parameter:** `str order_id` <br/>
 **Expected Output(s):** `None`
+
+## Debugging & Testing
+
+As part of the QA process, for each tasks(Task 1 through 3) you are **required** to include the unit test cases for the code review process to begin. Refer to [Option 1: Unit Test Cases](/developers/connectors/debug&test/#option-1-unit-test-cases) to build your unit tests.

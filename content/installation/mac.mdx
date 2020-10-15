@@ -18,22 +18,22 @@ import { MultiCodeBlock } from "gatsby-theme-apollo-docs";
 
 The macOS install package allows very easy installation and running Hummingbot on Mac computers. macOS install packages are released with every Hummingbot release starting from v0.18.
 
-### Installing Hummingbot with macOS Install Package
+To install Hummingbot with macOS install package:
 
 1. Download Hummingbot .dmg file from our [download page](https://hummingbot.io/download).
 2. Open the downloaded .dmg file, drag and drop the application bundle into the `/Application` folder.
 
-![Drag and Drop Application Bundle](macos-dmg-1.png)
+![Drag and Drop Application Bundle](/img/macos-dmg-1.png)
 
 3. Launch Hummingbot just like any other installed application on your Mac. You can also add it to your Dock for easy access.
 
-![Added Hummingbot to Dock"](macos-dmg-2.png)
+![Added Hummingbot to Dock"](/img/macos-dmg-2.png)
 
 When you're starting Hummingbot for the first time, it will ask for permission to launch Terminal, since it is a Terminal application. Press "OK" to allow it to open.
 
-![Granting Terminal access to Hummingbot"](macos-dmg-3.png)
+![Granting Terminal access to Hummingbot"](/img/macos-dmg-3.png)
 
-### Application Data Files
+#### Application Data Files
 
 The application data files (e.g. logs and config files) are located differently for binary package installed Hummingbot vs. source compiled Hummingbot.
 
@@ -114,7 +114,7 @@ To install Anaconda, go to [the Anaconda site](https://www.anaconda.com/distribu
 
 Afterwards, open a Terminal window and try the `conda` command. If the command is valid, then Anaconda has been successfully installed, even if the graphical installer says that it failed.
 
-> Warning: If you use ZSH or another Unix shell, copy the code snippet below to your `.zshrc` or similar file. By default, Anaconda only adds it to your `.bash_profile` file. This makes the `conda` command available in your root path.
+> **Warning:** If you use ZSH or another Unix shell, copy the code snippet below to your `.zshrc` or similar file. By default, Anaconda only adds it to your `.bash_profile` file. This makes the `conda` command available in your root path.
 
 ```
 __conda_setup="$(CONDA_REPORT_ERRORS=false '/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"

@@ -29,7 +29,7 @@ Performs the necessary API request(s) to get last traded price for the given mar
 
 Fetches order book snapshot for a particular trading pair from the exchange REST API.<br/>
 
-> Note: Certain exchanges do not add a timestamp/nonce to the snapshot response. In this case, to maintain a real-time order book would require generating a timestamp for every order book snapshot and delta messages received and applying them accordingly.<br/><br/>In [Bittrex](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/market/bittrex/bittrex_api_order_book_data_source.py), this is performed by invoking the `queryExchangeState` topic on the SignalR WebSocket client.<br/>
+> **Note:** Certain exchanges do not add a timestamp/nonce to the snapshot response. In this case, to maintain a real-time order book would require generating a timestamp for every order book snapshot and delta messages received and applying them accordingly.<br/><br/>In [Bittrex](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/market/bittrex/bittrex_api_order_book_data_source.py), this is performed by invoking the `queryExchangeState` topic on the SignalR WebSocket client.<br/>
 
 **Input Parameter:** client: `aiohttp.ClientSession`, trading_pair: `str` <br/>
 **Expected Output(s):** `Dict[str, any]`
@@ -124,7 +124,7 @@ Parses an incoming trade messages into `numpy.array` data type to be used by `co
 **Input Parameter:** `object`: message <br/>
 **Expected Output(s):** `numpy.array`
 
-> Warning: `OrderBookRow` should only be used in the `ActiveOrderTracker` class, while `ClientOrderBookRow` should only be used in the `Market` class. This is due to improve performance especially since calculations in `float` fair better than that of `Decimal`.
+> **Warning:** `OrderBookRow` should only be used in the `ActiveOrderTracker` class, while `ClientOrderBookRow` should only be used in the `Market` class. This is due to improve performance especially since calculations in `float` fair better than that of `Decimal`.
 
 ## OrderBookTracker
 
@@ -159,7 +159,7 @@ Route the real-time order book snapshot messages to the correct order book.<br/>
 
 Update an order book with changes from the latest batch of received messages.<br/>Constantly attempts to retrieve the next available message from `_save_message_queues` and applying the message onto the respective order book.<br/>
 
-> Note: Might require `convert_[snapshot/diff]_message_to_order_book_row` from the `ActiveOrderTracker` to convert the messages into `OrderBookRow`<br/>
+> **Note:** Might require `convert_[snapshot/diff]_message_to_order_book_row` from the `ActiveOrderTracker` to convert the messages into `OrderBookRow`<br/>
 
 **Input Parameter:** None <br/>
 **Expected Output(s):** None
@@ -168,7 +168,7 @@ Update an order book with changes from the latest batch of received messages.<br
 
 Start all custom listeners and tasks in the `OrderBookTracker` component.<br/>
 
-> Note: You may be required to call `start` in the base class by using `await super().start()`. This is **optional** as long as there is a task listening for trade messages and emitting the `TradeEvent` as seen in `c_apply_trade` in [`OrderBook`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/core/data_type/order_book.pyx)<br/>
+> **Note:** You may be required to call `start` in the base class by using `await super().start()`. This is **optional** as long as there is a task listening for trade messages and emitting the `TradeEvent` as seen in `c_apply_trade` in [`OrderBook`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/core/data_type/order_book.pyx)<br/>
 
 **Input Parameter:** None <br/>
 **Expected Output(s):** None
@@ -202,7 +202,7 @@ Returns the bids and asks entries in the order book of the respective trading pa
 
 Start listening on trade messages.<br/>
 
-> Note: This is to be overridden and called by running `super().start()` in the custom implementation of `start`. <br/>
+> **Note:** This is to be overridden and called by running `super().start()` in the custom implementation of `start`. <br/>
 
 **Input Parameter:** None <br/>
 **Expected Output(s):** None
@@ -220,3 +220,7 @@ Attempts to retrieve trade_messages from the Queue `_order_book_trade_stream` an
 
 **Input Parameter:** None <br/>
 **Expected Output(s):** None
+
+## Debugging & Testing
+
+As part of the QA process, for each tasks(Task 1 through 3) you are **required** to include the unit test cases for the code review process to begin. Refer to [Option 1: Unit Test Cases](/developers/connectors/debug&test/#option-1-unit-test-cases) to build your unit tests.

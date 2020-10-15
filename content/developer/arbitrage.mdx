@@ -9,7 +9,7 @@ The strategy constantly scans for any arbitrage opportunity by comparing the ord
 
 Here's a high level view of the logic flow inside the built-in arbitrage strategy.
 
-![Figure 1: Arbitrage strategy flow chart](arbitrage-flowchart-1.svg)
+![Figure 1: Arbitrage strategy flow chart](/img/arbitrage-flowchart-1.svg)
 
 There are a few major parts to the arbitrage strategy in terms of its logic flow:
 
@@ -51,7 +51,7 @@ The profitable arbitrage check logic can be found in the function `c_calculate_a
 
 After an arbitrage opportunity is found, the next step is to calculate the optimal order size for the arbitrage trade.
 
-![Figure 2: Calculating the optimal arbitrage size](arbitrage-flowchart-2.svg)
+![Figure 2: Calculating the optimal arbitrage size](/img/arbitrage-flowchart-2.svg)
 
 Arbitrage opportunities are always limited in size - as you buy higher and higher into the ask book and sell lower and lower into the bid book, the amount of profit decreases for every increment of order size. Eventually, the price you buy and sell into the two books would become the same and you would no longer make more money by increasing the order size further. So the arbitrage strategy would calculate the maximum order size you can make by examining the order books on the two markets.
 

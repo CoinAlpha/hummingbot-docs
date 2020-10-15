@@ -27,7 +27,7 @@ These commands execute the helper scripts for running Hummingbot and are perform
 | ./start.sh  | Connect to a running instance or restart an exited Hummingbot instance |
 | ./update.sh | Update Hummingbot version                                              |
 
-> Tip: Run the command `ls -l` to check the files in your current working directory.
+> **Tip:** Run the command `ls -l` to check the files in your current working directory.
 
 ### Updating your scripts
 
@@ -68,25 +68,25 @@ chmod a+x *.sh
 
 ## Docker Autostart
 
-> Warning: This is a recently released experimental feature. Running any trading bots without manual supervision may incur additional risks. It is imperative that you thoroughly understand and test the strategy and parameters before deploying bots that can trade in an unattended manner.
+> **Warning:** This is a recently released experimental feature. Running any trading bots without manual supervision may incur additional risks. It is imperative that you thoroughly understand and test the strategy and parameters before deploying bots that can trade in an unattended manner.
 
 Hummingbot can automatically start the execution of a previously configured trading strategy upon launch, without needing user interaction, when provided with pre-existing configuration files. This can be very useful if you wish to deploy already well-tested strategies and configurations to cloud services, and have Hummingbot running automatically in the background.
 
-### Pre-requisites
+### Prerequisites
 
-1. You have Hummingbot installed via [Docker](/installation/docker)
-2. You have already connected exchanges by adding API keys
-3. You have at least one strategy configuration file that has been set up previously
+- You have Hummingbot installed via Docker
+- You have already connected exchanges by adding API keys
+- You have at least one strategy configuration file that has been set up previously
 
 ### Locating config files
 
-If you used the **Scripts** method on the [Docker installation page](/installation/docker), the configuration folder is the path printed at the `=> config files:` line, when you run `./create.sh`.
+If you used the **Scripts** method via Docker, the configuration folder is the path printed at the `=> config files:` line, when you run `./create.sh`.
 
 If you used the **Manual** method, the configuration folder is `$(pwd)/hummingbot_files/hummingbot_conf` at the time when you run `docker run`.
 
 If your Hummingbot docker instance is already running, you can inspect the volume mount paths of your Hummingbot container with the following command:
 
-```bash
+```
 docker inspect ${HUMMINGBOT_CONTAINER_NAME} --format='{{.Mounts}}'
 ```
 
@@ -132,7 +132,7 @@ unset STRATEGY CONFIG_FILE_NAME CONFIG_PASSWORD
 
 The Hummingbot instance will be running in the background. You can bring it to foreground via
 
-```bash
+```
 docker attach hummingbot-instance
 ```
 
@@ -156,22 +156,22 @@ More information can be found in [Docker documentation](https://docs.docker.com/
 
 ## Source Autostart
 
-### Pre-requisites
+### Prerequisites
 
-1. You have Hummingbot installed via [Source](/installation/source)
-2. You have already connected exchanges by adding API keys
-3. You have at least one strategy configuration file that has been set up previously
+- You have Hummingbot installed via Source.
+- You have already connected exchanges by adding API keys
+- You have at least one strategy configuration file that has been set up previously
 
 ### Locating config files
 
-Whichever you used was it the **Easy Install** or **Manual Installation** method on the [Source installation page](/installation/source/linux), the configuration folder is located inside the `hummingbot` folder, the path is where you installed your Hummingbot.
+Whichever you used was it the **Scripts** or **Manual** method from Source, the configuration folder is located inside the `hummingbot` folder, the path is where you installed your Hummingbot.
 
 ### How to autostart
 
 Running unattended Hummingbot is very similar to the running hummingbot manually. The only differences are:
 
-1.  You will read the pre-existing configuration files to the `conf` directory.
-2.  You will pass some parameters telling Hummingbot which strategy configuration to use, and the password to decrypt your API keys and wallets.
+- You will read the pre-existing configuration files to the `conf` directory.
+- You will pass some parameters telling Hummingbot which strategy configuration to use, and the password to decrypt your API keys and wallets.
 
 ```
 bin/hummingbot_quickstart.py -s STRATEGY -f CONFIG_FILE_NAME -p CONFIG_PASSWORD
@@ -182,6 +182,6 @@ Where
 `CONFIG_FILE_NAME` is the strategy config file name  
 `CONFIG_PASSWORD` is the config password
 
-More information on strategy can be found in [Strategy](/strategies/overview).  
-More information on configuration file name can be found in [Configuring Hummingbot](/operation/client).  
-More information on password can be found in [Create a secure password](/operation/client/#create-a-secure-password).
+- More information on strategy can be found in [Strategy](/strategies/overview).
+- More information on configuration file name can be found in [Configuring Hummingbot](/operation/client).
+- More information on password can be found in [Create a secure password](/operation/client/#create-a-secure-password).

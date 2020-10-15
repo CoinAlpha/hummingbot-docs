@@ -7,7 +7,7 @@ description: Info on adding transaction costs to prices
 
 This feature lets you take into account the transaction cost incurred on the exchange from bid and ask orders. For a bid order, it reduces the bid order price by the fee. For the ask order, it reduces the price by the fee. This allows you to take into account the transaction cost in order to profit (or not incur a loss).
 
-> Note that this puts your order prices further away from the mid price.
+> **Note:** that this puts your order prices further away from the mid price.
 
 ## `add_transaction_costs`
 
@@ -15,7 +15,11 @@ Whether to enable adding transaction costs to order price calculation.
 
 ** Prompt: **
 
-`Do you want to add transaction costs automatically to order prices? (Yes/No)`
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">
+    Do you want to add transaction costs automatically to order prices? (Yes/No)
+  </font>
+</div>
 
 ## How It Works
 
@@ -31,11 +35,11 @@ Below `fee_pct` refers to the percentage maker fees per order (generally common 
 
 ### Calculating the Bid Order Price
 
-![Bid price with transaction cost](trans_cost_bid.png)
+![Bid price with transaction cost](/img/trans_cost_bid.png)
 
 ### Calculating the Ask Order Price
 
-![Ask price with transaction cost](trans_cost_ask.png)
+![Ask price with transaction cost](/img/trans_cost_ask.png)
 
 ### Example - When Transaction Cost is Important
 

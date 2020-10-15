@@ -9,7 +9,7 @@ In the pure market making strategy, Hummingbot continually posts limit bid and a
 
 Users can specify how far away ("spreads") from the mid price the bid and asks are, the order quantity, and how often prices should be updated (order cancels + new orders posted).
 
-> Warning: Please exercise caution while running this strategy and set appropriate [kill switch](operation/command-ref/#kill-switch) rate. The current version of this strategy is intended to be a basic template that users can test and customize. Running the strategy with substantial capital without additional modifications may result in losses.
+> **Warning:** Please exercise caution while running this strategy and set appropriate [kill switch](/operation/command-ref/#kill-switch) rate. The current version of this strategy is intended to be a basic template that users can test and customize. Running the strategy with substantial capital without additional modifications may result in losses.
 
 ## Schematic
 
@@ -19,14 +19,14 @@ The diagram below illustrates how market making works. Hummingbot makes a market
   <center>**_Figure 1: Hummingbot makes a market on an exchange_**</center>
 </small>
 
-![Figure 1: Hummingbot makes a market on an exchange](pure-mm.png)
+![Figure 1: Hummingbot makes a market on an exchange](/img/pure-mm.png)
 
 ## Prerequisites
 
 ### Inventory
 
-1. You will need to hold sufficient inventory of quote and/or base currencies on the exchange to place orders of the exchange's minimum order size.
-2. You will also need some ETH to pay gas for transactions on a decentralized exchange (if applicable).
+- You will need to hold sufficient inventory of quote and/or base currencies on the exchange to place orders of the exchange's minimum order size.
+- You will also need some ETH to pay gas for transactions on a decentralized exchange (if applicable).
 
 ### Minimum Order Size
 
@@ -43,7 +43,7 @@ Only a sell order will be created but no buy order.
 
 We aim to teach new users the basics of market making, while enabling experienced users to exercise more control over how their bots behave. By default, when you run `create` we ask you to enter the basic parameters needed for a market making bot.
 
-See [Advanced Market Making](/strategies/advanced-mm) for more information about the advanced parameters and how to use them.
+See [Advanced Market Making](/strategies/adv-market-making) for more information about the advanced parameters and how to use them.
 
 The following parameters are fields in Hummingbot configuration files located in the `/conf` folder (e.g. `conf_pure_mm_[#].yml`).
 
@@ -139,4 +139,4 @@ Whether to alternate between buys and sells.
   </font>
 </div>
 
-> Tip: "Tip: Autocomplete inputs during configuration": When going through the command line config process, pressing `<TAB>` at a prompt will display valid available inputs.
+> **Tip:** For autocomplete inputs during configuration, when going through the command line config process, pressing `<TAB>` at a prompt will display valid available inputs.

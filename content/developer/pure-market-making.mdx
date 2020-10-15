@@ -9,7 +9,7 @@ The built-in pure market making strategy in Hummingbot periodically requests lim
 
 Here's a high level view of the logic flow inside the built-in pure market making strategy.
 
-![Figure 5: Pure market making strategy logical flowchart](pure-mm-flowchart.svg
+![Figure 5: Pure market making strategy logical flowchart](/img/pure-mm-flowchart.svg)
 
 The pure market making strategy operates in a tick-by-tick manner, as described in the [Strategies Overview](/strategies) document. Each tick is typically 1 second, although it can be programmatically modified to longer or shorter durations.
 
@@ -21,7 +21,7 @@ The process repeats over and over at each tick, causing limit orders to be perio
 
 There are a few plugin interfaces that the pure market making strategy depends on arriving at its order proposals.
 
-![Figure 6: Pure market making strategy plugins](pure-mm-uml.svg)
+![Figure 6: Pure market making strategy plugins](/img/pure-mm-uml.svg)
 
 - [`OrderFilterDelegate`](https://github.com/CoinAlpha/hummingbot/blob/development/hummingbot/strategy/pure_market_making/order_filter_delegate.pxd)
 

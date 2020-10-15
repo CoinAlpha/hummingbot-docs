@@ -18,18 +18,18 @@ import { MultiCodeBlock } from "gatsby-theme-apollo-docs";
 
 The Windows setup package is the easiest way for Windows users to setup and run Hummingbot. Windows setup packages are released with every Hummingbot release starting from v0.18.
 
-### Installing Hummingbot with Windows Setup Package
+To install Hummingbot with Windows setup package:
 
 1. Download Setup.exe from our [download page](https://hummingbot.io/download).
 2. Double-click `Setup.exe` hummingbot binary package to launch the installer.
 
-![Hummingbot installed](windows-setup-1.png)
+![Hummingbot installed](/img/windows-setup-1.png)
 
 3. Start Hummingbot in your Windows start menu.
 
-![Hummingbot installed](windows-setup-2.png)
+![Hummingbot installed](/img/windows-setup-2.png)
 
-### Application Data Files
+#### Application Data Files
 
 The application data files (e.g. logs and config files) are located differently for binary package installed Hummingbot vs. source compiled Hummingbot.
 
@@ -39,32 +39,32 @@ For the Windows binary distribution, the application data files are located in `
 
 The Hummingbot code base is designed and optimized for UNIX-based systems such as macOS and Linux. We recommend that Windows users either:
 
-- Install in [the cloud](/installation/cloud) and use a native Linux virtual machine.
+- Install in the cloud and use a native Linux virtual machine.
 - Install using Docker version: [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/) recommended.
 
 Hummingbot can also be installed by utilizing the built-in Windows Subsystem for Linux. However, this is only recommended for users familiar with development.
 
-**Note:** For Windows users without Windows-Pro or Windows-Enterprise, you will need to install the Docker Toolbox, as Windows-Home is not supported by the standard Docker application. Below, we list instructions for running Hummingbot using the Docker Toolbox.
+> **Note:** For Windows users without Windows-Pro or Windows-Enterprise, you will need to install the Docker Toolbox, as Windows-Home is not supported by the standard Docker application. Below, we list instructions for running Hummingbot using the Docker Toolbox.
 
 1. Install Docker Toolbox
 
 Download the latest version Docker Toolbox .exe file at the following link: [Docker Toolbox Releases](https://github.com/docker/toolbox/releases/).
 
-![Docker Download](docker_toolbox_download.PNG)
+![Docker Download](/img/docker_toolbox_download.PNG)
 
 2. Locate the installer in the downloads folder and run a full installation with included VirtualBox and Git for Windows. (Git is the default shell used by Docker)
 
-![Docker Installation](docker_toolbox_install.PNG)
+![Docker Installation](/img/docker_toolbox_install.PNG)
 
 By default, a shortcut to the Docker Quickstart terminal will be created on your desktop. You can open Docker Toolbox using this shortcut.
 
-![Docker Startup](docker_toolbox_startup.PNG)
+![Docker Startup](/img/docker_toolbox_startup.PNG)
 
 3. Run Hummingbot
 
 Open Docker Toolbox using the Quickstart shortcut. Move onto the next step when you reach the following screen.
 
-![Docker Ready](docker_toolbox_cmdline.PNG)
+![Docker Ready](/img/docker_toolbox_cmdline.PNG)
 
 Enter the following commands into the command line. You can install Hummingbot by selecting **_either_** of the following options from the tabs below:
 
@@ -121,50 +121,69 @@ coinalpha/hummingbot:latest
 
 This section walks you through how to prepare your development environment and install Hummingbot from source manually.
 
-The Hummingbot code base is designed and optimized for UNIX-based systems such as macOS and Linux. We recommend that Windows users:
+Installing from source is only recommended for developers who want to access and modify the software code.
 
-- Install in [the cloud](/installation/cloud) by using a native Linux virtual machine.
+Step 1. Install required Applications
 
-Hummingbot can also be installed by utilizing the built-in Windows Subsystem for Linux. However, this is only recommended for users familiar with development.
+1. Install [Git for Windows](https://git-scm.com/download/win).
+2. Install [Python for Windows](https://www.python.org/downloads/windows/).
+3. Install [Anaconda or miniconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/windows.html).
+4. Install [Visual Studio Code](https://code.visualstudio.com/download), [Visual Studio BuildTools 2019, Core Features, C++](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) and [C++ redistributable 2019](https://aka.ms/vs/16/release/VC_redist.x64.exe).
 
-The following instructions are summarized for installing Hummingbot from source on Windows 10, using Windows Subsystem for Linux (WSL).
+> **Note:**
 
-1. Install Ubuntu in Windows Subsystem for Linux
+- During installation make sure to add Anaconda or Miniconda to your PATH environmental variable by clicking the tick box as shown below, or you can add them [manually](https://www.geeksforgeeks.org/how-to-setup-anaconda-path-to-environment-variable/).
+  ![anaconda-path](/img/anaconda-path.png)
+- Some prerequisites are large applications and may need to restart your computer.
 
-Follow these [instructions](https://docs.microsoft.com/en-us/windows/wsl/install-win10) for installing Windows Subsystem for Linux, and then Ubuntu.
+Step 2. Install Hummingbot on Windows System
 
-2. Install Hummingbot on Linux Subsystem
-
-![Bash for Windows](bash-for-windows.png)
-
-You can install Hummingbot as shown below:
+1. Launch Git Bash App.
+2. Run the following commands:
 
 ```
+# initialized conda
+conda init bash
+# exit git-bash to take effect
+exit
+# launch Git Bash App again
+```
+
+3. You can install Hummingbot by selecting **_either_** of the following options from the tabs below:
+
+- **Scripts**: download and use automated install scripts.
+- **Manual**: run install commands manually.
+
+<MultiCodeBlock>
+
+
+```scripts
 # 1) Navigate to root folder
 cd ~
 
-# 2) Install dependencies
-sudo apt-get update
-sudo apt-get install -y build-essential
+# 2) Download install script
+curl https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/install-from-source/install-source-windows.sh -o install-source-windows.sh
 
-# 3) Install Miniconda3
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-sh Miniconda3-latest-Linux-x86_64.sh
+# 3) Enable script permissions
+chmod a+x install-source-windows.sh
 
-# 4) Log out and log back into shell to register "conda" command
-exit
-
-# 5) Log back into or open a new Linux terminal
-
-# 6) Clone Hummingbot
-git clone https://github.com/CoinAlpha/hummingbot.git
-
-# 7) Install Hummingbot
-cd hummingbot && ./install
-
-# 8) Activate environment and compile code
-conda activate hummingbot && ./compile
-
-# 9) Start Hummingbot
-bin/hummingbot.py
+# 4) Run installation
+./install-source-windows.sh
 ```
+
+```Manual
+cd ~
+export CONDAPATH="$(pwd)/miniconda3"
+export PYTHON="$(pwd)/miniconda3/envs/hummingbot/python3"
+# Clone Hummingbot
+git clone https://github.com/CoinAlpha/hummingbot.git
+# Install Hummingbot
+export hummingbotPath="$(pwd)/hummingbot" && cd $hummingbotPath && ./install
+# Activate environment and compile code
+conda activate hummingbot && ./compile
+# Start Hummingbot
+winpty python bin/hummingbot.py
+```
+
+</MultiCodeBlock>
+

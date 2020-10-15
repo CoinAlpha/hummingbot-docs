@@ -1,5 +1,5 @@
 ---
-title: Get support
+title: Get Support
 description: How to get help running Hummingbot
 ---
 
@@ -20,7 +20,7 @@ Exit from your virtual machine and restart.
 
 ### Package 'docker.io' has no installation candidate
 
-![](package-docker-io.png)
+![](/img/package-docker-io.png)
 
 Install Docker using get.docker.com script as an alternative. Install `curl` tool then download and run get.docker.com script.
 
@@ -44,7 +44,7 @@ $ conda
 
 If you have just installed conda, close terminal and reopen a new terminal to update the command line's program registry.
 
-If you use `zshrc` or another shell other than `bash`, see the note at the bottom of this section: [install dependencies](/installation/source/#macOS).
+If you use `zshrc` or another shell other than `bash`, see : [install dependencies](/installation/mac/#install-from-source).
 
 ### Syntax error invalid syntax
 
@@ -79,6 +79,38 @@ Solution 2: make sure you have conda section in ~/.bashrc. Run `conda init` if i
 
 ## Configuration
 
+### I can't copy and paste my API keys!
+
+Copying and pasting your API keys into Hummingbot may be problematic, especially in Docker installations or for PuTTY users. See below for how to copy/paste in different environments.
+
+### other ways to copy and paste
+
+**COPY on Windows or Linux**
+
+```
+Ctrl + C
+Ctrl + Insert
+Ctrl + Shift + C
+```
+
+**PASTE on Windows or Linux**
+
+```
+Ctrl + V
+Shift + Insert
+Ctrl + Shift + V
+```
+
+### paste items from clipboard in putty
+
+You should be able to paste items from your clipboard by doing mouse right-click or `SHIFT + right-click`. If that doesn't work, follow the steps below.
+
+1. If you are currently logged in a session, left-click on the upper left hand corner of the PuTTY window or a right-click anywhere on the title bar then select "Change Settings". If not, proceed to next step.
+2. In PuTTY configuration under Window category go to "Selection". Select the "Window" radio button for action of mouse buttons.
+3. You can now paste items from clipboard by doing a right-click to bring up the menu and select "Paste".
+
+![](/img/putty_copy_paste.gif)
+
 ### Where are my config and log files?
 
 Hummingbot saves user data in the following directories:
@@ -96,7 +128,7 @@ Below are instructions on how to access these files in various environments.
 3. Locate and open **AppData** folder
 4. Open **Local** folder then **Hummingbot.io** folder. You may see another folder named **Hummingbot**, open it and you will see the data files folder.
 
-> Tip: In case the AppData folder is not visible, on the menu bar found above your folder, go to **View** and tick the checkbox for Hidden items.
+> **Tip:** In case the AppData folder is not visible, on the menu bar found above your folder, go to **View** and tick the checkbox for Hidden items.
 
 **MacOS**
 
@@ -107,7 +139,7 @@ Below are instructions on how to access these files in various environments.
 5. Click **Library**
 6. Find and open **Application Support** folder and you will see **Hummingbot** folder.
 
-> Note: Mac has multiple library folders, make sure that the library folder you're trying to open is the Library folder under your user profile.
+> **Note:** Mac has multiple library folders, make sure that the library folder you're trying to open is the Library folder under your user profile.
 
 **Docker**
 
@@ -178,9 +210,9 @@ If Hummingbot is installed on Windows, simply delete the encrypted files found i
 
 If Hummingbot is installed on MacOS, simply delete the encrypted files found in `~/Library/Application\ Support/Hummingbot/Conf`.
 
-> Warning: Be careful when deleting the local wallet key file created through Hummingbot, i.e, a wallet that was not imported from Metamask; deleting the key file will result in a permanent loss of access to that wallet and any assets it may contain.
+> **Warning:** Be careful when deleting the local wallet key file created through Hummingbot, i.e, a wallet that was not imported from Metamask; deleting the key file will result in a permanent loss of access to that wallet and any assets it may contain.
 
-![delete_encrypted_files](ts_delete_encrypted.gif)
+![delete_encrypted_files](/img/ts_delete_encrypted.gif)
 
 ### How to reset global configs to default settings?
 
@@ -204,7 +236,7 @@ If Hummingbot is installed on Windows, simply delete the `conf_global.yml` found
 
 If Hummingbot is installed on MacOS, simply delete the `conf_global.yml` found in `~/Library/Application\ Support/Hummingbot/Conf`.
 
-> Note: If telegram is enabled make sure to backup your telegram token and chat id when deleting `conf_global.yml`.
+> **Note:** If telegram is enabled make sure to backup your telegram token and chat id when deleting `conf_global.yml`.
 
 ## Operation
 
@@ -314,7 +346,7 @@ dpkg-reconfigure tzdata
 
 Configure geographic location and timezone by inputting the corresponding number, see example below:
 
-![](docker-tz.png)
+![](/img/docker-tz.png)
 
 **Windows**
 
@@ -324,7 +356,7 @@ You can change the timezone on a Windows computer by doing the following:
 2. Enter `timedate.cpl` to open Date and Time settings
 3. Click **Change time zone**
 
-![](windows-tz.png)
+![](/img/windows-tz.png)
 
 Alternatively, you can also follow these steps in Windows Support article: [How to set your time and time zone](https://support.microsoft.com/en-ph/help/4026213/windows-how-to-set-your-time-and-time-zone)
 
@@ -364,7 +396,7 @@ Our official [Discord server](https://discord.hummingbot.io) is the primary gath
 
 When you sign up for our Discord, please check that the link you are accessing is **https://discord.hummingbot.io**.
 
-> Note: Currently, our Discord server is the only officially-supported online Hummingbot community. We do not maintain any other communities on Telegram, WeChat, Slack, or other applications. Please beware that any such communities (except for the official Hummingbot Discord) may be scams.
+> **Note:** Currently, our Discord server is the only officially-supported online Hummingbot community. We do not maintain any other communities on Telegram, WeChat, Slack, or other applications. Please beware that any such communities (except for the official Hummingbot Discord) may be scams.
 
 ### Github
 

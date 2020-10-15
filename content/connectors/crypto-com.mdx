@@ -16,22 +16,19 @@ Enter your Crypto.com secret key >>>
 
 Private keys and API keys are stored locally for the operation of the Hummingbot client only. At no point will private or API keys be shared to CoinAlpha or be used in any way other than to authorize transactions required for the operation of Hummingbot.
 
-
 ### Creating Crypto.com API keys
 
 This help article below shows step-by-step instructions on how to create API keys in Kraken exchange.
 
-* [How do I create an API key?](https://help.crypto.com/en/articles/3511410-how-do-i-create-an-api-key)
+- [How do I create an API key?](https://help.crypto.com/en/articles/3511410-how-do-i-create-an-api-key)
 
-> Warning "API key permissions": We recommend using only **"trade"** enabled API keys; enabling **"withdraw", "transfer", or the equivalent** is unnecessary for current Hummingbot strategies.
-
+> **Warning:** We recommend using only **"trade"** enabled API keys; enabling **"withdraw", "transfer", or the equivalent** is unnecessary for current Hummingbot strategies.
 
 ## Miscellaneous Info
 
 ### Minimum Order Sizes
 
 The minimum order size for each trading pair is denominated in **base currency**. You can access the minimum order size for a specific token pair using [Crypto.com's API](https://exchange-docs.crypto.com/#public-get-instruments) at the following URL:
-
 
 ```
 https://api.crypto.com/v2/public/get-instruments
@@ -67,18 +64,17 @@ The `quantity_decimals` value is the market's minimum trade size.
 
 In the example above, the minimum order size for BTC-USDT pair is `0.000001 BTC`, CRO-USDT minimum order is `0.001 CRO`, and XLM-BTC minimum is `1 XLM`.
 
-
 ### Transcation Fees
 
 Crypto.com charges 0.10% on maker fees and 0.16% on taker fees for users on VIP1 tier while others who trade high volumes or use CRO to pay for trading fees can get discounts.
 
 Read through their help articles below for more information.
 
-* [Fees & Limits](https://crypto.com/exchange/document/fees-limits)
-* [Fees & Trading Volume](https://help.crypto.com/en/articles/3511276-fees-trading-volume)
+- [Fees & Limits](https://crypto.com/exchange/document/fees-limits)
+- [Fees & Trading Volume](https://help.crypto.com/en/articles/3511276-fees-trading-volume)
 
 Unlike other connectors, overriding the fee calculated by Hummingbot on trades by editing `conf_fee_overrides.yml` file will not work.
 
 Crypto.com connector uses the trade info including the actual amount of fees paid. You can confirm this in the CSV file inside the `data` folder.
 
-![crypto_com](crypto_com_csv.png)
+![crypto_com](/img/crypto_com_csv.png)

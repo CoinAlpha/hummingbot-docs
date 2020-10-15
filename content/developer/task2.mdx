@@ -11,7 +11,7 @@ The `UserStreamTracker` responsibility is to fetch user account data and queues 
 - `UserStreamTracker`
 - `MarketAuth`(if applicable).
 
-> Note: This is only required in **Centralized Exchanges**.
+> **Note:** This is only required in **Centralized Exchanges**.
 
 ## UserStreamTrackerDataSource
 
@@ -50,7 +50,7 @@ This can be achieved in 2 ways(depending on the available API on the exchange):
 
    When an exchange does have WebSocket API support to retrieve user account details and order statuses, it would be ideal to incorporate it into the Hummingbot client when managing account balances and updating order statuses. This is especially important since Hummingbot needs to knows the available account balances and order statuses at all times.
 
-> Tip: In most scenarios, as seen in most other Centralized Exchanges([Binance](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/market/binance/binance_user_stream_tracker.py), [Coinbase Pro](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/market/coinbase_pro/coinbase_pro_user_stream_tracker.py), [Bittrex](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/market/bittrex/bittrex_user_stream_tracker.py)), a simple WebSocket integration is used to listen on selected topics and retrieving messages to be processed in `Market` class.
+> **Tip:** In most scenarios, as seen in most other Centralized Exchanges([Binance](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/market/binance/binance_user_stream_tracker.py), [Coinbase Pro](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/market/coinbase_pro/coinbase_pro_user_stream_tracker.py), [Bittrex](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/market/bittrex/bittrex_user_stream_tracker.py)), a simple WebSocket integration is used to listen on selected topics and retrieving messages to be processed in `Market` class.
 
 The following details the **required** functions to be implemented in `UserStreamTracker`:
 
@@ -74,3 +74,7 @@ Returns the message queue containing all the messages pertaining to user account
 
 **Input Parameter:** None <br/>
 **Expected Output(s):** `asyncio.Queue`
+
+## Debugging & Testing
+
+As part of the QA process, for each tasks(Task 1 through 3) you are **required** to include the unit test cases for the code review process to begin. Refer to [Option 1: Unit Test Cases](/developers/connectors/debug&test/#option-1-unit-test-cases) to build your unit tests.

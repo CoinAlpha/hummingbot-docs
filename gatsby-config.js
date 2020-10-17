@@ -59,6 +59,7 @@ const sidebarCategories = {
   Scripts: ["scripts/overview", "scripts/script-base"],
   "Developing Connectors": [
     "developer/overview",
+    "developer/contributing",
     "developer/architecture",
     "developer/tutorial",
     "developer/task1",
@@ -69,6 +70,7 @@ const sidebarCategories = {
   ],
   "Developing Strategies": [
     "developer/strategies-overview",
+    "developer/contributing",
     "developer/pure-market-making",
     "developer/cross-exchange-market-making",
     "developer/twap",

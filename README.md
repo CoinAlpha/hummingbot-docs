@@ -1,27 +1,39 @@
-# Documentation
+# Hummingbot Documentation
 
-This is the documentation **source** for this repository.
-
-The **deployed** version of the documentation for this repository is available at:
+This is the documentation **source** for this repository. The deployed version of the documentation for this repository is available at:
 
 - https://docs.hummingbot.io/
 
-## Documentation for the documentation
+## Gatsby theme apollo documentation
 
-This `README.md` is intentionally short since the [documentation for the documentation](https://github.com/apollographql/gatsby-theme-apollo/tree/master/packages/gatsby-theme-apollo-docs#gatsby-theme-apollo-docs) provides details for the documentation framework _itself_.
+The documentation on [gatsby-theme-apollo-docs](https://github.com/apollographql/gatsby-theme-apollo/tree/master/packages/gatsby-theme-apollo-docs#gatsby-theme-apollo-docs) provides detailed information for the framework itself.
 
-## Running locally
+## Running and making changes locally
 
-For more information, consult the documentation for the documentation, referenced above.
+**NOTE: This site requires Node version 12 and above.**
 
-In general though:
+1. Install required dependencies
 
-- `npm install` in this directory
-- `npm start` in this directory
-- Open a browser to the link provided in the console.
+```
+npm install
+```
+
+2. Run development server
+
+```
+npm start
+```
+
+3. Open http://localhost:8000/ in web browser to preview locally
 
 ## Deploy previews
 
-Documentation repositories should be setup with a "deploy preview" feature which automatically provides "preview" links in the _status checks_ section of pull-requests.
+Documentation repositories should be setup with a "deploy preview" feature which automatically provides "preview" links in the **Status Checks** section of pull requests.
 
-In the event that it's not possible to run the documentation locally, pushing changes to the branch for a pull-request can be a suitable alternative that ensures changes to the documentation are properly rendered.
+In the event that it's not possible to run the documentation locally, pushing changes to the branch then viewing deploy previews from a pull request can be a suitable alternative that ensures changes to the documentation are properly rendered.
+
+In other words:
+
+1. Push changes to your branch
+2. Create a pull request
+3. Click **Details** next to "**deploy/netlify** Deploy preview ready!" from the pull request

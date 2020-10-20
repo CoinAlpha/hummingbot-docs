@@ -1,0 +1,96 @@
+---
+title: Liquidity Mining FAQs
+description:
+---
+
+## What is Liquidity Mining
+
+<iframe
+  width="708"
+  height="398"
+  src="https://www.youtube.com/embed/h1wWgcEWFVg"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
+
+Liquidity mining is a community-based, data-driven approach to market making, in which a token issuer or exchange can reward a pool of miners to provide liquidity for a specified token.
+
+- **Open - Anyone can participate\***
+- **Real time - Track your earnings every minute**
+- **Non-custodial - We can't access your tokens**
+
+You earn rewards by running a market making bot that maintains orders on exchange order books. How much reward you earn depends on:
+
+- The amount of your orders
+- The spread (distance to the mid price) of your orders
+- How long you maintain your orders on the order book
+- The amount of your orders
+- The spread (distance to the mid price) of your orders
+- How long you maintain your orders on the order book
+
+For more information, please read [the whitepaper](https://hummingbot.io/liquidity-mining.pdf).
+
+## Why is it called Liquidity Mining?
+
+Liquidity mining is similar to Bitcoin mining in that miners run open source software on their own computers and use their own scarce resources (inventory of crypto assets).
+
+In addition, a collective pool of participants are working together for a common goal, providing liquidity for a specific token and exchange. In return, miners are paid out rewards according to transparent, algorithmically defined rules.
+
+## **How do you measure liquidity?**
+
+We believe that **slippage** is the optimal metric to quantify liquidity, as opposed to filled order volume, a measure widely used by the market. Slippage refers to the difference between the observed mid-market price and the actual executed price for a trade of a given size. Calculating slippage factors in order book depth and prices at different depths, which better captures the friction and efficiency of actually trading that asset. Deep, liquid order books have low slippage, while thin, illiquid order books have high slippage.
+
+**We believe slippage is a more robust indicator of liquidity than trading volume**. As an ex-ante metric, slippage measures information used by traders before they trade to decide whether to execute the trade and in which venue to execute it. In contrast, volume is an ex-post metric and can be easily manipulated.
+
+## **How do you verify the liquidity that I provide?**
+
+In order to accurately measure liquidity and allocate rewards, miners need to provide a working read-only API key for each exchange where they want to earn rewards. Our data infrastructure uses read-only API keys to collect and aggregate order data for each miner.
+
+In addition, we run proprietary algorithms in order to attempt any prohibited actions such as wash trading and spoofing. While exploitative practices can be difficult to identify given the adversarial nature of the market, we believe that the combination of our focus on compliance, granular data feeds, and machine learning-based algorithms may deter and detect bad actors.
+
+## My bot is running but I'm not earning any rewards!
+
+> **Note:** It may takes up to 1 hour for our system to start tracking newly created bots and crediting them with rewards.
+
+Check the following if:
+
+- You are not running Hummingbot in paper trading mode, which doesn't place real orders.
+- Your bot is actually placing orders on the exchange. You should be able to see them in the exchange website. Make sure you're running token pair on our [active campaigns](https://docs.hummingbot.io/liquidity-mining/#current-campaign-terms).
+- If you are running Hummingbot locally on Mac or Windows computer, your machine didn't go to sleep or lost internet connection which prevents Hummingbot from maintaining orders.
+
+If these 3 reasons are not the cause, you can email a CSV export of your Binance order history for a particular market to accounts@hummingbot.io. Make sure to used or include the email address registered for liquidity mining.
+
+> **Note:** We can only provide you with our system's data and cannot credit users for past rewards.
+
+## When are liquidity mining rewards paid out?
+
+Each weekly epoch runs begins and ends at Tuesday 12am UTC. Rewards are distributed to each participant's registered Ethereum address 3 calendar days after the end of each epoch.
+
+## How do I verify my payouts?
+
+Your weekly payout email receipts contains links to the blockchain transaction confirmations. You can find these transaction confirmation links if you click on the Rewards Paid table in the Activity page.
+
+## I don't see my earnings on my metamask and on etherscan link from my email weekly reward.
+
+Click the etherscan link provided on email and navigate to `Erc20 Token Txns` as shown on image below, Or you may just need to add USDC token to MetaMask so you can view them. Please follow the instructions in this URL: [adding ERC20 Tokens](https://metamask.zendesk.com/hc/en-us/articles/360015489031-How-to-View-Your-Tokens)
+
+![](img/erc20token.png)
+
+## Do you store data that you collect with my read-only API keys?
+
+At launch, we store individual orders and trades in order to isolate and prevent potential attempts to manipulate or abuse the system by malicious liquidity miners. After the system is more mature, we will adjust the data collection process so that we only store aggregate data and do not store individual orders and trades. We never share individual order and trade data with third parties.
+
+## How is Hummingbot compensated for liquidity mining programs?
+
+In return for administering liquidity mining programs, collecting the data necessary to verify the trading activity of participants, and automating the payout process, we receive compensation from our Liquidity Mining partners and customers.
+
+## Can I earn rewards in multiple markets simultaneously?
+
+Yes, you can run different instances of Hummingbot or your own software in order to earn rewards in multiple markets simultaneously.
+
+## Do I need to use the Hummingbot client to participate in liquidity mining?
+
+No; if you already have your own trading bots and strategies, you can still participate in liquidity mining by registering at [Hummingbot Miner](https://miners.hummingbot.io) and adding your exchange read-only API key.
+
+For the general pool of users who don't have their own trading bots, we created Hummingbot as a way to provide them access to quant/algo strategies and the ability to market make.

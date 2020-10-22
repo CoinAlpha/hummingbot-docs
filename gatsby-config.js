@@ -1,3 +1,7 @@
+require("dotenv").config();
+
+const queries = require("./src/utils/algolia-queries");
+
 const sidebarCategories = {
   null: ["index", "intro/ecosystem", "intro/support"],
   Installation: [
@@ -173,6 +177,7 @@ module.exports = {
     headerButtonText: "Launch Hummingbot Miner",
     headerButtonLink: "https://miners.hummingbot.io/",
     discordUrl: "https://discord.hummingbot.io",
+    siteName: "Hummingbot Docs",
   },
   pathPrefix: "/",
   plugins: [
@@ -224,6 +229,19 @@ module.exports = {
             },
           },
         ],
+      },
+    },
+    {
+      resolve: "gatsby-plugin-algolia",
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.GATSBY_ALGOLIA_ADMIN_KEY,
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
+        queries,
+        chunkSize: 10000,
+        enablePartialUpdates: true, // default: false
+        matchFields: ["slug", "modified"], // Array<String> default: ['modified']
+        concurrentQueries: false, // default: true
       },
     },
   ],

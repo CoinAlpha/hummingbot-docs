@@ -185,7 +185,7 @@ module.exports = {
       resolve: "gatsby-theme-apollo-docs",
       options: {
         root: __dirname,
-        siteName: "All Hummingbot Documentation",
+        siteName: "Hummingbot Client Documentation",
         description:
           "Documentation for Hummingbot, the open source framework that helps you build and run crypto trading bots",
         sidebarCategories,
@@ -202,8 +202,9 @@ module.exports = {
          * @todo Replace these two keys with own keys
          * @see https://github.com/apollographql/gatsby-theme-apollo/tree/master/packages/gatsby-theme-apollo-docs#algolia-configuration
          */
-        algoliaApiKey: "768e823959d35bbd51e4b2439be13fb7",
-        algoliaIndexName: "apollodata",
+        algoliaAppId: process.env.GATSBY_ALGOLIA_APP_ID,
+        algoliaApiKey: process.env.GATSBY_ALGOLIA_SEARCH_KEY,
+        algoliaIndexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
       },
     },
     {

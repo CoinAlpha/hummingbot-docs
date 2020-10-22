@@ -24,9 +24,9 @@ Node versions this repo has been successfully been run and tested with: 10.22.1,
 
 ### Running
 
-- `npm install` to install dependencies
-- `npm start` to launch local server
-- Open a browser to the link provided in the console.
+- `yarn install` to install dependencies
+- `yarn start` to launch local server
+- Open a browser to the link provided in the console
 
 ## Deploy previews
 

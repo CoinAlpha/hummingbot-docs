@@ -3,7 +3,7 @@ require("dotenv").config();
 const queries = require("./src/utils/algolia-queries");
 
 const sidebarCategories = {
-  null: ["index", "intro/ecosystem", "intro/support"],
+  null: ["index", "intro/ecosystem", "intro/liquidity-mining", "intro/support"],
   Installation: [
     "installation/overview",
     "installation/windows",
@@ -129,6 +129,7 @@ const sidebarCategories = {
   ],
   Resources: [
     "resources/faq",
+    "resources/liquidity-mining",
     "resources/glossary",
     "[Hummingbot YouTube](https://www.youtube.com/c/HummingbotChannel)",
     "[Hummingbot whitepaper](https://hummingbot.io/hummingbot.pdf)",

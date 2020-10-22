@@ -10,7 +10,7 @@ The **deployed** version of this documentation is available at:
 
 This site uses [gatsby-theme-apollo-docs](https://github.com/apollographql/gatsby-theme-apollo/tree/master/packages/gatsby-theme-apollo-docs).
 
-## Running locally
+1. Install required dependencies
 
 ### Setup
 
@@ -30,9 +30,11 @@ Node versions this repo has been successfully been run and tested with: 10.22.1,
 
 ## Deploy previews
 
-Documentation repositories should be setup with a "deploy preview" feature which automatically provides "preview" links in the _status checks_ section of pull-requests.
+Each pull request will be built and available for preview on netlify. To access the preview, look for the link in the status checks of the pull request.
 
-In the event that it's not possible to run the documentation locally, pushing changes to the branch for a pull-request can be a suitable alternative that ensures changes to the documentation are properly rendered.
+1. Push changes to your branch
+2. Create a pull request
+3. Click **Details** next to "**deploy/netlify** Deploy preview ready!" from the pull request
 
 ## Deployment
 

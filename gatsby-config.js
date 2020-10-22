@@ -203,7 +203,6 @@ module.exports = {
          * @todo Replace these two keys with own keys
          * @see https://github.com/apollographql/gatsby-theme-apollo/tree/master/packages/gatsby-theme-apollo-docs#algolia-configuration
          */
-        algoliaAppId: process.env.GATSBY_ALGOLIA_APP_ID,
         algoliaApiKey: process.env.GATSBY_ALGOLIA_SEARCH_KEY,
         algoliaIndexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
       },

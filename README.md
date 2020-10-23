@@ -1,27 +1,48 @@
-# Documentation
+# Hummingbot Client Documentation
 
-This is the documentation **source** for this repository.
+This repository is documentation for the [Hummingbot](https://hummingbot.io) trading bot client, whose github repo can be found [here](https://github.com/coinalpha/hummingbot).
 
-The **deployed** version of the documentation for this repository is available at:
+The **deployed** version of this documentation is available at:
 
 - https://docs.hummingbot.io/
 
-## Documentation for the documentation
+## gatsby-theme-apollo-docs
 
-This `README.md` is intentionally short since the [documentation for the documentation](https://github.com/apollographql/gatsby-theme-apollo/tree/master/packages/gatsby-theme-apollo-docs#gatsby-theme-apollo-docs) provides details for the documentation framework _itself_.
+This site uses [gatsby-theme-apollo-docs](https://github.com/apollographql/gatsby-theme-apollo/tree/master/packages/gatsby-theme-apollo-docs).
 
-## Running locally
+1. Install required dependencies
 
-For more information, consult the documentation for the documentation, referenced above.
+### Setup
 
-In general though:
+#### `.env`
 
-- `npm install` in this directory
-- `npm start` in this directory
-- Open a browser to the link provided in the console.
+If you are going to build and update site indexing for Algolia, you will need to save the `env-template` file as `.env` locally and populate the variable values. Currently, we only use environment values for Algolia search.
+
+#### node
+
+Node versions this repo has been successfully been run and tested with: 10.22.1, 12.19.0
+
+### Running
+
+- `yarn install` to install dependencies
+- `yarn start` to launch local server
+- Open a browser to the link provided in the console
 
 ## Deploy previews
 
-Documentation repositories should be setup with a "deploy preview" feature which automatically provides "preview" links in the _status checks_ section of pull-requests.
+Each pull request will be built and available for preview on netlify. To access the preview, look for the link in the status checks of the pull request.
 
-In the event that it's not possible to run the documentation locally, pushing changes to the branch for a pull-request can be a suitable alternative that ensures changes to the documentation are properly rendered.
+1. Push changes to your branch
+2. Create a pull request
+3. Click **Details** next to "**deploy/netlify** Deploy preview ready!" from the pull request
+
+## Deployment
+
+This site uses [Algolia search](https://algolia.com) which requires the environment variables from `env-template`.
+
+## Troubleshooting
+
+Gatsby and react often results in conflicts. If you have errors running `npm start` or `gatsby develop`:
+
+- you may need to try to uninstall and reinstall `react`, `react-dom`, and `gatsby` ([reference](https://github.com/gatsbyjs/gatsby/issues/19827#issuecomment-573986378))
+- you can also try `yarn install` instead of `npm install`

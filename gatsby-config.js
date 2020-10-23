@@ -1,5 +1,7 @@
+require("dotenv").config();
+
 const sidebarCategories = {
-  null: ["index", "intro/ecosystem", "intro/support"],
+  null: ["index", "intro/ecosystem", "intro/liquidity-mining", "intro/support"],
   Installation: [
     "installation/overview",
     "installation/windows",
@@ -125,6 +127,7 @@ const sidebarCategories = {
   ],
   Resources: [
     "resources/faq",
+    "resources/liquidity-mining",
     "resources/glossary",
     "[Hummingbot YouTube](https://www.youtube.com/c/HummingbotChannel)",
     "[Hummingbot whitepaper](https://hummingbot.io/hummingbot.pdf)",
@@ -173,6 +176,7 @@ module.exports = {
     headerButtonText: "Launch Hummingbot Miner",
     headerButtonLink: "https://miners.hummingbot.io/",
     discordUrl: "https://discord.hummingbot.io",
+    siteName: "Hummingbot Docs",
   },
   pathPrefix: "/",
   plugins: [
@@ -180,7 +184,7 @@ module.exports = {
       resolve: "gatsby-theme-apollo-docs",
       options: {
         root: __dirname,
-        siteName: "All Hummingbot Documentation",
+        siteName: "Hummingbot Client Documentation",
         description:
           "Documentation for Hummingbot, the open source framework that helps you build and run crypto trading bots",
         sidebarCategories,
@@ -197,8 +201,8 @@ module.exports = {
          * @todo Replace these two keys with own keys
          * @see https://github.com/apollographql/gatsby-theme-apollo/tree/master/packages/gatsby-theme-apollo-docs#algolia-configuration
          */
-        algoliaApiKey: "768e823959d35bbd51e4b2439be13fb7",
-        algoliaIndexName: "apollodata",
+        algoliaApiKey: process.env.GATSBY_ALGOLIA_API_KEY,
+        algoliaIndexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
       },
     },
     {

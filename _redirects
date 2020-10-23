@@ -1,1 +1,1 @@
-/miner https://miner-docs.netlify.app
+/miner/* https://miner-docs.netlify.app/:splat 200

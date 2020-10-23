@@ -1,4 +1,4 @@
 [[redirects]]
   from = "/miner"
-  to = "http://miner-docs.hummingbot.io"
+  to = "http://miner-docs.netlify.app"
   status = 200

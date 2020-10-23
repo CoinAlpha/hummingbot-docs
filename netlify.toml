@@ -1,9 +1,4 @@
 [[redirects]]
-  from = "/miner/miner/*"
-  to = "http://miner-docs.netlify.app/miner/:splat"
-  status = 200
-
-[[redirects]]
   from = "/miner/*"
   to = "http://miner-docs.netlify.app/:splat"
   status = 200

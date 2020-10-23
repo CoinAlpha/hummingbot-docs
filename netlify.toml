@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/miner"
+  to = "http://miner-docs.hummingbot.io"
+  status = 200

@@ -226,7 +226,7 @@ PageContent.propTypes = {
   pages: PropTypes.array.isRequired,
   hash: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  graphManagerUrl: PropTypes.string.isRequired,
+  // graphManagerUrl: PropTypes.string.isRequired,
   headings: PropTypes.array.isRequired,
   spectrumUrl: PropTypes.string,
 };

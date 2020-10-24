@@ -189,7 +189,7 @@ module.exports = {
           "Documentation for Hummingbot, the open source framework that helps you build and run crypto trading bots",
         sidebarCategories,
         subtitle: "Hummingbot Docs",
-        githubRepo: "coinalpha/hummingbot",
+        githubRepo: "coinalpha/hummingbot-docs",
         baseUrl: "https://docs.hummingbot.io",
         baseDir: "/",
         navConfig,

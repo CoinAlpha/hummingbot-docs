@@ -11,7 +11,7 @@ Here's a high level view of the logic flow inside the built-in pure market makin
 
 ![Figure 5: Pure market making strategy logical flowchart](/img/pure-mm-flowchart.svg)
 
-The pure market making strategy operates in a tick-by-tick manner, as described in the [Strategies Overview](/strategies) document. Each tick is typically 1 second, although it can be programmatically modified to longer or shorter durations.
+The pure market making strategy operates in a tick-by-tick manner, as described in the [Strategies Overview](/strategies/overview) document. Each tick is typically 1 second, although it can be programmatically modified to longer or shorter durations.
 
 At each tick, the pure market making strategy would first query the order filter plugin whether to proceed or not. Assuming the answer is yes, then it'll query the order pricing and sizing plugins and calculate whether and what market making orders it should emit. At the same time, it'll also look at any existing limit orders it previously placed on the market and decide whether it should cancel those.
 

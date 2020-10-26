@@ -29,7 +29,7 @@ Performs the necessary API request(s) to get last traded price for the given mar
 
 Fetches order book snapshot for a particular trading pair from the exchange REST API.<br/>
 
-> **Note:** Certain exchanges do not add a timestamp/nonce to the snapshot response. In this case, to maintain a real-time order book would require generating a timestamp for every order book snapshot and delta messages received and applying them accordingly.<br/><br/>In [Bittrex](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/market/bittrex/bittrex_api_order_book_data_source.py), this is performed by invoking the `queryExchangeState` topic on the SignalR WebSocket client.<br/>
+> **Note:** Certain exchanges do not add a timestamp/nonce to the snapshot response. In this case, to maintain a real-time order book would require generating a timestamp for every order book snapshot and delta messages received and applying them accordingly.<br/><br/>In [Bittrex](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/bittrex/bittrex_api_order_book_data_source.py), this is performed by invoking the `queryExchangeState` topic on the SignalR WebSocket client.<br/>
 
 **Input Parameter:** client: `aiohttp.ClientSession`, trading_pair: `str` <br/>
 **Expected Output(s):** `Dict[str, any]`
@@ -223,4 +223,4 @@ Attempts to retrieve trade_messages from the Queue `_order_book_trade_stream` an
 
 ## Debugging & Testing
 
-As part of the QA process, for each tasks(Task 1 through 3) you are **required** to include the unit test cases for the code review process to begin. Refer to [Option 1: Unit Test Cases](/developers/connectors/debug&test/#option-1-unit-test-cases) to build your unit tests.
+As part of the QA process, for each tasks(Task 1 through 3) you are **required** to include the unit test cases for the code review process to begin. Refer to [Option 1: Unit Test Cases](/developer/debug&test/#option-1-unit-test-cases) to build your unit tests.

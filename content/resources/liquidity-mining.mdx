@@ -56,7 +56,7 @@ In addition, we run proprietary algorithms in order to attempt any prohibited ac
 Check the following if:
 
 - You are not running Hummingbot in paper trading mode, which doesn't place real orders.
-- Your bot is actually placing orders on the exchange. You should be able to see them in the exchange website. Make sure you're running token pair on our [active campaigns](https://docs.hummingbot.io/liquidity-mining/#current-campaign-terms).
+- Your bot is actually placing orders on the exchange. You should be able to see them in the exchange website. Make sure you're running token pair on our [active campaigns](/intro/liquidity-mining/#current-campaign-terms).
 - If you are running Hummingbot locally on Mac or Windows computer, your machine didn't go to sleep or lost internet connection which prevents Hummingbot from maintaining orders.
 
 If these 3 reasons are not the cause, you can email a CSV export of your Binance order history for a particular market to accounts@hummingbot.io. Make sure to used or include the email address registered for liquidity mining.
@@ -105,9 +105,10 @@ For the general pool of users who don't have their own trading bots, we created 
 
 ## How do I add my wallet address?
 
-> - Each liquidity mining campaign has its own rewards payments terms, which may include paying out tokens to wallets on that issuer's blockchain.  To ensure you receive all of the rewards earned, make sure to enter the relevant wallet details for campaigns that you are participating in.
-  - If you have earned rewards for a campaign for which you have not yet provided a wallet, the rewards will accumulate and only be paid out once you have provided a wallet address.
-  - Wallet address are use for receiving payouts only, you do not need to deposit assets into or trade using this wallet.
+> - Each liquidity mining campaign has its own rewards payments terms, which may include paying out tokens to wallets on that issuer's blockchain. To ensure you receive all of the rewards earned, make sure to enter the relevant wallet details for campaigns that you are participating in.
+
+- If you have earned rewards for a campaign for which you have not yet provided a wallet, the rewards will accumulate and only be paid out once you have provided a wallet address.
+- Wallet address are use for receiving payouts only, you do not need to deposit assets into or trade using this wallet.
 
 1. Log in to https://miners.hummingbot.io
 2. Click **Settings**.
@@ -131,12 +132,12 @@ Above steps are for new user, existing user can jump to step #3 after successful
 In most cases and for most assets, you can use a Binance deposit address to receive your rewards directly into your account.
 
 > **Note**:
-There are exceptions where the rewards assets may not be supported by a Binance deposit address. Make sure to review the terms of each campaign carefully.
-For example, the USDT ASA rewards asset for the Algorand campaign is not currently supported on Binance.
+> There are exceptions where the rewards assets may not be supported by a Binance deposit address. Make sure to review the terms of each campaign carefully.
+> For example, the USDT ASA rewards asset for the Algorand campaign is not currently supported on Binance.
 
 1. Navigate to Binance Spot wallet
-2. Click the **Deposit** button and choose the token you want to get the address. 
-3. On the right pane of your Binance window, the token deposit address will be displayed. Copy the address and connect it [Hummingbot miners](https://miners.hummingbot.io/). 
+2. Click the **Deposit** button and choose the token you want to get the address.
+3. On the right pane of your Binance window, the token deposit address will be displayed. Copy the address and connect it [Hummingbot miners](https://miners.hummingbot.io/).
 
 ![](./img/deposit.png)
 
@@ -146,13 +147,20 @@ For example, the USDT ASA rewards asset for the Algorand campaign is not current
     <th>Comment</th>
   </thead>
   <tbody>
-      <tr>
+    <tr>
       <td>NEM</td>
-      <td>NEM wallets also require you to specify a "<b>NEM MEMO</b>" field in addition to wallet address</td>
+      <td>
+        NEM wallets also require you to specify a "<b>NEM MEMO</b>" field in
+        addition to wallet address
+      </td>
     </tr>
     <tr>
       <td>ALGO/USDT ASA</td>
-      <td>USDT ASA is currently not supported by Binance.com. Please enter an alternative ALGO wallet address (see here) and do not use a Binance deposit address.</td>
+      <td>
+        USDT ASA is currently not supported by Binance.com. Please enter an
+        alternative ALGO wallet address (see here) and do not use a Binance
+        deposit address.
+      </td>
     </tr>
   </tbody>
 </table>

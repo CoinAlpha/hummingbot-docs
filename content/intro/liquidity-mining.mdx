@@ -22,7 +22,7 @@ Liquidity mining sets forth an analytical framework for determining market maker
 ### Read me first
 
 - [How it works](https://www.notion.so/hummingbot/What-is-liquidity-mining-c2eb7d68e28b42278e5efead9a247507)
-- [Liquidity Mining FAQs](https://docs.hummingbot.io/faq/liquidity-mining/)
+- [Liquidity Mining FAQs](https://docs.hummingbot.io/resources/liquidity-mining/)
 - [Liquidity Mining whitepaper](https://hummingbot.io/liquidity-mining.pdf)
 
 ### Installation and configuration
@@ -56,9 +56,9 @@ Work on removing this limit is in progress, you can read more about it in our [R
 
 **Minimum reward payout amount**
 
-Due to the recent surge in Ethereum gas price, Hummingbot will impose a $50.00 minimum on the weekly payout **for payments on the Ethereum blockchain (currently USDT and RLC)**, starting with the next scheduled payout on September 18th (UTC).
+Due to the recent surge in Ethereum gas price, Hummingbot will impose a \$50.00 minimum on the weekly payout **for payments on the Ethereum blockchain (currently USDT and RLC)**, starting with the next scheduled payout on September 18th (UTC).
 
-For miners who earn < $50 within one week, their rewards will be accrued and rolled over to the next period, read more in this [Reddit post](https://www.reddit.com/r/Hummingbot/comments/ip4mc3/announcement_raising_minimum_payment_to_50/).
+For miners who earn < \$50 within one week, their rewards will be accrued and rolled over to the next period, read more in this [Reddit post](https://www.reddit.com/r/Hummingbot/comments/ip4mc3/announcement_raising_minimum_payment_to_50/).
 
 **Enabling USDT for USD-based payments**
 
@@ -66,162 +66,26 @@ Starting from the rewards period beginning on October 6, 2020 12.00am UTC, all U
 
 ## Current Reward Period
 
-**October 20, 2020 12:00am UTC - October 27, 2020 12:00am UTC**
+**October 27, 2020 12:00am UTC - November 3, 2020 12:00am UTC**
 
-<table>
-  <thead>
-    <th>Token Issuer</th>
-    <th>Trading pair</th>
-    <th>Exchange</th>
-    <th>Maximum spread</th>
-    <th>Spread factor *</th>
-    <th>Weekly rewards</th>
-  </thead>
-  <tbody>
-      <tr>
-      <td rowspan="3"><a href="#coti">COTI</a></td>
-      <td>COTI/BTC</td>
-      <td>Binance.com</td>
-      <td>2%</td>
-      <td>8</td>
-      <td>USDT 250</td>
-    </tr>
-    <tr>
-      <td>COTI/USDT</td>
-      <td>Binance.com</td>
-      <td>2%</td>
-      <td>8</td>
-      <td>USDT 250</td>
-    </tr>
-    <tr>
-      <td>COTI/BNB</td>
-      <td>Binance.com</td>
-      <td>2%</td>
-      <td>8</td>
-      <td>USDT 250</td>
-    </tr>        
-    <tr>
-      <td rowspan="3"><a href="#mainframe">Mainframe</a></td>
-      <td>MFT/USDT</td>
-      <td>Binance.com</td>
-      <td>2%</td>
-      <td>8</td>
-      <td>USDT 250</td>
-    </tr>
-    <tr>
-      <td>MFT/ETH</td>
-      <td>Binance.com</td>
-      <td>2%</td>
-      <td>8</td>
-      <td>USDT 250</td>
-    </tr>
-    <tr>
-      <td>MFT/BNB</td>
-      <td>Binance.com</td>
-      <td>2%</td>
-      <td>8</td>
-      <td>USDT 250</td>
-    </tr>
-    <tr>
-      <td rowspan="3"><a href="#iexec">iExec</a></td>
-      <td>RLC/BTC</td>
-      <td>Binance.com</td>
-      <td>2%</td>
-      <td>8</td>
-      <td>RLC 180</td>
-    </tr>
-    <tr>
-      <td>RLC/USDT</td>
-      <td>Binance.com</td>
-      <td>2%</td>
-      <td>8</td>
-      <td>RLC 180</td>
-    </tr>
-    <tr>
-      <td>RLC/ETH</td>
-      <td>Binance.com</td>
-      <td>2%</td>
-      <td>8</td>
-      <td>RLC 180</td>
-    </tr>
-  </tbody>
-</table>
+| Token                    | Trading Pair                            |  Exchange   | Maximum Sread | Spread Factor\* |     Weekly rewards     |
+| ------------------------ | :-------------------------------------- | :---------: | :-----------: | :-------------: | :--------------------: |
+| [COTI](#coti)            | COTI/BTC <br/> COTI/USDT <br/> COTI/BNB | Binance.com |      2%       |        8        |        USDT 250        |
+| [Mainframe](/#mainframe) | MFT/USDT <br/> MFT/ETH <br/> MFT/BNB    | Binance.com |      2%       |        8        |        USDT 250        |
+| [iExec](#iExec)          | RLC/BTC <br/> RLC/USDT <br/> RLC/ETH    | Binance.com |      2%       |        8        |        RLC 180         |
+| [Algorand](#algorand)    | Algo/BTC <br/> Algo/USDT                | Binance.com |      2%       |        8        | USDT 312.50 / ALGO 980 |
 
 \* Spread density function constant is one of the factors that determines the relative weighting of orders by spread, i.e., the amount of additional rewards for orders with tighter spreads vs those with wider spreads. Refer to this [spreadsheet](https://docs.google.com/spreadsheets/d/1mUZsQoiqlMs5HjcL6AXSKIx1oaULsmuQStJaCc2wggQ/edit?ts=5f1e89bd#gid=18167917) for the spread weights and for a visual of the graph that shows the curve.
 
 ## Upcoming Changes to Terms
 
-**1) Liquidity mining for ALGO going live on October 27, 2020!**
+**1) Liquidity mining campaign for NEM (XEM) going live on November 3, 2020!**
 
-The campaign will initially be a 24-week campaign with a reward pool of $30,000 in ALGO and USDT ASA (Algorand Standard Asset) tokens. For more detais, you can check our [blog post](https://hummingbot.io/blog/2020-10-algorand/).
+Total reward pool: XEM tokens with a current value of approximately $1,250 per week (total of **$15,000\*\* over 12 weeks). For more details, you can check our [blog post](https://hummingbot.io/blog/2020-10-nem-liquidity-mining/).
 
-<table>
-  <thead>
-    <th>Token Issuer</th>
-    <th>Trading pair</th>
-    <th>Exchange</th>
-    <th>Maximum spread</th>
-    <th>Weekly rewards</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td rowspan="2">
-        <a href="#algorand">Algorand</a>
-      </td>
-      <td>Algo/BTC</td>
-      <td>Binance.com</td>
-      <td>2%</td>
-      <td>
-        <b>USD 625 *</b>
-      </td>
-    </tr>
-    <tr>
-      <td>Algo/USDT</td>
-      <td>Binance.com</td>
-      <td>2%</td>
-      <td>
-        <b>USD 625 *</b>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-\* 50% of the reward pool will be denominated in Algo tokens, with the final amount to be determined just prior to the campaign launch based on the indicated dollar amounts shown.
-
-**2) Liquidity mining campaign for NEM (XEM) going live on November 3, 2020!**
-
-Total reward pool: XEM tokens with a current value of approximately $1,250 per week (total of $15,000 over 12 weeks). For more details, you can check our [blog post](https://hummingbot.io/blog/2020-10-nem-liquidity-mining/).
-
-<table>
-  <thead>
-    <th>Token Issuer</th>
-    <th>Trading pair</th>
-    <th>Exchange</th>
-    <th>Maximum spread</th>
-    <th>Weekly rewards</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td rowspan="2">
-        <a href="#nem">NEM</a>
-      </td>
-      <td>XEM/BTC</td>
-      <td>Binance.com</td>
-      <td>2%</td>
-      <td>
-        <b>USD 625 *</b>
-      </td>
-    </tr>
-    <tr>
-      <td>XEM/ETH</td>
-      <td>Binance.com</td>
-      <td>2%</td>
-      <td>
-        <b>USD 625 *</b>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| TOKEN ISSUER | Trading Pair          |  Exchange   | Maximum Sread | Weekly rewards |
+| ------------ | :-------------------- | :---------: | :-----------: | :------------: |
+| [NEM](#nem)  | XEM/BTC <br/> XEM/ETH | Binance.com |      2%       |   USD 625\*    |
 
 \* The reward pool will be denominated in XEM tokens, with the final amount to be determined just prior to the campaign launch based on the indicated dollar amounts shown.
 
@@ -257,4 +121,3 @@ The [Mainframe (MFT)](https://mainframe.com/) Lending Protocol allows anyone to 
 NEM Group comprises three separate entities: NEM Software, NEM Trading, and NEM Ventures. NEM Group shapes the future of blockchain by nurturing a strong and healthy ecosystem that will contribute to the development of blockchain technology for generations to come.
 
 [Forum](https://forum.nem.io/) | [Twitter](https://twitter.com/nemofficial) | [Telegram](https://t.me/nemred) | [Github](https://github.com/NemProject) | [CoinMarketCap](https://coinmarketcap.com/currencies/nem/) | [CoinGecko](https://www.coingecko.com/en/coins/nem)
-

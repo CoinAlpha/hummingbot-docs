@@ -71,8 +71,8 @@ The cross exchange market making strategy calculates the optimal pricing from th
 
 1.  Current market order prices on the taker side.
 2.  Current order book depth on the maker side.
-3.  [`top_depth_tolerance`](/strategies/cross-exchange-market-making/) setting, which is applied to the order book depths on maker side.
-4.  [`min_profitability`](/strategies/cross-exchange-market-making/) setting, which is applied to the market order prices on the taker side.
+3.  [`top_depth_tolerance`](/strategies/cross-exchange-market-making/#top_depth_tolerance) setting, which is applied to the order book depths on maker side.
+4.  [`min_profitability`](/strategies/cross-exchange-market-making/#min_profitability) setting, which is applied to the market order prices on the taker side.
 
 If the price of the active order is different from the optimal price calculated, then the order would be cancelled. Otherwise, the strategy would allow the order to stay.
 

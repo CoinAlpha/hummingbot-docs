@@ -46,3 +46,9 @@ Gatsby and react often results in conflicts. If you have errors running `npm sta
 
 - you may need to try to uninstall and reinstall `react`, `react-dom`, and `gatsby` ([reference](https://github.com/gatsbyjs/gatsby/issues/19827#issuecomment-573986378))
 - you can also try `yarn install` instead of `npm install`
+
+## Contributions
+
+When contributing, please review the [contributing guidelines](https://docs.hummingbot.io/developer/contributing/)
+
+**Note**: Use `master` as base branch

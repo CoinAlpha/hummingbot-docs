@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const sidebarCategories = {
-  null: ["index", "intro/ecosystem", "intro/liquidity-mining", "intro/support"],
+  null: ["index", "intro/liquidity-mining", "intro/support"],
   Installation: [
     "installation/overview",
     "installation/windows",
@@ -81,6 +81,7 @@ const sidebarCategories = {
   ],
   "Release Notes": [
     "release-notes/overview",
+    "release-notes/0.33.0",
     "release-notes/0.32.0",
     "release-notes/0.31.0",
     "release-notes/0.30.0",

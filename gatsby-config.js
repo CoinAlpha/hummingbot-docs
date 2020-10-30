@@ -22,6 +22,7 @@ const sidebarCategories = {
   Connectors: [
     "connectors/overview",
     "connectors/binance",
+    "connectors/binance-us",
     "connectors/bitfinex",
     "connectors/bittrex",
     "connectors/coinbase",
@@ -32,6 +33,7 @@ const sidebarCategories = {
     "connectors/kraken",
     "connectors/liquid",
     "connectors/loopring",
+    "connectors/okex",
     "connectors/radar-relay",
     "connectors/bamboo-relay",
     "connectors/dolomite",

@@ -460,47 +460,87 @@ See the past performance of the current bot.
   Current Time: 2020-11-11 12:57:22
   Duration: 0 days 12:00:45
 
-  binance / BTC-USDT
+  binance / MFT-BNB
 
     Trades:
-                                   buy     sell     total
-      Number of trades              62       65       127
-      Total trade volume (BTC)  0.0496  -0.0520  -0.00240
-      Total trade volume (USDT) -668.3      702     33.69
-      Avg price                  13475    13501     13489
+                                         buy        sell       total
+      Number of trades                   113          97         209
+      Total trade volume (BTC)       2181335    -2133912       47423
+      Total trade volume (USDT)      -217,67      210.76       -6.91
+      Avg price                    0.0000998   0.0000988   0.0001457
 
     Assets:
 
-                          Start   Current     Change
-      BTC                0.0299   0.00275   -0.00240
-      USDT                199.0     232.6      33.69
-      BTC-USDT price   13158.14   13646.02       487
-      Base asset %        66.45%    61.77%    -4.68%
+                                      Start      Current      Change
+      MFT                            155248       202671       47423
+      BNB                            23.331       16.419      -6.912
+      MFT/BNB price               0.0001076    0.0000809  -0.0000267
+      Base asset %                    41.7%        50.0%        8.2%
 
     Performance:
-      Hold portfolio value           607.7 USDT
-      Current portfolio value        608.7 USDT
-      Trade P&L                     0.9430 USDT
-      Fees paid                       0.30 USDT
-      Total P&L                      0.643 USDT
-      Return %:                           0.10%
+      Hold portfolio value           35.890 BNB
+      Current portfolio value        32.815 BNB
+      Trade P&L                      -3.075 BNB
+      Fees paid                      -0.428 BNB
+      Total P&L                      -3.504 BNB
+      Return %:                      -9.76%
 ```
 
 ** How It Works **
 
-The `history` command in Hummingbot will show the current session's total past trades, inventory, duration, market trading pair performance, and return percentage.
+The `history` command in Hummingbot displays the current duration of total past trades, assets inventory and value, and market trading pair performance.
+
+The following displays the formula for key calculations:
+
+> **Note:** For more details on all the indidvual item formula, see [google sheet](https://docs.google.com/spreadsheets/d/1zp8EmeJdiP5soR_Bu7hRjaSy65bc7lsg98J5jKanRn8/edit#gid=875477664)for the formulas in the cells.
 
 ** Avg Price **
 
-**Performance**
+Avg Price = Total trade volume of quote/Total trade volume of base asset
 
-** Total P&L **
+From the above example, for the total avg price is 6.91/47423 = 0.0001457
+
+This value means the average price of total MFT/BNB trades is 0.0001457
+
+**Hold portfolio value**
+
+The asset value from the start to the end with no trades.
+
+Hold portfolio value = (base start asset\*quote current value)+ quote start asset
+
+From the above example, for the Hold portfolio value is (155248\*0.0000809)+23.33=35.89
+
+**Current portfolio value**
+
+Current portfolio value = (quote current asset\*quote current value)+ quote current asset
+
+From the above example, for the Hold portfolio value is (202671\*0.0000809)+16.419=32.815
+
+**Trade P&L**
+
+Trade P&L = Current portfolio value - Hold Portfolio value
+
+From the above example, for the Trade P&L value is 32.815-35.89=-3.075
+
+**Tota P&L**
+
+Total P&L = Trade P&L + Fees paid
+
+From the above example, for the Total P&L is -3.075 + -0.428 = -3.504
 
 ** Return Percentage **
 
-Return is calculated based on assets spent and acquired during trades, i.e. balance changes due to the inventory like deposits, withdrawals, and manual trades outside of Hummingbot do not affect the calculation.
+Return% = Total P&L/Hold portfolio value
 
-Return % = (Total P&L/Current portfolio value)\*100
+From the above example, for the Return% is -3.075/-35.89 = -9.76
+
+**Optional arguments**
+
+| Command Argument | Description                                                                                                                                                  |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `--verbose`      | Displays a list of past trades                                                                                                                               |
+| `--config file`  | You can select different strategy file.By default, displays the current strategy file.                                                                       |
+| `--duration`     | You can select the duration in minutes, days and hours. For example, 7d for 7 days or 12h for 12 hours. By default, displays in hour if no value is defined. |
 
 ## exit
 

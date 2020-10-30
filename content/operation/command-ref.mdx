@@ -449,6 +449,10 @@ Get the market status of the current bot.
          1   buy 0.02526431  1.02%              1             1  00:00:02   no
 ```
 
+**Optional arguments**
+
+`--live`- Displays status in real time.
+
 ## history
 
 See the past performance of the current bot.
@@ -707,9 +711,13 @@ Run `order_book --lines [value]` to specify the number of lines displayed.
         395.75      2.9788     396.08     1.21638
 ```
 
+or you can use arguments `--live` to displays the orderbook of the taker market or secondary market in real time . For example, run `order_book --live --lines [value]` to specify the number of lines displayed in real time.
+
 By default, the `order_book` command shows only the maker market in cross-exchange strategy or primary market when using arbitrage.
 
-Optional arguments `--exchange` and `--market` allows you to check the order book of the taker market or secondary market.
+**Optional arguments**
+
+arguments `--exchange` and `--market` allows you to check the order book of the taker market or secondary market.
 
 Sample usage:
 
@@ -803,6 +811,7 @@ When optional arguments are not used i.e. running `ticker` alone displays the ou
 | `--repeat`       | To specify the number of times the output quote is displayed |
 | `--exchange`     | The specific exchange of the market                          |
 | `--market`       | The market trading pair of the order book                    |
+| `--live`         | Displays the ticker in real time                             |
 
 **Sample usage**
 

@@ -42,6 +42,7 @@ const sidebarCategories = {
     "strategies/cross-exchange-market-making",
     "strategies/arbitrage",
     "strategies/celo-arb",
+    "strategies/balancer-arb",
   ],
   "Advanced Market Making": [
     "strategies/adv-market-making",

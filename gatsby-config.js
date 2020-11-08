@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const sidebarCategories = {
-  null: ["index", "intro/ecosystem", "intro/liquidity-mining", "intro/support"],
+  null: ["index", "intro/liquidity-mining", "intro/support"],
   Installation: [
     "installation/overview",
     "installation/windows",
@@ -22,6 +22,7 @@ const sidebarCategories = {
   Connectors: [
     "connectors/overview",
     "connectors/binance",
+    "connectors/binance-us",
     "connectors/bitfinex",
     "connectors/bittrex",
     "connectors/coinbase",
@@ -32,6 +33,7 @@ const sidebarCategories = {
     "connectors/kraken",
     "connectors/liquid",
     "connectors/loopring",
+    "connectors/okex",
     "connectors/radar-relay",
     "connectors/bamboo-relay",
     "connectors/dolomite",
@@ -81,6 +83,7 @@ const sidebarCategories = {
   ],
   "Release Notes": [
     "release-notes/overview",
+    "release-notes/0.33.0",
     "release-notes/0.32.0",
     "release-notes/0.31.0",
     "release-notes/0.30.0",

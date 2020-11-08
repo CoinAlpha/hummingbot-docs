@@ -1,0 +1,58 @@
+---
+title: "Version 0.33.0"
+---
+
+## 📜 Improved Doc Site
+
+Documentation has been revamped into two sites:
+
+- [Hummingbot Docs](https://docs.hummingbot.io/): All-related documentation on Hummingbot, including developer guides.
+- [Hummingbot Miner Docs](https://docs.hummingbot.io/miner/): All-related information and documentation on liquidity mining and Hummingbot Miner app.
+
+## 🔄 UI/UX Enhancements
+
+- [#2430](https://github.com/CoinAlpha/hummingbot/issues/2430): Addition connector status column display when using `connect` command. Also, you can view the connector status in the [readme](https://github.com/CoinAlpha/hummingbot/blob/master/README.md)file.
+- [#2179](https://github.com/CoinAlpha/hummingbot/issues/2179): The Hummingbot client top and bottom navbars are enhanced with usage information, see [operation/client/#user-interface] for details.
+- [#2129](https://github.com/CoinAlpha/hummingbot/issues/2129): The `history` command is redesigned with more information and additional arguments, see [operation/command-ref/#history] for details.
+
+## 📊 New argument [--live]
+
+[#2519](https://github.com/CoinAlpha/hummingbot/pull/2519): This new arguement displays live updates for the following commands:
+
+- ticker, see sample usage in our [documentation](operation/command-ref/#ticker)
+- orderbook, see sample usage in our [documentation](/operation/commands/#orderbook)
+- status, see sample usage in our [documentation](/operation/commands/#status)
+
+## 🔗 Connectors
+
+[#2378](https://github.com/CoinAlpha/hummingbot/issues/2378): Binance connector is updated to support multiple domains.
+
+The following connectors are now supported:
+
+- [Binance.us](https://www.binance.us): Launched in September 2019, Binance.US is a digital asset marketplace, powered by matching engine and wallet technologies licensed from the world’s largest cryptocurrency exchange, Binance. Operated by BAM Trading Services based in San Francisco, California, Binance.US provides a fast, secure and reliable platform to buy and sell cryptocurrencies in the United States.
+- [OKEX](https://www.okex.com/): OKEx is a world-leading cryptocurrency exchange, providing advanced financial services to traders globally by using blockchain technology
+
+## 💻 Developers Updates
+
+### Refactoring
+
+[#2482](https://github.com/CoinAlpha/hummingbot/issues/2482): Unify connector settings loading process.
+[#2522](https://github.com/CoinAlpha/hummingbot/pull/2522): Loopring connector refactoring and fixes.
+
+### 📁 Database
+
+[#2106](https://github.com/CoinAlpha/hummingbot/issues/2106): Create new sqlite db files for indidivual strategies.
+
+### 🔧 Scripts
+
+- [#2411](https://github.com/CoinAlpha/hummingbot/issues/2411): A new script template is added to help developers get started quickly.
+- [#2492](https://github.com/CoinAlpha/hummingbot/issues/2492): The following data and settings are now avliable in scripts.
+  - Exchange and trading pair settings one time off (read-only)
+  - User available balances
+  - Inventory skew and order override settings
+
+## 🐞 Bug Fixes
+
+- [#2321](https://github.com/CoinAlpha/hummingbot/issues/2321): Hummingbot to place an order size of the remaining available balance if the balance is less than the order_amount.
+- [#2249](https://github.com/CoinAlpha/hummingbot/issues/2249): Setup fails on a clean install of Ubuntu.
+- [#2444](https://github.com/CoinAlpha/hummingbot/issues/2444): Unable to connect to any exchange using Hummingbot binary on Mac.

@@ -34,15 +34,15 @@ List available exchanges and check whether API keys have been added correctly.
 
 Testing connections, please wait...
          Exchange   Keys Added   Keys Confirmed    Connector Status
-          binance          Yes              Yes               Green
-          bittrex          Yes              Yes               Green
-     coinbase_pro           No               No                 Red
-         eterbase           No               No                 Red
-         ethereum          Yes              Yes              Yellow
-            huobi           No               No              Yellow
-           kraken           No               No               Green
-           kucoin           No               No               Green
-           liquid           No               No               Green
+          binance          Yes              Yes               GREEN
+          bittrex          Yes              Yes               GREEN
+     coinbase_pro           No               No                 RED
+         eterbase           No               No                 RED
+         ethereum          Yes              Yes              YELLOW
+            huobi           No               No              YELLOW
+           kraken           No               No             UNKNOWN
+           kucoin           No               No               GREEN
+           liquid           No               No             UNKNOWN
 ```
 
 ** connect [ exchange ] **
@@ -687,7 +687,11 @@ Displays the top 5 bid/ask prices and volume of the current market, similar to h
 
 > Note: This command will only work while a strategy is running.
 
-Run `order_book --lines [value]` to specify the number of lines displayed.
+Run `order_book --lines [value]` to specify the number of lines displayed or you can use arguments `--live` to displays the orderbook of the market in real time . For example, run `order_book --live. The order book displays the top 5 bid/ask prices and volume of the current market in real time.
+
+![orderbook-live](/img/orderbook-live.gif)
+
+Run order_book --lines [value] to specify the number of lines displayed.
 
 ```
 >>>  order_book --lines 15
@@ -711,9 +715,12 @@ Run `order_book --lines [value]` to specify the number of lines displayed.
         395.75      2.9788     396.08     1.21638
 ```
 
-or you can use arguments `--live` to displays the orderbook of the taker market or secondary market in real time . For example, run `order_book --live --lines [value]` to specify the number of lines displayed in real time.
-
 By default, the `order_book` command shows only the maker market in cross-exchange strategy or primary market when using arbitrage.
+
+You can use arguments `--live` to displays the orderbook of the market in real time . For example, run `order_book --live 30 --live`.
+The order book displays the top 30 bid/ask prices and volume of the current market in real time.
+
+![orderbook-live](/img/orderbook-30lines-live.gif)
 
 **Optional arguments**
 
@@ -812,6 +819,10 @@ When optional arguments are not used i.e. running `ticker` alone displays the ou
 | `--exchange`     | The specific exchange of the market                          |
 | `--market`       | The market trading pair of the order book                    |
 | `--live`         | Displays the ticker in real time                             |
+
+You can use arguments `--live` to displays market ticker prices such as best bid, best ask, mid price and last trade price in real time. For example, run `ticker --live`.
+
+![ticker-live](/img/ticker-live.gif)
 
 **Sample usage**
 

@@ -58,6 +58,8 @@ Enter the leverage you would like to use.
 
 This is the hedging mode where two positions, long and short is open at the same time. See [Hedge](https://www.binance.com/en/support/faq/360041513552) for details.
 
+> **Note:** if position mode on the exchange is different on what is set under the bot, an error will occur and need to change the position mode manually on Binance. Example, if the current position on Binance is Hedge mode and you create a new strategy on Hummingbot with One-way position, an error will occured.
+
 ** Prompt: **
 
 <div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
@@ -68,6 +70,8 @@ This is the hedging mode where two positions, long and short is open at the same
 </div>
 
 ### `ts_callback_rate`
+
+> **Note:** This parameter is currently disabled as of 0.33
 
 Callback rate determines the amount a trailing stop price will trail the price. The callback rate range is available from 0.1% to 5%. For more details, see [Callback Rate](https://www.binance.com/en/support/faq/360042299292).
 
@@ -80,6 +84,8 @@ Callback rate determines the amount a trailing stop price will trail the price. 
 </div>
 
 ### `ts_activation_spread`
+
+> **Note:** This parameter is currently disabled as of 0.33
 
 Traders can fill in the price level that triggers the trailing stop. If no activation price is being filled, the activation price will be the market price by default (either “Last Price” or “Mark Price” subject to the choice of trigger types). . For more details, see [Activation Spread](https://www.binance.com/en/support/faq/360042299292).
 

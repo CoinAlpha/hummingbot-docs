@@ -1,0 +1,109 @@
+---
+title: Binance Perpetual Market Making - Beta
+description: Learn how to use Binance Perpetual market making strategy
+---
+
+<table>
+  <tr>
+    <td style="background-color: #AFEEEE">
+      <b> Warning:</b> <br />
+      Binance Perpetual market making is released as beta version(0.33), trade it
+      at your own risk. Binance Perpetual is different from futures contract, please
+      see <a href="https://www.binance.com/en/support/faq/360033524991">
+        differences
+      </a>
+    </td>
+  </tr>
+</table>
+
+## How it Works
+
+Similar to pure market making strategy, Hummingbot continually posts limit bid and ask offers on a market and waits for other market participants ("takers") to fill their orders.
+
+## Contract Specifications of Binance Perpertuals
+
+- Trading Rules: Please see [Binance future trading rules](https://www.binance.com/en/futures/trading-rules)
+- Leverage and Margin: Please see [Leverage and Margin](https://www.binance.com/en/support/faq/360033162192)
+
+## How to start
+
+We aim to teach new users the basics of Binance Perpetual market making, while enabling experienced users to exercise more control over how their bots behave. By default, when you run `create` we ask you to enter the basic parameters needed for a Binance Perpetual bot.
+
+> **Note**: Paper trading is supported, enter `binance_perpetual_testnet` when prompted for derivative name.
+
+1. In Hummingbot, enter `create`.
+2. Enter `binance_perpetual_testnet` or `binance_perpetual`.
+3. Enter the trading pair, for example `BTC-USDT`.
+4. Follow on-screen prompts and info for Binance Perpetual parameters.
+5. Enter `start` to run the strategy.
+
+For details on each Binance Perpetual parameters, see the following sections for details. These parameters are fields in Hummingbot configuration files (located in the `/conf` folder, e.g. `conf/perpetual_market_making_[#].yml`).
+
+### `leverage`
+
+Enter the leverage you would like to use.
+
+> **Note:** Initial margin deposits are calculated using the leverage as entered by the trader, see [Leverage and Margin](https://www.binance.com/en/support/faq/360033162192) for details.
+
+** Prompt: **
+
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">
+    How much leverage do you want to use? (Binance Perpetual supports up to 75X
+    for most pairs))>>>{" "}
+  </font>
+</div>
+
+### `position_mode`
+
+This is the hedging mode where two positions, long and short is open at the same time. See [Hedge](https://www.binance.com/en/support/faq/360041513552) for details.
+
+> **Note:** if position mode on the exchange is different on what is set under the bot, an error will occur and need to change the position mode manually on Binance. Example, if the current position on Binance is Hedge mode and you create a new strategy on Hummingbot with One-way position, an error will occured.
+
+** Prompt: **
+
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">
+    Do you want to use hedge mode? (If disabled, one-way position mode would be
+    used.)
+  </font>
+</div>
+
+### `ts_callback_rate`
+
+> **Note:** This parameter is currently disabled as of 0.33
+
+Callback rate determines the amount a trailing stop price will trail the price. The callback rate range is available from 0.1% to 5%. For more details, see [Callback Rate](https://www.binance.com/en/support/faq/360042299292).
+
+** Prompt: **
+
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">
+    Trailing Stop Callback Rate - Min0.1, Max 5? (Enter 1 to indicate 1%)
+  </font>
+</div>
+
+### `ts_activation_spread`
+
+> **Note:** This parameter is currently disabled as of 0.33
+
+Traders can fill in the price level that triggers the trailing stop. If no activation price is being filled, the activation price will be the market price by default (either “Last Price” or “Mark Price” subject to the choice of trigger types). . For more details, see [Activation Spread](https://www.binance.com/en/support/faq/360042299292).
+
+** Prompt: **
+
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">
+    How far away from the position entry price do you want to set the activation
+    price for position exit trailing stop order? (Enter 1 to indicate 1%)>>>
+  </font>
+</div>
+
+### `order_amount`
+
+The order amount for the bid order of the base asset for the trading pair.
+
+** Prompt: **
+
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">What is the amount of [trading pair] per order?</font>
+</div>

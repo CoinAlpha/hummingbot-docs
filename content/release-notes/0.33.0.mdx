@@ -2,18 +2,10 @@
 title: "Version 0.33.0"
 ---
 
-## 📜 Improved Doc Site
+## 🌞 New Balancer AMM Arb strategy
 
-Documentation has been revamped into two sites:
+We are excited to release Balancer AMM Arb strategy. For more information, see the [Balancer Arb strategy page](/strategies/balancer-arb).
 
-- [Hummingbot Docs](https://docs.hummingbot.io/): All-related documentation on Hummingbot, including developer guides.
-- [Hummingbot Miner Docs](https://docs.hummingbot.io/miner/): All-related information and documentation on liquidity mining and Hummingbot Miner app.
-
-## 🔄 UI/UX Enhancements
-
-- [#2430](https://github.com/CoinAlpha/hummingbot/issues/2430): Addition connector status column display when using `connect` command. Also, you can view the connector status in the [readme](https://github.com/CoinAlpha/hummingbot/blob/master/README.md) file.
-- [#2179](https://github.com/CoinAlpha/hummingbot/issues/2179): The Hummingbot client top and bottom navbars are enhanced with usage information, see [operation/client/#user-interface] for details.
-- [#2129](https://github.com/CoinAlpha/hummingbot/issues/2129): The `history` command is redesigned with more information and additional arguments, see [operation/command-ref/#history] for details.
 
 ## 📊 New argument [--live]
 
@@ -25,19 +17,26 @@ Documentation has been revamped into two sites:
 
 ## 🔗 Connectors
 
-[#2378](https://github.com/CoinAlpha/hummingbot/issues/2378): Binance connector is updated to support multiple domains.
-
 The following connectors are now supported:
 
-- [Binance.us](https://www.binance.us): Launched in September 2019, Binance.US is a digital asset marketplace, powered by matching engine and wallet technologies licensed from the world’s largest cryptocurrency exchange, Binance. Operated by BAM Trading Services based in San Francisco, California, Binance.US provides a fast, secure and reliable platform to buy and sell cryptocurrencies in the United States.
-- [OKEX](https://www.okex.com/): OKEx is a world-leading cryptocurrency exchange, providing advanced financial services to traders globally by using blockchain technology
+- [#1518](https://github.com/CoinAlpha/hummingbot/issues/1518), [Binance.us](https://www.binance.us) was l aunched in September 2019, Binance.US is a digital asset marketplace, powered by matching engine and wallet technologies licensed from the world’s largest cryptocurrency exchange, Binance. Operated by BAM Trading Services based in San Francisco, California, Binance.US provides a fast, secure and reliable platform to buy and sell cryptocurrencies in the United States.
+- [#2246](https://github.com/CoinAlpha/hummingbot/issues/2246), [Binance Futures](https://www.binance.com/en/futures) currently offers the highest leverage of 125x margin among major crypto exchanges, making it one of the most competitive products in the market. **Note:** Binance Perpetual connector is released as beta version(0.33), trade it at your own risk.
+- [#2262](https://github.com/CoinAlpha/hummingbot/pull/2262), [OKEX](https://www.okex.com/) is a world-leading cryptocurrency exchange, providing advanced financial services to traders globally by using blockchain technology.
+- [#2358](https://github.com/CoinAlpha/hummingbot/issues/2358),[#2474](https://github.com/CoinAlpha/hummingbot/issues/2474), [Balancer](https://balancer.finance/) is an automated portfolio manager, liquidity provider, and price sensor.
+
+## 🔄 UI/UX Enhancements
+
+- [#2430](https://github.com/CoinAlpha/hummingbot/issues/2430): Additional connector status column display when using `connect` command. Also, you can view the connector status in the [readme](https://github.com/CoinAlpha/hummingbot/blob/master/README.md) file.
+- [#2179](https://github.com/CoinAlpha/hummingbot/issues/2179): The Hummingbot client top and bottom navbars are enhanced with usage information, see [User Interface](operation/client/#user-interface) for details.
+- [#2129](https://github.com/CoinAlpha/hummingbot/issues/2129): The `history` command is redesigned with more information and additional arguments, see [History](operation/command-ref/#history) for details.
 
 ## 💻 Developers Updates
 
 ### Refactoring
 
-[#2482](https://github.com/CoinAlpha/hummingbot/issues/2482): Unify connector settings loading process.
-[#2522](https://github.com/CoinAlpha/hummingbot/pull/2522): Loopring connector refactoring and fixes.
+- [#2452](https://github.com/CoinAlpha/hummingbot/issues/2452): Update Docker helper scripts
+- [#2482](https://github.com/CoinAlpha/hummingbot/issues/2482): Unify connector settings loading process.
+- [#2522](https://github.com/CoinAlpha/hummingbot/pull/2522): Loopring connector refactoring and fixes.
 
 ### 📁 Database
 
@@ -46,7 +45,7 @@ The following connectors are now supported:
 ### 🔧 Scripts
 
 - [#2411](https://github.com/CoinAlpha/hummingbot/issues/2411): A new script template is added to help developers get started quickly.
-- [#2492](https://github.com/CoinAlpha/hummingbot/issues/2492): The following data and settings are now avliable in scripts.
+- [#2492](https://github.com/CoinAlpha/hummingbot/issues/2492): The following data and settings are now available in scripts.
   - Exchange and trading pair settings one time off (read-only)
   - User available balances
   - Inventory skew and order override settings
@@ -56,3 +55,10 @@ The following connectors are now supported:
 - [#2321](https://github.com/CoinAlpha/hummingbot/issues/2321): Hummingbot to place an order size of the remaining available balance if the balance is less than the order_amount.
 - [#2249](https://github.com/CoinAlpha/hummingbot/issues/2249): Setup fails on a clean install of Ubuntu.
 - [#2444](https://github.com/CoinAlpha/hummingbot/issues/2444): Unable to connect to any exchange using Hummingbot binary on Mac.
+
+## 📜 Improved Doc Site
+
+Documentation has been revamped into two sites:
+
+- [Hummingbot Docs](https://docs.hummingbot.io/): All-related documentation on Hummingbot, including developer guides.
+- [Hummingbot Miner Docs](https://docs.hummingbot.io/miner/): All-related information and documentation on liquidity mining and Hummingbot Miner app.

@@ -1,13 +1,13 @@
 ---
-title: Balancer Arbitrage
-description: Learn how to use Balancer arbitrage strategy
+title: AMM Arbitrage
+description: Learn how to use AMM arbitrage strategy
 ---
 
 import { MultiCodeBlock } from "gatsby-theme-apollo-docs";
 
 **Updated as of v0.33**
 
-Before you can use the Balancer arbitrage strategy in Hummingbot, you need to install and configure the Gateway API server. The following flowchart shows the typical installaton and configuration process for Balancer.
+Before you can use the AMM arbitrage strategy in Hummingbot, you need to install and configure the Gateway API server. The following flowchart shows the typical installaton and configuration process for Balancer.
 
 ![Balancer flowchart](/img/balancer-flowchart.png)
 
@@ -33,14 +33,21 @@ Ensure you have setup the Ethereum wallet and nodes, for more details:
 
 ### Install Hummingbot via Docker
 
-Refer to [Docker](https://docs.hummingbot.io/installation/linux/) for details. Before you start using Hummingbot, read through the follwing sections to have an understanding of how Hummingbot works:
+Refer to the following individual OS for details:
+
+- [Windows](https://docs.hummingbot.io/installation/windows/#install-via-docker)
+- [macOS](https://docs.hummingbot.io/installation/mac/#install-via-docker)
+- [Linux](https://docs.hummingbot.io/installation/linux/)
+- [Raspberry Pi](https://docs.hummingbot.io/installation/raspberry/)
+
+Before you start using Hummingbot, see the following links to have an understanding on how Hummingbot works:
 
 - [Start and Configure Hummingbot](https://docs.hummingbot.io/operation/client/)
 - [Operation](https://docs.hummingbot.io/operation/command-ref/)
 
 ## Installation and Configuration
 
-The following sections describes the installation and configuration process for Balancer.
+The following sections describes the installation and configuration process for Gateway.
 
 ### Create SSL Cert in Hummingbot
 
@@ -109,7 +116,7 @@ Please enter your Gateway API port >>>
 
 3. Enter the port number.
 
-\*\* (Optional Settings 2) Using Defipulse
+**(Optional Settings 2) Using Defipulse**
 
 If you want to use and configure defipulse as the gas estimator
 
@@ -126,7 +133,7 @@ If you want to use and configure defipulse as the gas estimator
 5. Enter the value for the gas level.
 6. (Optional) Enter `config ethgasstation_refresh_time`, enter a value to overwrite the default Gas Station refresh time (120secs).
 
-## AMM Balancer Arbitrage Strategy
+## AMM Arbitrage Strategy
 
 After the installation and configuration is completed, we can create the configuration for AMM arbitrage strategy. The following example shows a step-by-step on configuring the AMM arb strategy.
 

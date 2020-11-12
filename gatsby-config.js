@@ -1,7 +1,11 @@
 require("dotenv").config();
 
 const sidebarCategories = {
-  null: ["index", "intro/liquidity-mining", "intro/support"],
+  null: [
+    "index",
+    "[Liquidity Mining](https://docs.hummingbot.io/miner/liquidity-mining/current-rewards&terms/)",
+    "intro/support",
+  ],
   Installation: [
     "installation/overview",
     "installation/windows",
@@ -21,7 +25,9 @@ const sidebarCategories = {
   ],
   Connectors: [
     "connectors/overview",
+    "connectors/balancer",
     "connectors/binance",
+    "connectors/binance-futures",
     "connectors/binance-us",
     "connectors/bitfinex",
     "connectors/bittrex",
@@ -45,7 +51,7 @@ const sidebarCategories = {
     "strategies/perpetual-market-making",
     "strategies/arbitrage",
     "strategies/celo-arb",
-    "strategies/balancer-arb",
+    "strategies/amm-arb",
   ],
   "Advanced Market Making": [
     "strategies/adv-market-making",
@@ -132,7 +138,6 @@ const sidebarCategories = {
   ],
   Resources: [
     "resources/faq",
-    "resources/liquidity-mining",
     "resources/glossary",
     "[Hummingbot YouTube](https://www.youtube.com/c/HummingbotChannel)",
     "[Hummingbot whitepaper](https://hummingbot.io/hummingbot.pdf)",

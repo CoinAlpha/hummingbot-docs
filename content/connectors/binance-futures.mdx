@@ -1,0 +1,46 @@
+---
+title: Binance Futures - BETA
+description: About Binance Futures Connecter (USDT-M)
+---
+
+<table>
+  <tr>
+    <td style="background-color: #AFEEEE">
+      <b> Warning:</b> <br />
+      Binance Perpetual connector is released as beta version(0.33), trade it with
+      your own risk. Binance Perpetual is different from futures contract, please
+      see <a href="https://www.binance.com/en/support/faq/360033524991">
+        differences
+      </a>.
+    </td>
+  </tr>
+</table>
+
+Binance Futures is the fastest-growing crypto-derivative exchange by trading volume and currently offers the highest leverage of 125x margin among major crypto exchanges, making it one of the most competitive products in the market. This was made possible by our robust risk management system, which includes a sophisticated risk engine, smart liquidation model, and insurance funds that provide traders with extra protection for highly leveraged trading.
+
+## Using the Connector
+
+Similar to Binance connector you will need to generate and provide your API key in order to trade using Hummingbot.
+
+```
+Enter your Binance API key >>>
+Enter your Binance secret key >>>
+```
+
+Private keys and API keys are stored locally for the operation of the Hummingbot client only. At no point will private or API keys be shared to CoinAlpha or be used in any way other than to authorize transactions required for the operation of Hummingbot.
+
+> **Tip:** For copying and pasting into Hummingbot, see [this page](/intro/support/#paste-items-from-clipboard-in-putty) for more instructions in our Support section.
+
+### Creating Binance Futures API Keys
+
+1. Log into your account at https://www.binance.us, then select **Account>API Management** (If you do not have an account, you will have to create one and verify your ID).
+2. Follow on-screen instructions to create your API keys
+   > **Important:**
+   - For API key permissions, we recommend using only **"trade"** enabled API keys for **Enable Futures** checkbox; enabling **"withdraw", "transfer", or the equivalent is unnecessary** for current Hummingbot strategies.
+   - Make sure you store your Secret Key somewhere secure, and do not share it with anyone. Your Secret Key will only be displayed once at the time when you create the API.
+   - If you lose your Secret Key, you can delete the API and create a new one. However, it will be impossible to reuse the same API.
+
+## Contract Specifications of Binance Perpertuals
+
+- Trading Rules: Please see [Binance future trading rules](https://www.binance.com/en/futures/trading-rules)
+- Leverage and Margin: Please see [Leverage and Margin](https://www.binance.com/en/support/faq/360033162192)

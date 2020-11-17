@@ -1,4 +1,7 @@
-# External Pricing Source Configuration
+---
+title: External Pricing Source Configuration
+description: Info on external pricing source configuration
+---
 
 **Updated as of `v0.31.0`**
 
@@ -63,7 +66,7 @@ Run `config price_type` command to change the price reference to `last_price`, `
 !!! note
     Currently, the external price source cannot be the same as the maker exchange (i.e. if the bot is trading on Binance, the `price_source_exchange` cannot be Binance).
 
-### Price Source: Custom API
+###  Price Source: Custom API
 
 Custom API is mostly used by advanced users or developers for using a different price reference. Take note that `price_source` should be set to `custom_api` with the API URL indicated in `price_source_custom_api`.
 

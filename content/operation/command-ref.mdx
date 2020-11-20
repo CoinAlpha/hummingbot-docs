@@ -258,6 +258,42 @@ binance:
        XZC    0.0076         -
 ```
 
+## Example Scenario : Placing orders on one side
+
+Create pure market making strategy, run `config` to view the whole configuration.
+
+![config](/img/config1.PNG)
+
+Run `balance limit binance ETH 0` to set the balance limit to 0.
+
+![balance limit](/img/set_balance_limit.png)
+
+Run `balance limit` command to confirm the limit has been applied.
+
+![balance](/img/run_balance.png)
+
+Run `start` command and it will only create bid order and no ask order because the balance limit is set to 0.
+
+![buy order](/img/create_buy_order2.png) 
+
+![buy order1](/img/create_buy_order3.png)
+
+The bid order is filled.
+
+![acquired balance](/img/acquired_balance.png)
+
+After the bid order gets filled the other token acquired balance. When the `order_refresh_time` triggers it will start to create bid and ask orders. In this case the ask order is filled.
+
+![sell order2](/img/create_sell_order2.png) 
+
+![sell order3](/img/create_sell_order3.png)
+
+ETH has 0 available balance again because the ask order in last trade gets filled. When the `order_refresh_time` triggers it will only create bid order.
+
+![buy only](/img/create_buy_only.png) 
+
+![buy only1](/img/create_buy_only1.PNG)
+
 ** balance paper **
 
 Show existing paper account balance setting.

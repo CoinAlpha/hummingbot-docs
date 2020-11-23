@@ -91,6 +91,7 @@ const sidebarCategories = {
   ],
   "Release Notes": [
     "release-notes/overview",
+    "release-notes/0.33.1",
     "release-notes/0.33.0",
     "release-notes/0.32.0",
     "release-notes/0.31.0",

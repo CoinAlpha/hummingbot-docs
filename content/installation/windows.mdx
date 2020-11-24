@@ -40,31 +40,35 @@ For the Windows binary distribution, the application data files are located in `
 The Hummingbot code base is designed and optimized for UNIX-based systems such as macOS and Linux. We recommend that Windows users either:
 
 - Install in the cloud and use a native Linux virtual machine.
-- Install using Docker version: [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/) recommended.
+- Install using Docker version:  [Docker Desktop](https://docs.docker.com/docker-for-windows/) recommended.
 
 Hummingbot can also be installed by utilizing the built-in Windows Subsystem for Linux. However, this is only recommended for users familiar with development.
 
-> **Note:** For Windows users without Windows-Pro or Windows-Enterprise, you will need to install the Docker Toolbox, as Windows-Home is not supported by the standard Docker application. Below, we list instructions for running Hummingbot using the Docker Toolbox.
+> **Note:** Docker Toolbox has been deprecated and is no longer in active development. Please see this [link](https://docs.docker.com/docker-for-windows/docker-toolbox/) for more info
 
-1. Install Docker Toolbox
+**Docker Desktop**
 
-Download the latest version Docker Toolbox .exe file at the following link: [Docker Toolbox Releases](https://github.com/docker/toolbox/releases/).
+Supports Windows Home, Pro and Enterprise edition. Download the latest version of Docker Desktop .exe file via [Docker Hub](https://hub.docker.com/editions/community/docker-ce-desktop-windows/)
 
-![Docker Download](/img/docker_toolbox_download.PNG)
+![Docker Desktop](/img/docker_desktop_download.gif)
 
-2. Locate the installer in the downloads folder and run a full installation with included VirtualBox and Git for Windows. (Git is the default shell used by Docker)
+> **Note:** Docker Desktop requires WSL 2 feature enabled. For detailed instructions, refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/windows/wsl/install-win10). 
 
-![Docker Installation](/img/docker_toolbox_install.PNG)
+1. For installation procedures, you check the link below depending on the version of your Windows operating system.
+    - [Windows Home](https://docs.docker.com/docker-for-windows/install-windows-home/)
+    - [Windows Pro / Enterprise](https://docs.docker.com/docker-for-windows/install/)
 
-By default, a shortcut to the Docker Quickstart terminal will be created on your desktop. You can open Docker Toolbox using this shortcut.
+2. To enable WSL 2, open `Windows PowerShell` and run it as administrator. Use the command below and this will take a while to complete:
 
-![Docker Startup](/img/docker_toolbox_startup.PNG)
+  ```Windows PowerShell
+  wsl.exe --set-version Ubuntu-18.04 2
+  ```
 
-3. Run Hummingbot
+3. Open Docker Desktop, Go to Settings > Resources and then enable WSL Integration 
 
-Open Docker Toolbox using the Quickstart shortcut. Move onto the next step when you reach the following screen.
+![Docker Desktop WSL enable](/img/docker_desktop_WSLenable.gif)
 
-![Docker Ready](/img/docker_toolbox_cmdline.PNG)
+4. Open `Ubuntu 18.04 LTS` and move to the next step to install HummingBot.
 
 Enter the following commands into the command line. You can install Hummingbot by selecting **_either_** of the following options from the tabs below:
 
@@ -131,10 +135,9 @@ Step 1. Install required Applications
 4. Install [Visual Studio Code](https://code.visualstudio.com/download), [Visual Studio BuildTools 2019, Core Features, C++](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) and [C++ redistributable 2019](https://aka.ms/vs/16/release/VC_redist.x64.exe).
 
 > **Note:**
-
-- During installation make sure to add Anaconda or Miniconda to your PATH environmental variable by clicking the tick box as shown below, or you can add them [manually](https://www.geeksforgeeks.org/how-to-setup-anaconda-path-to-environment-variable/).
-  ![anaconda-path](/img/anaconda-path.png)
-- Some prerequisites are large applications and may need to restart your computer.
+  - During installation make sure to add Anaconda or Miniconda to your PATH environmental variable by clicking the tick box as shown below, or you can add them [manually](https://www.geeksforgeeks.org/how-to-setup-anaconda-path-to-environment-variable/).
+    ![anaconda-path](/img/anaconda-path.png)
+  - Some prerequisites are large applications and may need to restart your computer.
 
 Step 2. Install Hummingbot on Windows System
 

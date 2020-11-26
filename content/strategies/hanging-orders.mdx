@@ -31,6 +31,14 @@ Cancels the hanging orders when their spread goes above this value.
 
 ## How It Works
 
+Hanging orders is a function that instructs Hummingbot to treat buys and sells of the same order as a pair. If one side gets filled, the bot keeps the other side of the pairing, creating the possibility of that side to eventually get filled:
+
+![](img/hanging-orders.png)
+
+In the example above, the buy order for the first pair was filled. But since hanging orders mode was enabled, the original sell order from the first pair is not cancelled during the refresh cycle (period 2) and remains outstanding. Meanwhile, the bot continues to create new orders (see periods 2 through 5). In the example, prices changed direction and eventually at some point, the hanging sell order was filled around period 5.
+
+The benefit of this strategy is that it creates the possibility of the pairings to be “completed” and balanced.
+
 Typically, orders are placed as pairs in single order mode (1 buy and 1 sell order), and when a buy or sell order is filled, the other order is cancelled. The parameter `hanging_orders_enabled` allows Hummingbot to leave the order on the other side hanging (not cancelled) whenever one side is filled.
 
 The hanging order will be cancelled in the following conditions:

@@ -110,6 +110,7 @@ const sidebarCategories = {
     "release-notes/0.21.0",
     "release-notes/0.20.0",
     "release-notes/0.19.1",
+    "release-notes/0.19.0",
     "release-notes/0.18.1",
     "release-notes/0.18.0",
     "release-notes/0.17.1",

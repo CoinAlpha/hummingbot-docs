@@ -9,7 +9,7 @@ This release contains many changes to the import process, so previous strategy c
 
 ## 🔐 New password screen
 
-![](/assets/img/welcome.gif)
+![welcome](/img/welcome.gif)
 
 Now, you are asked to enter your password when you start the Hummingbot client.
 
@@ -20,13 +20,13 @@ We have extensively revamped the commands in Hummingbot. New commands include:
 - `connect`: displays a list of available exchanges and helps you connect to them
 - `balance`: see your asset balances across all exchanges
 - `create`: create a bot
-- `import`: import an existing bot configurationn
+- `import`: import an existing bot configuration
 
-See the [Command Reference](/operation/commands) for all commands.
+See the [Command Reference](/operation/command-ref/) for all commands.
 
 ## 🍱 Standardized parameter names and spread/percent inputs
 
-We have changed parameter names in the Pure Market Making strategy to make them clearer. For example, the frequency used to cancel and refresh orders is now `order_refresh_time` (old name: `cancel_order_wait_time`). Here are all the new [Basic](/strategies/pure-market-making/#basic-configuration-parameters-and-walkthrough) and [Advanced](/strategies/advanced-mm/#advanced-configuration-parameters) parameters.
+We have changed parameter names in the Pure Market Making strategy to make them clearer. For example, the frequency used to cancel and refresh orders is now `order_refresh_time` (old name: `cancel_order_wait_time`). Here are all the new [Basic](/strategies/pure-market-making/#basic-parameters) and [Advanced](/strategies/adv-market-making/#advanced-pure-market-making-parameters) parameters.
 
 In addition, we have standardized all **spread** and **percent** inputs, so that users enter percentage values. For example, to set a 1% `bid_spread`, enter `1` instead of `0.01`. To set a 5% `kill_switch_pct`, enter `5` instead of `0.05`.
 
@@ -36,7 +36,7 @@ Any parameter names that ends with `-pct` or `-spread` use this format.
 
 An often-requested feature is the ability to adjust the bot without stopping it. We have started to make more parameters adjustable on the fly, starting with spreads.
 
-Now you can use the revamped [config](/operation/commands/config) command to adjust spreads without stopping the bot. We plan to extend this functionality to other parameters such as order amount in the future.
+Now you can use the revamped [config](/operation/command-ref/#config) command to adjust spreads without stopping the bot. We plan to extend this functionality to other parameters such as order amount in the future.
 
 ## 🔗 New Kraken connector
 

@@ -18,13 +18,13 @@ We redesigned how Hummingbot analyzes performance so that events unrelated to Hu
 
 We published a developer tutorial on building custom strategies and documentation for the **Perform Trade** strategy.
 
-- [Developer Tutorial](https://docs.hummingbot.io/developers/tutorial/)
-- [Perform Trade Strategy](https://docs.hummingbot.io/developers/tutorial/perform-trade/)
+- [Developer Tutorial](/developer/tutorial/#building-connectors)
+- [Perform Trade Strategy](/developer/build-strategy/#perform-trade-strategy)
 
 ## 📚Log file management / data storage
 
 - A separate log file will now be generated daily. When a new log file is created, if there are more than 7 files, the oldest ones will be deleted in order to limit disk storage usage.
-- AWS free tier provides 7.7GB of disk space. Ubuntu files take about 1.1 GB, Docker takes about 0.4 GB, and hummingbot image takes about 2.5 GB. This leaves about 3.7 GB for the logs and data files, which should be enough, especially now that we have set up log rotation. Refer to [Amazon Web Services](https://docs.hummingbot.io/installation/cloud/#amazon-web-services) section under Setup a Cloud Server in User Manual.
+- AWS free tier provides 7.7GB of disk space. Ubuntu files take about 1.1 GB, Docker takes about 0.4 GB, and hummingbot image takes about 2.5 GB. This leaves about 3.7 GB for the logs and data files, which should be enough, especially now that we have set up log rotation. Refer to [Amazon Web Services](/installation/overview/#for-cloud) section under Setup a Cloud Server in User Manual.
 
 ## 🐞 Other bug fixes and miscellaneous updates
 

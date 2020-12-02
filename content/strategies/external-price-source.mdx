@@ -1,4 +1,7 @@
-# External Pricing Source Configuration
+---
+title: External Pricing Source Configuration
+description: Info on external pricing source configuration
+---
 
 **Updated as of `v0.31.0`**
 
@@ -106,11 +109,75 @@ In certain cases, this behavior may be desirable even if the fee is higher becau
 
 ## Relevant Parameters
 
-| Parameter | Prompt | Definition |
-|-----------|--------|------------|
-| **price_source** | `Which price source to use? (current_market/external_market/custom_api)` | Determines which market to be used as price reference when creating orders.
-| **price_type** | `Which price type to use? (mid_price/last_price/last_own_trade_price/best_bid/best_ask)` | Price type to be used as price reference when creating orders.
-| **price_source_exchange** | `Enter external price source exchange name` | Name of exchange to be used for external pricing source. |
-| **price_source_market** | `Enter the token pair on [price_source_exchange]` | The trading pair for the price source exchange. |
-| **take_if_crossed** | `Do you want to take the best order if orders cross the orderbook? (Yes/No)` | Take order if they cross orderbook when external price source is enabled. |
-| **price_source_custom_api** | `Enter pricing API URL` | An external API that returns price. |
+### `price_source`
+
+Determines which market to be used as price reference when creating orders.
+
+** Prompt: **
+
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">
+    Which price source to use? (current_market/external_market/custom_api)
+  </font>
+</div>
+
+### `price_type`
+
+Price type to be used as price reference when creating orders.
+
+** Prompt: **
+
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">
+    Which price type to use? (mid_price/last_price/last_own_trade_price/best_bid/best_ask)
+  </font>
+</div>
+
+### `price_source_exchange`
+
+Name of exchange to be used for external pricing source.
+
+** Prompt: **
+
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">
+    Enter external price source exchange name
+  </font>
+</div>
+
+### `price_source_market`
+
+The trading pair for the price source exchange.
+
+** Prompt: **
+
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">
+    Enter the token pair on [price_source_exchange]
+  </font>
+</div>
+
+
+### `take_if_crossed`
+
+Take order if they cross orderbook when external price source is enabled.
+
+** Prompt: **
+
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">
+    Do you want to take the best order if orders cross the orderbook? (Yes/No)
+  </font>
+</div>
+
+### `price_source_custom_api`
+
+An external API that returns price.
+
+** Prompt: **
+
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">
+    Enter pricing API URL
+  </font>
+</div>

@@ -43,7 +43,7 @@ This can be achieved in 2 ways(depending on the available API on the exchange):
 1. **REST API**
 
    In this scenario, we would have to periodically make API requests to the exchange to retrieve information on the user's **account balances** and **order statuses**.
-   An example of this can be seen in [Huobi's connector market file](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/market/huobi/huobi_market.pyx) connector. The market file shows that Huobi uses REST API alone by periodically calling the market's `_update_balances()` and `_update_order_status()` through the `_status_polling_loop()`. Also, it can be seen that no user stream files exist in Huobi's connector directory.
+   An example of this can be seen in [Huobi's connector exchange file](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/huobi/huobi_exchange.pyx) connector. The market file shows that Huobi uses REST API alone by periodically calling the market's `_update_balances()` and `_update_order_status()` through the `_status_polling_loop()`. Also, it can be seen that no user stream files exist in Huobi's connector directory.
 
 2. **WebSocket API**
 

@@ -28,6 +28,7 @@ const sidebarCategories = {
     "features/balance-limit",
     "features/minimum-order-size",
     "features/performance-history",
+    "features/kill-switch",
   ],
   Connectors: [
     "connectors/overview",

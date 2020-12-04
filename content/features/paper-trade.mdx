@@ -9,17 +9,7 @@ This feature allows users to test Hummingbot and simulate trading strategies wit
 
 ## Enabling and Disabling
 
-Paper trading mode can be enabled/disabled inside Hummingbot by doing `paper_trade` or `config paper_trade_enabled`.
-
-Alternatively, you can edit the `conf_global.yml` file using a text editor and set `paper_trade_enabled:` value to `true` or `false`.
-
-- Locating your global configuration:<br />
-  - Installed from source: `hummingbot/conf`<br />
-  - Installed via Docker: `hummingbot_files/hummingbot_conf`<br />
-    `hummingbot_files` is the default name of the parent directory. This can be different depending on the setup
-    when the instance was created.<br />
-  - Installed via Binary (Windows): `%localappdata%\hummingbot.io\Hummingbot\conf`<br />
-  - Installed via Binary (MacOS): `~/Library/Application\ Support/Hummingbot/Conf`<br />
+Paper trading mode can be enabled and disabled from the Hummingbot client by doing `paper_trade` or `config paper_trade_enabled`.
 
 The top bar shows the status to indicate if paper trading mode is on or off.
 
@@ -31,27 +21,42 @@ Also shows a reminder that paper trade was enabled when doing a `status` or `his
 
 ## Adding Paper Trade Balance
 
-By default, the paper trade account has the following tokens and balances:
+By default, the paper trade account has the following tokens and balances which you can see when you run the `balance paper` command.
 
 ```
-paper_trade_account_balance:
-  BTC: 1
-  USDT: 1000
-  ONE: 1000
-  USDQ: 1000
-  TUSD: 1000
-  ETH: 10
-  WETH: 10
-  USDC: 1000
-  DAI: 1000
+>>>  balance paper
+Paper account balances:
+    Asset    Balance
+      DAI  1000.0000
+      ETH    10.0000
+      ONE  1000.0000
+     TUSD  1000.0000
+     USDC  1000.0000
+     USDQ  1000.0000
+     USDT  1000.0000
+     WETH    10.0000
+      ZRX  1000.0000
 ```
 
-Paper trade assets can be added in two ways:
+When adding balances, specify the asset and balance you want by runing this command `balance paper [asset] [amount]`.
 
-1. Run `balance paper [asset] [amount]`. See more information in [balance](/operation/command-ref/#balance) command.
-2. Edit `conf_global.yml` in the `/conf` or `hummingbot_conf` folder using a text editor. **Strictly follow the same format above**.
+For example, we want to add 0.5 BTC and check our paper account balance to confirm.
 
-> **Note:**
+```
+>>>  balance paper BTC 0.5
+Paper balance for BTC token set to 0.5
 
-- When making changes to the global config file, make sure to exit and restart Hummingbot to take effect.
-- For a list of supported connectors, see [Connectors](/connectors/overview)
+>>>  balance paper
+Paper account balances:
+    Asset    Balance
+      BTC     0.5000
+      DAI  1000.0000
+      ETH    10.0000
+      ONE  1000.0000
+     TUSD  1000.0000
+     USDC  1000.0000
+     USDQ  1000.0000
+     USDT  1000.0000
+     WETH    10.0000
+      ZRX  1000.0000
+```

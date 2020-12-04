@@ -23,7 +23,11 @@ const sidebarCategories = {
     "operation/telegram",
     "operation/debug",
   ],
-  Features: ["features/paper-trade", "features/balance-limit"],
+  Features: [
+    "features/paper-trade",
+    "features/balance-limit",
+    "features/performance-history",
+  ],
   Connectors: [
     "connectors/overview",
     "connectors/balancer",

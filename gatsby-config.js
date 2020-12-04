@@ -13,6 +13,7 @@ const sidebarCategories = {
     "installation/linux",
     "installation/raspberry",
     "installation/updating",
+    "installation/multiple-bots",
   ],
   Operation: [
     "operation/overview",

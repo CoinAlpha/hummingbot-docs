@@ -1,6 +1,6 @@
 ---
 title: Integrate Telegram
-description: How to integrate Telegram
+description:
 ---
 
 ![Telegram](/img/telegram.png)
@@ -13,7 +13,7 @@ Whether you are running Hummingbot in the cloud or on your local machine, you ca
 
 To create a Telegram bot that integrates with your Hummingbot deployment:
 
-**Create the Bot**
+## Create the Bot
 
 1. Click this link to launch the official **BotFather** bot, a Telegram bot that helps you create and manage Telegram bots: [https://telegram.me/BotFather](https://telegram.me/BotFather).
 2. In Telegram, go to the newly-created **BotFather** chat pane, and click `Start` or type `/start`.
@@ -39,7 +39,7 @@ Take note of the Telegram token that is needed for step 9.
 
 8. In Telegram, go to the newly-created **userinfobot** chat pane, and click `Start` or type `/start`. Take note of the `Id` parameter that is needed for step 9.
 
-**Configure the Telegram Settings in Hummingbot**
+## Configure Telegram Settings in Hummingbot
 
 9. In the directory where you have installed Hummingbot, go to your global configuration file `conf/conf_global.yml` and edit the following parameters inside the file:
 
@@ -66,16 +66,16 @@ config telegram_token
 config telegram_chat_id
 ```
 
-**Startup Hummingbot**
+## Start up Hummingbot
 
 10. You can now startup Hummingbot and confirm that the integration is properly configured. If Hummingbot was running when you configured telegram, make sure to `exit` and restart Hummingbot to reload the telegram configurations.
 
-**Use your Telegram Bot**
+## Use your Telegram Bot
 
 Before you start Hummingbot, make sure that the Telegram bot is live. If so, you should see a chat pane with your bot's name in Telegram.
 
 11. Start hummingbot as you would normally. Telegram will be connected as soon as you enter `start` in your hummingbot CLI window.Messages are synchronized in real-time between the Telegram bot and the actual Hummingbot instance running. For example, you can use commands such as `status` and `history` to monitor the bot's performance, `config` shows bot current configurations and you can use `start` and `stop` to control the bot.
 
-![telegrambuttons](/img/telegram-buttons.png)
+![telegrambuttons](img/telegram-buttons.png)
 
 > **Tip:** If you are running multiple bots with telegram enabled, you can use same [telegram chat id](https://telegram.me/userinfobot) with different telegram tokens from each bot you created to control all of them. You can also enable telegram chat folders to organize your bots. Visit [telegram blog page](https://telegram.org/blog/folders) for more info.

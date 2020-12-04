@@ -20,7 +20,6 @@ const sidebarCategories = {
     "operation/command-ref",
     "operation/docker-commands",
     "operation/adv-command-ref",
-    "operation/telegram",
     "operation/debug",
   ],
   Features: [
@@ -29,6 +28,7 @@ const sidebarCategories = {
     "features/minimum-order-size",
     "features/performance-history",
     "features/kill-switch",
+    "features/telegram",
   ],
   Connectors: [
     "connectors/overview",

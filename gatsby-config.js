@@ -26,6 +26,7 @@ const sidebarCategories = {
   Features: [
     "features/paper-trade",
     "features/balance-limit",
+    "features/minimum-order-size",
     "features/performance-history",
   ],
   Connectors: [

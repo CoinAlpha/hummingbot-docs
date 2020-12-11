@@ -17,6 +17,14 @@ import { MultiCodeBlock } from "gatsby-theme-apollo-docs";
 
 More commands can be found in [Docker Documentation](https://docs.docker.com/engine/reference/commandline/docker/).
 
+### How to stop active container?
+
+First you would need to run `docker ps -a` to get the list of containers available. Then you can try the following,
+1. Locate the container id of the bot you want to stop
+2. Run `docker container stop ` followed by your container id
+
+![Docker Container Stop](/img/docker_container_stop.PNG)
+
 ## Docker scripts
 
 These commands execute the helper scripts for running Hummingbot and are performed from the terminal or shell. Ensure that the scripts are located in your current directory before running these commands.

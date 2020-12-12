@@ -90,3 +90,13 @@ There are many moving parts when operating a market making bot that all have to 
 A fault in any component may result in bot errors, which can range from minor and inconsequential to major.
 
 It is essential for any market making bot to be able to regularly refresh its bid and ask offers on the market in order to adjust to changing market conditions. If a market making bot is disconnected from the exchange for an extended period of time, then the bid/ask offers it previously made would be left on the market and subject to price fluctuations of the market. Those orders may be filled at a loss as market prices move, while the market maker is offline. It is very important for any market maker to make sure technical infrastructure is secure and reliable.
+
+### How to stop active container on Docker?
+
+You need to run `docker ps -a` to get the list of containers available. Then you can do the following,
+1. Locate the container id of the bot you want to stop
+2. Run `docker container stop ` followed by your container id
+
+![Docker Container Stop](/img/docker-container-stop.PNG)
+
+> ** NOTE ** : Please be advise this will forced close the bot from running on Docker. This means that this does not stop the oustanding orders from the HB client. The commands `stop` and `exit` is the right way to cancel orders. 

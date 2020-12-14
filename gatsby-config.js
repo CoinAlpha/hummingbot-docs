@@ -58,6 +58,10 @@ const sidebarCategories = {
     "protocol-connectors/terra",
     "protocol-connectors/uniswap",
   ],
+  "Hummingbot Gateway": [
+    "gateway/overview",
+    "gateway/installation",
+  ],
   Strategies: [
     "strategies/overview",
     "strategies/pure-market-making",

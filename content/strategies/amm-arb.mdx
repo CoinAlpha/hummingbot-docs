@@ -45,97 +45,6 @@ Before you start using Hummingbot, see the following links to have an understand
 - [Start and Configure Hummingbot](https://docs.hummingbot.io/operation/client/)
 - [Operation](https://docs.hummingbot.io/operation/command-ref/)
 
-## Installation and Configuration
-
-The following sections describes the installation and configuration process for Gateway.
-
-### Create SSL Cert in Hummingbot
-
-1. Start Hummingbot.
-2. Enter `generate_certs` to create the SSL cert. The following prompt is displayed.
-
-   ```
-    >>>  generate_certs
-    -----------------------------------------------------------
-    Enter passphrase to generate Gateway SSL certification >>>
-   ```
-
-3. Enter a passphrase. 
-
-> **Note:** It is recommended not to use the same password as the Hummingbot instance. Take note of the passphrase and cert path to be use later for Gateway Docker settings.
-
-> **Tip:** To get the cert path, run `pwd` from the `certs` directory where Hummingbot is installed.
-
-### Install Gateway Docker
-
-1. Run the following command:
-
-```
-# 1) Download Hummingbot Gateway install
-
-curl https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/create-gateway.sh -o create-gateway.sh
-curl https://raw.githubusercontent.com/CoinAlpha/hummingbot/development/installation/docker-commands/update-gateway.sh -o update-gateway.sh
-
-# 2) Enable script permissions
-
-chmod a+x create-gateway.sh
-
-# 3) Create a gateway instance
-
-./create-gateway.sh
-```
-
-2.  After Gateway has been installed, the **CREATE A NEW GATEWAY INSTANCE** prompt is displayed. Follow the onscreen instructions to enter the required values.
-    > **Note:** Ensure you have cert passphrase, cert path, and Ethereum RPC URL before proceeding. Else, see [Prerequisites](https://docs.hummingbot.io/strategies/amm-arb/#prerequisites) for more details
-    > The following screenshot displays an example of the completed information.
-
-![Gateway](/img/gateway.png) 3. The Gateway configuration summary is displayed. Review the information and enter yes to complete the Gateway configuration.
-![Gateway](/img/gateway-summary.png)
-
-> **Note:** By default, Gateway will install on port `5000` which Hummingbot will connect to. If the port `5000 is not available, Gateway will find the next port number. Take note of the Gateway port number to be use later in the Gateway settings in Hummingbot.
-
-If your Gateway instance is installed on `5000`, Hummingbot should be able to connect to it. Otherwise, you need to set the correct port through the configuration.
-
-### (Optional) Configure Gateway settings in Hummingbot
-
-There are two optional settings that you can set for the Gateway:
-
-**(Optional Settings 1) Port Number**
-
-If your port number is not `5000`, you can set the correct port in Hummingbot.
-
-1. Access Hummingbot.
-2. Enter `config gateway_api_port` to create the SSL cert. The following prompt is displayed.
-
-```
->>>  config gateway_api_port
-Please follow the prompt to complete configurations:
------------------------------------------------------------
-Please enter your Gateway API port >>>
-```
-
-3. Enter the port number.
-
-**(Optional Settings 2) Using Defipulse**
-
-If you want to use and configure defipulse as the gas estimator
-
-1. Access Hummingbot.
-2. Enter `config ethgasstation_gas_enabled`, and enter `True`
-3. Enter `config ethgasstation_api_key`, and enter the Defipulse API key.
-4. Enter `config ethgasstation_gas_level`, and the following prompt is displayed. 
-
-> **Note:** For caculation details on the various gas level, see [defipulse docs](https://docs.defipulse.com/api-docs-by-provider/egs/gas-price)
-
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-     <font color="#20a26a">
-       Enter gas level you want to use for Ethererum transcations (fast,
-       fastest, safeLow, average) >>>
-     </font>
-   </div><br/>
-
-5. Enter the value for the gas level.
-6. (Optional) Enter `config ethgasstation_refresh_time`, enter a value to overwrite the default Gas Station refresh time (120secs).
 
 ## AMM Arbitrage Strategy
 
@@ -282,10 +191,6 @@ If you prefer to manually set your gas other than using Defipulse.
     >>>
   </font>
 </div>
-
-## Update Gateway Docker
-
-To update the docker container, run the `update-gateway.sh` script and and follow the prompt instructions. The update script allows you to stop and delete the running instance, and update the docker image if it is not the latest. Upon completion, it will automatically execute the create-gateway.sh script to create a new Gateway container instance.
 
 ## Switch Balancer Network
 

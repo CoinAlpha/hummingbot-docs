@@ -1,16 +1,14 @@
 ---
-title: Binance Perpetual Market Making (BETA)
-description: Learn how to use Binance Perpetual market making strategy
+title: Perpetual Market Making (BETA)
+description: Learn how to use Perpetual market making strategy
 ---
 
 <table>
   <tr>
     <td style="background-color: #AFEEEE">
       <b> Warning:</b> <br />
-      Binance Perpetual market making (USDT-M) is released as beta version(0.33),
-      trade it at your own risk. Binance Perpetual is different from futures contract,
-      please see <a href="https://www.binance.com/en/support/faq/360033524991">
-        differences
+      Perpetual market making is released as beta version(0.33),
+      trade it at your own risk. Unlike futures contract, perpetual has no fix settlement date in the future.
       </a>
     </td>
   </tr>
@@ -19,31 +17,27 @@ description: Learn how to use Binance Perpetual market making strategy
 ## How it Works
 
 Similar to pure market making strategy, Hummingbot continually posts limit bid and ask offers on a market and waits for other market participants ("takers") to fill their orders.
-
-## Contract Specifications of Binance Perpertuals
-
-- Trading Rules: Please see [Binance future trading rules](https://www.binance.com/en/futures/trading-rules)
-- Leverage and Margin: Please see [Leverage and Margin](https://www.binance.com/en/support/faq/360033162192)
+In addition to that, position management features are introduced to let users further configure the bot to make managing positions easier and remove the need to manually interact with the derivative exchange through other available platforms to close position. Two(2) position management features are currently available which are the `Trailing_stop` and `Take_profit` features. Each feature has different parameters which the bot uses to logically determine when positions would be closed when using that particular feature. In all, both features(Trailing stop and take profit) have capability of securing profits. It should also be noted that only the trailing stop feature can stop-loss immediately loss is detected even when trailing hasn’t begun. Unlike trailing stop, take profit feature places a limit order at a profitable price from position entry price which is determined by the spreads for each take profit sides.
 
 ## How to start
 
-We aim to teach new users the basics of Binance Perpetual market making, while enabling experienced users to exercise more control over how their bots behave. By default, when you run `create` we ask you to enter the basic parameters needed for a Binance Perpetual bot.
+We aim to teach new users the basics of Perpetual market making, while enabling experienced users to exercise more control over how their bots behave. By default, when you run `create` we ask you to enter the basic parameters needed for a Perpetual bot.
 
-> **Note**: Paper trading is supported, enter `binance_perpetual_testnet` when prompted for derivative name.
+> **Note**: Paper trading is supported, enter `[perpetual_connector_name]_testnet` when prompted for derivative name.
 
 1. In Hummingbot, enter `create`.
-2. Enter `binance_perpetual_testnet` or `binance_perpetual`.
+2. Enter `[perpetual_connector_name]_testnet` or `[perpetual_connector_name]`.
 3. Enter the trading pair, for example `BTC-USDT`.
-4. Follow on-screen prompts and info for Binance Perpetual parameters.
+4. Follow on-screen prompts and info for Perpetual parameters.
 5. Enter `start` to run the strategy.
 
-For details on each Binance Perpetual parameters, see the following sections for details. These parameters are fields in Hummingbot configuration files (located in the `/conf` folder, e.g. `conf/perpetual_market_making_[#].yml`).
+For details on each Perpetual parameters, see the following sections for details. These parameters are fields in Hummingbot configuration files (located in the `/conf` folder, e.g. `conf/perpetual_market_making_[#].yml`).
 
 ### `leverage`
 
 Enter the leverage you would like to use.
 
-> **Note:** Initial margin deposits are calculated using the leverage as entered by the trader, see [Leverage and Margin](https://www.binance.com/en/support/faq/360033162192) for details.
+> **Note:** Initial margin deposits are calculated using the leverage as entered by the trader
 
 ** Prompt: **
 
@@ -56,45 +50,14 @@ Enter the leverage you would like to use.
 
 ### `position_mode`
 
-This is the hedging mode where two positions, long and short is open at the same time. See [Hedge](https://www.binance.com/en/support/faq/360041513552) for details.
-
-> **Note:** if position mode on the exchange is different on what is set under the bot, an error will occur and need to change the position mode manually on Binance. Example, if the current position on Binance is Hedge mode and you create a new strategy on Hummingbot with One-way position, an error will occured.
-
-** Prompt: **
-
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">
-    Do you want to use hedge mode? (If disabled, one-way position mode would be
-    used.)
-  </font>
-</div>
-
-### `ts_callback_rate`
-
-> **Note:** This parameter is currently disabled as of 0.33
-
-Callback rate determines the amount a trailing stop price will trail the price. The callback rate range is available from 0.1% to 5%. For more details, see [Callback Rate](https://www.binance.com/en/support/faq/360042299292).
+Generally, two(2) position modes are available when using a perpetual connector : 1. One-way mode : In this mode, only one active position(long or short) per trading pair is possible. Trying to open a second position would result in increasing or decreasing the size of the position depending of the side of the second position.
+2. Hedge mode: Unlike one-way mode, it is possible to have a long and short position open concurrently without affecting the size of one another.
 
 ** Prompt: **
 
 <div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
   <font color="#20a26a">
-    Trailing Stop Callback Rate - Min0.1, Max 5? (Enter 1 to indicate 1%)
-  </font>
-</div>
-
-### `ts_activation_spread`
-
-> **Note:** This parameter is currently disabled as of 0.33
-
-Traders can fill in the price level that triggers the trailing stop. If no activation price is being filled, the activation price will be the market price by default (either “Last Price” or “Mark Price” subject to the choice of trigger types). . For more details, see [Activation Spread](https://www.binance.com/en/support/faq/360042299292).
-
-** Prompt: **
-
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">
-    How far away from the position entry price do you want to set the activation
-    price for position exit trailing stop order? (Enter 1 to indicate 1%)>>>
+    Which position mode do you want to use? (One-way/Hedge) >>>
   </font>
 </div>
 
@@ -106,4 +69,66 @@ The order amount for the bid order of the base asset for the trading pair.
 
 <div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
   <font color="#20a26a">What is the amount of [trading pair] per order?</font>
+</div>
+
+### `position_management`
+This is used to select a positom management feature. Only `Take_profit` and `Trailing_stop` are supprted as of v0.34
+
+** Prompt: **
+
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">How would you like to manage your positions? (Profit_taking/Trailing_stop)</font>
+</div>
+
+### `long_profit_taking_spread`
+It is the spread above the entry price at which a short limit order is placed to reduce position.
+
+** Prompt: **
+
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">At what spread from the entry price do you want to place a short order to reduce position? (Enter 1 for 1%) >>> </font>
+</div>
+
+### `short_profit_taking_spread`
+It is the spread below the entry price at which a long limit order is placed to reduce position.
+
+** Prompt: **
+
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">At what spread from the entry price do you want to place a long order to reduce position? (Enter 1 for 1%) >>> </font>
+</div>
+
+### `ts_activation_spread`
+
+Traders can fill in the price level that triggers the trailing stop. If no activation price is being filled, the activation price will be the position entry price by default.
+
+** Prompt: **
+
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">
+    At what spread from the position entry price do you want the bot to start trailing? (Enter 1 for 1%)>>>
+  </font>
+</div>
+
+### `ts_callback_rate`
+
+Callback rate determines the price away from peak price when trailing, beyond which a position will be closed.
+
+** Prompt: **
+
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">
+    At what spread away from the trailing peak price do you want positions to remain open before they're closed? (Enter 1 for 1%) >>>
+  </font>
+</div>
+
+### `close_position_order_type`
+This gives users the option to select the order type to use for closing positions when using the trailing stop feature.
+
+** Prompt: **
+
+<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
+  <font color="#20a26a">
+    What order type do you want to use for closing positions? (LIMIT/MARKET) >>>
+  </font>
 </div>

@@ -12,3 +12,20 @@ Balancer is an automated portfolio manager, liquidity provider, and price sensor
 ## Connecting to Balancer
 
 As Balancer is not a typical centralized exchange but a Ethereum-based automated market maker protocol, you need to install a gateway to connect. See [AMM Arbitrage](/strategies/amm-arb/) for details.
+
+## ETH Gas Station (Optional)
+
+Users have the option to use and configure DeFi Pulse Gas Price as the gas estimator.
+
+1. Sign up for a free account on [DeFi Pulse Data](https://data.defipulse.com/signup)
+2. Get your API key - once you log into DeFi Pulse Data, your API key can be found on the right side of the Dashboard. Click the copy button to copy your API Key.
+
+![defipulse](/img/defipulse-2.png)
+
+3. From the Hummingbot client, run `config ethgasstation_gas_enabled`, and enter `True`
+4. Run `config ethgasstation_api_key` and enter the DeFi Pulse Data API key
+5. Run `config ethgasstation_gas_level` and select desired gas level from `fast`, `fastest`, `safeLow`, `average`.
+
+> **NOTE:** For calculation details on the various gas level, see [DeFi Pulse Data API docs](https://docs.defipulse.com/api-docs-by-provider/egs/gas-price).
+
+6. This step is optional if you want to override the default Gas Station refresh time of 120 seconds. Do this by running the command `config ethgasstation_refresh_time`.

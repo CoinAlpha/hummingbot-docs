@@ -3,49 +3,30 @@ title: Overview
 description:
 ---
 
-This section contains information about official connectors for individual exchanges and protocols, including:
-
-- General information
-- Setup and configuration
-- Minimum order sizes, fees, etc.
-
 ## What are Connectors?
 
-Connectors are packages of code that link Hummingbot's internal trading algorithms with live information from different cryptocurrency exchanges. They interact with a given exchange's API, such as by gathering order book data and sending and cancelling trades. See below for the list of exchanges which Hummingbot currently has connectors to.
+Connectors are packages of code that link Hummingbot's internal trading algorithms with live information from different cryptocurrency exchanges. They interact with a given exchange's API, such as by gathering order book data and sending and cancelling trades.
 
-## Hummingbot-Supported Connectors
+## Exchange Connector Status
 
-- [Binance](/connectors/binance)
-- [Binance Futures](/connectors/binance-futures)
-- [Binance US](/connectors/binance-us)
-- [Bitfinex](/connectors/bitfinex)
-- [Bittrex Global](/connectors/bittrex)
-- [Coinbase Pro](/connectors/coinbase)
-- [Crypto.com](/connectors/crypto-com)
-- [Eterbase](/connectors/eterbase)
-- [Huobi Global](/connectors/huobi)
-- [Kraken](/connectors/kraken)
-- [KuCoin](/connectors/kucoin)
-- [Liquid](/connectors/liquid)
-- [Loopring](/connectors/loopring)
-- [Radar Relay](/connectors/radar-relay)
+Below are the status of each connector as of version 0.33.1
 
-## Community-Contributed Exchange Connectors
-
-| Exchange     |             Github Contact              |              Support Contact               | Last Version Tested | Last Updated |                       Status                        | Known Issues |
-| ------------ | :-------------------------------------: | :----------------------------------------: | :-----------------: | :----------: | :-------------------------------------------------: | :----------: |
-| Bamboo Relay |   [Arctek](https://github.com/Arctek)   |  [Online Chat](https://bamboorelay.com/)   |       0.21.0        |    0.21.0    | <span style="color:green; font-size:25px">⬤</span>  |              |
-| Dolomite     | [zrubenst](https://github.com/zrubenst) | [Telegram](https://t.me/dolomite_official) |       0.20.0        |    0.21.0    | <span style="color:green; font-size:25px"> ⬤</span> |              |
-
-- Last Version Tested - Last reported Hummingbot version that the exchange connector maintainer has confirmed has been tested and is operational.
-- Last Updated - Last Hummingbot release which included an update to the exchange connector code.
-
-### Exchange Connector Specific Support
-
-Please contact the support contact listed in the above table for support questions that are specific for that exchange.
-
-### Reporting an Issue with a Community-Contributed Connector
-
-1. Create a Github issue and tag the Github contact to inform them of the issue.
-2. Report the issue to the exchange connector support contact.
-3. Send a message through Discord in [#community-connectors](https://discordapp.com/channels/530578568154054663/642099307922718730) channel.
+|                        Connector                        |                        Status                         | Description |
+| :------------------------------------------------------ | :--------------------------------------------------:  | :---------  |
+| [Bamboo Relay](/exchange-connectors/bamboo-relay)       | <span style="color:red; font-size:25px">⬤</span>     | Connector is broken and unusable
+| [Binance](/exchange-connectors/binance)                 | <span style="color:green; font-size:25px"> ⬤</span>  | Connector is working properly and safe to use
+| [Binance Futures](/exchange-connectors/binance-futures) | <span style="color:yellow; font-size:25px"> ⬤</span> | Connector is new (BETA) and may have some undiscovered issues
+| [Binance US](/exchange-connectors/binance-us)           | <span style="color:yellow; font-size:25px"> ⬤</span> | Connector is new (BETA) and may have some undiscovered issues
+| [Bitfinex](/exchange-connectors/bitfinex)               | <span style="color:green; font-size:25px"> ⬤</span>  | Connector is working properly and safe to use
+| [Bittrex Global](/exchange-connectors/bittrex)          | <span style="color:yellow; font-size:25px"> ⬤</span> | Connector has one or more reported issues
+| [Coinbase Pro](/exchange-connectors/coinbase)           | <span style="color:green; font-size:25px"> ⬤</span>  | Connector is working properly and safe to use
+| [Crypto.com](/exchange-connectors/crypto-com)           | <span style="color:yellow; font-size:25px"> ⬤</span> | Connector has one or more reported issues
+| [Dolomite](/exchange-connectors/Dolomite)               | <span style="color:red; font-size:25px"> ⬤</span>    | Connector is broken and unusable
+| [Eterbase](/exchange-connectors/eterbase)               | <span style="color:red; font-size:25px"> ⬤</span>    | Connector is broken and unusable
+| [Huobi Global](/exchange-connectors/huobi)              | <span style="color:green; font-size:25px"> ⬤</span>  | Connector is working properly and safe to use
+| [Kraken](/exchange-connectors/kraken)                   | <span style="color:yellow; font-size:25px"> ⬤</span> | Connector has one or more reported issues
+| [KuCoin](/exchange-connectors/kucoin)                   | <span style="color:green; font-size:25px"> ⬤</span>  | Connector is working properly and safe to use
+| [Liquid](/exchange-connectors/liquid)                   | <span style="color:green; font-size:25px"> ⬤</span>  | Connector is working properly and safe to use
+| [Loopring](/exchange-connectors/loopring)               | <span style="color:green; font-size:25px"> ⬤</span>  | Connector is working properly and safe to use
+| [OKEx](/exchange-connectors/okex)                       | <span style="color:red; font-size:25px"> ⬤</span>    | OKEx is reportedly being investigated by Chinese authorities and has stopped withdrawals
+| [Radar Relay](/exchange-connectors/radar-relay)         | <span style="color:red; font-size:25px"> ⬤</span>    | Connector is broken and unusable

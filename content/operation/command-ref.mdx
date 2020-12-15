@@ -17,6 +17,9 @@ Below are the available commands in the current Hummingbot release.
 | config      | Display the current bot's configuration                    |
 | start       | Start the current bot                                      |
 | stop        | Stop the current bot                                       |
+| open_orders | Show all active open orders                                |
+| trades      | Show trades                                                |
+| pnl         | Show profit and losses                                     |
 | status      | Get the market status of the current bot                   |
 | history     | See the past performance of the current bot                |
 | exit        | Exit and cancel all outstanding orders                     |
@@ -347,6 +350,34 @@ Winding down...
 Cancelling outstanding orders...
 All outstanding orders cancelled.
 ```
+
+## open_orders
+
+Show all active open orders.
+
+| Optional Argument | Description
+| :---------------  | :---------------
+| `--full_report`   | Show full report with size comparison 
+
+## trades
+
+Show trades
+
+| Optional Argument      | Description
+| :---------------       | :---------------
+| `--days`               | How many days in the past (can be decimal value)
+| `--market`             | The market you want to see trades 
+| `--open_order_markets` | See trades from current open order markets
+
+## pnl
+
+Show profit and losses
+
+| Optional Argument      | Description
+| :---------------       | :---------------
+| `--days`               | How many days in the past (can be decimal value)
+| `--market`             | The market you want to see trades 
+| `--open_order_markets` | See trades from current open order markets
 
 ## status
 

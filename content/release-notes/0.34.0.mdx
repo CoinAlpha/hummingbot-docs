@@ -1,0 +1,50 @@
+---
+title: "Version 0.34.0"
+---
+
+## New Protocol Connector: Uniswap
+
+[Uniswap](https://uniswap.org/) is a protocol on Ethereum for swapping ERC20 tokens. Unlike most exchanges, which are designed to take fees, Uniswap is designed to function as a public good — a tool for the community trade tokens without platform fees or middlemen.
+
+Read more in our documentation how to use the connector [here](/protocol-connectors/uniswap).
+
+## New Protocol Connector: Terra
+
+The [Terra Protocol](https://terra.money/) is the creator of the Luna Token, Terra Core, and the blockchain payment solution CHAI. The design of the Terra Protocol is based on two things: stability and adoption by e-commerce platforms.
+
+It runs on a Tendermint Delegated Proof of Stake algorithm and Cosmos SDK. It is aimed at becoming a new worldwide financial infrastructure on which different DApps can be created.
+
+Read more in our documentation how to use the connector [here](/protocol-connectors/terra).
+
+## New commands: `open_orders`, `pnl`, `trades`
+
+For users participating in Liquidity Mining, these new commands are useful when running Hummingbot on multiple pairs.
+
+The [`open_orders`](/operation/command-ref/#open_orders) command displays all current open (active) orders that the bots have placed across all markets. The [`pnl`](/operation/command-ref/#pnl) command lets users see all trade profits and lossses across all markets normalised in USD. And [`trades`](/operation/command-ref/#trades) command lets users see the trades across all markets in more detail.
+
+## Pause and Resume Functionality
+
+Users can now pause a running strategy using the command `exit --suspend`. This allows the bot to stop while keeping the hanging orders in the order book. To resume, run the command `start --restore`.
+
+## Aggregate Trade Data Collection
+
+To sustain the development of the open source Hummingbot client, we partner with exchanges and protocols to build connectors and/or strategies. These partners need actionable data to convince their stakeholders and community members that a Hummingbot integration is worth the investment. Since the Hummingbot client doesn’t currently collect any data, we currently can't answer these questions well and rely on guesstimates based on volume measured on the Hummingbot Miner platform.
+
+For these reasons, in this release, a “heartbeat” data collection mechanism will be implemented. "Heartbeat" will send aggregate trade volume data to Hummingbot servers every 15 minutes. We hope you understand that this mechanism will vastly improve the Hummingbot ecosystem in the long run.
+
+If you have any question, please don't hesitate to reach out to anyone from the core team via Discord or email. Thank you again for your support.
+
+> **NOTE:**
+
+- The data will be neither accessible nor sold to any third party
+- Your personally identifiable data will not be collected
+
+Learn more: https://hummingbot.io/blog/2020-12-aggregate-trade-data-collection-notification/
+
+## Bug Fixes
+
+- [#2318](https://github.com/CoinAlpha/hummingbot/issues/2318): Websocket connection issues on Crypto.com connector
+- [#2472](https://github.com/CoinAlpha/hummingbot/issues/2472): Bot keeps looping on cancelling orders on Crypto.com connector
+- [#2539](https://github.com/CoinAlpha/hummingbot/issues/2539): Kraken: Unexpected error in user stream listener loop
+- [#2569](https://github.com/CoinAlpha/hummingbot/issues/2569): Bot unable to display both open positions
+- [#2573](https://github.com/CoinAlpha/hummingbot/issues/2573): binance_perpetual_testnet price_source external_market does not seem to work

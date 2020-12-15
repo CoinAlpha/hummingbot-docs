@@ -58,23 +58,6 @@ As Hummingbot is an in-progress, open-access software, logs are available locall
 
 The way that log files are structured is contained within `conf/hummingbot_logs.yml`. For now, we request that users leave the log settings at the defaults. This makes it easier for the Hummingbot team to trace bugs and other problems that users face when logs are submitted.
 
-### Error Log Collection
-
-The only data Hummingbot requests from users is error logs. We collect error logs for the sole purpose of debugging and continuously improving Hummingbot. We'll never share the data with a third party.
-
-You can choose to disable error logging.
-
-```
-Would you like to send error logs to hummingbot? (Yes/No) >>>
-```
-
-If the user answers "No", then no data will be collected.
-
-You can always enable/disable sending error logs in two ways:
-
-- Editing `conf_global.yml` file using a text editor.
-- Inside Hummingbot enter: `config send_error_logs`.
-
 ### Viewing Individual Log Files
 
 For users who wish to locate and submit log files, generally they are located in the `/logs` folder.

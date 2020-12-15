@@ -71,8 +71,7 @@ Orders:
 The spread of buy/sell order did not change by more than 1% of what it initially was, a message will show in the logs pane.
 
 ```
-Not cancelling active orders since difference between new order prices
-and current order prices is within 1.00% order_refresh_tolerance_pct
+current order prices is within 1.00% order_refresh_tolerance_pct
 ```
 
 Let's say a market taker, someone taking a position in the market, likes the smaller sell spread of right before $t_3$ before the ask spread reaches 0.99% (lets say around 1%) and decides to fill your sell order because they think the market price will go up. At $t_3$, the bot cancels the buy order and creates two new orders with a ask and buy spread of 2%.
@@ -107,9 +106,11 @@ Orders:
 The bot will leave these orders because they are within the order refresh tolerance and display the following message again:
 
 ```
-Not cancelling active orders since difference between new order prices
-and current order prices is within 1.00% order_refresh_tolerance_pct
+current order prices is within 1.00% order_refresh_tolerance_pct
 ```
+
+> **Note:** `Not enough balance for buy (sell) order .... order_amount is adjusted to`
+> `Not cancelling active orders since difference between new order prices and current order prices is within` is no longer shown in logs
 
 Lets say that a market taker thinks the market price will decrease substantially and likes your bid-spread. They then can fill your buy order at 195.02.
 

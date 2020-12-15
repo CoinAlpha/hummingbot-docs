@@ -53,8 +53,13 @@ const sidebarCategories = {
     "exchange-connectors/dolomite",
   ],
   "Protocol Connectors": [
-    "protocol-connectors/overview",
     "protocol-connectors/balancer",
+    "protocol-connectors/terra",
+    "protocol-connectors/uniswap",
+  ],
+  "Hummingbot Gateway": [
+    "gateway/overview",
+    "gateway/installation",
   ],
   Strategies: [
     "strategies/overview",
@@ -103,6 +108,7 @@ const sidebarCategories = {
   ],
   "Release Notes": [
     "release-notes/overview",
+    "release-notes/0.34.0",
     "release-notes/0.33.1",
     "release-notes/0.33.0",
     "release-notes/0.32.0",

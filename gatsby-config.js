@@ -48,6 +48,7 @@ const sidebarCategories = {
     "exchange-connectors/liquid",
     "exchange-connectors/loopring",
     "exchange-connectors/okex",
+    "exchange-connectors/dydx",
     "exchange-connectors/radar-relay",
     "exchange-connectors/bamboo-relay",
     "exchange-connectors/dolomite",
@@ -58,10 +59,7 @@ const sidebarCategories = {
     "protocol-connectors/terra",
     "protocol-connectors/uniswap",
   ],
-  "Hummingbot Gateway": [
-    "gateway/overview",
-    "gateway/installation",
-  ],
+  "Hummingbot Gateway": ["gateway/overview", "gateway/installation"],
   Strategies: [
     "strategies/overview",
     "strategies/pure-market-making",

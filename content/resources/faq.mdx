@@ -94,9 +94,20 @@ It is essential for any market making bot to be able to regularly refresh its bi
 ### How to stop active container on Docker?
 
 You need to run `docker ps -a` to get the list of containers available. Then you can do the following,
+
 1. Locate the container id of the bot you want to stop
 2. Run `docker container stop ` followed by your container id
 
 ![Docker Container Stop](/img/docker-container-stop.PNG)
 
-> ** NOTE ** : Please be advise this will forced close the bot from running on Docker. This means that this does not stop the oustanding orders from the HB client. The commands `stop` and `exit` is the right way to cancel orders. 
+> ** NOTE ** : Please be advise this will forced close the bot from running on Docker. This means that this does not stop the oustanding orders from the HB client. The commands `stop` and `exit` is the right way to cancel orders.
+
+### What would I need to do to market make on an "exchange" like uniswap with assets on my ledger ethereum wallet?
+
+"Market making" on AMM is accomplished by the contract (automated "market maker") but users can act as a "liquidity provider" by depositing assets into the AMM smart contract, allowing the contract to facilitate trades.
+
+The AMM strategy in Hummingbot arbs the AMM contract by trading with contract vs some other exchange.
+
+If you want to act as "liquidity provider" for the AMM, you can deposit assets into it using your ledger. (Note, you get in exchange a share of the AMM pool, but the assets you deposit actually leave your wallet and are deposited into the AMM; which you can later withdraw, but the amounts may have changed).
+
+If you want to trade using Hummingbot using the amm-arb strategy, you can not use your ledger, since the bot needs a "hot wallet" to trade. What you'd have to do is setup a separate Ethereum wallet with its own address/private key, and use that for trading you also have to transfer the assets from your ledger to that new wallet to allow for trading.

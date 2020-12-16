@@ -48,11 +48,13 @@ const sidebarCategories = {
     "exchange-connectors/liquid",
     "exchange-connectors/loopring",
     "exchange-connectors/okex",
+    "exchange-connectors/dydx",
     "exchange-connectors/radar-relay",
     "exchange-connectors/bamboo-relay",
     "exchange-connectors/dolomite",
   ],
   "Protocol Connectors": [
+    "protocol-connectors/overview",
     "protocol-connectors/balancer",
     "protocol-connectors/terra",
     "protocol-connectors/uniswap",

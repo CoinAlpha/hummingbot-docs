@@ -25,9 +25,9 @@ For additional information on useful commands, see the [commands](/operation/com
 
 - Crypto Inventory: In order to run trading bot, you'll need some inventory of crypto assets available on the exchange, or in your Ethereum wallet (for Ethereum-based decentralized exchanges).
   Remember that you need inventory of both the **base asset** (the asset that you are buying and selling) and the **quote asset** (the asset that you exchange for it). For example, if you are making a market in a `BTC/USDT` trading pair, you'll need some `BTC` and `USDT`.
-  In addition, be aware of the minimum order size requirements on different exchanges. For more information, please see [Connectors](/connectors/overview).
+  In addition, be aware of the minimum order size requirements on different exchanges. For more information, please see [Connectors](/exchange-connectors/overview/).
 - API Keys: In order to run a bot on a centralized exchange like Binance, you will need to enter the exchange API keys during the Hummingbot configuration process.
-  For more information on how to get the API keys for each exchange, please see the individual exchange pages in [Connectors](/connectors/overview).
+  For more information on how to get the API keys for each exchange, please see the individual exchange pages in [Connectors](/exchange-connectors/overview/).
 - Ethereum Wallet: In order to earn rewards from Liquidity Bounties, you need an Ethereum wallet. In addition, you'll need to import an Ethereum wallet when you run a trading bot on an Ethereum-based decentralized exchange.
   For more information on creating or importing an Ethereum wallet, see [Ethereum wallet](/operation/adv-command-ref/#setup-ethereum-wallet).
 - Ethereum Node (DEX only): When you run a trading bot on a Ethereum-based decentralized exchange, your wallet sends signed transactions to the blockchain via an Ethereum node.
@@ -123,7 +123,7 @@ When running `create`, you are asked to select a strategy and enter strategy-spe
 
 In order to trade on a centralized exchange, you will need to import your API key from that exchange to Hummingbot using the `connect [exchange_name]` command. API keys are account specific credentials that allow access to live information and trading outside of the exchange website.
 
-Please see [Connectors](/connectors/overview) for exchanges that Hummingbot currently and instructions to find your API keys.
+Please see [Connectors](/exchange-connectors/overview/) for exchanges that Hummingbot currently and instructions to find your API keys.
 
 > **Warning:** We recommend using only **"trade"** enabled API keys; enabling **"withdraw", "transfer", or the equivalent** is unnecessary for current Hummingbot strategies.
 

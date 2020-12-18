@@ -10,14 +10,12 @@ In order to address memory leaks that cause the bot to crash, we upgraded Python
 
 In addition, we advise users to not `stop` and `start` the bot frequently before running it long-term. This appears to elevate memory usage and cause the bot to crash more frequently. We continue to monitor this issue.
 
-!!! tip "Updating from source"
+> **Tip:** "Updating from source"
 Due to the updated Python version, users who install Hummingbot from source need to run `./uninstall` and `./clean` before updating.
 
 ## 💥 New `status` command
 
 We made some changes to how bot `status` is displayed to make it more informative for users.
-
-![](/assets/img/inventory-skew-2.png)
 
 - Added a new section if **Inventory Skew** is enabled
 - Added **Spread** to show the order's spread from the mid price

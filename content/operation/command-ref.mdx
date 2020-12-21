@@ -337,7 +337,26 @@ Status check complete. Starting 'pure_market_making' strategy...
 
 'pure_market_making' strategy started.
 Run `status` command to query the progress.
+
 ```
+### start --restore
+Allows you to start the bot, create order and set the previous order to hanging
+
+```
+>>> start --restore
+
+Preliminary checks:         
+  - All checks: Confirmed.      
+  
+Status check complete. Starting 'pure_market_making' strategy...
+Restored 1 limit orders on binance...   
+
+```
+
+
+> **Notes** 
+- This command will work when `exit --suspend` has been executed on the bot when closed.
+- There are times that hanging orders will be cancelled when bot starts since it depends on `hanging_orders_cancel_pct`
 
 ## stop
 
@@ -431,12 +450,18 @@ Cancelling outstanding orders...
 All outstanding orders cancelled.
 ```
 
-#### exit -f
+### exit -f
 
 Force exit and cancel all outstanding orders.
 
 ```
 >>>  exit -f
+```
+
+### exit --suspend
+Allows the bot to close without cancelling the limit order. This way when you run `start --restore` it will create a new limit order and set the previous order as hanging 
+```
+>>> exit --suspend
 ```
 
 ## paper_trade

@@ -7,7 +7,6 @@ Whether you are running Hummingbot in the cloud or on your local machine, you ca
 
 > **NOTE:** Make sure to install Telegram on your system before setting up your Telegram Bot. If not, you can download Telegram for [Windows/MAC/Linux and install](https://desktop.telegram.org/)
 
-To create a Telegram bot that integrates with your Hummingbot deployment:
 
 ## Creating a Telegram Bot
 
@@ -19,9 +18,9 @@ Click this link to launch the official BotFather bot, a Telegram bot that helps 
 4. Enter a unique ID that ends with the word `bot` (e.g. `my_awesome_hummingbot`)
 5. Make sure to copy or save the token. This is needed for enabling Telegram on Hummingbot.
 6. Click the link to your new bot in the message above launch it: `t.me/<YOUR BOT NAME>`.
-7. Click Start or type `/start` to start the bot
+7. Click `Start` or type `/start` to start the bot
 
-![](img/telegram-demo.gif)
+![](/img/telegram-demo.gif)
 
 ## Getting your Telegram ID
 
@@ -33,15 +32,14 @@ In Telegram, go to the newly-created userinfobot chat pane, and click `Start` or
 
 ## Setting up in Hummingbot
 
-You can now startup Hummingbot and confirm that the integration is properly configured. If Hummingbot was running when you configured telegram, make sure to `exit` and restart Hummingbot to reload the telegram configurations.
+You can now startup Hummingbot and confirm that the integration is properly configured. To enable Telegram in Hummingbot do the following:
 
-To enable telegram in Hummingbot:
 
-```
-telegram_enabled: True
-telegram_token:
-telegram_chat_id:
-```
+
+1. Run config telegram_enabled and set to True or answer Yes to enable the Telegram integration
+2. Run config telegram_token and enter the Telegram token ID from BotFather
+3. Run config telegram_chat_id and enter the chat ID from [Getting your Telegram ID](#getting-your-telegram-id)
+
 
 ## Using the Telegram Bot
 
@@ -50,4 +48,4 @@ Start Hummingbot as you would normally. Telegram will be connected as soon as yo
 
 ![](/img/telegram-command.png)
 
-> **Tip:** If you are running multiple bots with telegram enabled, you can use the same telegram chat id with different telegram tokens from each bot you created to control all of them. You can also enable telegram chat folders to organize your bots. Visit the telegram blog page for more info.
+> **Tip:** If you are running multiple bots with Telegram enabled, you can use the same Telegram chat id with different Telegram tokens from each bot you created to control all of them. You can also enable Telegram chat folders to organize your bots. Visit the Telegram blog page for more info.

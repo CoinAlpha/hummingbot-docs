@@ -6,15 +6,27 @@ Balancer is an automated portfolio manager, liquidity provider, and price sensor
 
 > **NOTE:** This connector has undergone code review, internal testing and was shipped during one of our most recent releases. As part of User Acceptance Testing, we encourage users to report any issues with this connector to our [Discord server](https://discord.hummingbot.io) or [submit a bug report](https://github.com/CoinAlpha/hummingbot/issues/new?assignees=&labels=bug&template=bug_report.md&title=).
 
-
 ## Inventory
 
 - Similar to the arbitrage strategy, you will need to hold inventory of trading pairs in Ethereum wallet and on a secondary exchange, in order to be able to trade and capture price differentials
 - You also need some Gas in order to pay for transaction fees on the submit transactions on the Ethereum blockchain.
 
+## Prerequisites
+
+- Ethereum wallet (refer to our guide [here](/operation/adv-command-ref/#setup-ethereum-wallet))
+- Ethereum node (refer to our guide [here](/operation/adv-command-ref/#setup-ethereum-nodes))
+- Hummingbot Gateway (done after connecting to Balancer)
+- Some ETH in wallet for gas
+
 ## Connecting to Balancer
 
 As Balancer is not a typical centralized exchange but a Ethereum-based automated market maker protocol, you need to install a gateway to connect. See [AMM Arbitrage](/strategies/amm-arb/) for details.
+
+## Install Hummingbot Gateway
+
+After adding your Ethereum wallet and node in Hummingbot, follow the guide in the link below on how to install Hummingbot Gateway.
+
+- [Hummingbot Gateway Installation](/gateway/installation/)
 
 ## ETH Gas Station (Optional)
 

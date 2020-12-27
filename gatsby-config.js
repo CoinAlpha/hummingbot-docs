@@ -22,6 +22,7 @@ const sidebarCategories = {
     "operation/docker-commands",
     "operation/adv-command-ref",
     "operation/debug",
+    "operation/strategy-autostart",
   ],
   Features: [
     "features/paper-trade",
@@ -59,10 +60,7 @@ const sidebarCategories = {
     "protocol-connectors/terra",
     "protocol-connectors/uniswap",
   ],
-  "Hummingbot Gateway": [
-    "gateway/overview",
-    "gateway/installation",
-  ],
+  "Hummingbot Gateway": ["gateway/overview", "gateway/installation"],
   Strategies: [
     "strategies/overview",
     "strategies/pure-market-making",

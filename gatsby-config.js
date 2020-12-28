@@ -18,6 +18,7 @@ const sidebarCategories = {
   Operation: [
     "operation/overview",
     "operation/client",
+    "operation/strategy-autostart",
     "operation/command-ref",
     "operation/docker-commands",
     "operation/adv-command-ref",
@@ -59,10 +60,7 @@ const sidebarCategories = {
     "protocol-connectors/terra",
     "protocol-connectors/uniswap",
   ],
-  "Hummingbot Gateway": [
-    "gateway/overview",
-    "gateway/installation",
-  ],
+  "Hummingbot Gateway": ["gateway/overview", "gateway/installation"],
   Strategies: [
     "strategies/overview",
     "strategies/pure-market-making",

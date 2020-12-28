@@ -30,6 +30,7 @@ const sidebarCategories = {
     "features/performance-history",
     "features/kill-switch",
     "features/telegram",
+    "features/max-order-age",
   ],
   "Exchange Connectors": [
     "exchange-connectors/overview",
@@ -59,10 +60,7 @@ const sidebarCategories = {
     "protocol-connectors/terra",
     "protocol-connectors/uniswap",
   ],
-  "Hummingbot Gateway": [
-    "gateway/overview",
-    "gateway/installation",
-  ],
+  "Hummingbot Gateway": ["gateway/overview", "gateway/installation"],
   Strategies: [
     "strategies/overview",
     "strategies/pure-market-making",

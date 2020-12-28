@@ -18,11 +18,11 @@ const sidebarCategories = {
   Operation: [
     "operation/overview",
     "operation/client",
+    "operation/strategy-autostart",
     "operation/command-ref",
     "operation/docker-commands",
     "operation/adv-command-ref",
     "operation/debug",
-    "operation/strategy-autostart",
   ],
   Features: [
     "features/paper-trade",

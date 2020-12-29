@@ -84,6 +84,7 @@ const sidebarCategories = {
     "strategies/add-transaction-costs",
     "strategies/external-price-source",
     "strategies/order-override",
+    "strategies/max-order-age",
   ],
   Scripts: ["scripts/overview", "scripts/script-base"],
   "Developing Connectors": [

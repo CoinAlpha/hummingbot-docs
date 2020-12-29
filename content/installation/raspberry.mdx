@@ -38,8 +38,7 @@ Exit
 
 4. Install Hummingbot:
 
-<MultiCodeBlock>
-
+### Scripts
 
 ```Scripts
 # 1) Download Hummingbot install, start, and update script
@@ -56,6 +55,8 @@ chmod a+x *.sh
 # 4) Pull Hummingbot ARM image when asked what version to use [ Enter Hummingbot version: [latest|development] (default = "latest")]
 dev-0.33.0-arm_beta
 ```
+
+### Manual
 
 ```Manual
 # 1) Create folder for your new instance
@@ -77,9 +78,6 @@ docker run -it \
 --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_scripts,destination=/scripts/" \
 coinalpha/hummingbot:dev-0.33.0-arm_beta
 ```
-
-</MultiCodeBlock>
-
 
 > **Note:** This image `dev-0.33.0-arm_beta` only works for Raspberry Pi, other branches of Hummingbot are not built for ARM architecture.
 

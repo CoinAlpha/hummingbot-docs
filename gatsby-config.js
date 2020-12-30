@@ -31,6 +31,7 @@ const sidebarCategories = {
     "features/performance-history",
     "features/kill-switch",
     "features/telegram",
+    "features/pause-resume",
   ],
   "Exchange Connectors": [
     "exchange-connectors/overview",

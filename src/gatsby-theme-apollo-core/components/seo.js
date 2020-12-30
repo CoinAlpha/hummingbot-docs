@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Helmet } from "react-helmet";
-
+import { TableStatus } from "../../components/TableStatus/TableStatus";
 export default function SEO({ title, description, siteName, children }) {
   return (
     <Helmet>

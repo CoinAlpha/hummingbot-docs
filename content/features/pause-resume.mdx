@@ -12,22 +12,14 @@ This could be an advantage if you don’t want to cancel orders but want to exit
 
 ![Pause](img/pause.png)
 
-### How to Pause
-
-If you have existing strategy `config` file and want to use the pause feature you have to `import [strategy.yml]` then `start`, After running and you want to exit the bot but want to retain the orders created you have to run the `exit --suspend` command.
-
-![How to Pause](img/how_to_pause.gif)
-
 ## Resume
 
 The `start --restore` command will start the strategy `config` and restore the last sets of orders and hanging orders as well.
 
 ![Resume](img/resume.png)
 
-> Note: After running `start --restore` spreads may change once the bot brings back your orders, it will display what the current spreads of your order. 
+> Note: After running `start --restore` spreads may change once the bot brings back your orders, it will display what the current spreads of your order.
 
-### How to Resume
+You can see that when we use `exit --suspend` it exits the bot. When you run `start --resume` the hanging orders remained as hanging and the order that was not filled became a hanging order. Refer to the example below
 
-If you want to resume the bot that’s paused `exit --suspend` you have to import `import [strategy.yml]` then run `start --restore` to restore the last sets of orders and it will be tagged as hanging orders.
-
-![How to Resume](img/how_to_resume.gif)
+![](img/pause-resume.gif)

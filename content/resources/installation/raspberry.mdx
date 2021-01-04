@@ -3,8 +3,6 @@ title: "Raspberry Pi"
 description: Raspberry installation Guide
 ---
 
-import { MultiCodeBlock } from "gatsby-theme-apollo-docs";
-
 ## Install via Docker (BETA)
 
 > **Note:** This installation method is currently under testing and awaiting feedback from users. Should you run into problems or have found a fix to solve errors along the way, feel free to reach out through our [Discord](http://discord.hummingbot.io/) support channel.
@@ -38,8 +36,7 @@ Exit
 
 4. Install Hummingbot:
 
-<MultiCodeBlock>
-
+### Scripts
 
 ```Scripts
 # 1) Download Hummingbot install, start, and update script
@@ -56,6 +53,8 @@ chmod a+x *.sh
 # 4) Pull Hummingbot ARM image when asked what version to use [ Enter Hummingbot version: [latest|development] (default = "latest")]
 dev-0.31.0-arm_beta
 ```
+
+### Manual
 
 ```Manual
 # 1) Create folder for your new instance
@@ -77,9 +76,6 @@ docker run -it \
 --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_scripts,destination=/scripts/" \
 coinalpha/hummingbot:dev-0.31.0-arm_beta
 ```
-
-</MultiCodeBlock>
-
 
 > **Note:** This image `dev-0.31.0-arm_beta` only works for Raspberry Pi, other branches of Hummingbot are not built for ARM architecture.
 

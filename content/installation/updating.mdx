@@ -3,8 +3,6 @@ title: "Update/Revert Hummingbot"
 description: How to update/revert Hummingbot
 ---
 
-import { MultiCodeBlock } from "gatsby-theme-apollo-docs";
-
 ## Update via Binary
 
 Simply uninstall Hummingbot locally from your computer, then download and install the latest version from the website https://hummingbot.io/download/
@@ -15,8 +13,7 @@ Hummingbot is regularly updated each month (see [Release Notes](/release-notes/o
 
 Updating to the latest docker image (e.g. `coinalpha/hummingbot:latest`) make sure to stop all the containers that are using the same image first before running the `./update.sh` script.
 
-<MultiCodeBlock>
-
+### Scripts
 
 ```Script
 # 1) Remove old script
@@ -31,6 +28,8 @@ chmod a+x update.sh
 # 4) Run script to update hummingbot
 ./update.sh
 ```
+
+### Manual
 
 ```Manual
 # 1) Delete instance
@@ -48,9 +47,6 @@ docker run -it \
 --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_data,destination=/data/" \
 coinalpha/hummingbot:latest
 ```
-
-</MultiCodeBlock>
-
 
 ## Update from Source
 

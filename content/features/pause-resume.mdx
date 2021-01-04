@@ -6,7 +6,7 @@ This feature allows users to pause a running strategy using the command `exit --
 
 ## Pause
 
-The `exit --suspend` command will exit the hummingbot client but leave the orders hanging and hanging orders will remain as hanging orders.
+The `exit --suspend` command will "pause" the strategy and exit the hummingbot client. All active orders will become hanging orders while hanging orders will stay hanging when resumed at a later time.
 
 This could be an advantage if you don’t want to cancel orders but want to exit the bot.
 
@@ -14,12 +14,16 @@ This could be an advantage if you don’t want to cancel orders but want to exit
 
 ## Resume
 
-The `start --restore` command will start the strategy `config` and restore the last sets of orders and hanging orders as well.
+To resume a "paused" strategy, import the config file and run the command s`tart --restore`. It will create new sets of active orders on top of the hanging orders from when it was paused.
 
 ![Resume](img/resume.png)
 
 > Note: After running `start --restore` spreads may change once the bot brings back your orders, it will display what the current spreads of your order.
 
-You can see that when we use `exit --suspend` it exits the bot. When you run `start --resume` the hanging orders remained as hanging and the order that was not filled became a hanging order. Refer to the example below
+You can see that when we use `exit --suspend` it exits the bot. When you run `start --restore` all active orders became hanging orders. Refer to the example below.
 
 ![](img/pause-resume.gif)
+
+## Important Notes
+
+Always use `start --restore` when resuming a paused strategy. Accidentally running the `start` command after importing the config file will cancel all of its dangling orders and start the strategy from a fresh state.

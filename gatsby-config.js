@@ -25,13 +25,13 @@ const sidebarCategories = {
     "operation/debug",
   ],
   Features: [
+    "features/pause-resume",
     "features/paper-trade",
     "features/balance-limit",
     "features/minimum-order-size",
     "features/performance-history",
     "features/kill-switch",
     "features/telegram",
-    "features/pause-resume",
   ],
   "Exchange Connectors": [
     "exchange-connectors/overview",

@@ -3,8 +3,6 @@ title: "Windows"
 description: Binary, Docker and Source Installation Guide
 ---
 
-import { MultiCodeBlock } from "gatsby-theme-apollo-docs";
-
 ## Install from Binary
 
 <iframe
@@ -40,7 +38,7 @@ For the Windows binary distribution, the application data files are located in `
 The Hummingbot code base is designed and optimized for UNIX-based systems such as macOS and Linux. We recommend that Windows users either:
 
 - Install in the cloud and use a native Linux virtual machine.
-- Install using Docker version:  [Docker Desktop](https://docs.docker.com/docker-for-windows/) recommended.
+- Install using Docker version: [Docker Desktop](https://docs.docker.com/docker-for-windows/) recommended.
 
 Hummingbot can also be installed by utilizing the built-in Windows Subsystem for Linux. However, this is only recommended for users familiar with development.
 
@@ -52,19 +50,20 @@ Supports Windows Home, Pro and Enterprise edition. Download the latest version o
 
 ![Docker Desktop](/img/docker_desktop_download.gif)
 
-> **Note:** Docker Desktop requires WSL 2 feature enabled. For detailed instructions, refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/windows/wsl/install-win10). 
+> **Note:** Docker Desktop requires WSL 2 feature enabled. For detailed instructions, refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
 
 1. For installation procedures, you check the link below depending on the version of your Windows operating system.
-    - [Windows Home](https://docs.docker.com/docker-for-windows/install-windows-home/)
-    - [Windows Pro / Enterprise](https://docs.docker.com/docker-for-windows/install/)
+
+   - [Windows Home](https://docs.docker.com/docker-for-windows/install-windows-home/)
+   - [Windows Pro / Enterprise](https://docs.docker.com/docker-for-windows/install/)
 
 2. To enable WSL 2, open `Windows PowerShell` and run it as administrator. Use the command below and this will take a while to complete:
 
-  ```Windows PowerShell
-  wsl.exe --set-version Ubuntu-18.04 2
-  ```
+```Windows PowerShell
+wsl.exe --set-version Ubuntu-18.04 2
+```
 
-3. Open Docker Desktop, Go to Settings > Resources and then enable WSL Integration 
+3. Open Docker Desktop, Go to Settings > Resources and then enable WSL Integration
 
 ![Docker Desktop WSL enable](/img/docker_desktop_WSLenable.gif)
 
@@ -75,8 +74,7 @@ Enter the following commands into the command line. You can install Hummingbot b
 - **Scripts**: download and use automated install scripts.
 - **Manual**: run install commands manually.
 
-<MultiCodeBlock>
-
+### Scripts
 
 ```Scripts
 # 1) Navigate to root folder
@@ -93,6 +91,8 @@ chmod a+x *.sh
 # 4) Create a hummingbot instance
 ./create.sh
 ```
+
+### Manual
 
 ```Manual
 # 1) Navigate to root folder
@@ -118,9 +118,6 @@ docker run -it \
 coinalpha/hummingbot:latest
 ```
 
-</MultiCodeBlock>
-
-
 ## Install from Source
 
 This section walks you through how to prepare your development environment and install Hummingbot from source manually.
@@ -135,9 +132,10 @@ Step 1. Install required Applications
 4. Install [Visual Studio Code](https://code.visualstudio.com/download), [Visual Studio BuildTools 2019, Core Features, C++](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) and [C++ redistributable 2019](https://aka.ms/vs/16/release/VC_redist.x64.exe).
 
 > **Note:**
-  - During installation make sure to add Anaconda or Miniconda to your PATH environmental variable by clicking the tick box as shown below, or you can add them [manually](https://www.geeksforgeeks.org/how-to-setup-anaconda-path-to-environment-variable/).
-    ![anaconda-path](/img/anaconda-path.png)
-  - Some prerequisites are large applications and may need to restart your computer.
+
+- During installation make sure to add Anaconda or Miniconda to your PATH environmental variable by clicking the tick box as shown below, or you can add them [manually](https://www.geeksforgeeks.org/how-to-setup-anaconda-path-to-environment-variable/).
+  ![anaconda-path](/img/anaconda-path.png)
+- Some prerequisites are large applications and may need to restart your computer.
 
 Step 2. Install Hummingbot on Windows System
 
@@ -157,8 +155,7 @@ exit
 - **Scripts**: download and use automated install scripts.
 - **Manual**: run install commands manually.
 
-<MultiCodeBlock>
-
+### Scripts
 
 ```scripts
 # 1) Navigate to root folder
@@ -174,6 +171,8 @@ chmod a+x install-source-windows.sh
 ./install-source-windows.sh
 ```
 
+### Manual
+
 ```Manual
 cd ~
 export CONDAPATH="$(pwd)/miniconda3"
@@ -187,8 +186,5 @@ conda activate hummingbot && ./compile
 # Start Hummingbot
 winpty python bin/hummingbot.py
 ```
-
-</MultiCodeBlock>
-
 
 After installing Hummingbot from source, see [Start Hummingbot from source](/operation/client/#start-hummingbot-from-source) for instructions on how to start and run Hummingbot from source.

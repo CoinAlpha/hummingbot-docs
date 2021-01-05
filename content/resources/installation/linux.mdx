@@ -3,8 +3,6 @@ title: "Linux"
 description: Ubuntu, Debian, CentOS and Source Installation Guide
 ---
 
-import { MultiCodeBlock } from "gatsby-theme-apollo-docs";
-
 You can install Docker and/or Hummingbot by selecting **_either_** of the following options from the tabs below:
 
 - **Scripts**: download and use automated install scripts.
@@ -24,8 +22,7 @@ _Supported versions: 16.04 LTS, 18.04 LTS, 19.04_
 
 Skip this step if you already have Docker installed. Run the following commands:
 
-<MultiCodeBlock>
-
+### Scripts
 
 ```Scripts
 # 1) Download Docker install script
@@ -37,6 +34,8 @@ chmod a+x install-docker-ubuntu.sh
 # 3) Run installation
 ./install-docker-ubuntu.sh
 ```
+
+### Manual
 
 ```Manual
 # 1) Update Ubuntu's database of software
@@ -59,17 +58,13 @@ sudo usermod -a -G docker $USER
 exit
 ```
 
-</MultiCodeBlock>
-
-
 > **Warning:** Please restart terminal — Close and restart your terminal window to enable the correct permissions for `docker` command before proceeding to next step.
 
 2. Install Hummingbot
 
 Run the following commands:
 
-<MultiCodeBlock>
-
+### Scripts
 
 ```Scripts
 # 1) Download Hummingbot install, start, and update script
@@ -83,6 +78,8 @@ chmod a+x *.sh
 # 3) Create a hummingbot instance
 ./create.sh
 ```
+
+### Manual
 
 ```Manual
 # 1) Create folder for your new instance
@@ -105,15 +102,11 @@ docker run -it \
 coinalpha/hummingbot:latest
 ```
 
-</MultiCodeBlock>
-
-
 ### Install from Source
 
 _Supported versions: 16.04 LTS, 18.04 LTS, 19.04_
 
-<MultiCodeBlock>
-
+### Scripts
 
 ```Scripts
 # 1) Download install script
@@ -125,6 +118,8 @@ chmod a+x install-source-ubuntu.sh
 # 3) Run installation
 ./install-source-ubuntu.sh
 ```
+
+### Manual
 
 ```Manual
 # 1) Install dependencies
@@ -151,9 +146,6 @@ conda activate hummingbot && ./compile
 bin/hummingbot.py
 ```
 
-</MultiCodeBlock>
-
-
 ## Debian
 
 ### Install via Docker
@@ -164,8 +156,7 @@ _Supported version: Debian GNU/Linux 9_
 
 Skip this step if you already have Docker installed. Run the following commands:
 
-<MultiCodeBlock>
-
+### Scripts
 
 ```Scripts
 # 1) Download Docker install script
@@ -177,6 +168,8 @@ chmod a+x install-docker-debian.sh
 # 3) Run installation
 ./install-docker-debian.sh
 ```
+
+### Manual
 
 ```Manual
 # 1) Update package database
@@ -201,17 +194,13 @@ sudo usermod -a -G docker $USER
 exit
 ```
 
-</MultiCodeBlock>
-  
 > **Warning:** Please restart terminal — Close and restart your terminal window to enable the correct permissions for `docker` command before proceeding to next step.
-
 
 2. Install Hummingbot
 
 Run the following commands:
 
-<MultiCodeBlock>
-
+### Scripts
 
 ```Scripts
 # 1) Download Hummingbot install, start, and update script
@@ -225,6 +214,8 @@ chmod a+x *.sh
 # 3) Create a hummingbot instance
 ./create.sh
 ```
+
+### Manual
 
 ```Manual
 # 1) Create folder for your new instance
@@ -247,15 +238,11 @@ docker run -it \
 coinalpha/hummingbot:latest
 ```
 
-</MultiCodeBlock>
-
-
 ### Install from Source
 
 _Supported version: Debian GNU/Linux 9_
 
-<MultiCodeBlock>
-
+### Scripts
 
 ```Scripts
 # 1) Download install script
@@ -267,6 +254,8 @@ chmod a+x install-source-debian.sh
 # 3) Run installation
 ./install-source-debian.sh
 ```
+
+### Manual
 
 ```Manual
 # 1) Install dependencies
@@ -293,9 +282,6 @@ conda activate hummingbot && ./compile
 bin/hummingbot.py
 ```
 
-</MultiCodeBlock>
-
-
 ## CentOS
 
 ### Install via Docker
@@ -306,8 +292,7 @@ _Supported version: 7_
 
 Skip this step if you already have Docker installed. Run the following commands:
 
-<MultiCodeBlock>
-
+### Scripts
 
 ```Scripts
 # 1) Download Docker install script
@@ -319,6 +304,8 @@ chmod a+x install-docker-centos.sh
 # 3) Run installation
 ./install-docker-centos.sh
 ```
+
+### Manual
 
 ```Manual
 # 1) Update package database
@@ -341,17 +328,13 @@ sudo usermod -a -G docker $USER
 exit
 ```
 
-</MultiCodeBlock>
-
-
 > **Warning** Please restart terminal — Close and restart your terminal window to enable the correct permissions for `docker` command before proceeding to next step.
 
 2. Install Hummingbot
 
 Run the following commands:
 
-<MultiCodeBlock>
-
+### Scripts
 
 ```Scripts
 # 1) Download Hummingbot install, start, and update script
@@ -365,6 +348,8 @@ chmod a+x *.sh
 # 3) Create a hummingbot instance
 ./create.sh
 ```
+
+### Manual
 
 ```Manual
 # 1) Create folder for your new instance
@@ -387,15 +372,11 @@ docker run -it \
 coinalpha/hummingbot:latest
 ```
 
-</MultiCodeBlock>
-
-
 ### Install from Source
 
 _Supported version: 7_
 
-<MultiCodeBlock>
-
+### Scripts
 
 ```Scripts
 # 1) Download install script
@@ -407,6 +388,8 @@ chmod a+x install-source-centos.sh
 # 3) Run installation
 ./install-source-centos.sh
 ```
+
+### Manual
 
 ```Manual
 # 1) Install dependencies
@@ -432,9 +415,6 @@ conda activate hummingbot && ./compile
 # 7) Start Hummingbot
 bin/hummingbot.py
 ```
-
-</MultiCodeBlock>
-
 
 ## Developer Notes
 

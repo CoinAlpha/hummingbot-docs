@@ -3,8 +3,6 @@ title: "macOS"
 description: Binary, Docker and Source Installation Guide
 ---
 
-import { MultiCodeBlock } from "gatsby-theme-apollo-docs";
-
 ## Install from Binary
 
 <iframe
@@ -52,8 +50,7 @@ You can install Hummingbot by selecting **_either_** of the following options fr
 - **Scripts**: download and use automated install scripts.
 - **Manual**: run install commands manually.
 
-<MultiCodeBlock>
-
+### Scripts
 
 ```Scripts
 # 1) Download Hummingbot install, start, and update script
@@ -67,6 +64,8 @@ chmod a+x *.sh
 # 3) Create a hummingbot instance
 ./create.sh
 ```
+
+### Manual
 
 ```Manual
 # 1) Create folder for your new instance
@@ -88,9 +87,6 @@ docker run -it \
 --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_scripts,destination=/scripts/" \
 coinalpha/hummingbot:latest
 ```
-
-</MultiCodeBlock>
-
 
 ## Install from Source
 

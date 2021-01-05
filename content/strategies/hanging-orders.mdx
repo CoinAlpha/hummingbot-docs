@@ -3,6 +3,8 @@ title: Hanging Orders
 description: Info on hanging orders
 ---
 
+import Prompt from "../../src/components/Prompt";
+
 **Updated as of `v0.28.0`**
 
 This feature keeps orders "hanging" (or not cancelled and remaining on the order book) if a matching order has been filled on the other side of the order book (bid vs. ask order books).
@@ -13,9 +15,10 @@ When enabled, the orders on the side opposite to the filled orders remains activ
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">Do you want to enable hanging orders? (Yes/No)</font>
-</div>
+<Prompt
+  prompt="Do you want to enable hanging orders? (Yes/No)"
+  response=">>> Yes"
+/>
 
 ## `hanging_orders_cancel_pct`
 
@@ -23,11 +26,10 @@ Cancels the hanging orders when their spread goes above this value.
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">
-    At what spread percentage (from mid price) will hanging orders be canceled?
-  </font>
-</div>
+<Prompt
+  prompt="At what spread percentage (from mid price) will hanging orders be canceled?"
+  response=">>> "
+/>
 
 ## How It Works
 

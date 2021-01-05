@@ -3,12 +3,15 @@ title: Perpetual Market Making (BETA)
 description: Learn how to use Perpetual market making strategy
 ---
 
+import Prompt from "../../src/components/Prompt";
+
 <table>
   <tr>
     <td style="background-color: #AFEEEE">
       <b> Warning:</b> <br />
-      Perpetual market making is released as beta version(0.33),
-      trade it at your own risk. Unlike futures contract, perpetual has no fix settlement date in the future.
+      Perpetual market making is released as beta version(0.33), trade it at your
+      own risk. Unlike futures contract, perpetual has no fix settlement date in
+      the future.
     </td>
   </tr>
 </table>
@@ -40,12 +43,10 @@ Enter the leverage you would like to use.
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">
-    How much leverage do you want to use? (Binance Perpetual supports up to 75X
-    for most pairs))>>>{" "}
-  </font>
-</div>
+<Prompt
+  prompt="How much leverage do you want to use? (Binance Perpetual supports up to 75X for most pairs) >>>"
+  response=">>> "
+/>
 
 ### `position_mode`
 
@@ -53,11 +54,10 @@ Generally, two(2) position modes are available when using a perpetual connector 
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">
-    Which position mode do you want to use? (One-way/Hedge) >>>
-  </font>
-</div>
+<Prompt
+  prompt="Which position mode do you want to use? (One-way/Hedge) >>>"
+  response=">>> Hedge"
+/>
 
 ### `order_amount`
 
@@ -65,36 +65,43 @@ The order amount for the bid order of the base asset for the trading pair.
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">What is the amount of [trading pair] per order?</font>
-</div>
+<Prompt
+  prompt="What is the amount of [trading pair] per order? >>>"
+  response=">>> 3"
+/>
 
 ### `position_management`
+
 This is used to select a positom management feature. Only `Take_profit` and `Trailing_stop` are supprted as of v0.34
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">How would you like to manage your positions? (Profit_taking/Trailing_stop)</font>
-</div>
+<Prompt
+  prompt="How would you like to manage your positions? (Profit_taking/Trailing_stop) >>>"
+  response=">>> Profit_taking"
+/>
 
 ### `long_profit_taking_spread`
+
 It is the spread above the entry price at which a short limit order is placed to reduce position.
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">At what spread from the entry price do you want to place a short order to reduce position? (Enter 1 for 1%) >>> </font>
-</div>
+<Prompt
+  prompt="At what spread from the entry price do you want to place a short order to reduce position? (Enter 1 for 1%) >>>"
+  response=">>> 1"
+/>
 
 ### `short_profit_taking_spread`
+
 It is the spread below the entry price at which a long limit order is placed to reduce position.
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">At what spread from the entry price do you want to place a long order to reduce position? (Enter 1 for 1%) >>> </font>
-</div>
+<Prompt
+  prompt="At what spread from the entry price do you want to place a long order to reduce position? (Enter 1 for 1%) >>>"
+  response=">>> 1"
+/>
 
 ### `ts_activation_spread`
 
@@ -102,11 +109,10 @@ Traders can fill in the price level that triggers the trailing stop. If no activ
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">
-    At what spread from the position entry price do you want the bot to start trailing? (Enter 1 for 1%)>>>
-  </font>
-</div>
+<Prompt
+  prompt="At what spread from the position entry price do you want the bot to start trailing? (Enter 1 for 1%) >>>"
+  response=">>> 1"
+/>
 
 ### `ts_callback_rate`
 
@@ -114,19 +120,18 @@ Callback rate determines the price away from peak price when trailing, beyond wh
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">
-    At what spread away from the trailing peak price do you want positions to remain open before they're closed? (Enter 1 for 1%) >>>
-  </font>
-</div>
+<Prompt
+  prompt="At what spread away from the trailing peak price do you want positions to remain open before they're closed? (Enter 1 for 1%) >>>"
+  response=">>> 1"
+/>
 
 ### `close_position_order_type`
+
 This gives users the option to select the order type to use for closing positions when using the trailing stop feature.
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">
-    What order type do you want to use for closing positions? (LIMIT/MARKET) >>>
-  </font>
-</div>
+<Prompt
+  prompt="What order type do you want to use for closing positions? (LIMIT/MARKET) >>>"
+  response=">>> LIMIT"
+/>

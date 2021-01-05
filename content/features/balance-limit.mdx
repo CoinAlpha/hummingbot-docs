@@ -3,11 +3,13 @@ title: Balance Limit
 description:
 ---
 
+**Updated on version [0.35.0](/release-notes/0.35.0)**
+
 Sets the amount limit on how much assets Hummingbot can use in an exchange or wallet. This can be useful when running multiple bots on different trading pairs with same tokens e.g. running a BTC-USDT pair and another bot on ETH-USDT using the same account.
 
 ## How It Works
 
-You can set how much of a particular token the bot can use by running the command `balance limit [exchange] [asset] [amount]`.
+You can set how much of a particular token the bot can use by running the command `balance limit [exchange] [asset] [amount]`. You can disable this feature by editing it in the global config file and set it to -1. While setting it to 0 will initially not place any order for a specific asset until a trade is executed to accumulate the said asset.
 
 For example:
 

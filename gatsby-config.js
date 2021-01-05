@@ -22,7 +22,6 @@ const sidebarCategories = {
     "operation/command-ref",
     "operation/docker-commands",
     "operation/adv-command-ref",
-    "operation/debug",
   ],
   Features: [
     "features/paper-trade",
@@ -31,6 +30,7 @@ const sidebarCategories = {
     "features/performance-history",
     "features/kill-switch",
     "features/telegram",
+    "features/debug",
   ],
   "Exchange Connectors": [
     "exchange-connectors/overview",

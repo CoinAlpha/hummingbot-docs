@@ -1,0 +1,24 @@
+---
+title: "Version 0.35.0"
+---
+
+## Order optimization enhancement with multiple orders
+
+We improved the `order_optimization` parameter to work with multiple order levels. (More explanation here). See [Order Optimization](https://docs.hummingbot.io/strategies/order-optimization/) page for more information.
+
+## Performance Fee Calculation
+
+When there are multiple fee token, display a list of the fees on history command
+
+## Disable balance limit from client
+
+Previously, `balance limit` can only be disabled by editing the global config file. In this release, users can now run the command and set it to a negative value to disable from inside the Hummingbot client.
+
+While setting it to 0 will initially not place any order for a specific asset until a trade is executed to accumulate the said asset.
+
+See [Balance Limit](https://docs.hummingbot.io/features/balance-limit/) page for more information.
+
+## Bug Fixes
+
+- [#2788](https://github.com/CoinAlpha/hummingbot/pull/2788) Remove update balance log
+- [#2758](https://github.com/CoinAlpha/hummingbot/pull/2758) Add decimals to balancer connector request to gateway. Balancer is modified to handle decimals properly. This should avoid errors when running the `balance` command.

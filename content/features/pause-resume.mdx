@@ -14,7 +14,7 @@ This could be an advantage if you don’t want to cancel orders but want to exit
 
 ## Resume
 
-To resume a "paused" strategy, import the config file and run the command s`tart --restore`. It will create new sets of active orders on top of the hanging orders from when it was paused.
+To resume a "paused" strategy, import the config file and run the command `start --restore`. It will create new sets of active orders on top of the hanging orders from when it was paused.
 
 ![Resume](img/resume.png)
 
@@ -26,4 +26,16 @@ You can see that when we use `exit --suspend` it exits the bot. When you run `st
 
 ## Important Notes
 
-Always use `start --restore` when resuming a paused strategy. Accidentally running the `start` command after importing the config file will cancel all of its dangling orders and start the strategy from a fresh state.
+Always use `start --restore` when resuming a paused strategy. Accidentally running the `start` command after importing the config file will cancel all of its dangling orders and start the strategy from a fresh state. See example below,
+
+These are the orders before we run `exit --suspend`
+
+```
+Orders:
+   Level  Type  Price Spread Amount (Orig)  Amount (Adj)       Age
+       2  sell 0.3401  0.59%          46.0            46  00:00:03
+       1  sell 0.3398  0.50%          45.0            45  00:00:03
+```
+
+You will notice that when we use `start` it will cancel the order left on the orderbook
+![](img/exit_suspend.gif)

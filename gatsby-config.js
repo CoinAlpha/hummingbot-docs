@@ -24,6 +24,7 @@ const sidebarCategories = {
     "operation/adv-command-ref",
   ],
   Features: [
+    "features/pause-resume",
     "features/paper-trade",
     "features/balance-limit",
     "features/minimum-order-size",

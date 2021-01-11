@@ -58,6 +58,12 @@ In the [Pure Market Making](/strategies/pure_market_making) strategy, we have im
 
 When there are multiple tokens used to pay fees, Hummingbot now display a list of each fee token on the `history` command.
 
+## ETH rate conversion
+
+In [#2811](https://github.com/CoinAlpha/hummingbot/pull/2811), a message will appear on the logs after starting your `amm_arb` strategy that shows you an estimated conversion rate of ETH. It only shows when you are trading in non WETH markets.
+
+![](img/ethereum-conversion.png)
+
 ## Bug Fixes
 
 - [#2801](https://github.com/CoinAlpha/hummingbot/pull/2801): Fixed a bug in which trading pairs with AUD as the quote asset were not showing up in the auto-complete helper

@@ -3,8 +3,6 @@ title: "Windows"
 description: Binary, Docker and Source Installation Guide
 ---
 
-import { MultiCodeBlock } from "gatsby-theme-apollo-docs";
-
 ## Install from Binary
 
 <iframe
@@ -71,8 +69,7 @@ Enter the following commands into the command line. You can install Hummingbot b
 - **Scripts**: download and use automated install scripts.
 - **Manual**: run install commands manually.
 
-<MultiCodeBlock>
-
+### Scripts
 
 ```Scripts
 # 1) Navigate to root folder
@@ -89,6 +86,8 @@ chmod a+x *.sh
 # 4) Create a hummingbot instance
 ./create.sh
 ```
+
+### Manual
 
 ```Manual
 # 1) Navigate to root folder
@@ -113,9 +112,6 @@ docker run -it \
 --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_scripts,destination=/scripts/" \
 coinalpha/hummingbot:latest
 ```
-
-</MultiCodeBlock>
-
 
 ## Install from Source
 
@@ -154,8 +150,7 @@ exit
 - **Scripts**: download and use automated install scripts.
 - **Manual**: run install commands manually.
 
-<MultiCodeBlock>
-
+### Scripts
 
 ```scripts
 # 1) Navigate to root folder
@@ -171,6 +166,8 @@ chmod a+x install-source-windows.sh
 ./install-source-windows.sh
 ```
 
+### Manual
+
 ```Manual
 cd ~
 export CONDAPATH="$(pwd)/miniconda3"
@@ -184,6 +181,3 @@ conda activate hummingbot && ./compile
 # Start Hummingbot
 winpty python bin/hummingbot.py
 ```
-
-</MultiCodeBlock>
-

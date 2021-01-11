@@ -22,15 +22,16 @@ const sidebarCategories = {
     "operation/command-ref",
     "operation/docker-commands",
     "operation/adv-command-ref",
-    "operation/debug",
   ],
   Features: [
+    "features/pause-resume",
     "features/paper-trade",
     "features/balance-limit",
     "features/minimum-order-size",
     "features/performance-history",
     "features/kill-switch",
     "features/telegram",
+    "features/debug",
   ],
   "Exchange Connectors": [
     "exchange-connectors/overview",

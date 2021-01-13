@@ -86,15 +86,38 @@ You may need to exit and reconnect to your AWS instance afterwards.
 
 ## 3. Run a Celo ultra-light node
 
-Follow the [Celo documentation](https://docs.celo.org/getting-started/mainnet/running-a-full-node-in-mainnet) to pull the Celo Docker image and install/configure a node, but stop right after the step _Configure the node_ and before the step _Start the node_:
+Follow the [Celo documentation](https://docs.celo.org/getting-started/mainnet/running-a-full-node-in-mainnet) to pull the Celo Docker image and install/configure a node, but stop before the step **Start the node**
+
+### Mainnet
+
+```
+# Setup the environment variables required for Mainnet
+export CELO_IMAGE=us.gcr.io/celo-org/geth:mainnet
+
+# Pull Celo Docker image
+docker pull $CELO_IMAGE
+
+# Set up a data directory
+mkdir celo-data-dir
+cd celo-data-dir
+
+# Create an account and address
+docker run -v $PWD:/root/.celo --rm -it $CELO_IMAGE account new
+
+# Save the address and passphrase. Use the address on environment variable.
+export CELO_ACCOUNT_ADDRESS=<YOUR-ACCOUNT-ADDRESS>
+
+
+```
+
+> **NOTE**: Make sure that you save the address and password of the new Celo account address you created. You will need it later. 
+
 
 Instead, run the following command to start an **ultra-light node** rather than a full node:
 
 ```
-docker run --name celo-ultralight-node -d --restart unless-stopped -p 127.0.0.1:8545:8545 -v $PWD:/root/.celo $CELO_IMAGE --verbosity 3 --networkid $NETWORK_ID --syncmode lightest --rpc --rpcaddr 0.0.0.0 --rpcapi eth,net,web3,debug,admin,personal --etherbase $CELO_ACCOUNT_ADDRESS --bootnodes $BOOTNODE_ENODES --allow-insecure-unlock
+docker run --name mainnet -d --restart unless-stopped -p 127.0.0.1:8545:8545 -v $PWD:/root/.celo $CELO_IMAGE --verbosity 3 --syncmode lightest --rpc --rpcaddr 0.0.0.0 --rpcapi eth,net,web3,debug,admin,personal --etherbase $CELO_ACCOUNT_ADDRESS --allow-insecure-unlock --nousb
 ```
-
-**Make sure that you save the address and password of the new Celo account address you created. You will need it later.**
 
 ## 4. Install and run Hummingbot
 

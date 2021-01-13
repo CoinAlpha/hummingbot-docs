@@ -50,7 +50,9 @@ Enter the leverage you would like to use.
 
 ### `position_mode`
 
-Generally, two(2) position modes are available when using a perpetual connector : 1. One-way mode : In this mode, only one active position(long or short) per trading pair is possible. Trying to open a second position would result in increasing or decreasing the size of the position depending of the side of the second position. 2. Hedge mode: Unlike one-way mode, it is possible to have a long and short position open concurrently without affecting the size of one another.
+Generally, two(2) position modes are available when using a perpetual connector : 
+1. `One-way mode` : In this mode, only one active position(long or short) per trading pair is possible. Trying to open a second position would result in increasing or decreasing the size of the position depending of the side of the second position. 
+2. `Hedge mode`: Unlike one-way mode, it is possible to have a long and short position open concurrently without affecting the size of one another.
 
 ** Prompt: **
 
@@ -72,7 +74,7 @@ The order amount for the bid order of the base asset for the trading pair.
 
 ### `position_management`
 
-This is used to select a positom management feature. Only `Take_profit` and `Trailing_stop` are supprted as of v0.34
+This is used to select a position management feature. Only `Take_profit` and `Trailing_stop` are supprted as of v0.34
 
 ** Prompt: **
 

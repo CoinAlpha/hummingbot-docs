@@ -5,6 +5,9 @@ description: Info on order optimization
 
 import Prompt from "../../src/components/Prompt";
 
+**Updated as of `v0.35.0`**
+
+
 Users now have the option to automatically adjust the prices to right just above the top bid and just below the top ask.
 
 ## `order_optimization_enabled`
@@ -101,3 +104,19 @@ Then we reconfigure and set `ask_order_optimization_depth` and `bid_order_optimi
 Doing this ignores the first 50,000 units of orders on each side in the orderbook and places our orders right next to them.
 
 ![jump_orders_4](/img/jump_orders4.png)
+
+## Order Optimization with multiple order levels
+
+Users can now use order optimizaton with multiple `order_levels` see the example below. Order optimization is triggered and it placed the 2nd order which has a spread of 0.2% because of `order_level_spread`.
+
+```json
+- bid_spread: 0.1%
+- ask_spread: 0.2%
+- order_levels: 2
+- order_level_spread: 0.1%
+- order_optimization_enabled: True
+- ask_order_optimization_depth: 0
+- bid_order_optimization_depth: 0
+```
+
+![](img/multiple_order_levels.png)

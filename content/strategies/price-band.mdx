@@ -3,6 +3,8 @@ title: Price Band
 description: Info on price band
 ---
 
+import Prompt from "../../src/components/Prompt";
+
 **Updated as of `v0.27.0`**
 
 This feature allows you to set a price band within which your bot places both buy and sell orders normally.
@@ -13,11 +15,10 @@ Place only sell orders when mid price goes above this price.
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">
-    Enter the price point above which only sell orders will be placed
-  </font>
-</div>
+<Prompt
+  prompt="Enter the price point above which only sell orders will be placed"
+  response=">>> "
+/>
 
 ## `price_floor`
 
@@ -25,11 +26,10 @@ Place only buy orders when mid price falls below this price.
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">
-    Enter the price below which only buy orders will be placed
-  </font>
-</div>
+<Prompt
+  prompt="Enter the price below which only buy orders will be placed"
+  response=">>> "
+/>
 
 ## How It Works
 

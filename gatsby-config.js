@@ -22,15 +22,16 @@ const sidebarCategories = {
     "operation/command-ref",
     "operation/docker-commands",
     "operation/adv-command-ref",
-    "operation/debug",
   ],
   Features: [
+    "features/pause-resume",
     "features/paper-trade",
     "features/balance-limit",
     "features/minimum-order-size",
     "features/performance-history",
     "features/kill-switch",
     "features/telegram",
+    "features/debug",
   ],
   "Exchange Connectors": [
     "exchange-connectors/overview",
@@ -109,6 +110,7 @@ const sidebarCategories = {
   ],
   "Release Notes": [
     "release-notes/overview",
+    "release-notes/0.35.0",
     "release-notes/0.34.0",
     "release-notes/0.33.1",
     "release-notes/0.33.0",

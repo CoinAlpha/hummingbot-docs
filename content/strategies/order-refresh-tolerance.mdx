@@ -3,6 +3,8 @@ title: Order Refresh Tolerance
 description: Info on order refresh tolerance
 ---
 
+import Prompt from "../../src/components/Prompt";
+
 **Updated as of `v0.28.0`**
 
 This feature allows you to specify a range of spreads that is "tolerable" - not cancelled and left on the order books - every refresh cycle. It allows you to specify the allowed minimum percentage change in spread to adjust an order. If there is movement in the mid-market price, you can create flexibility with your trading strategy to control when orders are canceled/replaced (refreshed) with a tolerance percent change to capture additional profit (see [How Is This Parameter Helpful](#how-is-this-parameter-helpful) below).
@@ -13,11 +15,10 @@ The spread (from mid price) to defer order refresh process to the next cycle.
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">
-    Enter the percent change in price needed to refresh orders at each cycle
-  </font>
-</div>
+<Prompt
+  prompt="Enter the percent change in price needed to refresh orders at each cycle"
+  response=">>> 1"
+/>
 
 ## How It Works
 
@@ -109,8 +110,7 @@ The bot will leave these orders because they are within the order refresh tolera
 current order prices is within 1.00% order_refresh_tolerance_pct
 ```
 
-> **Note:** `Not enough balance for buy (sell) order .... order_amount is adjusted to`
-> `Not cancelling active orders since difference between new order prices and current order prices is within` is no longer shown in logs
+> **Note:** `Not enough balance for buy (sell) order .... order_amount is adjusted to` > `Not cancelling active orders since difference between new order prices and current order prices is within` is no longer shown in logs
 
 Lets say that a market taker thinks the market price will decrease substantially and likes your bid-spread. They then can fill your buy order at 195.02.
 

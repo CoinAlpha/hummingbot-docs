@@ -3,6 +3,8 @@ title: Celo Arbitrage
 description: Learn how to use Celo arbitrage strategies
 ---
 
+import Prompt from "../../src/components/Prompt";
+
 **Updated as of v0.28.1**
 
 ## Prerequisites
@@ -179,9 +181,7 @@ Enter another exchange you would like to trade on.
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">Enter your secondary exchange name</font>
-</div>
+<Prompt prompt="Enter your secondary exchange name" response=">>> " />
 
 ### `secondary_market_trading_pair`
 
@@ -189,11 +189,10 @@ Enter the token trading pair for the secondary exchange.
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">
-    Enter the token trading pair you would like to trade on [secondary_market]
-  </font>
-</div>
+<Prompt
+  prompt="Enter the token trading pair you would like to trade on [secondary_market]"
+  response=">>> BTC-USDT"
+/>
 
 ### `min_profitability`
 
@@ -201,11 +200,10 @@ Minimum profitability target required to execute trades.
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">
-    What is the minimum profitability for you to make a trade?
-  </font>
-</div>
+<Prompt
+  prompt="What is the minimum profitability for you to make a trade?"
+  response=">>> "
+/>
 
 ### `order_amount`
 
@@ -213,9 +211,10 @@ Order amount for each leg of the arbitrage trade.
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">What is the amount of [base_asset] per order?</font>
-</div>
+<Prompt
+  prompt="What is the amount of [base_asset] per order?"
+  response=">>> "
+/>
 
 ### `celo_slippage_buffer`
 
@@ -223,9 +222,7 @@ Percent buffer added to the Celo exchange price to account for price movement be
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">
-    How much buffer do you want to add to the Celo price to account for slippage
-    (Enter 1 for 1%)?
-  </font>
-</div>
+<Prompt
+  prompt="How much buffer do you want to add to the Celo price to account for slippage (Enter 1 for 1%)?"
+  response=">>> 1"
+/>

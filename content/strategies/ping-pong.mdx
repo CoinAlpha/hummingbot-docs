@@ -3,6 +3,8 @@ title: Ping Pong
 description: Info on ping pong
 ---
 
+import Prompt from "../../src/components/Prompt";
+
 **Updated as of `v0.28.0`**
 
 This feature enables the ping pong strategy, in which Hummingbot alternates buy and sell orders.
@@ -13,12 +15,10 @@ Whether to alternate between buys and sells.
 
 ** Prompt: **
 
-<div style={{ padding: "10px 20px", backgroundColor: "#1c1c1c" }}>
-  <font color="#20a26a">
-    Would you like to use the ping pong feature and alternate between buy and
-    sell orders after fills?
-  </font>
-</div>
+<Prompt
+  prompt="Would you like to use the ping pong feature and alternate between buy and sell orders after fills?"
+  response=">>> "
+/>
 
 ## How It Works
 

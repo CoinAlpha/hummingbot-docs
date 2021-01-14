@@ -25,7 +25,7 @@ max_order_age : 20.0
 order_refresh_time : 60.0
 ```
 
-![](img/max-order-age.png)
+![](img/Max-order-age.png)
 
 ### Max order age with order refresh tolerance
 
@@ -37,10 +37,10 @@ Now try out a configuration without max order age and let’s enable order refre
 bid_spread : 0.50
 ask_spread : 0.50
 order_refresh_tolerance_pct: 0.1
-order_refresh_time : 30.0
+order_refresh_time : 60.0
 ```
 
-![](img/order-refresh-tolerance.png)
+![](img/Order-refresh-tolerance.png)
 
 The orders are not cancelling because it is within the 0.1% order refresh tolerance percentage even though the order refresh time is at 30 seconds.
 
@@ -54,21 +54,21 @@ max_order_age: 15.0
 order_refresh_time : 30.0
 ```
 
-![](img/different-config.png)
+![](img/Different-config.png)
 
 The `max_order_age` parameter tried to refresh the order but `order_refresh_tolerance_pct` kicked in that’s why the order was cancelled and the bot created a new order because it reached the threshold of 0.02%.
 
-![](img/different-config2.png)
+![](img/Different-config2.png)
 
 ### Max order age with hanging orders
 
 Max order age respects hanging orders and refreshes the orders but does not cancel active hanging orders. See example below.
 
-![](img/max-order-hanging.png)
+![](img/Max-order-hanging.png)
 
 The hanging orders was not cancelled and was only refreshed when `max_order_age` triggered.
 
-![](img/max-hanging.png)
+![](img/Max-hanging.png)
 
 ### Example when max order age is important
 

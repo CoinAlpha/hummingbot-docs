@@ -64,7 +64,6 @@ export default function Callout(props) {
     var startHighlight = false;
     for (var i = 0; i < input.length; i++) {
       var thisChar = input.charAt(i);
-      var nextChar = input.charAt(i + 1);
       if (thisChar !== "#" && thisChar !== "`") {
         tempString += thisChar;
       } else if (thisChar === "`" && startHighlight === false) {
@@ -96,7 +95,6 @@ export default function Callout(props) {
       <tr>
         <td style={Style}>
           <b>
-            {" "}
             {Colors[props.type].icon} {Colors[props.type].heading}
           </b>
           <br />

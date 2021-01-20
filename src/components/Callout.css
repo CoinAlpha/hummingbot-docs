@@ -50,6 +50,9 @@
   border-top: 1px solid #eeeeee;
 }
 .callout-icon {
-  vertical-align: middle;
+  vertical-align: sub;
   line-height: 50px;
+}
+.callout-text {
+  vertical-align: middle;
 }

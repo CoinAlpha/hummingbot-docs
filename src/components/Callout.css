@@ -1,0 +1,58 @@
+.highlight {
+  background-color: #fff9e9;
+}
+.callout-top {
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-bottom: 1px;
+}
+.callout-bottom {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+.calloutsuccess {
+  background-color: white;
+  border-bottom: 1px solid #e4ffe5;
+  border-right: 1px solid #e4ffe5;
+  border-top: 1px solid #e4ffe5;
+}
+.calloutwarning {
+  background-color: white;
+  border-bottom: 1px solid #f2dede;
+  border-right: 1px solid #f2dede;
+  border-top: 1px solid #f2dede;
+}
+.calloutdanger {
+  background-color: white;
+  border-bottom: 1px solid #fafcc6;
+  border-right: 1px solid #fafcc6;
+  border-top: 1px solid #fafcc6;
+}
+.calloutinfo {
+  background-color: white;
+  border-bottom: 1px solid #e7f6ff;
+  border-right: 1px solid #e7f6ff;
+  border-top: 1px solid #e7f6ff;
+}
+.calloutbug {
+  background-color: white;
+  border-bottom: 1px solid #fff2dc;
+  border-right: 1px solid #fff2dc;
+  border-top: 1px solid #fff2dc;
+}
+
+.callouttip {
+  background-color: white;
+  border-bottom: 1px solid #eeeeee;
+  border-right: 1px solid #eeeeee;
+  border-top: 1px solid #eeeeee;
+}
+.callout-icon {
+  vertical-align: sub;
+  line-height: 50px;
+}
+.callout-text {
+  vertical-align: middle;
+}

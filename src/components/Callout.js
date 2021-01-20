@@ -6,11 +6,12 @@ import { AiFillBug } from "react-icons/ai";
 import { FcApproval } from "react-icons/fc";
 import { FcHighPriority } from "react-icons/fc";
 import { FcMenu } from "react-icons/fc";
-import { FcCancel } from "react-icons/fc";
 import { FcMediumPriority } from "react-icons/fc";
 
 export default function Callout(props) {
   var calloutType = "callout" + props.type;
+  var link = props.link;
+  var linkName = props.linkName;
   const Colors = {
     success: {
       heading: "SUCCESS:",
@@ -70,6 +71,21 @@ export default function Callout(props) {
     var tempString = "";
     var startBold = false;
     var startHighlight = false;
+    var symbolCount = 0;
+    var errString =
+      "Please close bold and/or highlight identifier tags in input body string to correctly output body string";
+    for (var j = 0; j < input.length; j++) {
+      var currChar = input.charAt(j);
+      if (currChar === "#" || currChar === "`") {
+        symbolCount++;
+      }
+    }
+    if (symbolCount % 2 !== 0) {
+      link = "";
+      linkName = "";
+      return errString;
+    }
+
     for (var i = 0; i < input.length; i++) {
       var thisChar = input.charAt(i);
       if (thisChar !== "#" && thisChar !== "`") {
@@ -118,7 +134,7 @@ export default function Callout(props) {
             </div>
             <div className={"callout-bottom " + calloutType}>
               <span /> {buildBody(props.body)}
-              <a href={props.link}>&nbsp;{props.linkName}.</a>
+              <a href={link}>&nbsp;{linkName}</a>.
             </div>
           </div>
         </td>

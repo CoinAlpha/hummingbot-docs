@@ -51,4 +51,8 @@ Gatsby and react often results in conflicts. If you have errors running `npm sta
 
 When contributing, please review the [contributing guidelines](https://docs.hummingbot.io/developer/contributing/)
 
+## Component Guides
+
+When editing markdown pages, please review the list of available components in [Component Guide](https://docs.hummingbot.io/app-guide/component-guide/)
+
 **Note**: Use `master` as base branch

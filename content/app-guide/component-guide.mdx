@@ -19,29 +19,47 @@ There are 6 different callout types: `success`, `warning`, `danger`, `info`, `bu
 
 `success`
 
-![success](/img/success.png)
+<Callout
+  type="success"
+  body="Binance Perpetual connector is released as beta version(0.33), trade it with your own risk. Binance Perpetual is different from futures contract, please see differences."
+/>
 
 `warning`
 
-![warning](/img/warning.png)
+<Callout
+  type="warning"
+  body="Binance Perpetual connector is released as beta version(0.33), trade it with your own risk. Binance Perpetual is different from futures contract, please see differences."
+/>
 
 `danger`
 
-![danger](/img/danger.png)
+<Callout
+  type="danger"
+  body="Binance Perpetual connector is released as beta version(0.33), trade it with your own risk. Binance Perpetual is different from futures contract, please see differences."
+/>
 
 `info`
 
-![info](/img/info.png)
+<Callout
+  type="info"
+  body="Binance Perpetual connector is released as beta version(0.33), trade it with your own risk. Binance Perpetual is different from futures contract, please see differences."
+/>
 
 `bug`
 
-![bug](/img/bug.png)
+<Callout
+  type="bug"
+  body="Binance Perpetual connector is released as beta version(0.33), trade it with your own risk. Binance Perpetual is different from futures contract, please see differences."
+/>
 
 `note`
 
-![note](/img/note.png)
+<Callout
+  type="note"
+  body="Binance Perpetual connector is released as beta version(0.33), trade it with your own risk. Binance Perpetual is different from futures contract, please see differences."
+/>
 
-The Callout component uses identifiers in the input body string to support bold and highlighting. Similar to regular markdown, You can use tags ` `` ` to surround text in the body input string to highlight, or you can use tags `##` to surround text in the body input string to bold.
+The Callout component also takes a prop `body` which uses identifiers in the input body string to support bold and highlighting. Similar to regular markdown, You can use tags ` `` ` to surround text in the body input string to highlight, or you can use tags `##` to surround text in the body input string to bold.
 
 ### Example Bold
 
@@ -49,7 +67,10 @@ The Callout component uses identifiers in the input body string to support bold 
 <Callout type="success" body="#Binance Perpetual connector is released as beta version(0.33)#, trade it with your own risk. #Binance Perpetual# is different from futures contract, please see differences." />
 ```
 
-![bold](/img/bold.png)
+<Callout
+  type="success"
+  body="#Binance Perpetual connector is released as beta version(0.33)#, trade it with your own risk. #Binance Perpetual# is different from futures contract, please see differences."
+/>
 
 ---
 
@@ -59,29 +80,47 @@ The Callout component uses identifiers in the input body string to support bold 
 <Callout type="warning" body="`Binance Perpetual connector is released as beta version(0.33)`, trade it with your own risk. `Binance Perpetual` is different from futures contract, please see differences."/>
 ```
 
-![highlight](/img/highlight.png)
+<Callout
+  type="warning"
+  body="`Binance Perpetual connector is released as beta version(0.33)`, trade it with your own risk. `Binance Perpetual` is different from futures contract, please see differences."
+/>
 
 ---
 
 ### Example Embedded links
 
-The Callout component also supports nested links. Similar to regular markdown, You can use opening tag `[` and closing tag `]` to surround the text in the body input string to hyperlink it. When using links it is **required** to add a `link` prop that takes in an array of link strings, which are associated to your `[]` identifiers order.
+The Callout component also supports nested links. Similar to regular markdown, You can use opening tag `[` and closing tag `]` to surround the text in the body input string to hyperlink it. When using links it is **required** to add a `link` prop that takes in an array of link strings, which are associated to your `[]` identifier's order.
 
 ```
 <Callout type="warning" body="Currently [dydx], [terra], and [loopring] don't work on Binary Installers. It can only be used when running Hummingbot from source or with Docker." link={["/exchange-connectors/dydx/","/protocol-connectors/terra","/exchange-connectors/loopring/"]}/>
 ```
 
-![links](/img/links.png)
+<Callout
+  type="warning"
+  body="Currently [dydx], [terra], and [loopring] don't work on Binary Installers. It can only be used when running Hummingbot from source or with Docker."
+  link={[
+    "/exchange-connectors/dydx/",
+    "/protocol-connectors/terra",
+    "/exchange-connectors/loopring/",
+  ]}
+/>
 
-If your inputs for identifier tags are not fully closed, or the number of links used don't match with the number of link tags used then the component will render a message to tell you which prop to fix.
+If your inputs for identifier tags are not fully closed, or the number of links used don't match with the number of link tags used, then the component will render a message to tell you which prop to fix.
 
 **Link Mismatch**
 
-![linkerror](/img/linkerror.png)
+<Callout
+  type="warning"
+  body="Currently [dydx], [terra], and [loopring] don't work on Binary Installers. It can only be used when running Hummingbot from source or with Docker."
+  link={["/protocol-connectors/terra", "/exchange-connectors/loopring/"]}
+/>
 
 **Identifier Mismatch**
 
-![tagerror](/img/tagerror.png)
+<Callout
+  type="warning"
+  body="`Binance Perpetual connector is released as beta version(0.33), trade it with your own risk. `Binance Perpetual` is different from futures contract, please see differences."
+/>
 
 ---
 

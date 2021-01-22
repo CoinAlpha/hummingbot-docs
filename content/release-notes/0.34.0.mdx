@@ -2,6 +2,8 @@
 title: "Version 0.34.0"
 ---
 
+import Callout from "../../src/components/Callout";
+
 ## New Exchange Connector: dYdX
 
 Hummingbot now supports [dYdX](https://dydx.exchange/) exchange! dYdX describes itself as a full-featured decentralized exchange (originating from the US) for spot and margin trading. dYdX is built on Ethereum, and launched at the beginning of May 2019 with spot and margin trading on ETH-DAI. dYdX claims to offer one of the most liquid order books across decentralized exchanges.
@@ -29,6 +31,16 @@ Terra is compatible with the [amm-arb](/strategies/amm-arb/) strategy, as well a
 Read more in our documentation how to use the connector [here](/protocol-connectors/terra).
 
 > **Warning:** Currently [dydx](/exchange-connectors/dydx/), [terra](/protocol-connectors/terra) and [loopring](/exchange-connectors/loopring/) don't work on Binary Installers. It can only be used when running Hummingbot from source or with Docker.
+
+<Callout
+  type="warning"
+  body="Currently [dydx], [terra], and [loopring] don't work on Binary Installers. It can only be used when running Hummingbot from source or with Docker."
+  link={["/protocol-connectors/terra", "/exchange-connectors/loopring/"]}
+/>
+<Callout
+  type="info"
+  body="Currently dydx, terra, and #loopring# don't work on Binary [Installers. It can only be used when running Hummingbot from source or with Docker."
+/>
 
 ## Improvements to AMM Arbitrage strategy
 
@@ -73,6 +85,7 @@ For these reasons, in this release, a “heartbeat” data collection mechanism 
 If you have any question, please don't hesitate to reach out to anyone from the core team via Discord or email. Thank you again for your support.
 
 > **NOTE:**
+
 - The data will be neither accessible nor sold to any third party
 - Your personally identifiable data will not be collected
 

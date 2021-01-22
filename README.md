@@ -52,24 +52,3 @@ Gatsby and react often results in conflicts. If you have errors running `npm sta
 When contributing, please review the [contributing guidelines](https://docs.hummingbot.io/developer/contributing/)
 
 **Note**: Use `master` as base branch
-
-
-## Components
-
-### Callout
-
-The Callout component uses custom css to provide 6 callout types, to use it in any mdx file, first import the component.
-```
-import Callout from "../../src/components/Callout";
-```
-1. Use the Callout tag to add the component, it takes props: `type` (callout type), `body`, `link`, `linkName`. link and linkName are always at the end of the body. If you don't need any link, you can leave `link` and `linkName` blank.
-2. There are 6 different callout types: success, warning, danger, info, bug, quote. These are input for the Callout component's `type` prop, to render that type of callout.
-3. You can use tags ` `` ` to surround text in the body input string to highlight, you can also use tags ` ## ` to surround text in the body input string to bold.
-
-**Note:** Try to close each tag when bolding or highlighting body text, currently can't nest bold and highlight tags.
-
-#### Example:
-```
-<Callout type="warning" body="#Binance# Perpetual connector is released as `beta version(0.33)`, trade it with your own risk. #Binance Perpetual is different from futures contract#, please see" link="https://www.binance.com/en/support/faq/360033524991" linkName="differences"/>
-```
-

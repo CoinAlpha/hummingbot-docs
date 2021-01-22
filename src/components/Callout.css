@@ -2,11 +2,13 @@
   background-color: #fff9e9;
 }
 .callout-top {
+  width: 100%;
   padding-top: 10px;
   padding-left: 15px;
   padding-bottom: 1px;
 }
 .callout-bottom {
+  width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 20px;
@@ -43,7 +45,7 @@
   border-top: 1px solid #fff2dc;
 }
 
-.callouttip {
+.calloutnote {
   background-color: white;
   border-bottom: 1px solid #eeeeee;
   border-right: 1px solid #eeeeee;
@@ -55,4 +57,7 @@
 }
 .callout-text {
   vertical-align: middle;
+}
+.callout-table {
+  width: 100%;
 }

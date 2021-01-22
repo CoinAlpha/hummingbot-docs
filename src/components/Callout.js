@@ -9,9 +9,11 @@ import { FcMenu } from "react-icons/fc";
 import { FcMediumPriority } from "react-icons/fc";
 
 export default function Callout(props) {
-  var calloutType = "callout" + props.type;
-  var link = props.link;
-  var linkName = props.linkName;
+  var type = props.type === undefined ? "note" : props.type;
+  var calloutType = "callout" + type;
+  var linkArr = props.link;
+  console.log(type);
+
   const Colors = {
     success: {
       heading: "SUCCESS:",
@@ -48,8 +50,8 @@ export default function Callout(props) {
       borderColor: "#BB8C2D ",
       icon: <AiFillBug />,
     },
-    tip: {
-      heading: "Tip: ",
+    note: {
+      heading: "Note: ",
       color: "#707070",
       backgroundColor: "#EEEEEE",
       borderColor: "#8E8E8E",
@@ -61,34 +63,64 @@ export default function Callout(props) {
     borderColor: "black",
     marginBottom: "20px",
     borderRadius: "4px",
-    color: Colors[props.type].color,
-    backgroundColor: Colors[props.type].backgroundColor,
-    borderColor: Colors[props.type].borderColor,
+    color: Colors[type].color,
+    backgroundColor: Colors[type].backgroundColor,
+    borderColor: Colors[type].borderColor,
   };
 
+  function checkIdentifiers(propsBody) {
+    var symbolCount = 0;
+    let propsArr = propsBody.split("");
+    propsArr.forEach(function (element) {
+      if (
+        element === "#" ||
+        element === "`" ||
+        element === "[" ||
+        element === "]"
+      )
+        symbolCount++;
+    });
+    if (symbolCount % 2 !== 0) return true;
+    return false;
+  }
+  function checkLinks(propsBody) {
+    var linkSymbolCount = 0;
+    let propsArr = propsBody.split("");
+    propsArr.forEach(function (element) {
+      if (element === "[" || element === "]") linkSymbolCount++;
+    });
+    if (linkSymbolCount / 2 !== linkArr.length) return true;
+    return false;
+  }
   function buildBody(input) {
     var arr = [];
     var tempString = "";
     var startBold = false;
     var startHighlight = false;
-    var symbolCount = 0;
-    var errString =
-      "Please close bold and/or highlight identifier tags in input body string to correctly output body string";
-    for (var j = 0; j < input.length; j++) {
-      var currChar = input.charAt(j);
-      if (currChar === "#" || currChar === "`") {
-        symbolCount++;
-      }
+    var startLink = false;
+    var linkCount = 0;
+    var tagErrString =
+      "Component Error: Please close bold and/or highlight identifier tags in input body string to correctly output body string.";
+    var linkErrString =
+      "Component Error: Please match correct number links for link prop.";
+
+    if (checkIdentifiers(input) === true) {
+      return tagErrString;
     }
-    if (symbolCount % 2 !== 0) {
-      link = "";
-      linkName = "";
-      return errString;
+    if (props.link) {
+      if (checkLinks(input) === true) {
+        return linkErrString;
+      }
     }
 
     for (var i = 0; i < input.length; i++) {
       var thisChar = input.charAt(i);
-      if (thisChar !== "#" && thisChar !== "`") {
+      if (
+        thisChar !== "#" &&
+        thisChar !== "`" &&
+        thisChar !== "[" &&
+        thisChar !== "]"
+      ) {
         tempString += thisChar;
       } else if (thisChar === "`" && startHighlight === false) {
         arr.push(tempString);
@@ -106,6 +138,16 @@ export default function Callout(props) {
         arr.push(<strong>{tempString}</strong>);
         tempString = "";
         startBold = false;
+      } else if (thisChar === "[" && startLink === false) {
+        arr.push(tempString);
+        tempString = "";
+        startLink = true;
+      } else if (thisChar === "]" && startLink === true) {
+        console.log(linkCount);
+        arr.push(<a href={linkArr[linkCount]}>&nbsp;{tempString}</a>);
+        linkCount++;
+        tempString = "";
+        startLink = false;
       }
     }
     if (tempString !== "") {
@@ -115,26 +157,19 @@ export default function Callout(props) {
   }
 
   return (
-    <table>
+    <table className="callout-table">
       <tr>
         <td>
           <div style={Style}>
             <div className="callout-top">
               <b>
-                <span className="callout-icon">
-                  {" "}
-                  {Colors[props.type].icon}{" "}
-                </span>
+                <span className="callout-icon"> {Colors[type].icon} </span>
                 &nbsp;{" "}
-                <span className="callout-text">
-                  {" "}
-                  {Colors[props.type].heading}
-                </span>
+                <span className="callout-text"> {Colors[type].heading}</span>
               </b>
             </div>
             <div className={"callout-bottom " + calloutType}>
               <span /> {buildBody(props.body)}
-              <a href={link}>&nbsp;{linkName}</a>.
             </div>
           </div>
         </td>

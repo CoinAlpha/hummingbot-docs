@@ -1,0 +1,127 @@
+---
+title: "Component Guide"
+description: Component breakdown and markdown usage
+---
+
+import Callout from "../../src/components/Callout";
+
+## Callout
+
+The Callout component provides callouts to use it in any mdx file, to begin, first import the component.
+
+```
+import Callout from "{path from file}/src/components/Callout";
+```
+
+There are 6 different callout types: `success`, `warning`, `danger`, `info`, `bug`, `note`. These are input for the Callout component's `type` prop, to render that type of callout. If no type is specificed the type `note` is set as default.
+
+### Types
+
+`success`
+
+<Callout
+  type="success"
+  body="Binance Perpetual connector is released as beta version(0.33), trade it with your own risk. Binance Perpetual is different from futures contract, please see differences."
+/>
+
+`warning`
+
+<Callout
+  type="warning"
+  body="Binance Perpetual connector is released as beta version(0.33), trade it with your own risk. Binance Perpetual is different from futures contract, please see differences."
+/>
+
+`danger`
+
+<Callout
+  type="danger"
+  body="Binance Perpetual connector is released as beta version(0.33), trade it with your own risk. Binance Perpetual is different from futures contract, please see differences."
+/>
+
+`info`
+
+<Callout
+  type="info"
+  body="Binance Perpetual connector is released as beta version(0.33), trade it with your own risk. Binance Perpetual is different from futures contract, please see differences."
+/>
+
+`bug`
+
+<Callout
+  type="bug"
+  body="Binance Perpetual connector is released as beta version(0.33), trade it with your own risk. Binance Perpetual is different from futures contract, please see differences."
+/>
+
+`note`
+
+<Callout
+  type="note"
+  body="Binance Perpetual connector is released as beta version(0.33), trade it with your own risk. Binance Perpetual is different from futures contract, please see differences."
+/>
+
+The Callout component also takes a prop `body` which uses identifiers in the input body string to support bold and highlighting. Similar to regular markdown, You can use tags ` `` ` to surround text in the body input string to highlight, or you can use tags `##` to surround text in the body input string to bold.
+
+### Example Bold
+
+```
+<Callout type="success" body="#Binance Perpetual connector is released as beta version(0.33)#, trade it with your own risk. #Binance Perpetual# is different from futures contract, please see differences." />
+```
+
+<Callout
+  type="success"
+  body="#Binance Perpetual connector is released as beta version(0.33)#, trade it with your own risk. #Binance Perpetual# is different from futures contract, please see differences."
+/>
+
+---
+
+### Example Highlight
+
+```
+<Callout type="warning" body="`Binance Perpetual connector is released as beta version(0.33)`, trade it with your own risk. `Binance Perpetual` is different from futures contract, please see differences."/>
+```
+
+<Callout
+  type="warning"
+  body="`Binance Perpetual connector is released as beta version(0.33)`, trade it with your own risk. `Binance Perpetual` is different from futures contract, please see differences."
+/>
+
+---
+
+### Example Embedded links
+
+The Callout component also supports nested links. Similar to regular markdown, You can use opening tag `[` and closing tag `]` to surround the text in the body input string to hyperlink it. When using links it is **required** to add a `link` prop that takes in an array of link strings, which are associated to your `[]` identifier's order.
+
+```
+<Callout type="warning" body="Currently [dydx], [terra], and [loopring] don't work on Binary Installers. It can only be used when running Hummingbot from source or with Docker." link={["/exchange-connectors/dydx/","/protocol-connectors/terra","/exchange-connectors/loopring/"]}/>
+```
+
+<Callout
+  type="warning"
+  body="Currently [dydx], [terra], and [loopring] don't work on Binary Installers. It can only be used when running Hummingbot from source or with Docker."
+  link={[
+    "/exchange-connectors/dydx/",
+    "/protocol-connectors/terra",
+    "/exchange-connectors/loopring/",
+  ]}
+/>
+
+If your inputs for identifier tags are not fully closed, or the number of links used don't match with the number of link tags used, then the component will render a message to tell you which prop to fix.
+
+**Link Mismatch**
+
+<Callout
+  type="warning"
+  body="Currently [dydx], [terra], and [loopring] don't work on Binary Installers. It can only be used when running Hummingbot from source or with Docker."
+  link={["/protocol-connectors/terra", "/exchange-connectors/loopring/"]}
+/>
+
+**Identifier Mismatch**
+
+<Callout
+  type="warning"
+  body="`Binance Perpetual connector is released as beta version(0.33), trade it with your own risk. `Binance Perpetual` is different from futures contract, please see differences."
+/>
+
+---
+
+<Callout type="note" body="#Currently can't nest bold and highlight tags.#" />

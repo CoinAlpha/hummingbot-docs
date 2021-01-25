@@ -51,7 +51,7 @@ export default function Callout(props) {
       icon: <AiFillBug />,
     },
     note: {
-      heading: "Note: ",
+      heading: "NOTE: ",
       color: "#707070",
       backgroundColor: "#EEEEEE",
       borderColor: "#8E8E8E",

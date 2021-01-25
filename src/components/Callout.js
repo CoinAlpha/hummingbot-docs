@@ -12,7 +12,6 @@ export default function Callout(props) {
   var type = props.type === undefined ? "note" : props.type;
   var calloutType = "callout" + type;
   var linkArr = props.link;
-  console.log(type);
 
   const Colors = {
     success: {
@@ -51,7 +50,7 @@ export default function Callout(props) {
       icon: <AiFillBug />,
     },
     note: {
-      heading: "Note: ",
+      heading: "NOTE: ",
       color: "#707070",
       backgroundColor: "#EEEEEE",
       borderColor: "#8E8E8E",

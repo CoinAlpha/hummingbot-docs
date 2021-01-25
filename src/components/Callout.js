@@ -12,7 +12,6 @@ export default function Callout(props) {
   var type = props.type === undefined ? "note" : props.type;
   var calloutType = "callout" + type;
   var linkArr = props.link;
-  console.log(type);
 
   const Colors = {
     success: {

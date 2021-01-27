@@ -7,6 +7,7 @@ import { FcApproval } from "react-icons/fc";
 import { FcHighPriority } from "react-icons/fc";
 import { FcMenu } from "react-icons/fc";
 import { FcMediumPriority } from "react-icons/fc";
+import { FcViewDetails } from "react-icons/fc";
 
 export default function Callout(props) {
   var type = props.type === undefined ? "note" : props.type;
@@ -55,6 +56,13 @@ export default function Callout(props) {
       backgroundColor: "#EEEEEE",
       borderColor: "#8E8E8E",
       icon: <FcMenu />,
+    },
+    tip: {
+      heading: "TIP: ",
+      color: "#707070",
+      backgroundColor: "#E1E8FF",
+      borderColor: "#6780D6",
+      icon: <FcViewDetails />,
     },
   };
   const Style = {

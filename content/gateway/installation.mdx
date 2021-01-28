@@ -2,6 +2,8 @@
 title: Installation
 ---
 
+import Callout from "../../src/components/Callout";
+
 This page describes the installation process for Gateway.
 
 > **Tip:** It is best to use Hummingbot docker build when using Gateway, you can check [here](/installation/windows/#install-via-docker) for installation.
@@ -13,7 +15,10 @@ This page describes the installation process for Gateway.
 
 ![](img/generate-certs.gif)
 
-> **NOTE:** It is recommended not to use the same password as the Hummingbot instance.
+<Callout
+  type="note"
+  body="It is recommended not to use the same password as the Hummingbot instance."
+/>
 
 ## Install Gateway via Docker
 
@@ -44,7 +49,8 @@ It downloads the scripts from GitHub, sets their correct permission and runs the
 
 ![](img/create-gateway.gif)
 
-> **NOTE:** When creating a Gateway instance for Ethereum protocol connectors such as [Balancer](/protocol-connectors/balancer) and [Uniswap](/protocol-connectors/uniswap), the script picks up the settings from your global config file (`conf_global.yml`). Make sure to connect them first from the Hummingbot client before installing Gateway.
+<Callout type="note" body="When creating a Gateway instance for Ethereum protocol connectors such as [Balancer] and [Uniswap], the script picks up the settings from your global config file (`conf_global.yml`). Make sure to connect them first from the Hummingbot client before installing Gateway." link={["/protocol-connectors/balancer", "/protocol-connectors/uniswap" />
+
 
 By default, Gateway will install on port `5000` which Hummingbot will connect to. If the default port is not available, Gateway will find the next port number.
 

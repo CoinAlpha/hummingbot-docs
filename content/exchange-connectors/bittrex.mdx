@@ -3,6 +3,8 @@ title: Bittrex Global
 description: About Bittrex Global Connector
 ---
 
+import Callout from "../../src/components/Callout";
+
 Bittrex is a global, centralized cryptocurrency exchange based in Seattle, USA. It was founded in 2013 and began its operations in 2014. It is an intuitive and easy to navigate exchange platform often finding its way into the top 3 US exchanges in terms of trading volume.
 
 ## Using the Connector
@@ -22,7 +24,13 @@ Private keys and API keys are stored locally for the operation of the Hummingbot
 
 1. Log in to https://international.bittrex.com/ or create an account in [this page](https://international.bittrex.com/account/register).
 
-> Note: Ensure first that 2FA is enabled to proceed with the next steps. Refer to [this page](https://bittrex.zendesk.com/hc/en-us/articles/115000198612-Two-Factor-Authentication-2FA-) for more information.
+<Callout
+  type="note"
+  body="Ensure first that 2FA is enabled to proceed with the next steps. Refer to [this page] for more information."
+  link={[
+    "https://bittrex.zendesk.com/hc/en-us/articles/115000198612-Two-Factor-Authentication-2FA-",
+  ]}
+/>
 
 2. Click **Account** then select **API Keys** under the site settings section.
 

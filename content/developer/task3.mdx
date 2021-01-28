@@ -4,6 +4,8 @@ title: "Task 3 — Market Connector"
 description: Info on market connector
 ---
 
+import Callout from "../../src/components/Callout";
+
 The primary bulk of integrating a new exchange connector is in this section.
 
 The role of the `Market` class can be broken down into placing and tracking orders. Although this might seem pretty straightforward, it does require a certain level of understanding and knowing the expected side-effect(s) of certain functions.
@@ -33,7 +35,11 @@ As such, it would only make sense to have a module dedicated to handling authent
 
 As briefly mentioned, the `Auth` class is responsible for creating the request parameters and/or data bodies necessary to authenticate an API request.
 
-> **Note:** Mainly used in the `Market` class, but may be required in the `UserStreamTrackerDataSource` to authenticate subscribing to a WebSocket connection in [`listen_for_user_stream`](/developer/task2/#userstreamtrackerdatasource).
+<Callout
+  type="note"
+  body="Mainly used in the `Market` class, but may be required in the `UserStreamTrackerDataSource` to authenticate subscribing to a WebSocket connection in [`listen_for_user_stream`]."
+  link={["/developer/task2/#userstreamtrackerdatasource"]}
+/>
 
 ### `generate_auth_dict`
 
@@ -92,7 +98,10 @@ The `execute_cancel` function is the primary function used to cancel any particu
 
 Function that makes API request to cancel an active order and returns the `order_id` if it has been successfully cancelled or no longer needs to be tracked.<br/>
 
-> **Note**: This function also stops tracking the order by calling the `c_stop_tracking_order` and `c_trigger_event` functions.
+<Callout
+  type="note"
+  body="This function also stops tracking the order by calling the `c_stop_tracking_order` and `c_trigger_event` functions."
+/>
 
 **Input Parameter:**<br/> symbol: `str`,<br/>order_id: `str` <br/>
 **Expected Output(s):** order_id: `str`
@@ -161,7 +170,10 @@ Gets the necessary trading rules definitions form the corresponding REST API end
 
 Parses the raw JSON response into a list of [`TradingRule`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/trading_rule.pyx).
 
-> **Note**: This is important since exchanges might only accept certain precisions and impose a minimum trade size on the order.
+<Callout
+  type="note"
+  body="This is important since exchanges might only accept certain precisions and impose a minimum trade size on the order."
+/>
 
 **Input Parameter:** `List[Any]` <br/>
 **Expected Output(s):** `List[TradingRule]`
@@ -170,11 +182,10 @@ Parses the raw JSON response into a list of [`TradingRule`](https://github.com/C
 
 This, together with the trading rules, ensure that all orders placed by Hummingbot meet the required specifications as defined by the exchange.
 
-> **Note:**
-
-- These checks are performed in `execute_buy` and `execute_sell` **before** placing an order.
-- In the event where the orders proposed by the strategies fail to meet the requirements as defined in the trading rules, the intended behaviour for the `Market` class is simply to raise an error and not place the order.<br/>
-- You may be required to add additional functions to help determine if an order meets the necessary requirements.
+<Callout
+  type="note"
+  body="1. These checks are performed in `execute_buy` and `execute_sell` **before** placing an order. 2.In the event where the orders proposed by the strategies fail to meet the requirements as defined in the trading rules, the intended behaviour for the `Market` class is simply to raise an error and not place the order. 3.You may be required to add additional functions to help determine if an order meets the necessary requirements. "
+/>
 
 The following details some functions responsible for this.
 
@@ -305,7 +316,10 @@ An asynchronous wrapper function for `_stop_network`. Used by `NetworkBase` clas
 
 Gets status update for a particular order via rest API.
 
-> **Note**: You are required to retrieve the exchange order ID for the specified `client_order_id`. You can do this by calling the `get_exchange_order_id` function available in the `InFlightOrderBase`.
+<Callout
+  type="note"
+  body="You are required to retrieve the exchange order ID for the specified `client_order_id`. You can do this by calling the `get_exchange_order_id` function available in the `InFlightOrderBase`."
+/>
 
 **Input Parameter:** `client_order_id:str` <br/>
 **Expected Output(s):** `Dict[str, Any]`
@@ -342,7 +356,10 @@ Synchronous function that handles when a single market goes offline.
 
 Returns a shared HTTP client session instance.
 
-> **Note**: This prevents the need to establish a new session on every API request.
+<Callout
+  type="note"
+  body="This prevents the need to establish a new session on every API request."
+/>
 
 **Input Parameter:** `None` <br/>
 **Expected Output(s):** `aiohttp.ClientSession`
@@ -400,7 +417,10 @@ A synchronous wrapper function that generates a client-side order ID and schedul
 
 A synchronous wrapper function that schedules an order cancellation.
 
-> **Note**: The `order_id` here refers to the client-side order ID as tracked by Hummingbot.
+<Callout
+  type="note"
+  body="The `order_id` here refers to the client-side order ID as tracked by Hummingbot."
+/>
 
 **Input Parameter:** `str symbol`,`str order_id` <br/>
 **Expected Output(s):** `str`

@@ -3,6 +3,8 @@ title: Operation Commands
 description: Info and usage about Basic Operation Commands
 ---
 
+import Callout from "../../src/components/Callout";
+
 ## Commands Overview
 
 Below are the available commands in the current Hummingbot release.
@@ -588,7 +590,10 @@ Displays market ticker prices such as best bid, best ask, mid price and last tra
 
 When optional arguments are not used i.e. running `ticker` alone displays the output from the **maker market** of a cross-exchange strategy or **primary market** when using arbitrage.
 
-> **Note:** This command will only work while a strategy is running.
+<Callout
+  type="note"
+  body="This command will only work while a strategy is running."
+/>
 
 **Optional arguments**
 

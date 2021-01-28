@@ -2,6 +2,8 @@
 title: "Running Multiple Bots"
 ---
 
+import Callout from "../../src/components/Callout";
+
 ### Multiple bots via Binary
 
 Users can run multiple bots of Hummingbot installed via binary by simply running a new instance to open a new window.
@@ -62,7 +64,10 @@ chmod a+x *.sh
 
 ### Multiple bots from source
 
-> **Tip:** We recommend that users download and install Hummingbot separately for each instance they wish to run.
+<Callout
+  type="info"
+  body="We recommend that users download and install Hummingbot separately for each instance they wish to run."
+/>
 
 Below command downloads the Hummingbot repository from GitHub where `$FOLDER_NAME` is the name of the separate directory.
 

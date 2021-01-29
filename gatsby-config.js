@@ -3,7 +3,6 @@ require("dotenv").config();
 const sidebarCategories = {
   null: [
     "index",
-    "[Liquidity Mining](https://docs.hummingbot.io/miner/liquidity-mining/current-rewards&terms/)",
     "intro/support",
   ],
   Installation: [

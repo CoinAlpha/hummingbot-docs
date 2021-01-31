@@ -9,10 +9,14 @@ export default function Prompt(props) {
   };
 
   return (
-    <div style={promptStyle}>
-      <font color={textColor}>{props.prompt}</font>
+    <div>
+      <div style={promptStyle}>
+        <font color={textColor}>{props.prompt}</font>
+        <br></br>
+        <font color={textColor}>{props.response}</font>
+      </div>
       <br></br>
-      <font color={textColor}>{props.response}</font>
+      <br></br>
     </div>
   );
 }

@@ -13,7 +13,7 @@ The Callout component provides callouts to use it in any mdx file, to begin, fir
 import Callout from "{path from file}/src/components/Callout";
 ```
 
-There are 6 different callout types: `success`, `warning`, `danger`, `info`, `bug`, `note`. These are input for the Callout component's `type` prop, to render that type of callout. If no type is specificed the type `note` is set as default.
+There are 7 different callout types: `success`, `warning`, `danger`, `info`, `bug`, `note`, `tip`. These are input for the Callout component's `type` prop, to render that type of callout. If no type is specificed the type `note` is set as default.
 
 ### Types
 
@@ -56,6 +56,13 @@ There are 6 different callout types: `success`, `warning`, `danger`, `info`, `bu
 
 <Callout
   type="note"
+  body="Binance Perpetual connector is released as beta version(0.33), trade it with your own risk. Binance Perpetual is different from futures contract, please see differences."
+/>
+
+`tip`
+
+<Callout
+  type="tip"
   body="Binance Perpetual connector is released as beta version(0.33), trade it with your own risk. Binance Perpetual is different from futures contract, please see differences."
 />
 

@@ -45,7 +45,6 @@ Enter the leverage you would like to use.
 
 <Prompt
   prompt="How much leverage do you want to use? (Binance Perpetual supports up to 75X for most pairs) >>>"
-  response=">>> "
 />
 
 ### `position_mode`
@@ -58,7 +57,6 @@ Generally, two(2) position modes are available when using a perpetual connector 
 
 <Prompt
   prompt="Which position mode do you want to use? (One-way/Hedge) >>>"
-  response=">>> Hedge"
 />
 
 ### `order_amount`
@@ -69,7 +67,6 @@ The order amount for the bid order of the base asset for the trading pair.
 
 <Prompt
   prompt="What is the amount of [trading pair] per order? >>>"
-  response=">>> 3"
 />
 
 ### `position_management`
@@ -83,7 +80,6 @@ This is used to select a position management feature. The following are the curr
 
 <Prompt
   prompt="How would you like to manage your positions? (Profit_taking/Trailing_stop) >>>"
-  response=">>> Profit_taking"
 />
 
 ### `long_profit_taking_spread`
@@ -94,7 +90,6 @@ It is the spread above the entry price at which a short limit order is placed to
 
 <Prompt
   prompt="At what spread from the entry price do you want to place a short order to reduce position? (Enter 1 for 1%) >>>"
-  response=">>> 1"
 />
 
 ### `short_profit_taking_spread`
@@ -105,7 +100,6 @@ It is the spread below the entry price at which a long limit order is placed to 
 
 <Prompt
   prompt="At what spread from the entry price do you want to place a long order to reduce position? (Enter 1 for 1%) >>>"
-  response=">>> 1"
 />
 
 ### `ts_activation_spread`
@@ -116,7 +110,6 @@ Traders can fill in the price level that triggers the trailing stop. If no activ
 
 <Prompt
   prompt="At what spread from the position entry price do you want the bot to start trailing? (Enter 1 for 1%) >>>"
-  response=">>> 1"
 />
 
 ### `ts_callback_rate`
@@ -127,7 +120,6 @@ Callback rate determines the price away from peak price when trailing, beyond wh
 
 <Prompt
   prompt="At what spread away from the trailing peak price do you want positions to remain open before they're closed? (Enter 1 for 1%) >>>"
-  response=">>> 1"
 />
 
 ### `close_position_order_type`
@@ -138,5 +130,4 @@ This gives users the option to select the order type to use for closing position
 
 <Prompt
   prompt="What order type do you want to use for closing positions? (LIMIT/MARKET) >>>"
-  response=">>> LIMIT"
 />

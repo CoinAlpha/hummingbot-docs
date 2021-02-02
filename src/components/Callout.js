@@ -1,13 +1,7 @@
 import React from "react";
 import "./Callout.css";
 
-import { FcInfo } from "react-icons/fc";
-import { AiFillBug } from "react-icons/ai";
-import { FcApproval } from "react-icons/fc";
-import { FcHighPriority } from "react-icons/fc";
-import { FcMenu } from "react-icons/fc";
-import { FcMediumPriority } from "react-icons/fc";
-import { FcViewDetails } from "react-icons/fc";
+import Icons from "./components-icons/CalloutIcons";
 
 export default function Callout(props) {
   var type = props.type === undefined ? "note" : props.type;
@@ -17,52 +11,52 @@ export default function Callout(props) {
   const Colors = {
     success: {
       heading: "SUCCESS:",
-      color: "#707070",
-      backgroundColor: "#E4FFE5",
-      borderColor: "#4FB916",
-      icon: <FcApproval />,
+      color: "#0D999E",
+      backgroundColor: "#E7F5F5",
+      borderColor: "#0D999E",
+      icon: <Icons type="success" />,
     },
     warning: {
       heading: "WARNING:",
-      color: "#a94442",
-      backgroundColor: "#f2dede",
-      borderColor: "#a94442",
-      icon: <FcHighPriority />,
+      color: "#D42B21",
+      backgroundColor: "#FBEAE9",
+      borderColor: "#D42B21",
+      icon: <Icons type="warning" />,
     },
     danger: {
       heading: "DANGER:",
-      color: "#707070",
-      backgroundColor: "#FEFFDC",
-      borderColor: "#C6C918",
-      icon: <FcMediumPriority />,
+      color: "#F08727",
+      backgroundColor: "#FEF3E9",
+      borderColor: "#F08727",
+      icon: <Icons type="danger" />,
     },
     info: {
       heading: "INFO:",
-      color: "#707070",
-      backgroundColor: "#E7F6FF",
-      borderColor: "#1A96CB",
-      icon: <FcInfo />,
+      color: "#007BBD",
+      backgroundColor: "#E6F2F8",
+      borderColor: "#007BBD",
+      icon: <Icons type="info" />,
     },
     bug: {
       heading: "BUG:",
-      color: "#707070",
-      backgroundColor: "#FFF2DC",
-      borderColor: "#BB8C2D ",
-      icon: <AiFillBug />,
+      color: "#B86A00",
+      backgroundColor: "#F8F0E6 ",
+      borderColor: "#B86A00",
+      icon: <Icons type="bug" />,
     },
     note: {
       heading: "NOTE: ",
-      color: "#707070",
-      backgroundColor: "#EEEEEE",
-      borderColor: "#8E8E8E",
-      icon: <FcMenu />,
+      color: "#767676",
+      backgroundColor: "#F1F1F1",
+      borderColor: "#767676",
+      icon: <Icons type="note" />,
     },
     tip: {
       heading: "TIP: ",
-      color: "#707070",
-      backgroundColor: "#E1E8FF",
-      borderColor: "#6780D6",
-      icon: <FcViewDetails />,
+      color: "#7153C6",
+      backgroundColor: "#F1EEF9",
+      borderColor: "#7153C6",
+      icon: <Icons type="tip" />,
     },
   };
   const Style = {

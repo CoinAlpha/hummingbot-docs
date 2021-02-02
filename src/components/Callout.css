@@ -15,47 +15,54 @@
   padding-right: 10px;
 }
 .calloutsuccess {
+  color: #707070;
   background-color: white;
-  border-bottom: 1px solid #e4ffe5;
-  border-right: 1px solid #e4ffe5;
-  border-top: 1px solid #e4ffe5;
+  border-bottom: 1px solid #e7f5f5;
+  border-right: 1px solid #e7f5f5;
+  border-top: 1px solid #e7f5f5;
 }
 .calloutwarning {
+  color: #707070;
   background-color: white;
-  border-bottom: 1px solid #f2dede;
-  border-right: 1px solid #f2dede;
-  border-top: 1px solid #f2dede;
+  border-bottom: 1px solid #f0dada;
+  border-right: 1px solid #f0dada;
+  border-top: 1px solid #f0dada;
 }
 .calloutdanger {
+  color: #707070;
   background-color: white;
-  border-bottom: 1px solid #fafcc6;
-  border-right: 1px solid #fafcc6;
-  border-top: 1px solid #fafcc6;
+  border-bottom: 1px solid #feeee9;
+  border-right: 1px solid #feeee9;
+  border-top: 1px solid #feeee9;
 }
 .calloutinfo {
+  color: #707070;
   background-color: white;
-  border-bottom: 1px solid #e7f6ff;
-  border-right: 1px solid #e7f6ff;
-  border-top: 1px solid #e7f6ff;
+  border-bottom: 1px solid #e2f5ff;
+  border-right: 1px solid #e2f5ff;
+  border-top: 1px solid #e2f5ff;
 }
 .calloutbug {
+  color: #707070;
   background-color: white;
-  border-bottom: 1px solid #fff2dc;
-  border-right: 1px solid #fff2dc;
-  border-top: 1px solid #fff2dc;
+  border-bottom: 1px solid #fdefd9;
+  border-right: 1px solid #fdefd9;
+  border-top: 1px solid #fdefd9;
 }
 
 .calloutnote {
+  color: #707070;
   background-color: white;
-  border-bottom: 1px solid #eeeeee;
-  border-right: 1px solid #eeeeee;
-  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #ebebeb;
+  border-right: 1px solid #ebebeb;
+  border-top: 1px solid #ebebeb;
 }
 .callouttip {
+  color: #707070;
   background-color: white;
-  border-bottom: 1px solid #e1e8ff;
-  border-right: 1px solid #e1e8ff;
-  border-top: 1px solid #e1e8ff;
+  border-bottom: 1px solid #dce5fe;
+  border-right: 1px solid #dce5fe;
+  border-top: 1px solid #dce5fe;
 }
 .callout-icon {
   vertical-align: sub;

@@ -3,6 +3,8 @@ title: Advanced Configuration
 description: Info and usage on advanced configuration
 ---
 
+import Callout from "../../src/components/Callout";
+
 ## Fee override
 
 This feature overrides trading fees (maker and taker) from corresponding market connector. This applies to users that has discounted rates or VIP account with specific fees.
@@ -46,7 +48,7 @@ kraken_maker_fee:
 kraken_taker_fee:
 ```
 
-> **Note:** Make sure Hummingbot is not running on background or exit Hummingbot first before editing `conf/conf_fee_overrides.yml`.
+<Callout type="note" body="Make sure Hummingbot is not running on background or exit Hummingbot first before editing `conf/conf_fee_overrides.yml`." />
 
 ## Logs and Logging
 
@@ -98,7 +100,7 @@ There are two ways to import your Hummingbot wallet from other wallets like Meta
 
 We recommend using the keyfile method over copying and pasting the private key. If your private key remains in your clipboard, there is a risk that a malicious website that you visit may utilize Javascript to access your clipboard and copy its contents.
 
-> **Tip:** For Metamask wallet, using a wallet that is available in your Metamask (i.e. importing a wallet from Metamask) allows you to view orders created and trades filled by Hummingbot on the decentralized exchange's website.
+<Callout type="tip" body="For Metamask wallet, using a wallet that is available in your Metamask (i.e. importing a wallet from Metamask) allows you to view orders created and trades filled by Hummingbot on the decentralized exchange's website." />
 
 #### Keyfile (recommended)
 
@@ -157,7 +159,7 @@ Running your own node may require dedicated storage and compute, as well as some
 - [Geth (go-ethereum)](https://github.com/ethereum/go-ethereum/wiki/Building-Ethereum)
 - [Parity](https://github.com/paritytech/parity-ethereum)
 
-> **Note:** These may require several hours to days to sync and may require some troubleshooting when first running.
+<Callout type="note" body="These may require several hours to days to sync and may require some troubleshooting when first running." />
 
 ### Option 3. Dedicated blockchain hardware
 
@@ -174,7 +176,7 @@ Get dedicated hardware for your Ethereum node. Ethereum nodes are meant to run c
 
 ## Advanced Database Configuration
 
-> Warning: This is a recently released experimental feature. Running any trading bots without manual supervision may incur additional risks. It is imperative that you thoroughly understand and test the strategy and parameters before deploying bots that can trade in an unattended manner.
+<Callout type="warning" body="This is a recently released experimental feature. Running any trading bots without manual supervision may incur additional risks. It is imperative that you thoroughly understand and test the strategy and parameters before deploying bots that can trade in an unattended manner." />
 
 Hummingbot uses SQLite for database by default, but it may be limiting for some cases such as sharing data to external system, in some cases user may want to use their own preferred client/server RDBMS for it.
 

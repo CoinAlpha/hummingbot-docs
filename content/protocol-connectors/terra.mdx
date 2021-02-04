@@ -2,6 +2,8 @@
 title: Terra (BETA)
 ---
 
+import Callout from "../../src/components/Callout";
+
 The [Terra Protocol](https://terra.money/) is the creator of the Luna Token, Terra Core, and the blockchain payment solution CHAI. The design of the Terra Protocol is based on two things: stability and adoption by e-commerce platforms.
 
 It runs on a Tendermint Delegated Proof of Stake algorithm and Cosmos SDK. It is aimed at becoming a new worldwide financial infrastructure on which different DApps can be created.
@@ -34,3 +36,5 @@ Source: https://medium.com/stakin/what-is-terra-money-8eb1dcb314d2
 4. Create and run an `amm_arb` strategy to use the Terra connector
 
 ![](img/connect-terra.gif)
+
+<Callout type="warning" body="Currently [dydx], [terra], and [loopring] don't work on Binary Installers. It can only be used when running Hummingbot from source or with Docker." link={["/exchange-connectors/dydx/","/protocol-connectors/terra","/exchange-connectors/loopring/"]}/>

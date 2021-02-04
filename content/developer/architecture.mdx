@@ -3,6 +3,8 @@ title: "Connector Architecture"
 description: Info on connector architecture
 ---
 
+import Callout from "../../src/components/Callout";
+
 ![Connector Architecture Diagram](/img/connector-architecture-diagram.svg)
 
 The **_Architecture Diagram_**, given above, depicts the high-level design of a Connector.
@@ -49,7 +51,7 @@ Depending on the specific exchange, different information may be needed for auth
 - Generate a signature based on the time, access method, endpoint, provided parameters, and private key of the user.
 - Compile the public key, timestamp, provided parameters, and signature into a dictionary to be passed via an `http` or `ws` request.
 
-> **Note:** This module is typically required for centralized exchange only. Generally, auth for DEXs is handled by the respective wallet.
+<Callout type="note" body="This module is typically required for centralized exchange only. Generally, auth for DEXs is handled by the respective wallet."/>
 
 ### OrderBookTracker
 
@@ -79,7 +81,7 @@ To maintain a consistent and up-to-date order book, it is necessary to track the
 - Presence of Timestamp/Nonce — In this ideal scenario, we will only 'apply' delta messages onto the order book if and only if the timestamp of the message received is **above** or **+1** of `_last_diff_uid` in the order book.
 - Absence of Timestamp/Nonce — In this scenario, we would have to assign a timestamp to every message received from the exchange and similarly apply the delta messages sequentially only if it is received after the snapshot message.
 
-> **Note:** It is important that the order book being maintained reflects all changes and is consistent with the order book in the exchange. As a safeguard/fallback, in the event when Hummingbot is unable to adequately maintain the order book, executing periodic order book snapshot requests can help to ensure that any deltas missed would be corrected.
+<Callout type="note" body="It is important that the order book being maintained reflects all changes and is consistent with the order book in the exchange. As a safeguard/fallback, in the event when Hummingbot is unable to adequately maintain the order book, executing periodic order book snapshot requests can help to ensure that any deltas missed would be corrected."/>
 
 ### UserStreamTrackerDataSource
 
@@ -93,7 +95,7 @@ The `UserStreamTrackerDataSource` class deals with user data retrieval. It simpl
 
 Mainly deals with tracking of an open order placed by the user. It also consists of functions like `convert_snapshot_message_to_order_book_row` and `convert_diff_message_to_order_book_row` to help parse the incoming data that will be subsequently used by `OrderBookTrackerDataSource` and `OrderBookTracker` to maintain a real-time order book.
 
-> **Note:** This class is not necessary for all exchanges
+<Callout type="note" body="This class is not necessary for all exchanges"/>
 
 ### InFlightOrder
 
@@ -101,6 +103,6 @@ Mainly deals with tracking of an open order placed by the user. It also consists
 
 Stores all details pertaining to the current state of an order.
 
-> **Note:** It is important to keep a consistent and accurate state of all active orders placed by the user. This ensures that the strategies are given the correct information and are able to perform their tasks accordingly.
+<Callout type="note" body="It is important to keep a consistent and accurate state of all active orders placed by the user. This ensures that the strategies are given the correct information and are able to perform their tasks accordingly."/>
 
 For more details on how to begin implementing the components, please refer to [Tutorial](/developer/tutorial/)

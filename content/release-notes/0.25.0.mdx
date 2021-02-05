@@ -2,6 +2,8 @@
 title: "Version 0.25.0"
 ---
 
+import Callout from "../../src/components/Callout";
+
 🚀 Welcome to `hummingbot` version 0.25.0! In this release, we continued working on the stability of Liquidity Mining backend, scaling/optimizing the infrastructure for quicker updates and incrased capacity. There are also major improvements in pure market making strategy including inventory skew, status outputs, hanging order mode, and filled order delays.
 
 ## 🚰 Updated dependencies to improve stability
@@ -10,8 +12,7 @@ In order to address memory leaks that cause the bot to crash, we upgraded Python
 
 In addition, we advise users to not `stop` and `start` the bot frequently before running it long-term. This appears to elevate memory usage and cause the bot to crash more frequently. We continue to monitor this issue.
 
-> **Note**:  "Updating from source"
-Due to the updated Python version, users who install Hummingbot from source need to run `./uninstall` and `./clean` before updating.
+<Callout type="note" body="`Updating from source` Due to the updated Python version, users who install Hummingbot from source need to run `./uninstall` and `./clean` before updating." />
 
 ## 💥 New `status` command
 

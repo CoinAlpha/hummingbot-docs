@@ -3,6 +3,8 @@ title: Script Base
 description: Info about scriptbase
 ---
 
+import Callout from "../../src/components/Callout";
+
 ## ScriptBase
 
 This is the base class (`hummingbot/script/script_base.py`) for your script, it provides data, events and functions
@@ -14,9 +16,9 @@ At every tick, the script gets current market price (`mid_price`), strategy conf
 total balances (`all_total_balances`). The `mid_price` is stored in a list (`mid_prices`) where a new `mid_price`
 is added to the end of the list, whereas strategy configuration and total balances are replaced every time.
 
-Note: The current script feature supports only _pure market making_ strategy configuration.
+<Callout type="note" body="The current script feature supports only pure_market_making strategy configuration." />
 
-#### pmm_parameters
+### pmm_parameters
 
 To set a pure market making strategy parameter to a new value, simply assign a new value to it.
 

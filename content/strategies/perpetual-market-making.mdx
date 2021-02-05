@@ -5,6 +5,8 @@ description: Learn how to use Perpetual market making strategy
 
 import Prompt from "../../src/components/Prompt";
 
+import Callout from "../../src/components/Callout";
+
 <table>
   <tr>
     <td style="background-color: #AFEEEE">
@@ -25,7 +27,7 @@ In addition to that, position management features are introduced to let users fu
 
 We aim to teach new users the basics of Perpetual market making, while enabling experienced users to exercise more control over how their bots behave. By default, when you run `create` we ask you to enter the basic parameters needed for a Perpetual bot.
 
-> **Note**: Paper trading is supported, enter `[perpetual_connector_name]_testnet` when prompted for derivative name.
+<Callout type="note" body="Paper trading is supported, enter `(perpetual_connector_name)_testnet` when prompted for derivative name." />
 
 1. In Hummingbot, enter `create`.
 2. Enter `[perpetual_connector_name]_testnet` or `[perpetual_connector_name]`.
@@ -39,7 +41,7 @@ For details on each Perpetual parameters, see the following sections for details
 
 Enter the leverage you would like to use.
 
-> **Note:** Initial margin deposits are calculated using the leverage as entered by the trader
+<Callout type="note" body="Initial margin deposits are calculated using the leverage as entered by the trader." />
 
 ** Prompt: **
 

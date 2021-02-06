@@ -1,10 +1,7 @@
 require("dotenv").config();
 
 const sidebarCategories = {
-  null: [
-    "index",
-    "intro/support",
-  ],
+  null: ["index", "intro/support"],
   Installation: [
     "installation/overview",
     "installation/windows",
@@ -69,6 +66,7 @@ const sidebarCategories = {
     "strategies/arbitrage",
     "strategies/celo-arb",
     "strategies/amm-arb",
+    "strategies/liquidity-mining",
   ],
   "Advanced Market Making": [
     "strategies/adv-market-making",

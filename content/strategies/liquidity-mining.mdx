@@ -1,0 +1,143 @@
+---
+title: Liquidity Mining Strategy
+description: Learn how to use Liquidity mining strategy
+---
+
+import Prompt from "../../src/components/Prompt";
+
+import Callout from "../../src/components/Callout";
+
+## How it works
+
+The liquidity mining strategy allows users to run a single strategy and earn rewards in multiple Liquidity Mining campaigns. This strategy helps users who want to participate in liquidity mining but doesn’t want to configure a bot with the pure market making strategy.
+
+This strategy has parameters like [`volatility_interval`](/strategies/liquidity-mining/#volatility_interval) and [`avg_volatility_spread`](/strategies/liquidity-mining/#avg_volatility_period) that automatically adjust the spreads based on a market’s volatility based on the historical mid-price.
+
+## Pre-requisites
+
+### Inventory
+
+You will need to hold a sufficient inventory of quote and base currencies to place orders of the exchange's minimum order size.
+
+### Minimum order size
+
+When placing orders, if the order's size determined by the order price and quantity is below the exchange's minimum order size, orders will not be created.
+
+## Basic Parameters
+
+The following walks through all the steps when running `create` command.
+
+### `exchange`
+
+The exchange where the bot will create and place orders.
+
+<Prompt
+  prompt="Enter your liquidity mining exchange name? "
+  response=">>> Binance"
+/>
+
+### `markets`
+
+Token trading pair symbols you would like to trade on the exchange.
+
+<Prompt
+  prompt="Enter a list of markets (comma separated, e.g. LTC-USDT,ETH-USDT) "
+  response=">>> ETH-USDT"
+/>
+
+<Callout
+  type="note"
+  body="If participating in multiple markets, use the same base or quote asset. Different pairs without the same base or quote are not available at the same time"
+/>
+
+### `token`
+
+Choose between the base and quote asset wanted to use to provide liquidity. When participating in liquidity mining, use the quote asset.
+
+<Prompt
+  prompt="What asset (base or quote) do you want to use to provide liquidity? "
+  response=">>> ETH"
+/>
+
+### `order_amount`
+
+The order amount for the limit bid and ask orders. Ensure you have enough balance on base and quote tokens to place the bid and ask orders.
+
+<Prompt
+  prompt="What is the size of each order (in ETH amount)? "
+  response=">>> 0.008"
+/>
+
+### `spread`
+
+The strategy will place the order on a certain % away from the current mid-price. Spreads are automatically adjusted based on the [`volatility_interval`](link).
+
+<Prompt
+  prompt="How far away from the mid price do you want to place bid and ask orders? (Enter 1 to indicate 1%) "
+  response=">>> 1"
+/>
+
+### `target_base_pct`
+
+This parameter determines for each pair the value in % for the base asset. If you set it at a certain lower value than the base %, it will only create sell orders depending on your balance.
+
+<Prompt
+  prompt="For each pair, what is your target base asset percentage? (Enter 20 to indicate 20%) "
+  response=">>> 20"
+/>
+
+### `order_refresh_time`
+
+Value in seconds of the orders’ duration before canceling and creating new sets of orders depending on the current mid-price and spreads at the interval. The default value for the parameter is 10s.
+
+<Prompt
+  prompt="How often do you want to cancel and replace bids and asks (in seconds)? "
+  response=">>> 10"
+/>
+
+### `order_refresh_tolerance_pct`
+
+The spread (from mid-price) to defer the order refresh process to the next cycle. The parameter has a default value of 0.02%.
+
+<Prompt
+  prompt="Enter the percent change in price needed to refresh orders at each cycle (Enter 1 to indicate 1%) "
+  response=">>> 0.02"
+/>
+
+### `inventory_range_multiplier`
+
+This parameter expands the range of tolerable inventory levels on your target base percent as a multiple of your total order size. Larger values expand this range. The predefined value is 1.
+
+<Prompt
+  prompt="What is your tolerable range of inventory around the target, expressed in multiples of your total order size?"
+  response=">>> 1"
+/>
+
+## Advanced Parameters
+
+### `volatility_interval`
+
+The interval, in seconds, in which to pick historical data from mid-price to calculate market volatility. The predefined value is 300s.
+
+<Prompt
+  prompt="What is an interval, in second, in which to pick historical mid price data from to calculate market volatility? "
+  response=">>> 300"
+/>
+
+### `avg_volatility_period`
+
+The number of intervals based on `volatility_interval` to calculate the average market volatility. The predefined value is 10.
+
+<Prompt
+  prompt="How many interval does it take to calculate average market volatility? "
+  response=">>> 10"
+/>
+
+### `volatility_to_spread_multiplier`
+
+The multiplier used to convert average volatility to spread (`avg_volatility_period` x `volatility_to_spread_multiplier`). The predefined value is 10.
+
+<Prompt
+  prompt="Enter a multiplier used to convert average volatility to spread (enter 1 for 1 to 1 conversion) "
+  response=">>> 1"
+/>

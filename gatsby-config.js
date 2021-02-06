@@ -1,10 +1,7 @@
 require("dotenv").config();
 
 const sidebarCategories = {
-  null: [
-    "index",
-    "intro/support",
-  ],
+  null: ["index", "intro/support"],
   Installation: [
     "installation/overview",
     "installation/windows",
@@ -39,7 +36,9 @@ const sidebarCategories = {
     "exchange-connectors/binance-futures",
     "exchange-connectors/binance-us",
     "exchange-connectors/bitfinex",
+    "exchange-connectors/bitmax",
     "exchange-connectors/bittrex",
+    "exchange-connectors/blocktane",
     "exchange-connectors/coinbase",
     "exchange-connectors/crypto-com",
     "exchange-connectors/eterbase",

@@ -1,0 +1,75 @@
+---
+title: Bitmax (BETA)
+description: About Bitmax connector
+---
+
+import Callout from "../../src/components/Callout";
+
+BitMax is a leading digital asset financial platform with a comprehensive product suite including altcoin trading for spot, margin, and futures, wallet services for over 100 cryptocurrencies, and innovative staking support for top blockchain projects.
+
+Bitmax was released on September 17, 2019 as a crypto asset exchange service conveniently accessible through the LINE messaging app in Japan, where LINE has more than 84 million monthly active users.
+
+## Using the Connector
+
+To use [Bitmax](https://bitmax.io/en/global-digital-asset-platform) connector, you will need to generate and provide your API key in order to trade using Hummingbot.
+
+```
+Enter your Bitmax API key >>>
+Enter your Bitmax secret API key >>>
+```
+
+Private keys and API keys are stored locally for the operation of the Hummingbot client only. At no point will private or API keys be shared to CoinAlpha or be used in any way other than to authorize transactions required for the operation of Hummingbot.
+
+<Callout
+  type="tip"
+  body="For copying and pasting into Hummingbot, see [this page] for more instructions in our Hummingbot Help Center."
+  link={[
+    "https://hummingbot.zendesk.com/hc/en-us/articles/900004871203-Copy-and-paste-your-API-keys",
+  ]}
+/>
+
+### Creating Bitmax API Keys
+
+1. Log in to your account at https://bitmax.io/en/global-digital-asset-platform, then click your profile > API settings (If you do not have an account, you will have to create one and verify your ID.)
+
+<Callout
+  type="tip"
+  body="You must enable 2FA in your Bitmax account to create the API key. [How to enable 2FA]?"
+  link={[
+    "https://bitmaxhelp.zendesk.com/hc/en-us/articles/360053013514-How-to-Set-Google-2FA-Verification-PC-",
+  ]}
+/>
+
+![](/img/bitmax-account.png)
+
+2. Then click new API key.
+
+![](/img/bitmax-api.png)
+
+<Callout
+  type="warning"
+  body=" For API key permissions, we recommend using `trade` and `view` enabled API keys; enabling `transfer,` `or the equivalent is unnecessary `for current Hummingbot strategies."
+/>
+
+3. Now you have created an API key, connect it to Hummingbot by using the `connect` command.
+
+Make sure you store your Secret Key somewhere secure and do not share it with anyone. Your Secret Key will only be displayed once at the time when you create the API.
+
+<Callout
+  type="warning"
+  body="If you lose your Secret Key, you can delete the API and create a new one. However, it will be impossible to reuse the same API."
+/>
+
+## Miscellaneous Info
+
+### Minimum Order Sizes
+
+See [this page](https://bitmaxhelp.zendesk.com/hc/en-us/articles/360025991074-Update-on-Maximum-Order-Size-to-be-200-000-USDT#:~:text=The%20minimum%20order%20size%20will,both%20regular%20and%20margin%20trading) for the minimum order size per trading pair. The minimum order size will remain unchanged at 5 USDT.
+
+### Transaction Fees
+
+By default, trading fees for this exchange charges a flat fee of 0.04% per trade.
+
+- [Fees](https://bitmaxhelp.zendesk.com/hc/en-us/articles/360043045614-Fees)
+
+Users can override the default fees by editing [`conf_fee_overrides.yml`](https://docs.hummingbot.io/operation/adv-command-ref/#fee-override).

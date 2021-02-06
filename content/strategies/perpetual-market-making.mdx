@@ -1,5 +1,5 @@
 ---
-title: Perpetual Market Making (BETA)
+title: Perpetual Market Making
 description: Learn how to use Perpetual market making strategy
 ---
 
@@ -43,21 +43,18 @@ Enter the leverage you would like to use.
 
 ** Prompt: **
 
-<Prompt
-  prompt="How much leverage do you want to use? (Binance Perpetual supports up to 75X for most pairs) >>>"
-/>
+<Prompt prompt="How much leverage do you want to use? (Binance Perpetual supports up to 75X for most pairs) >>>" />
 
 ### `position_mode`
 
-Generally, two(2) position modes are available when using a perpetual connector : 
-1. `One-way mode` : In this mode, only one active position(long or short) per trading pair is possible. Trying to open a second position would result in increasing or decreasing the size of the position depending of the side of the second position. 
+Generally, two(2) position modes are available when using a perpetual connector :
+
+1. `One-way mode` : In this mode, only one active position(long or short) per trading pair is possible. Trying to open a second position would result in increasing or decreasing the size of the position depending of the side of the second position.
 2. `Hedge mode`: Unlike one-way mode, it is possible to have a long and short position open concurrently without affecting the size of one another.
 
 ** Prompt: **
 
-<Prompt
-  prompt="Which position mode do you want to use? (One-way/Hedge) >>>"
-/>
+<Prompt prompt="Which position mode do you want to use? (One-way/Hedge) >>>" />
 
 ### `order_amount`
 
@@ -65,22 +62,18 @@ The order amount for the bid order of the base asset for the trading pair.
 
 ** Prompt: **
 
-<Prompt
-  prompt="What is the amount of [trading pair] per order? >>>"
-/>
+<Prompt prompt="What is the amount of [trading pair] per order? >>>" />
 
 ### `position_management`
 
 This is used to select a position management feature. The following are the current available features as of v0.34,
 
-1. ``Profit_taking``: Places limit order at a profitable price from position entry price which determined by the spreads, immediately the position is active
-2. ``Trailing_stop``: Can stop-loss immediately when loss is detected even when trailing hasn't begun. Trailing would begin if the current price is beyond or equal to the set `ts_activation_spread`. Setting this to zero would start the trailing asap. 
+1. `Profit_taking`: Places limit order at a profitable price from position entry price which determined by the spreads, immediately the position is active
+2. `Trailing_stop`: Can stop-loss immediately when loss is detected even when trailing hasn't begun. Trailing would begin if the current price is beyond or equal to the set `ts_activation_spread`. Setting this to zero would start the trailing asap.
 
 ** Prompt: **
 
-<Prompt
-  prompt="How would you like to manage your positions? (Profit_taking/Trailing_stop) >>>"
-/>
+<Prompt prompt="How would you like to manage your positions? (Profit_taking/Trailing_stop) >>>" />
 
 ### `long_profit_taking_spread`
 
@@ -88,9 +81,7 @@ It is the spread above the entry price at which a short limit order is placed to
 
 ** Prompt: **
 
-<Prompt
-  prompt="At what spread from the entry price do you want to place a short order to reduce position? (Enter 1 for 1%) >>>"
-/>
+<Prompt prompt="At what spread from the entry price do you want to place a short order to reduce position? (Enter 1 for 1%) >>>" />
 
 ### `short_profit_taking_spread`
 
@@ -98,9 +89,7 @@ It is the spread below the entry price at which a long limit order is placed to 
 
 ** Prompt: **
 
-<Prompt
-  prompt="At what spread from the entry price do you want to place a long order to reduce position? (Enter 1 for 1%) >>>"
-/>
+<Prompt prompt="At what spread from the entry price do you want to place a long order to reduce position? (Enter 1 for 1%) >>>" />
 
 ### `ts_activation_spread`
 
@@ -108,9 +97,7 @@ Traders can fill in the price level that triggers the trailing stop. If no activ
 
 ** Prompt: **
 
-<Prompt
-  prompt="At what spread from the position entry price do you want the bot to start trailing? (Enter 1 for 1%) >>>"
-/>
+<Prompt prompt="At what spread from the position entry price do you want the bot to start trailing? (Enter 1 for 1%) >>>" />
 
 ### `ts_callback_rate`
 
@@ -118,9 +105,7 @@ Callback rate determines the price away from peak price when trailing, beyond wh
 
 ** Prompt: **
 
-<Prompt
-  prompt="At what spread away from the trailing peak price do you want positions to remain open before they're closed? (Enter 1 for 1%) >>>"
-/>
+<Prompt prompt="At what spread away from the trailing peak price do you want positions to remain open before they're closed? (Enter 1 for 1%) >>>" />
 
 ### `close_position_order_type`
 
@@ -128,6 +113,4 @@ This gives users the option to select the order type to use for closing position
 
 ** Prompt: **
 
-<Prompt
-  prompt="What order type do you want to use for closing positions? (LIMIT/MARKET) >>>"
-/>
+<Prompt prompt="What order type do you want to use for closing positions? (LIMIT/MARKET) >>>" />

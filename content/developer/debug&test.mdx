@@ -3,9 +3,11 @@ title: "Debug & Testing"
 description: Info on Debug & Testing
 ---
 
+import Callout from "../../src/components/Callout";
+
 This section will breakdown some of the ways to debug and test the code. You are not entirely required to use the options during your development process.
 
-> **Warning:** As part of the QA process, for each tasks(Task 1 through 3) you are **required** to include the unit test cases for the code review process to begin.
+<Callout type="warning" body="As part of the QA process, for each tasks(Task 1 through 3) you are #required# to include the unit test cases for the code review process to begin."/>
 
 ## Option 1. Unit Test Cases
 
@@ -329,8 +331,7 @@ Below are a list of tests that are **required**:
 | `test_wrap_eth` (DEXes only)            | Tests the `wrap_eth` function in the `Wallet` class. <br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: This is only required in Decentralized Exchanges that support WETH wrapping and unwrapping.</td></tr></tbody></table>                                                                                                                                                                                            |
 | `test_unwrap_eth` (DEXes only)          | Tests the `unwrap_eth` function in the `Wallet class.<br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: This is only required in Decentralized Exchanges that support WETH wrapping and unwrapping.</td></tr></tbody></table>                                                                                                                                                                                            |
 
-> **Note:** Ensure that you have enough asset balance before testing. Also document the **minimum** and **recommended** asset balance to run the tests. This is to aid testing during the PR review process.<br/>
-> Please see `test/integration/test_binance_market.py` as an example on how this task is done.
+<Callout type="note" body="Ensure that you have enough asset balance before testing. Also document the #minimum# and #recommended# asset balance to run the tests. This is to aid testing during the PR review process. Please see `test/integration/test_binance_market.py` as an example on how this task is done."/>
 
 ## Option 2. aiopython console
 

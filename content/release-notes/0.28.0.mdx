@@ -2,10 +2,11 @@
 title: "Version 0.28.0"
 ---
 
+import Callout from "../../src/components/Callout";
+
 🚀 Welcome to `hummingbot` version 0.28.0! This release contains the new Celo connector and the new `celo-arb` strategy, new parameters like Ping Pong and Minimum Spread, along with a number of bug fixes and enhancements.
 
-> **Note:** "Help shape the direction of the Hummingbot codebase"
-In order to communicate the status of bug fixes and planned improvements, we recently began to publish the [Hummingbot Public Roadmap](https://github.com/CoinAlpha/hummingbot/projects/2). Help us prioritize stories by commenting on the ones you want, and feel free to submit new stories.
+<Callout type="note" body="`Help shape the direction of the Hummingbot codebase` In order to communicate the status of bug fixes and planned improvements, we recently began to publish the [Hummingbot Public Roadmap]. Help us prioritize stories by commenting on the ones you want, and feel free to submit new stories." link={["https://github.com/CoinAlpha/hummingbot/projects/2"]} />
 
 ## 🌞 New Celo connector and strategy
 
@@ -27,7 +28,7 @@ We have greatly simplified how the pure market making strategy works in this rel
 
 Past versions of Hummingbot used the CoinGecko and CoinCap public APIs to fetch asset prices. However, this dependency caused issues for users when those APIs were unavailable. In this release, we have refactored Hummingbot so that the bot uses exchange order books to perform necessary conversions rather than data feeds.
 
-_Note: Assets listed in the `balance` command are now listed in alphabetical order rather than in USD terms._
+<Callout type="note" body="Assets listed in the `balance` command are now listed in alphabetical order rather than in USD terms." />
 
 ## ☝️ Trade notifications
 

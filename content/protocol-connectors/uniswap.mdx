@@ -2,13 +2,15 @@
 title: Uniswap (BETA)
 ---
 
+import Callout from "../../src/components/Callout";
+
 [Uniswap](https://uniswap.org/) is a protocol on Ethereum for swapping ERC20 tokens. Unlike most exchanges, which are designed to take fees, Uniswap is designed to function as a public good — a tool for the community trade tokens without platform fees or middlemen.
 
 Also unlike most exchanges, which match buyers and sellers to determine prices and execute trades, Uniswap uses a simple math equation and pools of tokens and ETH to do the same job.
 
 Source: https://decrypt.co/resources/what-is-uniswap
 
-> **NOTE:** This connector has undergone code review, internal testing and was shipped during one of our most recent releases. As part of User Acceptance Testing, we encourage users to report any issues with this connector to our [Discord server](https://discord.hummingbot.io) or [submit a bug report](https://github.com/CoinAlpha/hummingbot/issues/new?assignees=&labels=bug&template=bug_report.md&title=).
+<Callout type="note" body="This connector has undergone code review, internal testing and was shipped during one of our most recent releases. As part of User Acceptance Testing, we encourage users to report any issues with this connector to our [Discord server] or [submit a bug report]." link={["https://discord.hummingbot.io","https://github.com/CoinAlpha/hummingbot/issues/new?assignees=&labels=bug&template=bug_report.md&title="]} />
 
 ## Prerequisites
 
@@ -48,6 +50,6 @@ Users have the option to use and configure DeFi Pulse Gas Price as the gas estim
 4. Run `config ethgasstation_api_key` and enter the DeFi Pulse Data API key
 5. Run `config ethgasstation_gas_level` and select desired gas level from `fast`, `fastest`, `safeLow`, `average`.
 
-> **NOTE:** For calculation details on the various gas level, see [DeFi Pulse Data API docs](https://docs.defipulse.com/api-docs-by-provider/egs/gas-price).
+<Callout type="note" body="For calculation details on the various gas level, see [DeFi Pulse Data API docs]." link={["https://docs.defipulse.com/api-docs-by-provider/egs/gas-price"]} />
 
 6. This step is optional if you want to override the default Gas Station refresh time of 120 seconds. Do this by running the command `config ethgasstation_refresh_time`.

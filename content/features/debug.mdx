@@ -3,6 +3,8 @@ title: "Activate Debug Console"
 description: How to activate debug console
 ---
 
+import Callout from "../../src/components/Callout";
+
 ## The Debug Console
 
 The debug console is a powerful tool for Hummingbot developers to inspect and modify the live states in Hummingbot while it's running. It gives access to a live Python console living in the same process as Hummingbot. It can be thought of as similar to the developer console found in most modern browsers.
@@ -19,7 +21,7 @@ When you start Hummingbot with debug console enabled, it will print out a "Start
 
 ![Started debug console logm essage](/img/debug2.png)
 
-Note the port number printed in the debug message (port 8211 in the example above), you can use `telnet` or `nc` to access the debug console by connecting to the TCP port described in the log message.
+<Callout type="note" body="The port number printed in the debug message (port 8211 in the example above), you can use `telnet` or `nc` to access the debug console by connecting to the TCP port described in the log message." />
 
 ![Entering the debug console](/img/debug3.png)
 

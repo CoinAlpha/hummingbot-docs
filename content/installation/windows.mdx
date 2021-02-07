@@ -3,6 +3,8 @@ title: "Windows"
 description: Binary, Docker and Source Installation Guide
 ---
 
+import Callout from "../../src/components/Callout";
+
 ## Install from Binary
 
 <iframe
@@ -42,7 +44,11 @@ The Hummingbot code base is designed and optimized for UNIX-based systems such a
 
 Hummingbot can also be installed by utilizing the built-in Windows Subsystem for Linux. However, this is only recommended for users familiar with development.
 
-> **Note:** Docker Toolbox has been deprecated and is no longer in active development. Please see this [link](https://docs.docker.com/docker-for-windows/docker-toolbox/) for more info
+<Callout
+  type="note"
+  body="Docker Toolbox has been deprecated and is no longer in active development. Please see this [link] for more info."
+  link={["https://docs.docker.com/docker-for-windows/docker-toolbox/"]}
+/>
 
 **Docker Desktop**
 
@@ -50,7 +56,11 @@ Supports Windows Home, Pro and Enterprise edition. Download the latest version o
 
 ![Docker Desktop](/img/docker_desktop_download.gif)
 
-> **Note:** Docker Desktop requires WSL 2 feature enabled. For detailed instructions, refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+<Callout
+  type="note"
+  body="Docker Desktop requires WSL 2 feature enabled. For detailed instructions, refer to the [Microsoft documentation]."
+  link={["https://docs.microsoft.com/en-us/windows/wsl/install-win10"]}
+/>
 
 1. For installation procedures, you check the link below depending on the version of your Windows operating system.
 
@@ -131,11 +141,13 @@ Step 1. Install required Applications
 3. Install [Anaconda or miniconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/windows.html).
 4. Install [Visual Studio Code](https://code.visualstudio.com/download), [Visual Studio BuildTools 2019, Core Features, C++](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) and [C++ redistributable 2019](https://aka.ms/vs/16/release/VC_redist.x64.exe).
 
-> **Note:**
-
 - During installation make sure to add Anaconda or Miniconda to your PATH environmental variable by clicking the tick box as shown below, or you can add them [manually](https://www.geeksforgeeks.org/how-to-setup-anaconda-path-to-environment-variable/).
   ![anaconda-path](/img/anaconda-path.png)
-- Some prerequisites are large applications and may need to restart your computer.
+
+<Callout
+  type="note"
+  body="Some prerequisites are large applications and may need to restart your computer."
+/>
 
 Step 2. Install Hummingbot on Windows System
 

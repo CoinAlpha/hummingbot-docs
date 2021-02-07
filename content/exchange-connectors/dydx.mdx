@@ -3,6 +3,8 @@ title: dYdX
 description: About dYdX Exchange Connector
 ---
 
+import Callout from "../../src/components/Callout";
+
 dYdX describes itself as a full-featured decentralized exchange (originating from the US) for spot and margin trading. dYdX is built on Ethereum, and launched at the beginning of May 2019 with spot and margin trading on ETH-DAI. dYdX claims to offer one of the most liquid order books across decentralized exchanges.
 
 ## Using the Connector
@@ -26,6 +28,8 @@ Also note that your wallet must have funds deposited to dYdX to avoid getting th
 ```
 Error: DydxAPIError(status_code=400)(response={'errors': [{'name': 'AccountNotFoundError'}]})
 ```
+
+<Callout type="warning" body="Currently [dydx], [terra], and [loopring] don't work on Binary Installers. It can only be used when running Hummingbot from source or with Docker." link={["/exchange-connectors/dydx/","/protocol-connectors/terra","/exchange-connectors/loopring/"]}/>
 
 ## Miscellaneous Info
 

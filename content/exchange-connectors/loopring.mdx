@@ -3,6 +3,8 @@ title: Loopring
 description: About Loopring Exchange Connector
 ---
 
+import Callout from "../../src/components/Callout";
+
 Loopring is the first scalable DEX protocol built with zkRollup for Ethereum. Loopring Exchange is the first decentralized trading platform built on top of the Loopring protocol. Loopring Exchange is accessible at Loopring.io
 
 ## Using the Connector
@@ -11,7 +13,7 @@ To use the Loopring Exchange connector to trade using Hummingbot, you will need 
 
 ```
 Enter your Loopring account id >>>
-Enter the Loopring exchange id >>>
+Enter the Loopring exchange address >>>
 Enter your Loopring private key >>>
 Enter your loopring api key >>>
 ```
@@ -34,13 +36,26 @@ Private keys and API keys are stored locally for the operation of the Hummingbot
 
 ![](/img/loopring-api.png)
 
-You will be presented with your account information, which will include entries for "accountId", "exchangeId", "privateKey", and "apiKey". These values associated with these keys correspond to the required information you will need to connect the Loopring connector.
+You will be presented with your account information, which will include entries for "accountId", "exchangeAddress", "privateKey", and "apiKey". These values associated with these keys correspond to the required information you will need to connect the Loopring connector.
 
 Make sure to keep this information private and to not share it with anyone. You can re-view this information at anytime by clicking on **Export Account** again.
 
-> **Warning:** Please keep your EdDSA key pair and ApiKey strictly confidential. If you leak this information, your assets will be at risk. Loopring Exchange's UI and its API will never ask you for your EdDSA private key.
+<Callout
+  type="warning"
+  body="Please keep your EdDSA key pair and ApiKey strictly confidential. If you leak this information, your assets will be at risk. Loopring Exchange's UI and its API will never ask you for your EdDSA private key."
+/>
 
-More information about Loopring Key Management can be found on [this page](https://docs.loopring.io/en/basics/key_mgmt.html).
+More information about Loopring Key Management can be found on [this page](https://docs3.loopring.io/en/basics/key_mgmt.html?h=key%20).
+
+<Callout
+  type="warning"
+  body="Currently [dydx], [terra], and [loopring] don't work on Binary Installers. It can only be used when running Hummingbot from source or with Docker."
+  link={[
+    "/exchange-connectors/dydx/",
+    "/protocol-connectors/terra",
+    "/exchange-connectors/loopring/",
+  ]}
+/>
 
 ## Miscellaneous Info
 

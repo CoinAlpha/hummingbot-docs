@@ -7,6 +7,51 @@ export default function Callout(props) {
   var type = props.type === undefined ? "note" : props.type;
   var calloutType = "callout" + type;
   var linkArr = props.link;
+  if (props.body !== undefined) {
+    var body = buildBody(props.body);
+  } else {
+    var body = "";
+  }
+  if (props.bullets !== undefined) {
+    var bullets = buildBullet(props.bullets);
+  } else {
+    var bullets = "";
+  }
+
+  function buildBullet(arr) {
+    var bulletString = "";
+    var outputArr = [];
+
+    for (let i = 0; i < arr.length; i++) {
+      bulletString += arr[i];
+      if (i !== arr.length - 1) {
+        bulletString += " ";
+      }
+    }
+    var newArr = buildBody(bulletString);
+    var bulletArr = [];
+    for (let k = 0; k < newArr.length; k++) {
+      if (newArr[k] == " ") {
+        outputArr.push(...bulletArr);
+        bulletArr = [];
+        continue;
+      }
+      if (newArr.length - 1 === k) {
+        bulletArr.push(newArr[k]);
+        outputArr.push(...bulletArr);
+      }
+
+      bulletArr.push(newArr[k]);
+    }
+    console.log(outputArr);
+    var newestArr = [];
+    for (let k = 0; k < outputArr.length; k++) {
+      if (outputArr[k] === "") continue;
+      newestArr.push(<li>{outputArr[k]}</li>);
+    }
+    console.log(newestArr);
+    return newestArr;
+  }
 
   const Colors = {
     success: {
@@ -170,7 +215,9 @@ export default function Callout(props) {
               </b>
             </div>
             <div className={"callout-bottom " + calloutType}>
-              <span /> {buildBody(props.body)}
+              <span />
+              <div>{body}</div>
+              {bullets}
             </div>
           </div>
         </td>

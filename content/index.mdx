@@ -7,11 +7,19 @@ import Callout from "../src/components/Callout";
 
 Welcome 👋 to the offical docs for Hummingbot, the open source software client that helps you build and run high-frequency trading bots on any crypto exchange.
 
-<Callout type="warning" body="Hummingbot is experimental, open source software that is still in beta, and you use it at your own risk. Please review the [Apache 2.0 license]." link={["https://github.com/CoinAlpha/hummingbot/blob/master/LICENSE"]} />
+<Callout
+  type="warning"
+  body="Hummingbot is experimental, open source software that is still in beta, and you use it at your own risk. Please review the [Apache 2.0 license]."
+  link={["https://github.com/CoinAlpha/hummingbot/blob/master/LICENSE"]}
+/>
 
 <Callout
   type="note"
-  body="[test] testting stuff like `when` tto #bold#"
+  bullets={[
+    "this is bullet1 and i [have] a link.",
+    "#this is bullet2 and i have no link but I'm bold.#",
+    "`this is bullet3 and I am highlighted`",
+  ]}
   link={["www.google.com"]}
 />
 The Hummingbot ecosystem is a globally distributed community of algorithmic traders

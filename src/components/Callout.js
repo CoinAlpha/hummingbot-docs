@@ -28,17 +28,26 @@ export default function Callout(props) {
         bulletString += " ";
       }
     }
+    console.log(bulletString);
     var newArr = buildBody(bulletString);
+    console.log(newArr);
     var bulletArr = [];
     for (let k = 0; k < newArr.length; k++) {
-      if (newArr[k] == " ") {
-        outputArr.push(...bulletArr);
+      if (newArr[k] === " ") {
+        var input = [];
+        input.push(...bulletArr);
+        console.log("INPUT");
+        console.log(input);
+        outputArr.push(input);
         bulletArr = [];
+        input = [];
         continue;
       }
       if (newArr.length - 1 === k) {
         bulletArr.push(newArr[k]);
-        outputArr.push(...bulletArr);
+        var input = [];
+        input.push(...bulletArr);
+        outputArr.push(input);
       }
 
       bulletArr.push(newArr[k]);
@@ -49,7 +58,6 @@ export default function Callout(props) {
       if (outputArr[k] === "") continue;
       newestArr.push(<li>{outputArr[k]}</li>);
     }
-    console.log(newestArr);
     return newestArr;
   }
 

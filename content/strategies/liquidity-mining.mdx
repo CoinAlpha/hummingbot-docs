@@ -9,8 +9,7 @@ import Callout from "../../src/components/Callout";
 
 ## How it works
 
-The liquidity mining strategy allows users to run a single strategy and earn rewards in multiple Liquidity Mining campaigns. This strategy helps users who want to participate in liquidity mining but doesn’t want to configure a bot with the pure market making strategy.
-
+The liquidity mining strategy allows users to run market making bots on markets that are yielding liquidity mining rewards. This strategy offers diversification by running a market making strategy across different campaigns. It also provides better capital allocation by sizing orders based on target based allocation. This strategy also provides easy setup and maintenance. Another key unique feature is dynamic spread adjustment on market volatility.
 This strategy has parameters like [`volatility_interval`](/strategies/liquidity-mining/#volatility_interval) and [`avg_volatility_spread`](/strategies/liquidity-mining/#avg_volatility_period) that automatically adjust the spreads based on a market’s volatility based on the historical mid-price.
 
 ## Pre-requisites
@@ -52,7 +51,7 @@ Token trading pair symbols you would like to trade on the exchange.
 
 ### `token`
 
-Choose between the base and quote asset wanted to use to provide liquidity. When participating in liquidity mining, use the quote asset.
+Choose between the base and quote asset wherein you want to provide liquidity.
 
 <Prompt
   prompt="What asset (base or quote) do you want to use to provide liquidity? "
@@ -79,7 +78,7 @@ The strategy will place the order on a certain % away from the current mid-price
 
 ### `target_base_pct`
 
-This parameter determines for each pair the value in % for the base asset. If you set it at a certain lower value than the base %, it will only create sell orders depending on your balance.
+It sets a target of base asset balance in relation to a total asset allocation value (in percentage value). The bot will then try to achieve this target by utilizing the `inventory_skew `feature.
 
 <Prompt
   prompt="For each pair, what is your target base asset percentage? (Enter 20 to indicate 20%) "
@@ -97,7 +96,7 @@ Value in seconds of the orders’ duration before canceling and creating new set
 
 ### `order_refresh_tolerance_pct`
 
-The spread (from mid-price) to defer the order refresh process to the next cycle. The parameter has a default value of 0.02%.
+Determines the tolerance threshold in percentage of the order price before replacing the orders. This is to prevent replacing the orders too often.The parameter has a default value of 0.02%.
 
 <Prompt
   prompt="Enter the percent change in price needed to refresh orders at each cycle (Enter 1 to indicate 1%) "
@@ -135,7 +134,7 @@ The number of intervals based on `volatility_interval` to calculate the average 
 
 ### `volatility_to_spread_multiplier`
 
-The multiplier used to convert average volatility to spread (`avg_volatility_period` x `volatility_to_spread_multiplier`). The predefined value is 10.
+This expands the average spreaad depending on the value set. The predefined value is 1.
 
 <Prompt
   prompt="Enter a multiplier used to convert average volatility to spread (enter 1 for 1 to 1 conversion) "

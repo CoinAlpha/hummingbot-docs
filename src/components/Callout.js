@@ -16,19 +16,19 @@ export default function Callout(props) {
       borderColor: "#0D999E",
       icon: <Icons type="success" />,
     },
-    warning: {
-      heading: "WARNING:",
+    danger: {
+      heading: "DANGER:",
       color: "#D42B21",
       backgroundColor: "#FBEAE9",
       borderColor: "#D42B21",
-      icon: <Icons type="warning" />,
+      icon: <Icons type="danger" />,
     },
-    danger: {
-      heading: "DANGER:",
+    warning: {
+      heading: "WARNING:",
       color: "#F08727",
       backgroundColor: "#FEF3E9",
       borderColor: "#F08727",
-      icon: <Icons type="danger" />,
+      icon: <Icons type="warning" />,
     },
     info: {
       heading: "INFO:",

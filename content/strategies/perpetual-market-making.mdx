@@ -1,108 +1,186 @@
 ---
-title: Perpetual Market Making (BETA)
+title: Perpetual Market Making
 description: Learn how to use Perpetual market making strategy
 ---
 
-import Prompt from "../../src/components/Prompt";
+import Callout from "../../src/components/Callout";
 
-<table>
-  <tr>
-    <td style="background-color: #AFEEEE">
-      <b> Warning:</b> <br />
-      Perpetual market making is released as beta version(0.33), trade it at your
-      own risk. Unlike futures contract, perpetual has no fix settlement date in
-      the future.
-    </td>
-  </tr>
-</table>
+import Prompt from "../../src/components/Prompt";
 
 ## How it Works
 
-Similar to pure market making strategy, Hummingbot continually posts limit bid and ask offers on a market and waits for other market participants ("takers") to fill their orders.
-In addition to that, position management features are introduced to let users further configure the bot to make managing positions easier and remove the need to manually interact with the derivative exchange through other available platforms to close position. Two(2) position management features are currently available which are the `Trailing_stop` and `Take_profit` features. Each feature has different parameters which the bot uses to logically determine when positions would be closed when using that particular feature. In all, both features(Trailing stop and take profit) have capability of securing profits. It should also be noted that only the trailing stop feature can stop-loss immediately loss is detected even when trailing hasn’t begun. Unlike trailing stop, take profit feature places a limit order at a profitable price from position entry price which is determined by the spreads for each take profit sides.
+Like pure market-making, Hummingbot continually posts limit bids and asks offers on the market, and waits for other participants "takers" to fill their orders. Position management features are introduced to configure the bot further to make managing positions easier and remove the need to interact with the derivative exchange manually.
 
-## How to start
+This strategy has two position management features currently available which has different parameters that users can customize:
 
-We aim to teach new users the basics of Perpetual market making, while enabling experienced users to exercise more control over how their bots behave. By default, when you run `create` we ask you to enter the basic parameters needed for a Perpetual bot.
+- [`Profit_taking`](/strategies/perpetual-market-making/#profit_taking)
+- [`Trailing_stop`](/strategies/perpetual-market-making/#trailing_stop)
 
-> **Note**: Paper trading is supported, enter `[perpetual_connector_name]_testnet` when prompted for derivative name.
+Hummingbot uses these to logically determine when positions would be closed when using a particular feature.
+
+## Creating the Strategy
+
+We aim to teach new users the basics of Perpetual market-making while enabling experienced users to exercise more control over how their bots behave. By default, when you run `create` we ask you to enter the Perpetual bot’s basic parameters.
 
 1. In Hummingbot, enter `create`.
 2. Enter `[perpetual_connector_name]_testnet` or `[perpetual_connector_name]`.
-3. Enter the trading pair, for example `BTC-USDT`.
+3. Enter the trading pair, for example, `BTC-USDT`.
 4. Follow on-screen prompts and info for Perpetual parameters.
 5. Enter `start` to run the strategy.
 
 For details on each Perpetual parameters, see the following sections for details. These parameters are fields in Hummingbot configuration files (located in the `/conf` folder, e.g. `conf/perpetual_market_making_[#].yml`).
 
-### `leverage`
+## `leverage`
 
 Enter the leverage you would like to use.
 
-> **Note:** Initial margin deposits are calculated using the leverage as entered by the trader
+<Callout
+  type="note"
+  body="Initial margin deposits are calculated using the leverage as entered by the trader."
+/>
 
 ** Prompt: **
 
 <Prompt
   prompt="How much leverage do you want to use? (Binance Perpetual supports up to 75X for most pairs) >>>"
+  response=">>> "
 />
 
-### `position_mode`
+## `position_mode`
 
-Generally, two(2) position modes are available when using a perpetual connector : 
-1. `One-way mode` : In this mode, only one active position(long or short) per trading pair is possible. Trying to open a second position would result in increasing or decreasing the size of the position depending of the side of the second position. 
-2. `Hedge mode`: Unlike one-way mode, it is possible to have a long and short position open concurrently without affecting the size of one another.
+Generally, position modes are available when using a perpetual connector :
 
 ** Prompt: **
 
 <Prompt
   prompt="Which position mode do you want to use? (One-way/Hedge) >>>"
+  response=">>> Hedge"
 />
+<br />
 
-### `order_amount`
+### `One-way`
 
-The order amount for the bid order of the base asset for the trading pair.
+In this mode, only one active position(long or short) per trading pair is possible. Trying to open a second position would increase or decrease the position’s size depending on the second position’s side.
+
+In `One-way` mode, users can have one position open after the orders have been filled regardless of `position_management`. Refer to the example below:
+
+```
+position_mode: One-way
+bid_spread: 0.01
+ask_spread: 0.01
+order_refresh_time: 30
+position_management: Profit_taking
+```
+
+![](/img/oneway.png)
+
+### `Hedge`
+
+Unlike one-way mode, it is possible to have a long and short position open concurrently without affecting the size of one another.
+
+In `Hedge` mode, users can have two open positions.
+
+```
+position_mode: Hedge
+bid_spread: 0.01
+ask_spread: 0.01
+order_refresh_time: 30
+position_management: Profit_taking
+```
+
+View the image here that if one order gets filled, it will close the long position. If the other order gets filled, it will open a short position.
+
+![](/img/open-orders1.png)
+
+![](/img/positions.png)
+
+## `order_amount`
+
+The order amount for the short or long position of the base asset for the trading pair.
 
 ** Prompt: **
 
-<Prompt
-  prompt="What is the amount of [trading pair] per order? >>>"
-/>
+<Prompt prompt="What is the amount of [trading pair] per order? >>> 3" />
 
-### `position_management`
+## `position_management`
 
-This is used to select a position management feature. The following are the current available features as of v0.34,
-
-1. ``Profit_taking``: Places limit order at a profitable price from position entry price which determined by the spreads, immediately the position is active
-2. ``Trailing_stop``: Can stop-loss immediately when loss is detected even when trailing hasn't begun. Trailing would begin if the current price is beyond or equal to the set `ts_activation_spread`. Setting this to zero would start the trailing asap. 
+Two available features for position management. `Profit_taking` and `Trailing_stop` are the currently available features.
 
 ** Prompt: **
 
 <Prompt
   prompt="How would you like to manage your positions? (Profit_taking/Trailing_stop) >>>"
+  response=">>> Profit_taking"
 />
 
-### `long_profit_taking_spread`
+### `Profit_taking`
 
-It is the spread above the entry price at which a short limit order is placed to reduce position.
+Places a short or long position exit price from a position entry price determined by the spreads that you set. After an order is filled, a position is opened immediately. The parameters under Profit taking are `long_profit_taking_spread` and `short_profit_taking_spread`.
+
+<br />
+
+`long_profit_taking_spread`
+
+It is the spread above the entry price at which a short position is placed to reduce position.
 
 ** Prompt: **
 
 <Prompt
   prompt="At what spread from the entry price do you want to place a short order to reduce position? (Enter 1 for 1%) >>>"
+  response=">>> 1"
 />
 
-### `short_profit_taking_spread`
+`short_profit_taking_spread`
 
-It is the spread below the entry price at which a long limit order is placed to reduce position.
+It is the spread below the entry price at which a long position is placed to reduce position.
 
 ** Prompt: **
 
 <Prompt
   prompt="At what spread from the entry price do you want to place a long order to reduce position? (Enter 1 for 1%) >>>"
+  response=">>> 1"
 />
 
-### `ts_activation_spread`
+Refer to the example below.
+
+```
+position_mode: Hedge
+bid_spread: 0.01
+ask_spread: 0.01
+order_refresh_time: 30
+position_management: Profit_taking
+long_profit_taking_spread: 0.5%
+short_profit_taking_spread: 0.5%
+
+```
+
+A position is immediately opened when an order is filled.
+
+![](/img/open-position.png)
+
+After the position has been opened, it will now create two open orders that will determine if it will close the current open position or open another position.
+
+![](/img/open-orders2.png)
+
+If by chance, the order for `open long` gets filled, it will now open a long position, and you now have two open orders.
+
+![](/img/two-positions.png)
+
+The bot will create orders depending on the `long_profit_taking_spread` and `short_profit_taking_spread` that is set. The position will be closed once the orders are filled, depending on the spreads.
+
+![](/img/close-positions.png)
+
+### `Trailing_stop`
+
+An order would be placed to close the position immediately if the bid book’s top order’s price goes higher than the entry price of a short position or the top order of the ask book goes lower than the entry price of a long position. Trailing would begin if the current price is beyond or equal to the set `ts_activation_spread`. Setting this parameter to zero would start the trailing asap.
+
+<Callout
+  type="note"
+  body="`Trailing_stop` can stop-loss immediately when a loss is detected, even when trailing has not begun.
+Unlike `Profit_taking`, take profit feature places a limit order at a profitable price from position entry price, which is determined by the spreads for each take profit side."
+/>
+
+`ts_activation_spread`
 
 Traders can fill in the price level that triggers the trailing stop. If no activation price is being filled, the activation price will be the position entry price by default.
 
@@ -110,9 +188,10 @@ Traders can fill in the price level that triggers the trailing stop. If no activ
 
 <Prompt
   prompt="At what spread from the position entry price do you want the bot to start trailing? (Enter 1 for 1%) >>>"
+  response=">>> 1"
 />
 
-### `ts_callback_rate`
+`ts_callback_rate`
 
 Callback rate determines the price away from peak price when trailing, beyond which a position will be closed.
 
@@ -120,14 +199,63 @@ Callback rate determines the price away from peak price when trailing, beyond wh
 
 <Prompt
   prompt="At what spread away from the trailing peak price do you want positions to remain open before they're closed? (Enter 1 for 1%) >>>"
+  response=">>> 1"
 />
 
-### `close_position_order_type`
+`close_position_order_type`
 
-This gives users the option to select the order type to use for closing positions when using the trailing stop feature.
+This feature gives users the option to select the order type for closing positions when using the trailing stop feature.
 
 ** Prompt: **
 
 <Prompt
   prompt="What order type do you want to use for closing positions? (LIMIT/MARKET) >>>"
+  response=">>> LIMIT"
 />
+
+![](/img/trailing-stop-explanation.png)
+
+Source: https://www.binance.com/en/support/faq/360042299292
+
+Refer to the example below.
+
+```
+position_mode: Hedge
+bid_spread: 0.01
+ask_spread: 0.01
+order_refresh_time: 30
+position_management: Trailing_stop
+ts_activation_spread: 0.01%
+ts_callback_rate: 0.5%
+close_position_order_type: LIMIT
+
+```
+
+The order was filled, but the position was immediately closed because the current price was above or not equal to `ts_activation_spread`.
+
+![](/img/trailing-stop.png)
+
+Trailing began when the `ts_activation_spread` was met, then the position eventually closed because it reached the percentage we set as `ts_callback_rate`.
+
+![](/img/callback-rate.png)
+
+## `stop_loss_spread`
+
+`Stop_loss` works with both `Profit_taking` and `Trailing_stop` features and would only place a stop loss order if loss has reached the limit set by the stop loss spread.
+
+<Prompt
+  prompt="At what spread from position entry price do you want to place stop_loss order? (Enter 1 for 1%) >>>"
+  response=">>> 1"
+/>
+
+### stop_loss_spread with `Profit_taking`
+
+A profit taking order would be placed immediately if the position has no opening loss, otherwise, it would monitor position and place a stop-loss order if loss increases to the set stop-loss spread. If a loss is detected, the `Profit_taking` orders will be canceled, and a stop-loss order will be placed if loss rises to the set stop-loss spread.
+
+Suppose stop-loss spread is set too low and LIMIT order is specified to close the position in an active market. In that case, there's a high probability that the take profit feature would cancel and replace a stop-loss order.
+
+### stop_loss_spread with `Trailing_stop`
+
+Once a profitable exit price is detected, no stop-loss order should be placed. An exception will be made for cases where the market swings swiftly to an unprofitable price within ticks or if the configured trailing stop parameters are too low.
+
+If no exit price has been detected, a stop-loss order will be placed if loss increases to the set stop-loss spread.

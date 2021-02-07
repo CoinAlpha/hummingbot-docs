@@ -3,12 +3,17 @@ title: "Linux"
 description: Ubuntu, Debian, CentOS and Source Installation Guide
 ---
 
+import Callout from "../../src/components/Callout";
+
 You can install Docker and/or Hummingbot by selecting **_either_** of the following options from the tabs below:
 
 - **Scripts**: download and use automated install scripts.
 - **Manual**: run install commands manually.
 
-> **Info:** Recommended for Developers Only — Installation using Docker is more efficient for running Hummingbot. Installing from source is only recommended for developers who want to access and modify the software code.
+<Callout
+  type="info"
+  body="Recommended for Developers Only — Installation using Docker is more efficient for running Hummingbot. Installing from source is only recommended for developers who want to access and modify the software code."
+/>
 
 Or prepare your development environment and get started developing for Hummingbot.
 
@@ -58,7 +63,10 @@ sudo usermod -a -G docker $USER
 exit
 ```
 
-> **Warning:** Please restart terminal — Close and restart your terminal window to enable the correct permissions for `docker` command before proceeding to next step.
+<Callout
+  type="warning"
+  body="Please restart terminal — Close and restart your terminal window to enable the correct permissions for `docker` command before proceeding to next step."
+/>
 
 2. Install Hummingbot
 
@@ -196,7 +204,10 @@ sudo usermod -a -G docker $USER
 exit
 ```
 
-> **Warning:** Please restart terminal — Close and restart your terminal window to enable the correct permissions for `docker` command before proceeding to next step.
+<Callout
+  type="warning"
+  body="Please restart terminal — Close and restart your terminal window to enable the correct permissions for `docker` command before proceeding to next step."
+/>
 
 2. Install Hummingbot
 
@@ -332,7 +343,10 @@ sudo usermod -a -G docker $USER
 exit
 ```
 
-> **Warning** Please restart terminal — Close and restart your terminal window to enable the correct permissions for `docker` command before proceeding to next step.
+<Callout
+  type="warning"
+  body="Please restart terminal — Close and restart your terminal window to enable the correct permissions for `docker` command before proceeding to next step."
+/>
 
 2. Install Hummingbot
 

@@ -16,6 +16,8 @@ This strategy has two position management features currently available which has
 - [`Profit_taking`](/strategies/perpetual-market-making/#profit_taking)
 - [`Trailing_stop`](/strategies/perpetual-market-making/#trailing_stop)
 
+In addition to those two features, a stop_loss parameter is added to work with both features and would close any active position(s) as soon as loss reaches the limit set in the stop_loss_spread parameter.
+
 Hummingbot uses these to logically determine when positions would be closed when using a particular feature.
 
 ## Creating the Strategy

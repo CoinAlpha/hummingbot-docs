@@ -180,11 +180,6 @@ The bot will create orders depending on the `long_profit_taking_spread` and `sho
 ### `Trailing_stop`
 
 An order would be placed to close the position immediately if the bid book’s top order’s price goes higher than the entry price of a short position or the top order of the ask book goes lower than the entry price of a long position. Trailing would begin if the current price is beyond or equal to the set `ts_activation_spread`. Setting this parameter to zero would start the trailing asap.
-
-<Callout
-  type="note"
-  body="`Trailing_stop` can stop-loss immediately when a loss is detected, even when trailing has not begun.
-Unlike `Profit_taking`, take profit feature places a limit order at a profitable price from position entry price, which is determined by the spreads for each take profit side."
 />
 
 `ts_activation_spread`

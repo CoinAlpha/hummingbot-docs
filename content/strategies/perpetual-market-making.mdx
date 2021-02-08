@@ -263,6 +263,6 @@ Suppose stop-loss spread is set too low and LIMIT order is specified to close th
 
 ### stop_loss_spread with `Trailing_stop`
 
-Once a profitable exit price is detected, no stop-loss order should be placed. An exception will be made for cases where the market swings swiftly to an unprofitable price within ticks or if the configured trailing stop parameters are too low.
+Once a profitable exit price is detected, no stop-loss order should be placed. An exception could arise in cases where the market swings swiftly to an unprofitable price within ticks or if the configured trailing stop parameters are too low.
 
 If no exit price has been detected, a stop-loss order will be placed if loss increases to the set stop-loss spread.

@@ -69,7 +69,7 @@ Generally, the Perpetual market making strategy can manage two different types o
 
 In this mode, only one active position(long or short) per trading pair is possible. Trying to open a second position would increase or decrease the position’s size depending on the second position’s side.
 
-In `One-way` mode, users can have one position open after the orders have been filled regardless of `position_management`. Refer to the example below:
+In `One-way` mode, users can have only one active position in the direction of the order that opened the contract regardless of the `position_management` being used. Refer to the example below:
 
 ```
 position_mode: One-way

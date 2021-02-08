@@ -3,11 +3,13 @@ title: Overview
 description: Learn how to use scripts
 ---
 
+import Callout from "../../src/components/Callout";
+
 Offers dynamic bot controls by running a user defined script alongside a strategy.
 
-> **Note:** Currently, a custom script can only be used with pure market making strategy
->
-> **Warning:** Currently, Scripts can only be used when running Hummingbot from source or with Docker. Using this feature in the Mac or Windows installers will crash the bot.
+<Callout type="note" body="Currently, a custom script can only be used with pure market making strategy." />
+
+<Callout type="warning" body="Currently, Scripts can only be used when running Hummingbot from source or with Docker. Using this feature in the Mac or Windows installers will crash the bot." />
 
 ## Language
 
@@ -23,7 +25,7 @@ application can still function.
 
 1. Create a new script file, you can see examples in the Examples section below, and save it into `scripts` folder
 2. Configure your Hummingbot
-   1. Inside Hummingbot run command `config script_enabled` and/or `config script_file_path`
+   1. Inside Hummingbot run command `config script_enabled` and/or `config script_file_path`.
    2. Editing `conf_global.yml` file using a text editor.
    ```json
    script_enabled: true
@@ -55,4 +57,4 @@ The following examples can be found in `scripts\` folder.
 
 6. **script_template.py**
 
-   Provides you a base template to start using the scripts functions
+   Provides you a base template to start using the scripts functions.

@@ -3,6 +3,8 @@ title: "macOS"
 description: Binary, Docker and Source Installation Guide
 ---
 
+import Callout from "../../src/components/Callout";
+
 ## Install from Binary
 
 <iframe
@@ -110,7 +112,10 @@ To install Anaconda, go to [the Anaconda site](https://www.anaconda.com/distribu
 
 Afterwards, open a Terminal window and try the `conda` command. If the command is valid, then Anaconda has been successfully installed, even if the graphical installer says that it failed.
 
-> **Warning:** If you use ZSH or another Unix shell, copy the code snippet below to your `.zshrc` or similar file. By default, Anaconda only adds it to your `.bash_profile` file. This makes the `conda` command available in your root path.
+<Callout
+  type="warning"
+  body="If you use ZSH or another Unix shell, copy the code snippet below to your `.zshrc` or similar file. By default, Anaconda only adds it to your `.bash_profile` file. This makes the `conda` command available in your root path."
+/>
 
 ```
 __conda_setup="$(CONDA_REPORT_ERRORS=false '/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"

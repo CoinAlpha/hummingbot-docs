@@ -3,6 +3,8 @@ title: Dolomite
 description: About Dolomite Connector
 ---
 
+import Callout from "../../src/components/Callout";
+
 [Dolomite](https://beta.dolomite.io/exchange) is a decentralized exchange powered by the Loopring Protocol that allows you to trade dozens of ERC20 token assets securely, right from your own wallet.
 
 ## Using the Connector
@@ -19,7 +21,7 @@ In addition to the above, the user must also create an account on Dolomite. As o
 1. For users **inside** the US, they must create an account from the site [https://app.dolomite.io](https://app.dolomite.io).
 2. For users **outside** the US, they simply must submit a trade. When Dolomite sees the first trade from a new wallet, it automatically creates an account for it.
 
-> **Note**: The above 2 criteria hold true for where _Hummingbot_ is running. For example, if you live _outside_ the US, but you are running Hummingbot from within the US in the cloud (IE AWS or Azure), you still must create an account. Please reach out to us if you face any problems doing so!
+<Callout type="note" body="The above 2 criteria hold true for where _Hummingbot_ is running. For example, if you live _outside_ the US, but you are running Hummingbot from within the US in the cloud (IE AWS or Azure), you still must create an account. Please reach out to us if you face any problems doing so!" />
 
 For users who have little to no prior experience using a decentralized exchange, Dolomite also has a simple account system that does not require users to setup and manage their own private keys. Read more through here in [Dolomite Traditional Accounts](https://dolomite.io/support/noncustodial-accounts).
 

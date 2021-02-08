@@ -2,6 +2,9 @@
 title: "Task 2 — User Stream Tracker"
 ---
 
+import Callout from "../../src/components/Callout";
+
+
 The `UserStreamTracker` responsibility is to fetch user account data and queues it accordingly.
 
 `UserStreamTracker` contains subsidiary classes that help maintain the real-time wallet/holdings balance and open orders of a user. Namely, the classes required are:
@@ -10,7 +13,7 @@ The `UserStreamTracker` responsibility is to fetch user account data and queues 
 - `UserStreamTracker`
 - `MarketAuth`(if applicable).
 
-> **Note:** This is only required in **Centralized Exchanges**.
+<Callout type="note" body="This is only required in #Centralized Exchanges#."/>
 
 ## UserStreamTrackerDataSource
 
@@ -49,7 +52,7 @@ This can be achieved in 2 ways(depending on the available API on the exchange):
 
    When an exchange does have WebSocket API support to retrieve user account details and order statuses, it would be ideal to incorporate it into the Hummingbot client when managing account balances and updating order statuses. This is especially important since Hummingbot needs to knows the available account balances and order statuses at all times.
 
-> **Tip:** In most scenarios, as seen in most other Centralized Exchanges([Binance](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/binance/binance_user_stream_tracker.py), [Coinbase Pro](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/coinbase_pro/coinbase_pro_user_stream_tracker.py), [Bittrex](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/bittrex/bittrex_user_stream_tracker.py), a simple WebSocket integration is used to listen on selected topics and retrieving messages to be processed in `Market` class.
+<Callout type="tip" body="In most scenarios, as seen in most other Centralized Exchanges([Binance], [Coinbase Pro], [Bittrex]), a simple WebSocket integration is used to listen on selected topics and retrieving messages to be processed in `Market` class." link={["https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/binance/binance_user_stream_tracker.py","https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/coinbase_pro/coinbase_pro_user_stream_tracker.py","https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/bittrex/bittrex_user_stream_tracker.py"]}/>
 
 The following details the **required** functions to be implemented in `UserStreamTracker`:
 

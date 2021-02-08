@@ -3,9 +3,15 @@ title: "Raspberry Pi"
 description: Raspberry installation Guide
 ---
 
+import Callout from "../../src/components/Callout";
+
 ## Install via Docker (BETA)
 
-> **Note:** This installation method is currently under testing and awaiting feedback from users. Should you run into problems or have found a fix to solve errors along the way, feel free to reach out through our [Discord](http://discord.hummingbot.io/) support channel.
+<Callout
+  type="note"
+  body="This installation method is currently under testing and awaiting feedback from users. Should you run into problems or have found a fix to solve errors along the way, feel free to reach out through our [Discord] support channel."
+  link={["http://discord.hummingbot.io/"]}
+/>
 
 You can install Hummingbot with **_either_** of the following options:
 
@@ -32,7 +38,10 @@ sudo systemctl start docker && sudo systemctl enable docker
 Exit
 ```
 
-> **Warning:** Restart terminal — Close and restart your terminal window to enable the correct permissions for `docker` command before proceeding.
+<Callout
+  type="warning"
+  body="Restart terminal — Close and restart your terminal window to enable the correct permissions for `docker` command before proceeding."
+/>
 
 4. Install Hummingbot:
 
@@ -77,7 +86,10 @@ docker run -it \
 coinalpha/hummingbot:dev-0.33.0-arm_beta
 ```
 
-> **Note:** This image `dev-0.33.0-arm_beta` only works for Raspberry Pi, other branches of Hummingbot are not built for ARM architecture.
+<Callout
+  type="note"
+  body="This image `dev-0.33.0-arm_beta` only works for Raspberry Pi, other branches of Hummingbot are not built for ARM architecture."
+/>
 
 ## Install from Source
 
@@ -186,7 +198,11 @@ Select the menu in the top left corner of the screen then go to **Preferences > 
 
 ![rpi](/img/rpi-config.jpg)
 
-> **Tip:** Set a default screen resolution in `raspi-config` select: `7 Advanced Options` > `A5 Resolution` to enable VNC access to the GUI whenever you boot the Raspberry Pi without a connected monitor. For troubleshooting please visit this [link](https://www.raspberrypi.org/forums/viewtopic.php?t=216737).
+<Callout
+  type="tip"
+  body="Set a default screen resolution in `raspi-config` select: `7 Advanced Options` > `A5 Resolution` to enable VNC access to the GUI whenever you boot the Raspberry Pi without a connected monitor. For troubleshooting please visit this [link]."
+  link={["https://www.raspberrypi.org/forums/viewtopic.php?t=216737"]}
+/>
 
 Setting a default resolution will avoid the following error:
 

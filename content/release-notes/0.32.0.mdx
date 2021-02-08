@@ -2,6 +2,8 @@
 title: "Version 0.32.0"
 ---
 
+import Callout from "../../src/components/Callout";
+
 ## 🔗 New connector: Bitfinex
 
 Hummingbot now supports [Bitfinex](https://www.bitfinex.com/) exchange! Bitfinex is a cryptocurrency exchange owned and operated by iFinex Inc., which is headquartered in Hong Kong and registered in the British Virgin Islands.
@@ -10,7 +12,7 @@ Bitfinex was founded in December 2012 as a peer-to-peer Bitcoin exchange, offeri
 
 Read more about how to use Bitfinex connector [here](/exchange-connectors/bitfinex/).
 
-> **Note:** Bitfinex connector is currently not working with cross-exchange and arbitrage strategy.
+<Callout type="note" body="Bitfinex connector is currently not working with cross-exchange and arbitrage strategy." />
 
 ## 🔗 New connector: Loopring
 
@@ -42,7 +44,7 @@ The following parameters can now be reconfigured even without stopping the strat
 - `inventory_target_base_pct`
 - `inventory_range_multiplier`
 
-> Note: Currently, `inventory_target_base_pct` can only be configured when running on centralized exchange connectors.
+<Callout type="note" body="Currently, `inventory_target_base_pct` can only be configured when running on centralized exchange connectors." />
 
 ## 📊 New command: Ticker
 

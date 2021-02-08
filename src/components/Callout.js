@@ -7,37 +7,24 @@ export default function Callout(props) {
   var type = props.type === undefined ? "note" : props.type;
   var calloutType = "callout" + type;
   var linkArr = props.link;
-  if (props.body !== undefined) {
-    var body = buildBody(props.body);
-  } else {
-    var body = "";
-  }
-  if (props.bullets !== undefined) {
-    var bullets = buildBullet(props.bullets);
-  } else {
-    var bullets = "";
-  }
+  var body = props.body !== undefined ? buildBody(props.body) : "";
+  var bullets = props.bullets !== undefined ? buildBullet(props.bullets) : "";
 
   function buildBullet(arr) {
-    var bulletString = "";
     var outputArr = [];
-
+    var bulletString = "";
     for (let i = 0; i < arr.length; i++) {
       bulletString += arr[i];
       if (i !== arr.length - 1) {
-        bulletString += " ";
+        bulletString += "*";
       }
     }
-    console.log(bulletString);
     var newArr = buildBody(bulletString);
-    console.log(newArr);
     var bulletArr = [];
     for (let k = 0; k < newArr.length; k++) {
-      if (newArr[k] === " ") {
+      if (newArr[k] === "*") {
         var input = [];
         input.push(...bulletArr);
-        console.log("INPUT");
-        console.log(input);
         outputArr.push(input);
         bulletArr = [];
         input = [];
@@ -49,13 +36,11 @@ export default function Callout(props) {
         input.push(...bulletArr);
         outputArr.push(input);
       }
-
       bulletArr.push(newArr[k]);
     }
-    console.log(outputArr);
     var newestArr = [];
     for (let k = 0; k < outputArr.length; k++) {
-      if (outputArr[k] === "") continue;
+      if (outputArr[k] === "*") continue;
       newestArr.push(<li>{outputArr[k]}</li>);
     }
     return newestArr;
@@ -169,11 +154,13 @@ export default function Callout(props) {
 
     for (var i = 0; i < input.length; i++) {
       var thisChar = input.charAt(i);
+
       if (
         thisChar !== "#" &&
         thisChar !== "`" &&
         thisChar !== "[" &&
-        thisChar !== "]"
+        thisChar !== "]" &&
+        thisChar !== "*"
       ) {
         tempString += thisChar;
       } else if (thisChar === "`" && startHighlight === false) {
@@ -202,6 +189,10 @@ export default function Callout(props) {
         linkCount++;
         tempString = "";
         startLink = false;
+      } else if (thisChar === "*") {
+        arr.push(tempString);
+        arr.push("*");
+        tempString = "";
       }
     }
     if (tempString !== "") {

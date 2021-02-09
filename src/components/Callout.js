@@ -7,6 +7,44 @@ export default function Callout(props) {
   var type = props.type === undefined ? "note" : props.type;
   var calloutType = "callout" + type;
   var linkArr = props.link;
+  var body = props.body !== undefined ? buildBody(props.body) : "";
+  var bullets = props.bullets !== undefined ? buildBullet(props.bullets) : "";
+
+  function buildBullet(arr) {
+    var outputArr = [];
+    var bulletString = "";
+    for (let i = 0; i < arr.length; i++) {
+      bulletString += arr[i];
+      if (i !== arr.length - 1) {
+        bulletString += "*";
+      }
+    }
+    var newArr = buildBody(bulletString);
+    var bulletArr = [];
+    for (let k = 0; k < newArr.length; k++) {
+      if (newArr[k] === "*") {
+        var input = [];
+        input.push(...bulletArr);
+        outputArr.push(input);
+        bulletArr = [];
+        input = [];
+        continue;
+      }
+      if (newArr.length - 1 === k) {
+        bulletArr.push(newArr[k]);
+        var input = [];
+        input.push(...bulletArr);
+        outputArr.push(input);
+      }
+      bulletArr.push(newArr[k]);
+    }
+    var newestArr = [];
+    for (let k = 0; k < outputArr.length; k++) {
+      if (outputArr[k] === "*") continue;
+      newestArr.push(<li>{outputArr[k]}</li>);
+    }
+    return newestArr;
+  }
 
   const Colors = {
     success: {
@@ -116,11 +154,13 @@ export default function Callout(props) {
 
     for (var i = 0; i < input.length; i++) {
       var thisChar = input.charAt(i);
+
       if (
         thisChar !== "#" &&
         thisChar !== "`" &&
         thisChar !== "[" &&
-        thisChar !== "]"
+        thisChar !== "]" &&
+        thisChar !== "*"
       ) {
         tempString += thisChar;
       } else if (thisChar === "`" && startHighlight === false) {
@@ -149,6 +189,10 @@ export default function Callout(props) {
         linkCount++;
         tempString = "";
         startLink = false;
+      } else if (thisChar === "*") {
+        arr.push(tempString);
+        arr.push("*");
+        tempString = "";
       }
     }
     if (tempString !== "") {
@@ -170,7 +214,9 @@ export default function Callout(props) {
               </b>
             </div>
             <div className={"callout-bottom " + calloutType}>
-              <span /> {buildBody(props.body)}
+              <span />
+              <div>{body}</div>
+              {bullets}
             </div>
           </div>
         </td>

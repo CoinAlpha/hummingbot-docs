@@ -1,10 +1,7 @@
 require("dotenv").config();
 
 const sidebarCategories = {
-  null: [
-    "index",
-    "intro/support",
-  ],
+  null: ["index", "intro/support"],
   Installation: [
     "installation/overview",
     "installation/windows",
@@ -39,7 +36,9 @@ const sidebarCategories = {
     "exchange-connectors/binance-futures",
     "exchange-connectors/binance-us",
     "exchange-connectors/bitfinex",
+    "exchange-connectors/bitmax",
     "exchange-connectors/bittrex",
+    "exchange-connectors/blocktane",
     "exchange-connectors/coinbase",
     "exchange-connectors/crypto-com",
     "exchange-connectors/eterbase",
@@ -69,6 +68,7 @@ const sidebarCategories = {
     "strategies/arbitrage",
     "strategies/celo-arb",
     "strategies/amm-arb",
+    "strategies/liquidity-mining",
   ],
   "Advanced Market Making": [
     "strategies/adv-market-making",
@@ -109,6 +109,7 @@ const sidebarCategories = {
   ],
   "Release Notes": [
     "release-notes/overview",
+    "release-notes/0.36.0",
     "release-notes/0.35.0",
     "release-notes/0.34.0",
     "release-notes/0.33.1",

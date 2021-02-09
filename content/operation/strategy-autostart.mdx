@@ -46,6 +46,8 @@ mkdir hummingbot_files
 mkdir hummingbot_files/hummingbot_conf
 mkdir hummingbot_files/hummingbot_logs
 mkdir hummingbot_files/hummingbot_data
+mkdir hummingbot_files/hummingbot_scripts
+mkdir hummingbot_files/hummingbot_certs
 
 # 3) Copy config files from pre-existing config folder
 cp -a <existing config path>/*.yml <existing config path>/*.json hummingbot_files/hummingbot_conf/
@@ -62,6 +64,8 @@ docker run -d \
   --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_conf,destination=/conf/" \
   --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_logs,destination=/logs/" \
   --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_data,destination=/data/" \
+  --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_scripts,destination=/scripts/" \
+  --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_certs,destination=/certs/" \
   -e STRATEGY -e CONFIG_FILE_NAME -e CONFIG_PASSWORD \
   coinalpha/hummingbot:latest
 
@@ -113,7 +117,7 @@ Running unattended Hummingbot is very similar to the running hummingbot manually
 - You will pass some parameters telling Hummingbot which strategy configuration to use, and the password to decrypt your API keys and wallets.
 
 ```
-bin/hummingbot_quickstart.py -s STRATEGY -f CONFIG_FILE_NAME -p CONFIG_PASSWORD
+bin/hummingbot_quickstart.py -f CONFIG_FILE_NAME -p CONFIG_PASSWORD
 ```
 
 Where  

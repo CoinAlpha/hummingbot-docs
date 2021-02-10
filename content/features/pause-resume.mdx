@@ -6,6 +6,11 @@ import Callout from "../../src/components/Callout";
 
 This feature allows users to pause a running strategy using the command `exit --suspend`. This allows the bot to stop while keeping the hanging orders in the order book. To resume, run the command `start --restore`.
 
+<Callout 
+    type="note" 
+    body="Currently, this feature only works with pure market making strategy." 
+/>
+
 ## Pause
 
 The `exit --suspend` command will "pause" the strategy and exit the hummingbot client. All active orders will become hanging orders while hanging orders will stay hanging when resumed at a later time.

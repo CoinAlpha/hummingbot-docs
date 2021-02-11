@@ -9,7 +9,7 @@ import Callout from "../../src/components/Callout";
 
 <Callout
   type="note"
-  body="This experimental strategy has undergone code review, internal testing and was shipped during one of our most recent releases. As part of User Acceptance Testing, we encourage user to report any issues and/or provide feedback with this strategy in our [Discord server] or [submit a bug report]"
+  body="This experimental strategy has undergone code review, internal testing and was shipped during one of our most recent releases. As part of User Acceptance Testing, we encourage the user to report any issues and/or provide feedback with this strategy in our [Discord server] or [submit a bug report]"
   link={["https://discord.com/invite/2MN3UWg", "https://github.com/CoinAlpha/hummingbot/issues/new?assignees=&labels=bug&template=bug_report.md&title="]}
 />
 
@@ -32,7 +32,7 @@ When placing orders, if the order's size determined by the order price and quant
 
 ## Basic Parameters
 
-The following walks through all the steps when running `create` command.
+The following walks through all the steps when running the `create` command.
 
 ### `exchange`
 
@@ -54,7 +54,7 @@ Token trading pair symbols you would like to trade on the exchange.
 
 <Callout
   type="note"
-  body="If participating in multiple markets, use the same base or quote asset. Different pairs without the same base or quote are not available at the same time"
+  body="If participating in multiple markets, this strategy only supports trading pairs that share the same base or quote asset."
 />
 
 ### `token`
@@ -86,12 +86,18 @@ The strategy will place the order on a certain % away from the current mid-price
 
 ### `target_base_pct`
 
-It sets a target of base asset balance in relation to a total asset allocation value (in percentage value). The bot will then try to achieve this target by utilizing the `inventory_skew `feature.
+It sets a target of base asset balance in relation to a total asset allocation value (in percentage value). It works the same as the pure market making strategy's [`inventory_skew`](/strategies/inventory-skew/) feature in order to achieve this target.
 
 <Prompt
   prompt="For each pair, what is your target base asset percentage? (Enter 20 to indicate 20%) "
   response=">>> 20"
 />
+
+## Advanced Parameters
+
+These are additional parameters that you can reconfigure and use to further customize the behavior of your strategy. To change its settings, run the command `config` followed by the parameter name e.g. `config volatility_interval`.
+
+See [this page](https://docs.hummingbot.io/operation/command-ref/#config) for more information how to use `config` command.
 
 ### `order_refresh_time`
 
@@ -104,7 +110,7 @@ Value in seconds of the orders’ duration before canceling and creating new set
 
 ### `order_refresh_tolerance_pct`
 
-Determines the tolerance threshold in percentage of the order price before replacing the orders. This is to prevent replacing the orders too often. The parameter has a default value of 0.02%.
+Determines the tolerance threshold in the percentage of the order price before replacing the orders. This is to prevent replacing the orders too often. The parameter has a default value of 0.02%.
 
 <Prompt
   prompt="Enter the percent change in price needed to refresh orders at each cycle (Enter 1 to indicate 1%) "
@@ -119,8 +125,6 @@ This parameter expands the range of tolerable inventory levels on your target ba
   prompt="What is your tolerable range of inventory around the target, expressed in multiples of your total order size?"
   response=">>> 1"
 />
-
-## Advanced Parameters
 
 ### `volatility_interval`
 

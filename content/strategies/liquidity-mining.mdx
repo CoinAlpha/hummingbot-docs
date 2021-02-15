@@ -10,7 +10,10 @@ import Callout from "../../src/components/Callout";
 <Callout
   type="note"
   body="This experimental strategy has undergone code review, internal testing and was shipped during one of our most recent releases. As part of User Acceptance Testing, we encourage the user to report any issues and/or provide feedback with this strategy in our [Discord server] or [submit a bug report]"
-  link={["https://discord.com/invite/2MN3UWg", "https://github.com/CoinAlpha/hummingbot/issues/new?assignees=&labels=bug&template=bug_report.md&title="]}
+  link={[
+    "https://discord.com/invite/2MN3UWg",
+    "https://github.com/CoinAlpha/hummingbot/issues/new?assignees=&labels=bug&template=bug_report.md&title=",
+  ]}
 />
 
 ## How it works
@@ -22,11 +25,11 @@ This strategy has parameters like [`volatility_interval`](/strategies/liquidity-
 
 ## Pre-requisites
 
-### Inventory
+Inventory
 
 You will need to hold a sufficient inventory of quote and base currencies to place orders of the exchange's minimum order size.
 
-### Minimum order size
+Minimum order size
 
 When placing orders, if the order's size determined by the order price and quantity is below the exchange's minimum order size, orders will not be created.
 
@@ -92,6 +95,47 @@ It sets a target of base asset balance in relation to a total asset allocation v
   prompt="For each pair, what is your target base asset percentage? (Enter 20 to indicate 20%) "
   response=">>> 20"
 />
+
+Refer to the example below:
+
+These values will show after running `status` command. `Exchange`, `Market`, `Mid Price`, `Volatility`, `Base Bal`, `Quote Bal` and `Base %`.
+
+```
+exchange: binance
+markets: SCRT-BTC, STRAX-BTC
+token: BTC
+spread: 1%
+```
+
+![](/img/volatility-column.png)
+
+**`Exchange`**
+
+Refers to the exchange chosen.
+
+**`Market`**
+
+This shows the markets that you have entered to provide liquidity STRAX-BTC and SCRT-BTC as shown in the example above.
+
+**`Mid price`**
+
+The average of best bid and best ask price in the orderbook.
+
+**`Volatility`**
+
+The adjustment in volatility will apply to your current spread at order refresh time if the volatility is higher than your spread.
+
+**`Base Bal`**
+
+This shows the base balance that you currently have.
+
+**`Quote Bal`**
+
+This shows the quote balance that you currently have.
+
+**`Base %`**
+
+The allocation of your base asset vs the quote asset. Set `target_base_pct` to your desired target base asset portion of quote asset allocation in percentage value. The bot will try to achieve this ratio by adjusting order amount placed in each of your order.
 
 ## Advanced Parameters
 

@@ -21,7 +21,12 @@ import Callout from "../../src/components/Callout";
 The liquidity mining strategy allows users to run market making bots on markets that are yielding liquidity mining rewards. This strategy offers diversification by running a market making strategy across different campaigns. It also provides better capital allocation by sizing orders based on target based allocation.
 
 This strategy also provides easy setup and maintenance. Another key unique feature is dynamic spread adjustment on market volatility.
+
 This strategy has parameters like [`volatility_interval`](/strategies/liquidity-mining/#volatility_interval) and [`avg_volatility_spread`](/strategies/liquidity-mining/#avg_volatility_period) that automatically adjust the spreads based on a market’s volatility based on the historical mid-price.
+
+Market volatility is calculated using ATR (Average True Range) of historical mid price. The true range is a difference between the max and min mid price value of the period expressed in percentage value, i.e. (`max_mid_price` - `min_mid_price`)/`min_mid_price`)
+
+The volatility is translated to spread by multiplying it to `volatility_to_spread_multiplier` (x \* `volatility_to_spread_multiplier`).
 
 ## Pre-requisites
 
@@ -62,7 +67,7 @@ Token trading pair symbols you would like to trade on the exchange.
 
 ### `token`
 
-Choose between the base and quote asset wherein you want to provide liquidity.
+Choose between the base and quote asset wherein you want to provide liquidity. After running `start` command the user's balance of `token` is split between all eligible liquidity mining markets on the selected exchange.
 
 <Prompt
   prompt="What asset (base or quote) do you want to use to provide liquidity? "
@@ -123,7 +128,7 @@ The average of best bid and best ask price in the orderbook.
 
 **`Volatility`**
 
-The adjustment in volatility will apply to your current spread at order refresh time if the volatility is higher than your spread.
+The adjustment in volatility will apply to your current spread at order refresh time if the value of volatility is higher than your spread.
 
 **`Base Bal`**
 

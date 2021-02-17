@@ -10,8 +10,14 @@ import Prompt from "../../src/components/Prompt";
 
 <Callout
   type="note"
-  body="This installation method is currently under testing and awaiting feedback from users. Should you run into problems or have found a fix to solve errors along the way, feel free to reach out through our [Discord] support channel."
-  link={["http://discord.hummingbot.io/"]}
+  bullets={[
+    "This installation method is currently under testing and awaiting feedback from users. Should you run into problems or have found a fix to solve errors along the way, feel free to reach out through our [Discord] support channel.",
+    "Added #version-0.36.0-arm_beta#, see release notes of [v0.36.0]"
+  ]}
+  link={[
+    "http://discord.hummingbot.io/",
+    "release-notes/0.36.0/"
+    ]}
 />
 
 You can install Hummingbot with **_either_** of the following options:
@@ -59,11 +65,11 @@ chmod a+x *.sh
 
 # 3) Create a hummingbot instance
 ./create.sh
-```
 
-Pull Hummingbot ARM image when asked what version to use, you would need to build one for Raspberry Pi. 
-```
+# 4) Pull Hummingbot ARM image when asked what version to use
 Enter Hummingbot version: [ latest/development ] ( default = 'latest' )
+>> version-0.36.0-arm_beta
+
 ```
 
 Manual
@@ -86,13 +92,8 @@ docker run -it \
 --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_logs,destination=/logs/" \
 --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_data,destination=/data/" \
 --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_scripts,destination=/scripts/" \
-coinalpha/hummingbot:dev-0.33.0-arm_beta
+coinalpha/hummingbot:version-0.36.0-arm_beta
 ```
-
-<Callout
-  type="note"
-  body="On the example above, `dev-0.33.0-arm_beta` was already available. For every release, you will need to create an Hummingbot ARM image so you can update your bot to the latest version."
-/>
 
 ## Install from Source
 
@@ -133,7 +134,7 @@ sudo apt-get install python3.7
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
 ```
-Log out and Log back in to enable `conda`, this will make the `conda` command available in shell / terminal.
+Logout and login again to enable `conda`, this will make the `conda` command available in shell / terminal.
 
 **Install pip dependencies**
 ```
@@ -164,22 +165,6 @@ bin/hummingbot.py
   body="#Compiling the bot from source would normally take 45 minutes or more#"
 />
 
-## Build Hummingbot ARM image
-
-When using Raspberry Pi, you would need to create an image for docker. First, you would need to install Hummingbot from source and run this command:
-```
-docker build -t coinalpha/hummingbot:INSERT-NAME-OF-IMAGE -f Dockerfile.arm .
-```
-
-![](img/docker_image.PNG)
-
-The name of the Hummingbot ARM image will be use when being prompted to enter the Hummingbot version on `./create.sh`
-On thes example above, you would need to run **v036**.
-
-<Callout
-  type="warning"
-  body="#Compiling the bot from source would normally take 45 minutes or more#"
-/>
 
 **Controlling remotely using VNC Viewer**
 

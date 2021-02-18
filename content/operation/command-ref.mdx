@@ -224,34 +224,17 @@ Display your asset balances across all connected exchanges.
 Updating balances, please wait...
 
 binance:
-     Asset    Amount Limit
-       BNB    0.0000     -
-       BTC    0.0000     -
-       ETH    0.0000     -
-     TFUEL    0.0187     -
-     THETA    0.5880     -
-      USDC    0.0090     -
-      USDT  158.8197     -
-       XRP    0.8440     -
-       XZC    0.0076     -
+     Asset     Total   Total ($)  Allocated
+       BNB     0.0451      5             0%
+       BTC     0.0028    133             0%
+       SCRT   36.0000     66             0%
+       STRAX  64.4000     66             0%
+       USDT    0.0615      0             0%
 
-bittrex:
-      Asset     Amount Limit
-        BTC     0.0020     -
-     BTXCRD  1025.2352     -
-        XZC     5.1501     -
-
-coinbase_pro:
-    Asset   Amount Limit
-      BAT  10.0000     -
-      ETH   0.2059     -
-     LINK  15.0500     -
-     USDC   0.0033     -
-
-ethereum:
-    asset  amount
-      ETH  0.0453
+Total: $ 270     Allocated: 0.00%
 ```
+
+`Allocated` shows the assets that are currently being used.
 
 ## config
 
@@ -352,6 +335,11 @@ Currently, only the following parameters can be reconfigured without stopping th
 
 Take note the reconfiguring of inventory_target_base_pct for DEX connectors are not working at the moment
 
+<Callout
+  type="note"
+  body="Configuring these parameters on the fly only works for the pure market making strategy"
+/>
+
 ## start
 
 Start the current bot.
@@ -388,7 +376,11 @@ Show all active open orders.
 | :---------------- | :------------------------------------ |
 | `--full_report`   | Show full report with size comparison |
 
-<Callout type="note" body="`open_orders` only works with [binance] exchange connector." link={["https://www.binance.com/en/"]} />
+<Callout
+  type="note"
+  body="`open_orders` only works with [binance] exchange connector."
+  link={["https://www.binance.com/en/"]}
+/>
 
 ## trades
 
@@ -410,7 +402,11 @@ Show profit and losses
 | `--market`             | The market you want to see trades                |
 | `--open_order_markets` | See trades from current open order markets       |
 
-<Callout type="note" body="`pnl` only works with [binance] exchange connector." link={["https://www.binance.com/en/"]} />
+<Callout
+  type="note"
+  body="`pnl` only works with [binance] exchange connector."
+  link={["https://www.binance.com/en/"]}
+/>
 
 ## status
 
@@ -533,7 +529,10 @@ Displays the top 5 bid/ask prices and volume of the current market, similar to h
         395.83     16.5706     395.93     3.29861
 ```
 
-<Callout type="note" body="This command will only work while a strategy is running." />
+<Callout
+  type="note"
+  body="This command will only work while a strategy is running."
+/>
 
 Run `order_book --lines [value]` to specify the number of lines displayed or you can use arguments `--live` to displays the orderbook of the market in real time . For example, run `order_book --live`. The order book displays the top 5 bid/ask prices and volume of the current market in real time.
 
@@ -594,7 +593,10 @@ Displays market ticker prices such as best bid, best ask, mid price and last tra
 
 When optional arguments are not used i.e. running `ticker` alone displays the output from the **maker market** of a cross-exchange strategy or **primary market** when using arbitrage.
 
-<Callout type="note" body="This command will only work while a strategy is running." />
+<Callout
+  type="note"
+  body="This command will only work while a strategy is running."
+/>
 
 **Optional arguments**
 

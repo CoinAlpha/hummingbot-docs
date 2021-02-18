@@ -3,7 +3,7 @@ title: Bitfinex
 description: About Bitfinex Connector
 ---
 
-import Callout from "../../src/components/Callout";
+import Callout from "../../src/components/Callout";
 
 ## About Bitfinex
 
@@ -24,7 +24,13 @@ Private keys and API keys are stored locally for the operation of the Hummingbot
 At no point will private or API keys be shared to someone or be used in any way other
 than to authorize transactions required for the operation of Hummingbot.
 
-<Callout type="tip" body="For copying and pasting into Hummingbot, see [this page] for more instructions in our Support guide." link={["https://hummingbot.zendesk.com/hc/en-us/articles/900004871203-Copy-and-paste-your-API-keys"]} />
+<Callout
+  type="tip"
+  body="For copying and pasting into Hummingbot, see [this page] for more instructions in our Support guide."
+  link={[
+    "https://hummingbot.zendesk.com/hc/en-us/articles/900004871203-Copy-and-paste-your-API-keys",
+  ]}
+/>
 
 ### Creating Bitfinex API Keys
 
@@ -32,7 +38,13 @@ than to authorize transactions required for the operation of Hummingbot.
 
 ![bitfinex1](/img/bitfinex1.png)
 
-<Callout type='tip' body="For more secure, enable 2FA in your account. [How to enable 2FA?]" link={["https://support.bitfinex.com/hc/en-us/articles/115003340249-Google-Authenticator-2FA-Setup"]}/>
+<Callout
+  type="tip"
+  body="For more secure, enable 2FA in your account. [How to enable 2FA?]"
+  link={[
+    "https://support.bitfinex.com/hc/en-us/articles/115003340249-Google-Authenticator-2FA-Setup",
+  ]}
+/>
 
 2. Click on **Create NEW KEY**.
 
@@ -42,7 +54,10 @@ Make sure you give permissions to **Read** and **Write** and enter your 2FA code
 
 Confirm your API-key request by pass on the link in the email letter. You will receive a notification: _Almost Done! Please check your email to complete the creation of this new API key._
 
-<Callout type="warning" body="For API key permissions, we recommend using #Orders# enabled API keys; enabling #withdraw#, or the equivalent is unnecessary for current Hummingbot strategies."/>
+<Callout
+  type="warning"
+  body="For API key permissions, we recommend using #Orders# enabled API keys; enabling #withdraw#, or the equivalent is unnecessary for current Hummingbot strategies."
+/>
 
 Once you pass the link in an email letter, you've created a new API Key!
 
@@ -52,13 +67,16 @@ Your API Secret will be displayed on the screen. Make sure you store your API Se
 
 The API key and API secret key is required for using Hummingbot.
 
-<Callout type="warning" body="If you lose your Secret Key, you can delete the API and create a new one. However, it will be impossible to reuse the same API."/>
+<Callout
+  type="warning"
+  body="If you lose your Secret Key, you can delete the API and create a new one. However, it will be impossible to reuse the same API."
+/>
 
 ## Miscellaneous Info
 
 ### Minimum Order Sizes
 
-Pairs on Bitfinex generally require a minimum order size equivalent to between \$2.5 and more. You can access the minimum order size for a specific token pair using [Crypto.com's API](https://exchange-docs.crypto.com/#public-get-instruments) at the following URL:
+Pairs on Bitfinex generally require a minimum order size equivalent to between \$2.5 and more. You can access the minimum order size for a specific token pair using Bitfinex's API at the following URL:
 
 ```
 https://api-pub.bitfinex.com/v2/conf/pub:info:pair

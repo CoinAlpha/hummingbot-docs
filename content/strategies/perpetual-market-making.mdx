@@ -7,8 +7,6 @@ import Callout from "../../src/components/Callout";
 
 import Prompt from "../../src/components/Prompt";
 
-
-
 ## How it Works
 
 Like pure market-making, Hummingbot continually posts limit bids and asks offers on the market, and waits for other participants "takers" to fill their orders. Position management features are introduced to configure the bot further to make managing positions easier and remove the need to interact with the derivative exchange manually.
@@ -23,7 +21,6 @@ In addition to those two features, a stop_loss parameter is added to work with b
 Hummingbot uses these to logically determine when positions would be closed when using a particular feature.
 
 ## Creating the Strategy
-
 
 1. In Hummingbot, enter `create`.
 2. Enter `[perpetual_connector_name]_testnet` or `[perpetual_connector_name]`.
@@ -258,3 +255,8 @@ Once a profitable exit price is detected, no stop-loss order should be placed. A
 If no exit price has been detected, a stop-loss order will be placed if loss increases to the set stop-loss spread.
 
 ![](/img/no-exit-price2.png)
+
+<Callout
+  type="info"
+  body="Price `NILL` means the market is yet to move enough to have a peak price that'll give a profitable exit price according to the configured parameters for the feature."
+/>

@@ -9,7 +9,7 @@ import Callout from "../../src/components/Callout";
 
 <Callout type="warning" body="This is a recently released experimental feature. Running any trading bots without manual supervision may incur additional risks. It is imperative that you thoroughly understand and test the strategy and parameters before deploying bots that can trade in an unattended manner." />
 
-Hummingbot can automatically start the execution of a previously configured trading strategy upon launch, without needing user interaction, when provided with pre-existing configuration files. This can be very useful if you wish to deploy already well-tested strategies and configurations to cloud services, and have Hummingbot running automatically in the background.
+Hummingbot can automatically start the execution of a previously configured trading strategy upon launch without needing user interaction when provided with pre-existing configuration files. This can be very useful if you wish to deploy already well-tested strategies and configurations to cloud services and have Hummingbot running automatically in the background.
 
 ### Prerequisites
 
@@ -36,7 +36,7 @@ The configuration folder is the mount path that corresponds to `/conf` in the vo
 An unattended Hummingbot installation is very similar to the Docker manual installation steps. The only differences are:
 
 1.  You will copy the pre-existing configuration files to the `hummingbot_conf` directory.
-2.  You will set some environment variables telling Hummingbot which strategy configuration to use, and the password to decrypt your API keys and wallets.
+2.  You will set some environment variables telling Hummingbot which strategy configuration to use and the password to decrypt your API keys and wallets.
 
 ```bash
 # 1) Create folder for your new instance
@@ -111,10 +111,10 @@ Whichever you used was it the **Scripts** or **Manual** method from Source, the 
 
 ### How to autostart
 
-Running unattended Hummingbot is very similar to the running hummingbot manually. The only differences are:
+Running unattended Hummingbot is very similar to running hummingbot manually. The only differences are:
 
 - You will read the pre-existing configuration files to the `conf` directory.
-- You will pass some parameters telling Hummingbot which strategy configuration to use, and the password to decrypt your API keys and wallets.
+- You will pass some parameters telling Hummingbot which strategy configuration to use and the password to decrypt your API keys and wallets.
 
 ```
 bin/hummingbot_quickstart.py -f CONFIG_FILE_NAME -p CONFIG_PASSWORD

@@ -28,6 +28,8 @@ Market volatility is calculated using ATR (Average True Range) of historical mid
 
 The volatility is translated to spread by multiplying it to `volatility_to_spread_multiplier` (x \* `volatility_to_spread_multiplier`).
 
+You can see the ongoing campaigns [here](https://docs.hummingbot.io/miner/liquidity-mining/current-rewards&terms/).
+
 ## Pre-requisites
 
 Inventory
@@ -101,47 +103,6 @@ It sets a target of base asset balance in relation to a total asset allocation v
   response=">>> 20"
 />
 
-Refer to the example below:
-
-These values will show after running `status` command. `Exchange`, `Market`, `Mid Price`, `Volatility`, `Base Bal`, `Quote Bal` and `Base %`.
-
-```
-exchange: binance
-markets: SCRT-BTC, STRAX-BTC
-token: BTC
-spread: 1%
-```
-
-![](/img/volatility-column.png)
-
-**`Exchange`**
-
-Refers to the exchange chosen.
-
-**`Market`**
-
-This shows the markets that you have entered to provide liquidity STRAX-BTC and SCRT-BTC as shown in the example above.
-
-**`Mid price`**
-
-The average of best bid and best ask price in the orderbook.
-
-**`Volatility`**
-
-The adjustment in volatility will apply to your current spread at order refresh time if the value of volatility is higher than your spread.
-
-**`Base Bal`**
-
-This shows the base balance that you currently have.
-
-**`Quote Bal`**
-
-This shows the quote balance that you currently have.
-
-**`Base %`**
-
-The allocation of your base asset vs the quote asset. Set `target_base_pct` to your desired target base asset portion of quote asset allocation in percentage value. The bot will try to achieve this ratio by adjusting order amount placed in each of your order.
-
 ## Advanced Parameters
 
 These are additional parameters that you can reconfigure and use to further customize the behavior of your strategy. To change its settings, run the command `config` followed by the parameter name e.g. `config volatility_interval`.
@@ -201,3 +162,64 @@ This expands the average spread depending on the value set. The predefined value
   prompt="Enter a multiplier used to convert average volatility to spread (enter 1 for 1 to 1 conversion) "
   response=">>> 1"
 />
+
+## Sample Configurations
+
+Here's an example of how the liquidity mining strategy works.
+
+```json
+exchange: binance
+markets: AVAX-USDT,AVAX-BNB,AVAX-BTC
+token: AVAX
+order_amount: 0.4
+spread: 1%
+target_base_pct: 50%
+order_refresh_time: 10
+order_refresh_tolerance_pct: 0.2
+inventory_range_multiplier: 1.0
+volatility_interval: 20
+avg_volatility_period: 2
+volatility_to_spread_multiplier: 1.0
+```
+
+This strategy lets you run multiple token pairs in one bot. The bot distributes the `token` balance in order to create 3 orders on both bid and ask. Make sure that your orders meet the minimum order size of the exchange in order for it to create orders on all pairs.
+
+![](/img/status.png)
+
+These values will show after running `status` command. `Exchange`, `Market`, `Mid Price`, `Volatility`, `Base Bal`, `Quote Bal` and `Base %`.
+
+**`Exchange`**
+
+Refers to the exchange chosen.
+
+**`Market`**
+
+This shows the markets that you have entered to provide liquidity STRAX-BTC and SCRT-BTC as shown in the example above.
+
+**`Mid price`**
+
+The average of best bid and best ask price in the orderbook.
+
+**`Volatility`**
+
+The adjustment in volatility will apply to your current spread at order refresh time if the value of volatility is higher than your spread.
+
+**`Base Bal`**
+
+This shows the base balance that you currently have.
+
+**`Quote Bal`**
+
+This shows the quote balance that you currently have.
+
+**`Base %`**
+
+The allocation of your base asset vs the quote asset. Set `target_base_pct` to your desired target base asset portion of quote asset allocation in percentage value. The bot will try to achieve this ratio by adjusting order amount placed in each of your order.
+
+The bot will calculate the volatility based on the interval set in this case it's 20s. Then the `avg_volatility_period` will calculate the intervals and replace the spread if the value is higher than the current spread. The new spread also depends on the `volatility_to_spread_multiplier` in this case is set to 1.
+
+![](/img/interval.png)
+
+The spread for AVAX-USDT was widened in the image below because the volatility % was higher than the spread that was set because of the dynamic spread adjustment on market volatility.
+
+![](/img/volatility-spread.png)

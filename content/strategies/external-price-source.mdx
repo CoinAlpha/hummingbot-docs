@@ -41,6 +41,12 @@ This means Hummingbot uses the mid price of the market's order book in the curre
 
 Run `config price_type` command to change the price reference to `last_price`, `last_own_trade_price`, `best_bid`, `best_ask`, and `inventory_cost`.
 
+<Callout
+  type="tip"
+  body="#Updated as of version 0.36.0#, added [inventory_cost] to price_type. When using inventory_cost, you would need to set inventory price before you start your Hummingbot using this command `config inventory_price`"
+  link={["/release-notes/0.36.0/#inventory-average-cost-added-as-a-new-price_type-configuration"]}
+/>
+
 ### Price Source: External Market
 
 Users can also use an external market from another exchange supported by Hummingbot as the price reference when creating orders.

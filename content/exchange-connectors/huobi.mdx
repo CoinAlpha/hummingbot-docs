@@ -18,7 +18,13 @@ Enter your Huobi secret key >>>
 
 Private keys and API keys are stored locally for the operation of the Hummingbot client only. At no point will private or API keys be shared to CoinAlpha or be used in any way other than to authorize transactions required for the operation of Hummingbot.
 
-<Callout type="tip" body="For copying and pasting into Hummingbot, see [this page] for more instructions in our Support section." link={["https://hummingbot.zendesk.com/hc/en-us/articles/900004871203-Copy-and-paste-your-API-keys"]} />
+<Callout
+  type="tip"
+  body="For copying and pasting into Hummingbot, see [this page] for more instructions in our Support section."
+  link={[
+    "https://hummingbot.zendesk.com/hc/en-us/articles/900004871203-Copy-and-paste-your-API-keys",
+  ]}
+/>
 
 ### Creating Huobi API Keys
 
@@ -30,10 +36,15 @@ Private keys and API keys are stored locally for the operation of the Hummingbot
 
 ![huobi2](/img/huobi-create-api-key.png)
 
+<Callout
+  type="warning"
+  body="We recommend using only #trade# enabled API keys; enabling #withdraw, transfer, or the equivalent is unnecessary# for current Hummingbot strategies."
+/>
 
-<Callout type="warning" body="We recommend using only #trade# enabled API keys; enabling #withdraw, transfer, or the equivalent is unnecessary# for current Hummingbot strategies." />
-
-<Callout type="tip" body="You will receive a notification and email when your API keys are about to expire." />
+<Callout
+  type="tip"
+  body="You will receive a notification and email when your API keys are about to expire."
+/>
 
 3. **Click to send** and enter the verification code sent to the registered email address.
 
@@ -48,7 +59,35 @@ Private keys and API keys are stored locally for the operation of the Hummingbot
 
 ### Minimum Order Sizes
 
-You may refer to [this page](https://huobiglobal.zendesk.com/hc/en-us/articles/360000304441-Trade-Limits) for the minimum order size per trading pair.
+Minimum order size varies per market. All minimum trade quantities can be found in the following public API:
+
+```
+https://api.huobi.pro/v1/common/symbols
+```
+
+The size must be greater than the `min-order-amt` for the symbol and no larger than the `max-order-amt`. For example, trading pair ETH-BTC minimum order size is 0.001 ETH.
+
+```
+{"base-currency":"eth",
+"quote-currency":"btc",
+"price-precision":6,
+"amount-precision":4,
+"symbol-partition":"main",
+"symbol":"ethbtc",
+"state":"online",
+"value-precision":4,
+"min-order-amt":0.001,
+"max-order-amt":10000,
+"min-order-value":0.0001,
+"limit-order-min-order-amt":0.001,
+"limit-order-max-order-amt":10000,
+"sell-market-min-order-amt":0.001,
+"sell-market-max-order-amt":1000,
+"buy-market-max-order-value":100,
+"leverage-ratio":5,
+"super-margin-leverage-ratio":3,
+"api-trading":"enabled"}
+```
 
 ### Transaction Fees
 

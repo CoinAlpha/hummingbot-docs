@@ -311,7 +311,7 @@ How often do you want to cancel and replace bids and asks (in seconds)? >>>
 
 ** config [ key ] [ value ] **
 
-Reconfigure a parameter value without going through the prompts. These can be reconfigured without stopping the bot however, it will only take effect after restarting the strategy.
+Reconfigure a parameter value without going through the prompts. These can be reconfigured without stopping the bot. However, it will only take effect after restarting the strategy.
 
 ```
 >>>  config order_refresh_time 30
@@ -333,7 +333,7 @@ Currently, only the following parameters can be reconfigured without stopping th
 - inventory_range_multiplier
 - filled_order_delay
 
-Take note the reconfiguring of inventory_target_base_pct for DEX connectors are not working at the moment
+Take note the reconfiguring of `inventory_target_base_pct` for DEX connectors is not working at the moment.
 
 <Callout
   type="note"
@@ -534,7 +534,7 @@ Displays the top 5 bid/ask prices and volume of the current market, similar to h
   body="This command will only work while a strategy is running."
 />
 
-Run `order_book --lines [value]` to specify the number of lines displayed or you can use arguments `--live` to displays the orderbook of the market in real time . For example, run `order_book --live`. The order book displays the top 5 bid/ask prices and volume of the current market in real time.
+Run `order_book --lines [value]` to specify the number of lines displayed or you can use arguments `--live` to displays the order book of the market in real-time. For example, run `order_book --live`. The order book displays the top 5 bid/ask prices and volume of the current market in real-time.
 
 ![orderbook-live](/img/orderbook-live.gif)
 
@@ -564,8 +564,8 @@ Run `order_book --lines [value]` to specify the number of lines displayed.
 
 By default, the `order_book` command shows only the maker market in cross-exchange strategy or primary market when using arbitrage.
 
-You can use arguments `--live` to displays the orderbook of the market in real time . For example, run `order_book --lines 20 --live`.
-The order book displays the top 20 bid/ask prices and volume of the current market in real time.
+You can use arguments `--live` to displays the order book of the market in real-time. For example, run `order_book --lines 20 --live`.
+The order book displays the top 20 bid/ask prices and volume of the current market in real-time.
 
 ![orderbook-live](/img/orderbook-20lines-live.gif)
 
@@ -589,7 +589,7 @@ Sample usage:
 
 ## ticker
 
-Displays market ticker prices such as best bid, best ask, mid price and last trade price.
+Displays market ticker prices such as best bid, best ask, mid price, and last trade price.
 
 When optional arguments are not used i.e. running `ticker` alone displays the output from the **maker market** of a cross-exchange strategy or **primary market** when using arbitrage.
 
@@ -606,7 +606,7 @@ When optional arguments are not used i.e. running `ticker` alone displays the ou
 | `--market`       | The market trading pair of the order book |
 | `--live`         | Displays the ticker in real time          |
 
-You can use arguments `--live` to displays market ticker prices such as best bid, best ask, mid price and last trade price in real time. For example, run `ticker --live`.
+You can use arguments `--live` to displays market ticker prices such as best bid, best ask, mid price, and last trade price in real-time. For example, run `ticker --live`.
 
 ![ticker-live](/img/ticker-live.gif)
 

@@ -3,7 +3,7 @@ title: Binance
 description: About Binance Connector
 ---
 
-import Callout from "../../src/components/Callout";
+import Callout from "../../src/components/Callout";
 
 Binance is a global cryptocurrency exchange that provides a platform for trading more than 100 cryptocurrencies. It is considered one of the top cryptocurrency trading platforms by volume. It also serves as a wallet for users who hold accounts on the exchange.
 
@@ -18,14 +18,25 @@ Enter your Binance secret key >>>
 
 Private keys and API keys are stored locally for the operation of the Hummingbot client only. At no point will private or API keys be shared to CoinAlpha or be used in any way other than to authorize transactions required for the operation of Hummingbot.
 
-<Callout type="tip" body="For copying and pasting into Hummingbot, see [this page] for more instructions in our Support guide." link={["https://hummingbot.zendesk.com/hc/en-us/articles/900004871203-Copy-and-paste-your-API-keys"]} />
-
+<Callout
+  type="tip"
+  body="For copying and pasting into Hummingbot, see [this page] for more instructions in our Support guide."
+  link={[
+    "https://hummingbot.zendesk.com/hc/en-us/articles/900004871203-Copy-and-paste-your-API-keys",
+  ]}
+/>
 
 ### Creating Binance API Keys
 
 1. Log into your account at https://www.binance.com, then select **Account** (If you do not have an account, you will have to create one and verify your ID).
 
-<Callout type="tip" body="You must enable 2FA in your Binance account to create the API key. [How to enable 2FA?]" link={["https://support.binance.com/hc/en-us/sections/360000011592-Two-Factor-Authentication"]} />
+<Callout
+  type="tip"
+  body="You must enable 2FA in your Binance account to create the API key. [How to enable 2FA?]"
+  link={[
+    "https://support.binance.com/hc/en-us/sections/360000011592-Two-Factor-Authentication",
+  ]}
+/>
 
 2. Click on **API Setting**.
    ![binance1](/img/binance1.png)
@@ -40,14 +51,19 @@ Private keys and API keys are stored locally for the operation of the Hummingbot
 
 5. Now you have created an API key. Please note that to trade on Binance using Hummingbot, **Enable Trading** must be selected
 
-
-<Callout type="warning" body="For API key permissions, we recommend using only #trade# enabled API keys; enabling #withdraw#, #transfer#, or the equivalent is unnecessary for current Hummingbot strategies."/>
+<Callout
+  type="warning"
+  body="For API key permissions, we recommend using only #trade# enabled API keys; enabling #withdraw#, #transfer#, or the equivalent is unnecessary for current Hummingbot strategies."
+/>
 
 ![binance4](/img/binance4.png)
 
 Make sure you store your Secret Key somewhere secure, and do not share it with anyone. Your Secret Key will only be displayed once at the time when you create the API.
 
-<Callout type="warning" body="If you lose your Secret Key, you can delete the API and create a new one. However, it will be impossible to reuse the same API."/>
+<Callout
+  type="warning"
+  body="If you lose your Secret Key, you can delete the API and create a new one. However, it will be impossible to reuse the same API."
+/>
 
 ## Miscellaneous Info
 
@@ -65,4 +81,4 @@ Users can override the default fees by editing [`conf_fee_overrides.yml`](/opera
 
 You can use an API key from a [Binance sub-account](https://medium.com/binanceexchange/binance-introduces-sub-account-support-d7bf2f95e28c) just like you do for a normal Binance account. Please ensure that you use the **sub-account API key** and not the master account API key.
 
-If you are participating in [Liquidity Mining](/intro/liquidity-mining), please also use the **sub-account read-only API key** when you sign up.
+If you are participating in [Liquidity Mining](https://docs.hummingbot.io/miner), please also use the **sub-account read-only API key** when you sign up.

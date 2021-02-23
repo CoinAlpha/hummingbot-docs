@@ -48,6 +48,7 @@ const sidebarCategories = {
     "exchange-connectors/liquid",
     "exchange-connectors/loopring",
     "exchange-connectors/okex",
+    "exchange-connectors/probit",
     "exchange-connectors/dydx",
     "exchange-connectors/radar-relay",
     "exchange-connectors/bamboo-relay",
@@ -109,6 +110,7 @@ const sidebarCategories = {
   ],
   "Release Notes": [
     "release-notes/overview",
+    "release-notes/0.37.0",
     "release-notes/0.36.0",
     "release-notes/0.35.0",
     "release-notes/0.34.0",

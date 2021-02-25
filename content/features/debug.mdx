@@ -21,7 +21,10 @@ When you start Hummingbot with debug console enabled, it will print out a "Start
 
 ![Started debug console logm essage](/img/debug2.png)
 
-<Callout type="note" body="The port number printed in the debug message (port 8211 in the example above), you can use `telnet` or `nc` to access the debug console by connecting to the TCP port described in the log message." />
+<Callout
+  type="note"
+  body="The port number printed in the debug message (port 8211 in the example above), you can use `telnet` or `nc` to access the debug console by connecting to the TCP port described in the log message."
+/>
 
 ![Entering the debug console](/img/debug3.png)
 
@@ -47,6 +50,26 @@ Below is an example where a developer queries the currently active bids/asks und
 ![Example](/img/debug5.png)
 
 You should refer to the source code of the exposed objects to see what properties you can inspect and modify inside the debug console.
+
+### Activating debug console with docker
+
+First, you have to enable the debugging feature on the bot you are running by editing conf_global.yml and setting the debug_console parameter to true; you can do this with
+
+`nano {botinstallationfolder}/hummingbot_conf/conf_global.yml` .
+
+Save the file with "ctrl + o" then press enter, exit the file with "ctrl + x"
+
+Now you will need to enter your docker's root with bash terminal capabilities to execute a command.
+
+`docker exec -u 0 -it CONTAINTERNAME bash`
+
+Now that you are inside the docker's root, you have to run `unminimize` command for the system to decompress, enabling you to install packages.
+
+The system will prompt you to install necessary packages for decompression and answer Y for yes. When essential packages are installed, input command
+
+`apt-get install telnet` to install telnet package.
+
+Now you may connect to telnet the usual way with `telnet localhost 8211`
 
 ## Developer Notes
 

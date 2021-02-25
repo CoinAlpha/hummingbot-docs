@@ -165,7 +165,25 @@ bin/hummingbot.py
   body="#Compiling the bot from source would normally take 45 minutes or more#"
 />
 
-**Controlling remotely using VNC Viewer**
+## Create Hummingbot ARM image for Docker
+This guide would help you build your own Hummingbot ARM image when there is a new release. Please be advised that for every new release, you would need to [install from source](#install-from-source) first and follow the steps provided in order to create an image that you can use for your RaspberryPi docker. 
+
+1. Go to your source directory and run the command below
+```
+# Set a name of your image on insert_name
+docker build -t coinalpha/hummingbot:insert_name -f Dockerfile.arm .
+```
+
+On this sample, we set `v036` for the name of the image. This is needed when you run `./create.sh` command
+![](/img/rpi-docker-img.png)
+
+
+<Callout
+  type="warning"
+  body="#Building the Hummingbot ARM image from source would normally take 45 minutes or more#"
+/>
+
+## Controlling remotely using VNC Viewer
 
 SSH and VNC features are natively built into the Raspberry Pi and can easily be turned on in the Raspberry Pi configurations settings. By turning these on, you can access the Raspberry Pi from another computer by:
 

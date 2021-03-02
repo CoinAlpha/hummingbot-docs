@@ -59,6 +59,7 @@ const sidebarCategories = {
     "protocol-connectors/balancer",
     "protocol-connectors/terra",
     "protocol-connectors/uniswap",
+    "protocol-connectors/perp-fi",
   ],
   "Hummingbot Gateway": ["gateway/overview", "gateway/installation"],
   Strategies: [

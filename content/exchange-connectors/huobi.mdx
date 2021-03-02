@@ -59,35 +59,7 @@ Private keys and API keys are stored locally for the operation of the Hummingbot
 
 ### Minimum Order Sizes
 
-Minimum order size varies per market. All minimum trade quantities can be found in the following public API:
-
-```
-https://api.huobi.pro/v1/common/symbols
-```
-
-The size must be greater than the `min-order-amt` for the symbol and no larger than the `max-order-amt`. For example, trading pair ETH-BTC minimum order size is 0.001 ETH.
-
-```
-{"base-currency":"eth",
-"quote-currency":"btc",
-"price-precision":6,
-"amount-precision":4,
-"symbol-partition":"main",
-"symbol":"ethbtc",
-"state":"online",
-"value-precision":4,
-"min-order-amt":0.001,
-"max-order-amt":10000,
-"min-order-value":0.0001,
-"limit-order-min-order-amt":0.001,
-"limit-order-max-order-amt":10000,
-"sell-market-min-order-amt":0.001,
-"sell-market-max-order-amt":1000,
-"buy-market-max-order-value":100,
-"leverage-ratio":5,
-"super-margin-leverage-ratio":3,
-"api-trading":"enabled"}
-```
+You may refer to [this page](https://huobiglobal.zendesk.com/hc/en-us/articles/900000210246-Announcement-on-Adjusting-Minimum-Order-Amount-for-Some-Trading-Pairs) for the minimum order size per trading pair.
 
 ### Transaction Fees
 

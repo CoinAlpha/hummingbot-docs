@@ -10,7 +10,10 @@ import Callout from "../../src/components/Callout";
 <Callout
   type="warning"
   body="This experimental strategy has undergone code review, internal testing and was shipped during one of our most recent releases. As part of User Acceptance Testing, we encourage user to report any issues and/or provide feedback with this strategy in our [Discord server] or [submit a bug report]"
-  link={["https://discord.com/invite/2MN3UWg", "https://github.com/CoinAlpha/hummingbot/issues/new?assignees=&labels=bug&template=bug_report.md&title="]}
+  link={[
+    "https://discord.com/invite/2MN3UWg",
+    "https://github.com/CoinAlpha/hummingbot/issues/new?assignees=&labels=bug&template=bug_report.md&title=",
+  ]}
 />
 
 ## How it works
@@ -146,5 +149,23 @@ This expands the average spread depending on the value set. The predefined value
 
 <Prompt
   prompt="Enter a multiplier used to convert average volatility to spread (enter 1 for 1 to 1 conversion) "
+  response=">>> 1"
+/>
+
+### `max_spread`
+
+Set the maximum spread for your orders. Spreads will not go higher if you set a value for max spread. By default, this parameter is set to -1.
+
+<Prompt
+  prompt="What is the maximum spread? (Enter 1 to indicate 1% or -1 to ignore this setting)"
+  response=">>> 1"
+/>
+
+### `max_order_age`
+
+The `max_order_age` parameter allows you to set a specific duration when to reset your order's age. Click [here](/strategies/max-order-age/) to learn more about this parameter.
+
+<Prompt
+  prompt="What is the maximum spread? (Enter 1 to indicate 1% or -1 to ignore this setting)"
   response=">>> 1"
 />

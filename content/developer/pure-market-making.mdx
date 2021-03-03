@@ -54,7 +54,7 @@ It doesn't do any checks about whether you have existing orders, or have enough 
 
 ### ConstantSizeSizingDelegate
 
-The logic inside ConstantSizeSizingDelegateis more involved, because it's checking whether there're existing limit orders that are still active, and also whether there's enough balance in the exchange to create new orders.
+The logic inside ConstantSizeSizingDelegate is more involved, because it's checking whether there're existing limit orders that are still active, and also whether there's enough balance in the exchange to create new orders.
 
 In addition, this delegate is responsible for "quantizing" the orders, which means conforming them to the tick size and minimum order size required by this particular exchange's trading rules. Note that if a proposed order size is lower than minimum order size, the order size will be reduced to 0.
 

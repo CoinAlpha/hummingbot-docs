@@ -18,24 +18,33 @@ import Callout from "../../src/components/Callout";
 
 ## How it works
 
-The liquidity mining strategy allows users to run market making bots on markets that are yielding liquidity mining rewards. This strategy offers diversification by running a market making strategy across different campaigns. It also provides better capital allocation by sizing orders based on target based allocation.
+The liquidity mining strategy allows users to market make across multiple markets on an exchange on a single Hummingbot instance. This is achieved by enabling users to configure the markets they would like to participate in and other market-making configurations. Volatility-Spread adjustments are another key feature of this strategy, where the spreads are dynamically adjusted based on the volatility of the markets.
 
-This strategy also provides easy setup and maintenance. Another key unique feature is dynamic spread adjustment on market volatility.
-This strategy has parameters like [`volatility_interval`](/strategies/liquidity-mining/#volatility_interval) and [`avg_volatility_spread`](/strategies/liquidity-mining/#avg_volatility_period) that automatically adjust the spreads based on a market’s volatility based on the historical mid-price.
+This strategy has parameters like [`volatility_interval`](/strategies/liquidity-mining/#volatility_interval) and [`avg_volatility_period`](/strategies/liquidity-mining/#avg_volatility_period) that automatically adjust the spreads based on a market’s volatility based on the historical mid-price.
+
+Market volatility is calculated using ATR (Average True Range) of historical mid-price. The true range is a difference between the maximum and minimum mid-price value of the period expressed in percentage value.
+
+How to calculate Average True Range of historical mid price.
+
+![](/img/Average-true-range.png)
+
+The volatility is translated to spread by multiplying it to `volatility_to_spread_multiplier`.
+
+![](/img/adjusted-spread.png)
 
 ## Pre-requisites
 
-### Inventory
+Inventory
 
 You will need to hold a sufficient inventory of quote and base currencies to place orders of the exchange's minimum order size.
 
-### Minimum order size
+Minimum order size
 
 When placing orders, if the order's size determined by the order price and quantity is below the exchange's minimum order size, orders will not be created.
 
 ## Basic Parameters
 
-The following walks through all the steps when running `create` command.
+The following walks through all the steps when running the `create` command.
 
 ### `exchange`
 
@@ -57,12 +66,12 @@ Token trading pair symbols you would like to trade on the exchange.
 
 <Callout
   type="note"
-  body="If participating in multiple markets, use the same base or quote asset. Different pairs without the same base or quote are not available at the same time"
+  body="If participating in multiple markets, this strategy only supports trading pairs that share the same base or quote asset."
 />
 
 ### `token`
 
-Choose between the base and quote asset wherein you want to provide liquidity.
+Choose between the base and quote asset wherein you want to provide liquidity. After running the `start` command, the user's balance of `token` is split between all eligible liquidity mining markets on the selected exchange.
 
 <Prompt
   prompt="What asset (base or quote) do you want to use to provide liquidity? "
@@ -89,12 +98,18 @@ The strategy will place the order on a certain % away from the current mid-price
 
 ### `target_base_pct`
 
-It sets a target of base asset balance in relation to a total asset allocation value (in percentage value). The bot will then try to achieve this target by utilizing the `inventory_skew `feature.
+It sets a target of base asset balance in relation to a total asset allocation value (in percentage value). It works the same as the pure market making strategy's [`inventory_skew`](/strategies/inventory-skew/) feature in order to achieve this target.
 
 <Prompt
   prompt="For each pair, what is your target base asset percentage? (Enter 20 to indicate 20%) "
   response=">>> 20"
 />
+
+## Advanced Parameters
+
+These are additional parameters that you can reconfigure and use to customize the behavior of your strategy further. To change its settings, run the command `config` followed by the parameter name e.g. `config volatility_interval`.
+
+See [this page](https://docs.hummingbot.io/operation/command-ref/#config) for more information how to use `config` command.
 
 ### `order_refresh_time`
 
@@ -107,7 +122,7 @@ Value in seconds of the orders’ duration before canceling and creating new set
 
 ### `order_refresh_tolerance_pct`
 
-Determines the tolerance threshold in percentage of the order price before replacing the orders. This is to prevent replacing the orders too often. The parameter has a default value of 0.02%.
+Determines the tolerance threshold in the percentage of the order price before replacing the orders. This is to prevent replacing the orders too often. The parameter has a default value of 0.02%.
 
 <Prompt
   prompt="Enter the percent change in price needed to refresh orders at each cycle (Enter 1 to indicate 1%) "
@@ -122,8 +137,6 @@ This parameter expands the range of tolerable inventory levels on your target ba
   prompt="What is your tolerable range of inventory around the target, expressed in multiples of your total order size?"
   response=">>> 1"
 />
-
-## Advanced Parameters
 
 ### `volatility_interval`
 
@@ -152,20 +165,65 @@ This expands the average spread depending on the value set. The predefined value
   response=">>> 1"
 />
 
-### `max_spread`
+=======
+## Sample Configurations
 
-Set the maximum spread for your orders. Spreads will not go higher if you set a value for max spread. By default, this parameter is set to -1.
+Here's an example of how the liquidity mining strategy works.
 
-<Prompt
-  prompt="What is the maximum spread? (Enter 1 to indicate 1% or -1 to ignore this setting)"
-  response=">>> 1"
-/>
+```json
+exchange: binance
+markets: AVAX-USDT,AVAX-BNB,AVAX-BTC
+token: AVAX
+order_amount: 0.4
+spread: 1%
+target_base_pct: 50%
+order_refresh_time: 10
+order_refresh_tolerance_pct: 0.2
+inventory_range_multiplier: 1.0
+volatility_interval: 20
+avg_volatility_period: 2
+volatility_to_spread_multiplier: 1.0
+```
 
-### `max_order_age`
+This strategy lets you run multiple token pairs in one bot. The bot distributes the `token` balance to create three orders on both bid and ask. Ensure that your orders meet the minimum order size of the exchange for it to create orders on all pairs.
 
-The `max_order_age` parameter allows you to set a specific duration when to reset your order's age. Click [here](/strategies/max-order-age/) to learn more about this parameter.
+![](/img/lm-status.png)
 
-<Prompt
-  prompt="What is the maximum spread? (Enter 1 to indicate 1% or -1 to ignore this setting)"
-  response=">>> 1"
-/>
+These values will show after running `status` command. `Exchange`, `Market`, `Mid Price`, `Volatility`, `Base Bal`, `Quote Bal` and `Base %`.
+
+**`Exchange`**
+
+Refers to the exchange chosen.
+
+**`Market`**
+
+This shows the markets that you have entered to provide liquidity STRAX-BTC and SCRT-BTC as shown in the example above.
+
+**`Mid price`**
+
+The average of best bid and best ask price in the orderbook.
+
+**`Volatility`**
+
+The adjustment in volatility will apply to your current spread at `order_refresh_time` if the value of volatility is higher than your current spread.
+
+**`Base Bal`**
+
+This shows the base balance that you currently have.
+
+**`Quote Bal`**
+
+This shows the quote balance that you currently have.
+
+**`Base %`**
+
+The allocation of your base asset vs. the quote asset. Set `target_base_pct` to your desired target base asset portion of quote asset allocation in percentage value. The bot will try to achieve this ratio by adjusting the order amount placed in each of your orders.
+
+The bot will calculate the volatility based on the interval set. In this case, it is 20s. Then the `avg_volatility_period` will calculate the intervals and replace the spread if the value is higher than the current spread. The new spread also depends on the `volatility_to_spread_multiplier` in this case is set to 1.
+
+![](/img/volatility_interval.png)
+
+The spread for AVAX-USDT was widened in the image below because the volatility % was higher than the spread set because of the dynamic spread adjustment on market volatility.
+
+![](/img/volatility_spread.png)
+

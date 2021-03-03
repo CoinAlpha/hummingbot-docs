@@ -12,12 +12,9 @@ import Prompt from "../../src/components/Prompt";
   type="note"
   bullets={[
     "This installation method is currently under testing and awaiting feedback from users. Should you run into problems or have found a fix to solve errors along the way, feel free to reach out through our [Discord] support channel.",
-    "Added #version-0.36.0-arm_beta#, see release notes of [v0.36.0]"
+    "Added #version-0.36.0-arm_beta#, see release notes of [v0.36.0]",
   ]}
-  link={[
-    "http://discord.hummingbot.io/",
-    "release-notes/0.36.0/"
-    ]}
+  link={["http://discord.hummingbot.io/", "/release-notes/0.36.0/"]}
 />
 
 You can install Hummingbot with **_either_** of the following options:
@@ -119,13 +116,13 @@ Raspberry Pi has an easy to follow [guide](https://www.raspberrypi.org/documenta
 
 **Boot your Raspberry Pi**
 
-Insert your SD card into the Raspberry Pi and plug in the power source. 
+Insert your SD card into the Raspberry Pi and plug in the power source.
 From there, the first launch options will be prompted.
-
 
 ** Install Hummingbot dependencies **
 
 Open the Raspberry Pi terminal. In the top left corner of the desktop, there is a shortcut that opens the terminal.
+
 ```
 # Install Miniforge, Python and update alternatives
 wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-aarch64.sh
@@ -134,9 +131,11 @@ sudo apt-get install python3.7
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
 ```
+
 Logout and login again to enable `conda`, this will make the `conda` command available in shell / terminal.
 
 **Install pip dependencies**
+
 ```
 # Create a conda environment for Hummingbot
 conda create --name hummingbot
@@ -149,6 +148,7 @@ pip install pandas cython cachetools aiohttp ruamel.yaml eth_account aiokafka sq
 ```
 
 **Install, compile, and run Hummingbot**
+
 ```
 # Clone the Hummingbot repo from Github
 git clone https://github.com/CoinAlpha/hummingbot.git
@@ -165,12 +165,30 @@ bin/hummingbot.py
   body="#Compiling the bot from source would normally take 45 minutes or more#"
 />
 
+## Create Hummingbot ARM image for Docker
+This guide would help you build your own Hummingbot ARM image when there is a new release. Please be advised that for every new release, you would need to [install from source](#install-from-source) first and follow the steps provided in order to create an image that you can use for your RaspberryPi docker. 
 
-**Controlling remotely using VNC Viewer**
+1. Go to your source directory and run the command below
+```
+# Set a name of your image on insert_name
+docker build -t coinalpha/hummingbot:insert_name -f Dockerfile.arm .
+```
 
-SSH and VNC features are natively built into the Raspberry Pi and can easily be turned on in the Raspberry Pi configurations settings. By turning these on, you can access the Raspberry Pi from another computer by: 
+On this sample, we set `v036` for the name of the image. This is needed when you run `./create.sh` command
+![](/img/rpi-docker-img.png)
+
+
+<Callout
+  type="warning"
+  body="#Building the Hummingbot ARM image from source would normally take 45 minutes or more#"
+/>
+
+## Controlling remotely using VNC Viewer
+
+SSH and VNC features are natively built into the Raspberry Pi and can easily be turned on in the Raspberry Pi configurations settings. By turning these on, you can access the Raspberry Pi from another computer by:
+
 1. Using terminal to SSH, similar to how you would access a cloud server
-2. Using VNC to enable remote desktop access to the Raspberry Pi GUI. 
+2. Using VNC to enable remote desktop access to the Raspberry Pi GUI.
 
 This is very convenient; after initial setup of the Raspberry Pi, you can simply unplug the monitor, keyboard and mouse, and just set the Raspberry Pi itself aside and just access it remotely going forward.
 

@@ -5,7 +5,7 @@ description: Overview on developing strategies
 
 ![StrategyBase class relations](/img/strategy-uml.svg)
 
-Strategy modules in Hummingbot are modules that monitor markets and make trading decisions. All strategy classes are derived from the [`StrategyBase`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/strategy/strategy_base.pyx) class, which is derived from the [`TimeIterator`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/strategy/strategy_base.pyx) class.
+Strategy modules in Hummingbot are modules that monitor markets and make trading decisions. All strategy classes are derived from the [`StrategyBase`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/strategy/strategy_base.pyx) class, which is derived from the [`TimeIterator`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/core/time_iterator.pyx) class.
 
 The concrete strategy classes included with Hummingbot, including [`ArbitrageStrategy`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/strategy/arbitrage/arbitrage.pyx), [`CrossExchangeMarketMakingStrategy`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/strategy/cross_exchange_market_making/cross_exchange_market_making.pyx), and [`PureMarketMakingStrategy`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/strategy/pure_market_making/pure_market_making.pyx) - are all child classes of `StrategyBase`.
 

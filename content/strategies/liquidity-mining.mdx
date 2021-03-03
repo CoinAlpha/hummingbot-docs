@@ -122,11 +122,11 @@ Value in seconds of the orders’ duration before canceling and creating new set
 
 ### `order_refresh_tolerance_pct`
 
-Determines the tolerance threshold in the percentage of the order price before replacing the orders. This is to prevent replacing the orders too often. The parameter has a default value of 0.02%.
+Determines the tolerance threshold in the percentage of the order price before replacing the orders. This is to prevent replacing the orders too often. The parameter has a default value of 0.2%. Setting it to -1 will disable the feature, which means Hummingbot will always cancel and create orders every `order_refresh_time` seconds.
 
 <Prompt
   prompt="Enter the percent change in price needed to refresh orders at each cycle (Enter 1 to indicate 1%) "
-  response=">>> 0.02"
+  response=">>> 0.2"
 />
 
 ### `inventory_range_multiplier`

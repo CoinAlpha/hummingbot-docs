@@ -32,6 +32,7 @@ const sidebarCategories = {
   "Exchange Connectors": [
     "exchange-connectors/overview",
     "exchange-connectors/balancer",
+    "exchange-connectors/beaxy",
     "exchange-connectors/binance",
     "exchange-connectors/binance-futures",
     "exchange-connectors/binance-us",
@@ -48,6 +49,7 @@ const sidebarCategories = {
     "exchange-connectors/liquid",
     "exchange-connectors/loopring",
     "exchange-connectors/okex",
+    "exchange-connectors/probit",
     "exchange-connectors/dydx",
     "exchange-connectors/radar-relay",
     "exchange-connectors/bamboo-relay",
@@ -56,6 +58,7 @@ const sidebarCategories = {
   "Protocol Connectors": [
     "protocol-connectors/overview",
     "protocol-connectors/balancer",
+    "protocol-connectors/perp-fi",
     "protocol-connectors/terra",
     "protocol-connectors/uniswap",
   ],
@@ -69,6 +72,7 @@ const sidebarCategories = {
     "strategies/celo-arb",
     "strategies/amm-arb",
     "strategies/liquidity-mining",
+    "strategies/spot-perpetual-arb",
   ],
   "Advanced Market Making": [
     "strategies/adv-market-making",
@@ -109,6 +113,7 @@ const sidebarCategories = {
   ],
   "Release Notes": [
     "release-notes/overview",
+    "release-notes/0.37.0",
     "release-notes/0.36.0",
     "release-notes/0.35.0",
     "release-notes/0.34.0",

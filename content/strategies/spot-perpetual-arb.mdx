@@ -1,0 +1,129 @@
+---
+title: Spot Perpetual Arbitrage
+description: Learn how to use spot perpetual arbitrage strategy
+---
+
+import Prompt from "../../src/components/Prompt";
+
+import Callout from "../../src/components/Callout";
+
+<Callout
+  type="warning"
+  body="This experimental strategy has undergone code review, internal testing and was shipped during one of our most recent releases. As part of User Acceptance Testing, we encourage user to report any issues and/or provide feedback with this strategy in our [Discord server] or [submit a bug report]"
+  link={[
+    "https://discord.com/invite/2MN3UWg",
+    "https://github.com/CoinAlpha/hummingbot/issues/new?assignees=&labels=bug&template=bug_report.md&title=",
+  ]}
+/>
+
+## How it works
+
+This strategy looks at the price on the spot connector and on the price on the derivative connector. Then it calculates the spread between the two connectors. The key features for this strategy is `min_devergence` and `min_convergence`. For minimum divergence, it keeps looking at the spread which will start a first arbitrage once it reaches or goes above the value set for it. Then minimum convergence, once the spread reaches or goes below the value set, then the second arbitrage will go through.
+
+## Pre-requisites
+
+- Some xDai for gas. See this [link](https://bridge.xdaichain.com/) for more info.
+
+- You will need some quote assets for orders to be opened
+
+- [Hummingbot Gateway](/gateway/installation/) if using Perpetual Finance connector
+
+## Basic Parameters
+
+The following walks through all the steps when running the `create` command.
+
+### `spot_connector`
+
+Enter an exchange you would like to trade on.
+
+<Prompt
+  prompt="Enter a spot connector (Exchange/AMM) "
+  response=">>> binance"
+/>
+
+### `spot_market`
+
+Enter the token trading pair for the spot exchange.
+
+<Prompt
+  prompt="Enter the token trading pair you would like  to trade on binance (e.g ETH-USDT) "
+  response=">>> ETH-USDT"
+/>
+
+### `derivative_connector`
+
+Enter the derivative exchange you would like to trade on.
+
+<Prompt
+  prompt="Enter a derivative name (Exchange/AMM) "
+  response=">>> binance_perpetuals"
+/>
+
+### `derivative_market`
+
+Enter the token trading pair for the derivative exchange.
+
+<Prompt
+  prompt="Enter the token trading pair you would like  to trade on binance_futures (e.g ETH-USDC) "
+  response=">>> ETH-USDC"
+/>
+
+### `order_amount`
+
+The order amount for both the orders. Ensure you have enough balance on quote tokens to place orders.
+
+<Prompt prompt="What is the amount of ETH per order?" response=">>> " />
+
+### `derivative_leverage`
+
+Enter the leverage you would like to use.
+
+<Prompt
+  prompt="How much leverage would you like to use on the derivative exchange? (Enter 1 to indicate 1x) "
+  response=">>> 1"
+/>
+
+### `min_divergence`
+
+The spread required before first arbitrage will occur.
+
+<Prompt
+  prompt="What is the minimum spread between the spot and derivative market price before starting an arbitrage? (Enter 1 to indicate 1%)"
+  response=">>> 1"
+/>
+
+### `min_convergence`
+
+The spread required before second arbitrage will occur.
+
+<Prompt
+  prompt="What is the minimum spread between the spot and derivative market price before closing an existing arbitrage? (Enter 1 to indicate 1%)"
+  response=">>> 1"
+/>
+
+### `maximum_funding_rate`
+
+If set to True, strategy will not execute second arbitrage during funding period until funding payment is received. If set to False, second arbitrage will be executed immediately it's funding period
+
+<Prompt
+  prompt="Would you like to take advantage of the funding rate on the derivative exchange, even if min convergence is reached during funding time? (True/False)"
+  response=">>> False"
+/>
+
+### `spot_market_slippage_buffer`
+
+Percent buffer added to the spot exchange price to account for price movement before trade execution.
+
+<Prompt
+  prompt="How much buffer do you want to add to the price to account for slippage for orders on the spot market (Enter 1 for 1%)?"
+  response=">>> 0.05"
+/>
+
+### `derivative_market_slippage_buffer`
+
+Percent buffer added to the derivative exchange price to account for price movement before trade execution.
+
+<Prompt
+  prompt="How much buffer do you want to add to the price to account for slippage for orders on the derivative market (Enter 1 for 1%)?"
+  response=">>> 0.05"
+/>

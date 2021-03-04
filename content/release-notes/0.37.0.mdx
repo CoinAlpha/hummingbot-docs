@@ -11,7 +11,7 @@ import Callout from "../../src/components/Callout";
 
 ## New Exchange Connector: ProBit
 
-In this release, Hummingbot has added more exchanges and is planning to add a lot more exchanges this year! Hummingbot now supports [Probit](https://www.probit.com/) connector. Probit Exchange describes itself as a global coin-to-coin cryptocurrency exchange. ProBit Exchange only lists what it deems to be 'qualified and deserving' cryptocurrency projects. ProBit Exchange reportedly has an order matching speed of over 1.5 million orders per second and a customizable user interface. In addition, ProBit Exchange claims to provide users with the option of a hardware security key in addition to 2 Factor Authentication.
+In this release, Hummingbot has added more exchanges and is planning to add a lot more exchanges this year! Hummingbot now supports [ProBit](https://www.probit.com/) connector. ProBit Exchange describes itself as a global coin-to-coin cryptocurrency exchange. ProBit Exchange only lists what it deems to be 'qualified and deserving' cryptocurrency projects. ProBit Exchange reportedly has an order matching speed of over 1.5 million orders per second and a customizable user interface. In addition, ProBit Exchange claims to provide users with the option of a hardware security key in addition to 2 Factor Authentication.
 
 ProBit is compatible with [pure market making](https://docs.hummingbot.io/strategies/pure-market-making/), [cross-exchange market-making](/strategies/cross-exchange-market-making/), and [arbitrage strategies](/strategies/arbitrage/).
 
@@ -35,19 +35,19 @@ Read more about how to use the Perpetual Finance connector [here](/protocol-conn
 
 ## Introducing the new Spot Perpetual Arbitrage strategy (Beta)
 
-In v0.3, we introduce the new Spot Perpetual Arbitrage strategy! This strategy lets you arbitrage between a spot and futures exchange. The differences between the prices on the spot and futures markets before the settlement date give a good sense of the direction in which both markets would go. Prices on both futures and spot will converge as the settlement date or time approaches.
+In v0.37, we introduce the new Spot Perpetual Arbitrage strategy! This strategy lets you arbitrage between a spot and futures exchange. The differences between the prices on the spot and futures markets before the settlement date give a good sense of the direction in which both markets would go. Prices on both futures and spot will converge as the settlement date or time approaches.
 
-The idea of this strategy is to open a position in one direction and execute an order in the opposite direction on the spot.
+The idea of this strategy is to open a position in one direction and execute an order in the opposite direction on the spot. Learn more about it here #[2977](https://github.com/CoinAlpha/hummingbot/pull/2977).
 
 ## Improvement to Liquidity Mining strategy
 
-In v0.36, we introduced the Liquidity Mining strategy. In v0.37, we made improvements to give users a better experience when using this strategy, we added two new parameters [`max_spread`](/strategies/liquidity-mining/#max_spread) and [`max_order_age`](/strategies/liquidity-mining/#max_order_age). Tables are also added to let you see more detail about your base and quote balance and also the campaign. Another improvement is better balance distribution on the selected `token`.
-
-![](img/lm-table.png)
+In v0.36, we introduced the Liquidity Mining strategy. In v0.37, we made improvements to give users a better experience when using this strategy, we added two new parameters [`max_spread`](/strategies/liquidity-mining/#max_spread) and [`max_order_age`](/strategies/liquidity-mining/#max_order_age). Tables are also added to let you see more detail about your base and quote balance and also the campaign. Another improvement is better balance distribution on the selected `token`. Learn more about it here #[2961](https://github.com/CoinAlpha/hummingbot/pull/2961).
 
 ## Bug Fixes
 
 - #[2959](https://github.com/CoinAlpha/hummingbot/pull/2959) Pause and Resume fixed for Liquidity Mining strategy
+- #[2987](https://github.com/CoinAlpha/hummingbot/pull/2987) Adds better parsing of Kraken trading symbols and fixes bugs #[1781](https://github.com/CoinAlpha/hummingbot/issues/1781), #[2930](https://github.com/CoinAlpha/hummingbot/issues/2930), and #[2953](https://github.com/CoinAlpha/hummingbot/issues/2953)
+- #[2989](https://github.com/CoinAlpha/hummingbot/pull/2989) Fix typo in `history` command
 - #[2997](https://github.com/CoinAlpha/hummingbot/pull/2997) Added VAI trading pair
 - #[2999](https://github.com/CoinAlpha/hummingbot/pull/2999) Fix orders cancelling in a loop in Cross Exchange Market Making when using `paper_trade`
 - #[3000](https://github.com/CoinAlpha/hummingbot/pull/3000) Fix orders cancelling in a loop when balance is too low when using `paper_trade`

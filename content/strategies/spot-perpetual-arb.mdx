@@ -1,5 +1,5 @@
 ---
-title: Spot Perpetual Arbitrage
+title: Spot Perpetual Arbitrage (BETA)
 description: Learn how to use spot perpetual arbitrage strategy
 ---
 
@@ -9,7 +9,7 @@ import Callout from "../../src/components/Callout";
 
 <Callout
   type="warning"
-  body="This experimental strategy has undergone code review, internal testing and was shipped during one of our most recent releases. As part of User Acceptance Testing, we encourage user to report any issues and/or provide feedback with this strategy in our [Discord server] or [submit a bug report]"
+  body="This experimental strategy has undergone code review, internal testing and was shipped during one of our most recent releases. As part of User Acceptance Testing, we encourage users to report any issues and/or provide feedback with this strategy in our [Discord server] or [submit a bug report]"
   link={[
     "https://discord.com/invite/2MN3UWg",
     "https://github.com/CoinAlpha/hummingbot/issues/new?assignees=&labels=bug&template=bug_report.md&title=",
@@ -18,7 +18,7 @@ import Callout from "../../src/components/Callout";
 
 ## How it works
 
-This strategy looks at the price on the spot connector and on the price on the derivative connector. Then it calculates the spread between the two connectors. The key features for this strategy is `min_divergence` and `min_convergence`. For minimum divergence, it keeps looking at the spread which will start a first arbitrage once it reaches or goes above the value set for it. Then minimum convergence, once the spread reaches or goes below the value set, then the second arbitrage will go through.
+This strategy looks at the price on the spot connector and the price on the derivative connector. Then it calculates the spread between the two connectors. The key features for this strategy are `min_divergence` and `min_convergence`. For minimum divergence, it keeps looking at the spread which will start the first arbitrage once it reaches or goes above the value set for it. Then minimum convergence, once the spread reaches or goes below the value set, then the second arbitrage will go through.
 
 ## Pre-requisites
 
@@ -85,7 +85,7 @@ Enter the leverage you would like to use.
 
 ### `min_divergence`
 
-The spread required before first arbitrage will occur.
+The spread required before the first arbitrage will occur.
 
 <Prompt
   prompt="What is the minimum spread between the spot and derivative market price before starting an arbitrage? (Enter 1 to indicate 1%)"
@@ -103,7 +103,7 @@ The spread required before second arbitrage will occur.
 
 ### `maximum_funding_rate`
 
-If set to True, strategy will not execute second arbitrage during funding period until funding payment is received. If set to False, second arbitrage will be executed immediately it's funding period
+If set to True, the strategy will not execute second arbitrage during the funding period until funding payment is received. If set to False, second arbitrage will be executed immediately it's funding period
 
 <Prompt
   prompt="Would you like to take advantage of the funding rate on the derivative exchange, even if min convergence is reached during funding time? (True/False)"

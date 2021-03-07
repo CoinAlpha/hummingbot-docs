@@ -71,6 +71,7 @@ const sidebarCategories = {
     "strategies/celo-arb",
     "strategies/amm-arb",
     "strategies/liquidity-mining",
+    "strategies/spot-perpetual-arb",
   ],
   "Advanced Market Making": [
     "strategies/adv-market-making",

@@ -31,6 +31,7 @@ const sidebarCategories = {
   ],
   "Exchange Connectors": [
     "exchange-connectors/overview",
+    "exchange-connectors/beaxy",
     "exchange-connectors/balancer",
     "exchange-connectors/binance",
     "exchange-connectors/binance-futures",

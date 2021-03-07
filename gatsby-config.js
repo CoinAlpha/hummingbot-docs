@@ -48,7 +48,6 @@ const sidebarCategories = {
     "exchange-connectors/liquid",
     "exchange-connectors/loopring",
     "exchange-connectors/okex",
-    "exchange-connectors/probit",
     "exchange-connectors/dydx",
     "exchange-connectors/radar-relay",
     "exchange-connectors/bamboo-relay",

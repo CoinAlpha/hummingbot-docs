@@ -18,13 +18,13 @@ import Callout from "../../src/components/Callout";
 
 ## How it works
 
-This strategy looks at the price on the spot connector and on the price on the derivative connector. Then it calculates the spread between the two connectors. The key features for this strategy is `min_devergence` and `min_convergence`. For minimum divergence, it keeps looking at the spread which will start a first arbitrage once it reaches or goes above the value set for it. Then minimum convergence, once the spread reaches or goes below the value set, then the second arbitrage will go through.
+This strategy looks at the price on the spot connector and on the price on the derivative connector. Then it calculates the spread between the two connectors. The key features for this strategy is `min_divergence` and `min_convergence`. For minimum divergence, it keeps looking at the spread which will start a first arbitrage once it reaches or goes above the value set for it. Then minimum convergence, once the spread reaches or goes below the value set, then the second arbitrage will go through.
 
 ## Pre-requisites
 
-- Some xDai for gas. See this [link](https://bridge.xdaichain.com/) for more info.
-
 - You will need some quote assets for orders to be opened
+
+- Some xDai for gas when using Perpetual Finance connector. See this [link](https://bridge.xdaichain.com/) for more info.
 
 - [Hummingbot Gateway](/gateway/installation/) if using Perpetual Finance connector
 

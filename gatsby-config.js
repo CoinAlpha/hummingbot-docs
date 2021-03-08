@@ -58,6 +58,7 @@ const sidebarCategories = {
   "Protocol Connectors": [
     "protocol-connectors/overview",
     "protocol-connectors/balancer",
+    "protocol-connectors/perp-fi",
     "protocol-connectors/terra",
     "protocol-connectors/uniswap",
   ],

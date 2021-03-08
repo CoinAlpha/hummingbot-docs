@@ -169,7 +169,7 @@ This expands the average spread depending on the value set. The predefined value
 
 ### `max_spread`
 
-Set the maximum spread for your orders. Spreads will not go higher if you set a value for max spread. By default, this parameter is set to -1.
+Sets the maximum spread for your orders. Spreads will not go higher than the value you set for this configuration. By default, this parameter is set to -1.
 
 <Prompt
   prompt="What is the maximum spread? (Enter 1 to indicate 1% or -1 to ignore this setting)"
@@ -178,10 +178,10 @@ Set the maximum spread for your orders. Spreads will not go higher if you set a 
 
 ### `max_order_age`
 
-The `max_order_age` parameter allows you to set a specific duration when to reset your order's age. Click [here](/strategies/max-order-age/) to learn more about this parameter.
+Allows you to set a maximum lifespan of your orders (in seconds) at which the orders will certainly get canceled and recreated. Click [here](/strategies/max-order-age/) to learn more about this parameter.
 
 <Prompt
-  prompt="How often do you want to cancel and replace bids and asks (in seconds)"
+  prompt="What is the maximum life time of your orders (in seconds)?"
   response=">>> 3600"
 />
 
@@ -217,25 +217,7 @@ This table lets you see the markets you are participating in, the balance you cu
 
 **Markets**
 
-`Market`
-
-This shows the markets that you have entered to provide liquidity ALGO-USDT, AVAX-USDT, and FIRO-USDT as shown in the example above.
-
-`Mid price`
-
-The average of best bid and best ask price in the orderbook.
-
-`Best_bid`
-
-Shows the best bid of the market
-
-`Best_ask`
-
-Shows the best ask of the market
-
-`Volatility`
-
-The adjustment in volatility will apply to your current spread at `order_refresh_time` if the value of volatility is higher than your current spread.
+This table displays the market, mid price, best bid, best ask, and volatility. Under the market it shows the markets chosen to join liquidity mining. The mid price is the average of the best bid and best ask price in the orderbook. The best bid and best ask shown above are the current best bid and best ask in the orderbook. The adjustment in volatility will apply to your current spread at `order_refresh_time` if the value of the volatility is higher than your current spread.
 
 **Miner**
 

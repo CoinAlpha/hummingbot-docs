@@ -18,7 +18,9 @@ import Callout from "../../src/components/Callout";
 
 ## How it works
 
-This strategy looks at the price on the spot connector and the price on the derivative connector. Then it calculates the spread between the two connectors. The key features for this strategy are `min_divergence` and `min_convergence`. For minimum divergence, it keeps looking at the spread which will start the first arbitrage once it reaches or goes above the value set for it. Then minimum convergence, once the spread reaches or goes below the value set, then the second arbitrage will go through.
+This strategy looks at the price on the spot connector and the price on the derivative connector. Then it calculates the spread between the two connectors. The key features for this strategy are `min_divergence` and `min_convergence`.
+When the spread between spot and derivative markets reach a value above `min_divergence`, the first part of the operation will be executed, creating a buy/sell order on the spot connector, while opening an opposing long/short position on the derivative connector.
+With the positions open, the bot will scan the prices on both connectors, and once the price spread between them reach a value below `min_convergence`, the bot will close both positions.
 
 ## Pre-requisites
 
@@ -85,7 +87,7 @@ Enter the leverage you would like to use.
 
 ### `min_divergence`
 
-The spread required before the first arbitrage will occur.
+The spread required for the first part of the arbitrage to be executed.
 
 <Prompt
   prompt="What is the minimum spread between the spot and derivative market price before starting an arbitrage? (Enter 1 to indicate 1%)"
@@ -94,7 +96,7 @@ The spread required before the first arbitrage will occur.
 
 ### `min_convergence`
 
-The spread required before second arbitrage will occur.
+The spread required for the second part of the arbitrage to be executed.
 
 <Prompt
   prompt="What is the minimum spread between the spot and derivative market price before closing an existing arbitrage? (Enter 1 to indicate 1%)"
@@ -103,7 +105,7 @@ The spread required before second arbitrage will occur.
 
 ### `maximum_funding_rate`
 
-If set to True, the strategy will not execute second arbitrage during the funding period until funding payment is received. If set to False, second arbitrage will be executed immediately it's funding period
+If set to True, the strategy will not execute second arbitrage during the funding period until funding payment is received. If set to False, second arbitrage will be executed depending of the funding payment time.
 
 <Prompt
   prompt="Would you like to take advantage of the funding rate on the derivative exchange, even if min convergence is reached during funding time? (True/False)"

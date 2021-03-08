@@ -20,7 +20,7 @@ import Callout from "../../src/components/Callout";
 
 This strategy looks at the price on the spot connector and the price on the derivative connector. Then it calculates the spread between the two connectors. The key features for this strategy are `min_divergence` and `min_convergence`.
 When the spread between spot and derivative markets reach a value above `min_divergence`, the first part of the operation will be executed, creating a buy/sell order on the spot connector, while opening an opposing long/short position on the derivative connector.
-With the positions open, the bot will scan the prices on both connectors, and once the price spread between them reach a value below `min_convergence`, the bot will close both positions.
+With the position open, the bot will scan the prices on both connectors, and once the price spread between them reach a value below `min_convergence`, the bot will close both positions.
 
 ## Pre-requisites
 

@@ -7,6 +7,8 @@ import Prompt from "../../src/components/Prompt";
 
 import Callout from "../../src/components/Callout";
 
+**Updated as of v0.37**
+
 <Callout
   type="warning"
   body="This experimental strategy has undergone code review, internal testing and was shipped during one of our most recent releases. As part of User Acceptance Testing, we encourage user to report any issues and/or provide feedback with this strategy in our [Discord server] or [submit a bug report]"
@@ -122,7 +124,7 @@ Value in seconds of the orders’ duration before canceling and creating new set
 
 ### `order_refresh_tolerance_pct`
 
-Determines the tolerance threshold in the percentage of the order price before replacing the orders. This is to prevent replacing the orders too often. The parameter has a default value of 0.2%. Setting it to -1 will disable the feature, which means Hummingbot will always cancel and create orders every `order_refresh_time` seconds.
+Determines the tolerance threshold in the percentage of the order price before replacing the orders. This is to prevent replacing the orders too often. The parameter has a default value of 0.2%.
 
 <Prompt
   prompt="Enter the percent change in price needed to refresh orders at each cycle (Enter 1 to indicate 1%) "
@@ -165,6 +167,66 @@ This expands the average spread depending on the value set. The predefined value
   response=">>> 1"
 />
 
+### `max_spread`
+
+Sets the maximum spread for your orders. Spreads will not go higher than the value you set for this configuration. By default, this parameter is set to -1.
+
+<Prompt
+  prompt="What is the maximum spread? (Enter 1 to indicate 1% or -1 to ignore this setting)"
+  response=">>> 1"
+/>
+
+### `max_order_age`
+
+Allows you to set a maximum lifespan of your orders (in seconds) at which the orders will certainly get canceled and recreated. Click [here](/strategies/max-order-age/) to learn more about this parameter.
+
+<Prompt
+  prompt="What is the maximum life time of your orders (in seconds)?"
+  response=">>> 3600"
+/>
+
+```json
+exchange: binance
+markets: ALGO-USDT,AVAX-USDT,FIRO-USDT
+token: USDT
+order_amount: 15.0
+spread: 0.5
+target_base_pct: 50%
+order_refresh_time: 10
+order_refresh_tolerance_pct: 0.2
+inventory_range_multiplier: 1.0
+volatility_interval: 300
+avg_volatility_period: 10
+volatility_to_spread_multiplier: 1.0
+max_spread: -1.0
+max_order_age: 3600.0
+```
+
+![](/img/lm.png)
+
+These values will show after running `status` command. `Budget`, `Markets`, `Miner`, and `Orders`.
+
+<Callout
+  type="note"
+  body="`status --live` currently is not compatible with liquidity mining strategy"
+/>
+
+**Budget**
+
+This table lets you see the markets you are participating in, the balance you currently have and also the budget allocation for each pair.
+
+**Markets**
+
+This table displays the market, mid price, best bid, best ask, and volatility. Under the market it shows the markets chosen to join liquidity mining. The mid price is the average of the best bid and best ask price in the orderbook. The best bid and best ask shown above are the current best bid and best ask in the orderbook. The adjustment in volatility will apply to your current spread at `order_refresh_time` if the value of the volatility is higher than your current spread.
+
+**Miner**
+
+This shows the markets chosen, rewards for that certain campaign, rewards per week, current liquidity of that market, yield, and maximum spread for that campaign. This gives you insight on the campaigns you are participating to easily check what are the details for the campaigns.
+
+**Orders**
+
+Other than the markets, this shows the side of the order created, price, current spread, order amount, order size and the age.
+
 ## Sample Configurations
 
 Here's an example of how the liquidity mining strategy works.
@@ -188,40 +250,10 @@ This strategy lets you run multiple token pairs in one bot. The bot distributes 
 
 ![](/img/lm-status.png)
 
-These values will show after running `status` command. `Exchange`, `Market`, `Mid Price`, `Volatility`, `Base Bal`, `Quote Bal` and `Base %`.
-
-**`Exchange`**
-
-Refers to the exchange chosen.
-
-**`Market`**
-
-This shows the markets that you have entered to provide liquidity STRAX-BTC and SCRT-BTC as shown in the example above.
-
-**`Mid price`**
-
-The average of best bid and best ask price in the orderbook.
-
-**`Volatility`**
-
-The adjustment in volatility will apply to your current spread at `order_refresh_time` if the value of volatility is higher than your current spread.
-
-**`Base Bal`**
-
-This shows the base balance that you currently have.
-
-**`Quote Bal`**
-
-This shows the quote balance that you currently have.
-
-**`Base %`**
-
-The allocation of your base asset vs. the quote asset. Set `target_base_pct` to your desired target base asset portion of quote asset allocation in percentage value. The bot will try to achieve this ratio by adjusting the order amount placed in each of your orders.
-
 The bot will calculate the volatility based on the interval set. In this case, it is 20s. Then the `avg_volatility_period` will calculate the intervals and replace the spread if the value is higher than the current spread. The new spread also depends on the `volatility_to_spread_multiplier` in this case is set to 1.
 
 ![](/img/volatility_interval.png)
 
-The spread for AVAX-USDT was widened in the image below because the volatility % was higher than the spread set because of the dynamic spread adjustment on market volatility.
+The spread for was widened in the image below because the volatility % was higher than the spread set because of the dynamic spread adjustment on market volatility.
 
 ![](/img/volatility_spread.png)

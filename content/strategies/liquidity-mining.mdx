@@ -53,8 +53,8 @@ The following walks through all the steps when running the `create` command.
 The exchange where the bot will create and place orders.
 
 <Prompt
-  prompt="Enter your liquidity mining exchange name? "
-  response=">>> Binance"
+  prompt="Enter the spot connector to use for liquidity mining? "
+  response=">>> binance"
 />
 
 ### `markets`
@@ -129,6 +129,15 @@ Determines the tolerance threshold in the percentage of the order price before r
 <Prompt
   prompt="Enter the percent change in price needed to refresh orders at each cycle (Enter 1 to indicate 1%) "
   response=">>> 0.2"
+/>
+
+### `inventory_skew_enabled`
+
+Allows you to enable and disable the `target_base_pct`. By default, this parameter is set to true.
+
+<Prompt
+  prompt="Would you like to enable inventory skew? (Yes/No) "
+  response=">>> Yes"
 />
 
 ### `inventory_range_multiplier`

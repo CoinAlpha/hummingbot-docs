@@ -50,6 +50,7 @@ const sidebarCategories = {
     "exchange-connectors/loopring",
     "exchange-connectors/okex",
     "exchange-connectors/probit",
+    "exchange-connectors/probit-korea",
     "exchange-connectors/dydx",
     "exchange-connectors/radar-relay",
     "exchange-connectors/bamboo-relay",

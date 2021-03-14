@@ -131,7 +131,7 @@ Price type to be used as price reference when creating orders.
 
 **`mid_price`**
 
-Hummingbot uses the mid price of the market's order book in the current exchange as reference e.g. if your bid/ask spread is set to 1, your orders will be created 1% away from the mid price. Mid price - is calculated (market best ask + market best bid) / 2
+Hummingbot uses the mid price of the market's order book in the current exchange as reference e.g. if your bid/ask spread is set to 1, your orders will be created 1% away from the mid price. Mid price - is calculated (market best ask + market best bid) / 2.
 
 ```json
            price_source: current_market
@@ -140,7 +140,7 @@ Hummingbot uses the mid price of the market's order book in the current exchange
 
 **`last_price`**
 
-Last price - is the most recent price that the asset have been traded
+Last price is the most recent price that the asset has been traded.
 
 ```json
            price_source: current_market
@@ -149,7 +149,7 @@ Last price - is the most recent price that the asset have been traded
 
 **`last_own_trade_price`**
 
-The bot will use the last price that one of your orders was taken as the price type
+The bot uses the last own trade price as a price reference when creating orders.
 
 ```json
            price_source: current_market
@@ -158,16 +158,16 @@ The bot will use the last price that one of your orders was taken as the price t
 
 **`best_bid`**
 
-When `price_type` is set to `best_bid`, the price will be based on the besk bid in the orderbook.
+When `price_type` is set to `best_bid`, the price will be based on the best bid in the order book.
 
 ```json
            price_source: current_market
              price_type: best_bid
 ```
 
-**`besk_ask`**
+**`best_ask`**
 
-When `price_type` is set to `best_ask`, the price will be based on the besk ask in the orderbook.
+When `price_type` is set to `best_ask`, the price will be based on the best ask in the order book.
 
 ```json
            price_source: current_market
@@ -176,7 +176,7 @@ When `price_type` is set to `best_ask`, the price will be based on the besk ask 
 
 **`inventory_cost`**
 
-Hummingbot will calculate the average cost of your inventory every time a buy order is filled, and all sell orders will be created at `inventory_cost` + `ask_spread`.
+The bot will calculate the average cost of your inventory every time a buy order is filled, and all sell orders will be created at `inventory_cost` + `ask_spread`.
 
 ```json
            price_source: current_market

@@ -184,7 +184,6 @@ export default function Callout(props) {
         tempString = "";
         startLink = true;
       } else if (thisChar === "]" && startLink === true) {
-        console.log(linkCount);
         arr.push(<a href={linkArr[linkCount]}>&nbsp;{tempString}</a>);
         linkCount++;
         tempString = "";

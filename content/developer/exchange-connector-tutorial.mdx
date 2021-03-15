@@ -1,13 +1,19 @@
 ---
-title: "Develop Connector Tutorial"
+title: "Exchange Connector Developer Tutorial"
 description: Info on developing connector
 ---
 
-import Callout from "../../src/components/Callout";
+import Callout from "../../src/components/Callout";
 
 ## Building Connectors
 
-<Callout type="note" body="This [page] lists all relevant updates to Hummingbot codebase aimed to help connector developers in making the requisite changes to their connectors." link={["https://www.notion.so/hummingbot/a26c8bcf30284535b0e5689d45a4fe88?v=869e73f78f0b426288476a2abda20f2c"]}/>
+<Callout
+  type="note"
+  body="This [page] lists all relevant updates to Hummingbot codebase aimed to help connector developers in making the requisite changes to their connectors."
+  link={[
+    "https://www.notion.so/hummingbot/a26c8bcf30284535b0e5689d45a4fe88?v=869e73f78f0b426288476a2abda20f2c",
+  ]}
+/>
 
 Each exchange connector is comprised of the following components:
 
@@ -38,7 +44,7 @@ Implementing a new connector can generally be split into 3 major tasks:
 
 The following diagram displays the tasks and their relevant classes(required and optional) as checklist to get started.
 
-![connector tutorial UML](/img/connector-tutorial-uml.png)
+![connector tutorial UML](/img/connector-tutorial-uml.svg)
 
 ## Order Lifecycle and Market Events
 

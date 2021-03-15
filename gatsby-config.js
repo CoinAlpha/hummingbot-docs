@@ -95,7 +95,7 @@ const sidebarCategories = {
     "developer/overview",
     "developer/contributing",
     "developer/architecture",
-    "developer/tutorial",
+    "developer/exchange-connector-tutorial",
     "developer/task1",
     "developer/task2",
     "developer/task3",

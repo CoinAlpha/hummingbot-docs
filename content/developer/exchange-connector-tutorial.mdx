@@ -105,7 +105,7 @@ On some exchanges, it is possible for an order to fail or rejected without havin
 For example, on decentralized exchanges, an live order could be rejected by the exchange after initial submission if there is not enough balance on the wallet to fill the order.
 If an order has failed or has been rejected for any reason other than cancellation or expiry, then a `MarketOrderFailureEvent` would be emitted.
 
-## In Flight Order Helper
+## InFlightOrder Helper
 
 Hummingbot comes with a built-in helper class for exchange connectors to track their order states, the `InFlightOrderBase` class.
 

@@ -43,6 +43,7 @@ const sidebarCategories = {
     "exchange-connectors/coinbase",
     "exchange-connectors/crypto-com",
     "exchange-connectors/eterbase",
+    "exchange-connectors/hitbtc",
     "exchange-connectors/huobi",
     "exchange-connectors/kucoin",
     "exchange-connectors/kraken",

@@ -2,8 +2,11 @@
 title: "Task 2 — User Stream Tracker"
 ---
 
-import Callout from "../../src/components/Callout";
+import Callout from "../../src/components/Callout";
 
+![UserStreamTrackerUMLDiagram](/img/user-stream-tracker-architecture.svg)
+
+The **_UML Diagram_**, given above, illustrates the relations between `UserStreamTracker` and its subsidiary classes.
 
 The `UserStreamTracker` responsibility is to fetch user account data and queues it accordingly.
 
@@ -11,15 +14,17 @@ The `UserStreamTracker` responsibility is to fetch user account data and queues 
 
 - `UserStreamTrackerDataSource`
 - `UserStreamTracker`
-- `MarketAuth`(if applicable).
+- `Auth`(if applicable).
 
-<Callout type="note" body="This is only required in #Centralized Exchanges#."/>
+<Callout
+  type="note"
+  body="Auth is generally only required in #Centralized Exchanges#."
+/>
 
 ## UserStreamTrackerDataSource
 
-The `UserStreamTrackerDataSource` class is responsible for initializing a WebSocket connection to obtain user related trade and balances updates.
-
-Integrating your own data source component would require you to extend from the UserStreamTrackerDataSource base class here.
+The `UserStreamTrackerDataSource` class is responsible for initializing a WebSocket connection to obtain user order, trade and balances updates.
+Implementing an exchange connector would require you create its own data source that extends from the `UserStreamTrackerDataSource` base class here.
 
 The following details the **required** functions in `UserStreamTrackerDataSource`:
 
@@ -32,7 +37,7 @@ Should be updated(using python's time.time()) everytime a message is received fr
 
 ### `listen_for_user_stream`
 
-Subscribe to user stream via web socket, and keep the connection open for incoming messages.<br/>
+Subscribes to all relevant user channels via web socket, and keep the connection open for incoming messages.<br/>
 
 **Input Parameter:** ev_loop: `asyncio.BaseEventLoop`, output: `asyncio.Queue` <br/>
 **Expected Output(s):** None
@@ -46,13 +51,30 @@ This can be achieved in 2 ways(depending on the available API on the exchange):
 1. **REST API**
 
    In this scenario, we would have to periodically make API requests to the exchange to retrieve information on the user's **account balances** and **order statuses**.
-   An example of this can be seen in [Huobi's connector exchange file](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/huobi/huobi_exchange.pyx) connector. The market file shows that Huobi uses REST API alone by periodically calling the market's `_update_balances()` and `_update_order_status()` through the `_status_polling_loop()`. Also, it can be seen that no user stream files exist in Huobi's connector directory.
+   An example of this can be seen in [Huobi's connector exchange file](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/huobi/huobi_exchange.pyx) connector.
+
+   As seen in the `Exchange` class, Huobi uses REST API alone by periodically calling the market's `_update_balances()` and `_update_order_status()` through the `_status_polling_loop()`.
+   Also, it can be seen that no user stream files exist in Huobi's connector directory.
+
+   <Callout
+     type="warning"
+     body="Maintaining user data using just the REST API is not ideal and would generally lead to degraded performance of the bot."
+   />
 
 2. **WebSocket API**
 
-   When an exchange does have WebSocket API support to retrieve user account details and order statuses, it would be ideal to incorporate it into the Hummingbot client when managing account balances and updating order statuses. This is especially important since Hummingbot needs to knows the available account balances and order statuses at all times.
+   When an exchange does have WebSocket API support to retrieve user account details and order statuses, it would be ideal to incorporate it into the Hummingbot client when managing account balances and updating order statuses.
+   This is especially important since Hummingbot needs to knows the available account balances and order statuses at all times.
 
-<Callout type="tip" body="In most scenarios, as seen in most other Centralized Exchanges([Binance], [Coinbase Pro], [Bittrex]), a simple WebSocket integration is used to listen on selected topics and retrieving messages to be processed in `Market` class." link={["https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/binance/binance_user_stream_tracker.py","https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/coinbase_pro/coinbase_pro_user_stream_tracker.py","https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/bittrex/bittrex_user_stream_tracker.py"]}/>
+<Callout
+  type="tip"
+  body="In most scenarios, as seen in most other Centralized Exchanges(i.e. [Binance], [Crypto.com], [ProBit]), a simple WebSocket integration is used to listen on selected topics and retrieving messages to be processed in `Market` class."
+  link={[
+    "https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/binance/binance_user_stream_tracker.py",
+    "https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/crypto_com/crypto_com_user_stream_tracker.py",
+    "https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/probit/probit_user_stream_tracker.py",
+  ]}
+/>
 
 The following details the **required** functions to be implemented in `UserStreamTracker`:
 
@@ -70,13 +92,7 @@ Starts all listeners and tasks. <br/>
 **Input Parameter:** None <br/>
 **Expected Output(s):** None
 
-### `user_stream`
-
-Returns the message queue containing all the messages pertaining to user account balances and order statues. <br/>
-
-**Input Parameter:** None <br/>
-**Expected Output(s):** `asyncio.Queue`
-
 ## Debugging & Testing
 
-As part of the QA process, for each tasks(Task 1 through 3) you are **required** to include the unit test cases for the code review process to begin. Refer to [Option 1: Unit Test Cases](/developer/debug&test/#option-1-unit-test-cases) to build your unit tests.
+As part of the Code Review and QA process, for each tasks(Task 1 through 3) you are **required** to include the unit test cases for the code review process to begin.
+Refer to [Option 1: Unit Test Cases](/developer/debug&test/#option-1-unit-test-cases) to build your unit tests.

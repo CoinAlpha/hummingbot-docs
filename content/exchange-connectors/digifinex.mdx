@@ -70,6 +70,39 @@ Make sure you store your Secret Key somewhere secure and do not share it with an
 
 ## Miscellaneous Info
 
+<Callout
+  type="note"
+  bullets={[
+    "Websocket error / timeout may occur every 2 hours",
+    "Low rate limit, I think we need to add a link to their trade rule so that users should be aware on this limit and avoid getting ban look at link [here]",
+  ]}
+  link={["https://docs.digifinex.com/en-ww/v3/#digifinex-api-trading-rules"]}
+/>
+
+### Minimum order sizes
+
+Minimum order size varies per market. All minimum trade quantities can be found in the following public API:
+
+```
+https://openapi.digifinex.com/v3/markets
+```
+
+`BTC-USDT min 0.00005.`
+
+```
+{"data":
+[{"volume_precision":8,
+"price_precision":2,
+"market":"btc_usdt",
+"min_amount":2,
+"min_volume":5e-05},
+{"volume_precision":4,
+"price_precision":2,
+"market":"eth_usdt",
+"min_amount":2,
+"min_volume":0.005},
+```
+
 ### Transaction Fees
 
 The transaction fee for the Spot transaction is 0.2% per time. DFT holders can enjoy the discount. Become a VIP user and enjoy a lower transaction fee, with a minimum fee of 0.060%

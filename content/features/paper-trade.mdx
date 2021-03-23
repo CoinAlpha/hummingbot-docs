@@ -4,6 +4,7 @@ description:
 ---
 
 import Callout from "../../src/components/Callout";
+import StatusCircle from "../../src/components/StatusCircle";
 
 This feature allows users to test Hummingbot and simulate trading strategies without risking any actual assets. Enter the command `paper_trade` to enable this feature.
 
@@ -67,3 +68,29 @@ Paper account balances:
      WETH    10.0000
       ZRX  1000.0000
 ```
+
+Here is the list of our Supported Connectors that could run `paper_trade` as of version 0.37.1.
+
+| Connector                                               |                   Status                   | Description                                                                                                                                                                             |
+| :------------------------------------------------------ | :----------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Beaxy](/exchange-connectors/beaxy)                     | <StatusCircle color="yellow" font="25px"/> | Connector is new (BETA) and may have some undiscovered issues                                                                                                                           |
+| [Binance](/exchange-connectors/binance)                 | <StatusCircle color="green" font="25px"/>  | Connector is working properly and safe to use                                                                                                                                           |
+| [Binance Futures](/exchange-connectors/binance-futures) | <StatusCircle color="green" font="25px"/>  | Connector is working properly and safe to use                                                                                                                                           |
+| [Binance US](/exchange-connectors/binance-us)           | <StatusCircle color="yellow" font="25px"/> | Connector has one or more reported issues. Refer to our [Github page](https://github.com/CoinAlpha/hummingbot/issues?q=is%3Aopen+%22binance+US%22+in%3Atitle) page for more information |
+| [Bitfinex](/exchange-connectors/bitfinex)               | <StatusCircle color="yellow" font="25px"/> | Connector has one or more reported issues. Refer to our [Github page](https://github.com/CoinAlpha/hummingbot/issues?q=is%3Aopen+%22bitfinex%22+in%3Atitle) page for more information   |
+| [Bitmax](/exchange-connectors/Bitmax)                   | <StatusCircle color="green" font="25px"/>  | Connector is working properly and safe to use                                                                                                                                           |
+| [Bittrex Global](/exchange-connectors/bittrex)          | <StatusCircle color="yellow" font="25px"/> | Connector has one or more reported issues. Refer to our [Github page](https://github.com/CoinAlpha/hummingbot/issues?q=is%3Aopen+%22bittrex%22+in%3Atitle) page for more information    |
+| [Coinbase Pro](/exchange-connectors/coinbase)           | <StatusCircle color="green" font="25px"/>  | Connector is working properly and safe to use                                                                                                                                           |
+| [Crypto.com](/exchange-connectors/crypto-com)           | <StatusCircle color="yellow" font="25px"/> | Connector has one or more reported issues. Refer to our [Github page](https://github.com/CoinAlpha/hummingbot/issues?q=is%3Aopen+%22crypto.com%22+in%3Atitle) page for more information |
+| [dYdX](/exchange-connectors/dydx)                       | <StatusCircle color="green" font="25px"/>  | Connector is working properly and safe to use                                                                                                                                           |
+| [Huobi Global](/exchange-connectors/huobi)              | <StatusCircle color="green" font="25px"/>  | Connector is working properly and safe to use                                                                                                                                           |
+| [Kraken](/exchange-connectors/kraken)                   | <StatusCircle color="green" font="25px"/>  | Connector is working properly and safe to use                                                                                                                                           |
+| [KuCoin](/exchange-connectors/kucoin)                   | <StatusCircle color="green" font="25px"/>  | Connector is working properly and safe to use                                                                                                                                           |
+| [Liquid](/exchange-connectors/liquid)                   | <StatusCircle color="green" font="25px"/>  | Connector is working properly and safe to use                                                                                                                                           |
+| [OKEx](/exchange-connectors/okex)                       | <StatusCircle color="green" font="25px"/>  | Connector is working properly and safe to use                                                                                                                                           |
+| [ProBit Global](/exchange-connectors/probit)            | <StatusCircle color="yellow" font="25px"/> | Connector is new (BETA) and may have some undiscovered issues                                                                                                                           |
+
+<Callout
+  type="note"
+  body="Spot exchanges that are not listed are currently broken and unusable"
+/>

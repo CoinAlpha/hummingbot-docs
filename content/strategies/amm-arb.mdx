@@ -9,7 +9,7 @@ import Prompt from "../../src/components/Prompt";
 
 **Updated as of v0.33**
 
-Before you can use the AMM arbitrage strategy in Hummingbot, you need to install and configure the Gateway API server. The following flowchart shows the typical installaton and configuration process for Balancer.
+Before you can use the AMM arbitrage strategy in Hummingbot, you need to install and configure the Gateway API server. The following flowchart shows the typical installation and configuration process for Balancer.
 
 ![Balancer flowchart](/img/balancer-flowchart.png)
 
@@ -24,14 +24,20 @@ Ensure you have setup the Ethereum wallet and nodes, for more details:
 
 After the installation and configuration is completed, we can create the configuration for AMM arbitrage strategy. The following example shows a step-by-step on configuring the AMM arb strategy.
 
-<Callout type="note" body="Paper trading is not available." />
+<Callout
+  type="note"
+  body=" `Paper_trade` is not applicable for this strategy. Alternatively, you may set up a `kovan_testnet` to help you run some tests without risking funds. "
+/>
 
 1. In Hummingbot, enter `create`.
 2. Enter `amm-arb`.
 3. Enter `balancer`.
 4. Enter the first trading pair, for example `BAT-DAI`.
 
-<Callout type="note" body="Ensure the trading pair tokens are in your wallet in order to trade." />
+<Callout
+  type="note"
+  body="Ensure the trading pair tokens are in your wallet in order to trade."
+/>
 
 5. Enter an exchange connector, for example `binance`.
 6. Enter the second trading pair, for example `BAT-USDT`.
@@ -139,7 +145,10 @@ If false, the bot will wait for first exchange order filled before submitting th
 
 If you prefer to manually set your gas other than using Defipulse.
 
-<Callout type="note" body="If Defipulse is set for gas estimation, manual_gas_price is ignored. To use `manual gas price`, you need to disable `ethgasstation_gas_enabled`" />
+<Callout
+  type="note"
+  body="If Defipulse is set for gas estimation, manual_gas_price is ignored. To use `manual gas price`, you need to disable `ethgasstation_gas_enabled`"
+/>
 
 ** Prompt: **
 
@@ -150,7 +159,7 @@ If you prefer to manually set your gas other than using Defipulse.
 
 ## Switch Balancer Network
 
-Two ways to switch network(Kovan/Mainnet)
+Two ways to switch network [Ethereum mainnet/Kovan testnet](https://docs.hummingbot.io/gateway/installation/#setting-up-kovan-testnet)
 
-- Delete the Gateway docker container and re-run the `create-gateway.sh` script.
-- Use `update-gateway.sh` script to update the docker image and follow the prompt instructions.
+1. Delete the Gateway docker container and re-run the `create-gateway.sh` script.
+2. Use `update-gateway.sh` script to update the docker image and follow the prompt instructions.

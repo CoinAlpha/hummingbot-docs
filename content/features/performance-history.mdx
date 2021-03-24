@@ -46,7 +46,13 @@ Run the `history` command in Hummingbot to display the current duration of total
 
 The following displays the formula for key calculations:
 
-<Callout type="note" body="For more details on all the indidvual item formula, see [google sheet] for the formulas in the cells." link={["https://docs.google.com/spreadsheets/d/1zp8EmeJdiP5soR_Bu7hRjaSy65bc7lsg98J5jKanRn8/edit#gid=875477664"]} />
+<Callout
+  type="note"
+  body="For more details on all the indidvual item formula, see [google sheet] for the formulas in the cells."
+  link={[
+    "https://docs.google.com/spreadsheets/d/1zp8EmeJdiP5soR_Bu7hRjaSy65bc7lsg98J5jKanRn8/edit#gid=875477664",
+  ]}
+/>
 
 ## Average Price
 
@@ -60,13 +66,13 @@ This value means the average price of total MFT/BNB trades is 0.0001457
 
 The asset value from the start to the end with no trades.
 
-Hold portfolio value = (base start asset\*quote current value)+ quote start asset
+Hold portfolio value = (base start asset\*current market price)+ quote start asset
 
 From the above example, for the Hold portfolio value is (155248\*0.0000809)+23.33=35.89
 
 ## Current Portfolio Value
 
-Current portfolio value = (quote current asset\*quote current value)+ quote current asset
+Current portfolio value = (base current asset\*current market price)+ quote current asset
 
 From the above example, for the Hold portfolio value is (202671\*0.0000809)+16.419=32.815
 

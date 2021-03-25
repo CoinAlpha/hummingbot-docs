@@ -1,22 +1,38 @@
 ---
-title: "Task 3 — Market Connector"
+title: "Task 3 — Exchange Connector"
 
-description: Info on market connector
+description: Info on Exchange connector
 ---
 
-import Callout from "../../src/components/Callout";
+import Callout from "../../src/components/Callout";
 
-The primary bulk of integrating a new exchange connector is in this section.
+![ExchangeUMLDiagram](/img/exchange-class.svg)
 
-The role of the `Market` class can be broken down into placing and tracking orders. Although this might seem pretty straightforward, it does require a certain level of understanding and knowing the expected side-effect(s) of certain functions.
+The **_Class Diagram_**, given above, details the critical variables and functions in the `Exchange` class.
 
-`Market` classes place orders via `execute_buy` and `execute_sell` commands, which require the following arguments:
+The primary bulk of implementing a new exchange connector is in this task.
 
-- The order ID
-- The market symbol
-- The amount of the order
-- The type (limit or market)
-- The price, if limit order
+The role of the `Exchange` class can be broken down simply into placing,cancelling and tracking orders.
+Although this might seem pretty straightforward, it does require a certain level of understanding and knowing the expected side-effect(s) of certain functions.
+
+`Exchange` classes place orders via the `_create_order()` method, which require the following arguments:
+
+| Arguments(s)   | Type        | Description                                                                               |
+| -------------- | ----------- | ----------------------------------------------------------------------------------------- |
+| `order_id`     | `str`       | ID used to track an order in Hummingbot.                                                  |
+| `trading_pair` | `str`       | Name of the trading pair symbol(in Hummingbot's format i.e. `BASE-QUOTE`)                 |
+| `price`        | `Decimal`   | Price in which the order will be placed in `Decimal`                                      |
+| `amount`       | `Decimal`   | Amount in which the order will be placed in `Decimal`                                     |
+| `order_type`   | `OrderType` | Specifies the order type of the order(i.e. `OrderType.LIMIT` and `OrderType.LIMIT_MAKER`) |
+| `trade_type`   | `TradeType` | Specifies the trade type of the order(i.e. `TradeType.BUY` and `TradeType.SELL`)          |
+
+<Callout
+  type="tip"
+  body="For more details on `OrderType` and `TradeType` click [here]"
+  link={[
+    "https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/core/event/events.py#L61-L69",
+  ]}
+/>
 
 The `execute_buy` and `execute_sell` methods verify that the trades would be legal given the trading rules pulled from the exchange and calculate applicable trading fees. They then must do the following:
 
@@ -35,7 +51,11 @@ As such, it would only make sense to have a module dedicated to handling authent
 
 As briefly mentioned, the `Auth` class is responsible for creating the request parameters and/or data bodies necessary to authenticate an API request.
 
-<Callout type="note" body="Mainly used in the `Market` class, but may be required in the `UserStreamTrackerDataSource` to authenticate subscribing to a WebSocket connection in [listen_for_user_stream]." link={["/developer/task2/#userstreamtrackerdatasource"]}/>
+<Callout
+  type="note"
+  body="Mainly used in the `Market` class, but may be required in the `UserStreamTrackerDataSource` to authenticate subscribing to a WebSocket connection in [listen_for_user_stream]."
+  link={["/developer/task2/#userstreamtrackerdatasource"]}
+/>
 
 ### `generate_auth_dict`
 
@@ -44,7 +64,10 @@ Generates the url and the valid signature to authenticate a particular API reque
 **Input Parameter:** http_method: `str`,url: `str`,params: `Dict[str, any]`,body: `Dict[str, any]` <br/>
 **Expected Output(s):** `Dict[str, any]`
 
-<Callout type="tip" body="The #input parameters# and #return# value(s) can be modified accordingly to suit the exchange connectors. In most cases, the above parameters are required when creating a signature."/>
+<Callout
+  type="tip"
+  body="The #input parameters# and #return# value(s) can be modified accordingly to suit the exchange connectors. In most cases, the above parameters are required when creating a signature."
+/>
 
 ## Market
 
@@ -68,7 +91,10 @@ Function that takes the strategy inputs, auto corrects itself with trading rules
 **Input Parameter:** <br/> order_id: `str`,<br/>symbol: `str`,<br/>amount: `Decimal`,<br/>order_type: `OrderType`,<br/>price: `Optional[Decimal] = s_decimal_0` <br/>
 **Expected Output(s):** None
 
-<Callout type="tip" body="The `execute_buy` and `execute_sell` methods verify that the trades would be allowed given the trading rules obtained from the exchange and calculate applicable trading fees. They then must do the following,"/>
+<Callout
+  type="tip"
+  body="The `execute_buy` and `execute_sell` methods verify that the trades would be allowed given the trading rules obtained from the exchange and calculate applicable trading fees. They then must do the following,"
+/>
 
 - Quantize the order amount to ensure that the precision is as required by the exchange
 - Create a `params` dictionary with the necessary parameters for the desired order
@@ -78,13 +104,13 @@ Function that takes the strategy inputs, auto corrects itself with trading rules
 
 Considering that placing of orders normally involves a `POST` request to a particular buy/sell order REST API endpoint. This would **require** additional parameters like :
 
-| Variable(s)<div style="width:100px"/> | Type                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| ------------------------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `order_id`                            | `str`               | A generated, client-side order ID that will be used to identify an order by the Hummingbot client.<br/> The `order_id` is generated in the `c_buy` function.                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `symbol`                              | `str`               | The trading pair string representing the market on which the order should be placed. i.e. (ZRX-ETH) <br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: Some exchanges have the trading pair symbol in `Quote-Base` format. Hummingbot requires that all trading pairs to be in `Base-Quote` format.</td></tr></tbody></table>                                                                                                                                                                                                                                                     |
-| `amount`                              | `Decimal`           | The total value, in base currency, to buy/sell.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| `order_type`                          | `OrderType`         | OrderType.LIMIT, OrderType.LIMIT_MAKER or OrderType.MARKET <br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: LIMIT_MAKER should be used as market maker and LIMIT as market taker(using price to cross the orderbook) for exchanges that support LIMIT_MAKER. Otherwise, the the usual MARKET OrderType should be used as market taker and LIMIT as market taker.</td></tr></tbody></table>                                                                                                                                                                                      |
-| `price`                               | `Optional[Decimal]` | If `order_type` is `LIMIT`, it represents the rate at which the `amount` base currency is being bought/sold at.<br/>If `order_type` is `LIMIT_MAKER`, it also represents the rate at which the `amount` base currency is being bought/sold at. However, this `OrderType` is expected to be a **post only** order(i.e should ideally be rejected by the exchange if it'll cross the market)<br/>If `order_type` is `MARKET`, this is **not** used(`price = s_decimal_0`). <br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: `s_decimal_0 = Decimal(0)` </td></tr></tbody></table> |
+| Variable(s)  | Type                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ------------ | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `order_id`   | `str`               | A generated, client-side order ID that will be used to identify an order by the Hummingbot client.<br/> The `order_id` is generated in the `c_buy` function.                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `symbol`     | `str`               | The trading pair string representing the market on which the order should be placed. i.e. (ZRX-ETH) <br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: Some exchanges have the trading pair symbol in `Quote-Base` format. Hummingbot requires that all trading pairs to be in `Base-Quote` format.</td></tr></tbody></table>                                                                                                                                                                                                                                                     |
+| `amount`     | `Decimal`           | The total value, in base currency, to buy/sell.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `order_type` | `OrderType`         | OrderType.LIMIT, OrderType.LIMIT_MAKER or OrderType.MARKET <br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: LIMIT_MAKER should be used as market maker and LIMIT as market taker(using price to cross the orderbook) for exchanges that support LIMIT_MAKER. Otherwise, the the usual MARKET OrderType should be used as market taker and LIMIT as market taker.</td></tr></tbody></table>                                                                                                                                                                                      |
+| `price`      | `Optional[Decimal]` | If `order_type` is `LIMIT`, it represents the rate at which the `amount` base currency is being bought/sold at.<br/>If `order_type` is `LIMIT_MAKER`, it also represents the rate at which the `amount` base currency is being bought/sold at. However, this `OrderType` is expected to be a **post only** order(i.e should ideally be rejected by the exchange if it'll cross the market)<br/>If `order_type` is `MARKET`, this is **not** used(`price = s_decimal_0`). <br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: `s_decimal_0 = Decimal(0)` </td></tr></tbody></table> |
 
 ** Cancelling Orders **
 
@@ -94,7 +120,10 @@ The `execute_cancel` function is the primary function used to cancel any particu
 
 Function that makes API request to cancel an active order and returns the `order_id` if it has been successfully cancelled or no longer needs to be tracked.<br/>
 
-<Callout type="note" body="This function also stops tracking the order by calling the `c_stop_tracking_order` and `c_trigger_event` functions."/> 
+<Callout
+  type="note"
+  body="This function also stops tracking the order by calling the `c_stop_tracking_order` and `c_trigger_event` functions."
+/>{" "}
 
 **Input Parameter:**<br/> symbol: `str`,<br/>order_id: `str` <br/>
 **Expected Output(s):** order_id: `str`
@@ -139,7 +168,10 @@ Trading Rules are defined by the respective exchanges. It is crucial that Hummin
 
 A list of some common rules can be seen in [`trading_rule.pyx`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/trading_rule.pyx).
 
-<Callout type="note" body="Most exchanges have a minimum trading size. Not all rules need to be defined, however, it is essential to meet the rules as specified by the exchange."/>
+<Callout
+  type="note"
+  body="Most exchanges have a minimum trading size. Not all rules need to be defined, however, it is essential to meet the rules as specified by the exchange."
+/>
 
 All trading rules are stored in `self._trading_rules` in the `Market` class.
 
@@ -163,7 +195,10 @@ Gets the necessary trading rules definitions form the corresponding REST API end
 
 Parses the raw JSON response into a list of [`TradingRule`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/trading_rule.pyx).
 
-<Callout type="note" body="This is important since exchanges might only accept certain precisions and impose a minimum trade size on the order."/>
+<Callout
+  type="note"
+  body="This is important since exchanges might only accept certain precisions and impose a minimum trade size on the order."
+/>
 
 **Input Parameter:** `List[Any]` <br/>
 **Expected Output(s):** `List[TradingRule]`
@@ -305,7 +340,10 @@ An asynchronous wrapper function for `_stop_network`. Used by `NetworkBase` clas
 
 Gets status update for a particular order via rest API.
 
-<Callout type="note" body="You are required to retrieve the exchange order ID for the specified `client_order_id`. You can do this by calling the `get_exchange_order_id` function available in the `InFlightOrderBase`."/>
+<Callout
+  type="note"
+  body="You are required to retrieve the exchange order ID for the specified `client_order_id`. You can do this by calling the `get_exchange_order_id` function available in the `InFlightOrderBase`."
+/>
 
 **Input Parameter:** `client_order_id:str` <br/>
 **Expected Output(s):** `Dict[str, Any]`
@@ -342,7 +380,10 @@ Synchronous function that handles when a single market goes offline.
 
 Returns a shared HTTP client session instance.
 
-<Callout type="note" body="This prevents the need to establish a new session on every API request."/>
+<Callout
+  type="note"
+  body="This prevents the need to establish a new session on every API request."
+/>
 
 **Input Parameter:** `None` <br/>
 **Expected Output(s):** `aiohttp.ClientSession`
@@ -400,7 +441,10 @@ A synchronous wrapper function that generates a client-side order ID and schedul
 
 A synchronous wrapper function that schedules an order cancellation.
 
-<Callout type="note" body="The `order_id` here refers to the client-side order ID as tracked by Hummingbot."/>
+<Callout
+  type="note"
+  body="The `order_id` here refers to the client-side order ID as tracked by Hummingbot."
+/>
 
 **Input Parameter:** `str symbol`,`str order_id` <br/>
 **Expected Output(s):** `str`

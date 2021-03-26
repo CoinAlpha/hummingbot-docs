@@ -88,17 +88,6 @@ The strategy will place the sell (ask) order on a certain % away from the mid pr
   response=">>> 3"
 />
 
-### `minimum_spread`
-
-The strategy will check every tick and cancel the active orders if an order's spread is less than the minimum spread parameter.
-
-** Prompt: **
-
-<Prompt
-  prompt="At what distance/spread from the mid price do you want the orders to be cancelled?"
-  response=">>> 2"
-/>
-
 ### `order_refresh_time`
 
 An amount in seconds, which is the duration for the placed limit orders. The limit bid and ask orders are cancelled and new orders are placed according to the current mid price and spreads at this interval.

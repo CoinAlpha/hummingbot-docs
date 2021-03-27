@@ -13,7 +13,11 @@ In the pure market making strategy, Hummingbot continually posts limit bid and a
 
 Users can specify how far away ("spreads") from the mid price the bid and asks are, the order quantity, and how often prices should be updated (order cancels + new orders posted).
 
-<Callout type="warning" body="Please exercise caution while running this strategy and set appropriate [kill switch] rate. The current version of this strategy is intended to be a basic template that users can test and customize. Running the strategy with substantial capital without additional modifications may result in losses." link={["/operation/command-ref/#kill-switch"]} />
+<Callout
+  type="warning"
+  body="Please exercise caution while running this strategy and set appropriate [kill switch] rate. The current version of this strategy is intended to be a basic template that users can test and customize. Running the strategy with substantial capital without additional modifications may result in losses."
+  link={["/operation/command-ref/#kill-switch"]}
+/>
 
 ## Schematic
 
@@ -74,6 +78,8 @@ Token trading pair symbol you would like to trade on the exchange.
 
 The strategy will place the buy (bid) order on a certain % away from the mid price.
 
+** Prompt: **
+
 <Prompt
   prompt="How far away from the mid price do you want to place the first bid order?"
   response=">>> 2"
@@ -82,6 +88,8 @@ The strategy will place the buy (bid) order on a certain % away from the mid pri
 ### `ask_spread`
 
 The strategy will place the sell (ask) order on a certain % away from the mid price.
+
+** Prompt: **
 
 <Prompt
   prompt="How far away from the mid price do you want to place the first ask order?"
@@ -121,4 +129,7 @@ Whether to alternate between buys and sells. For more information on this parame
   response=""
 />
 
-<Callout type="tip" body="For autocomplete inputs during configuration, when going through the command line config process, pressing `<TAB>` at a prompt will display valid available inputs." />
+<Callout
+  type="tip"
+  body="For autocomplete inputs during configuration, when going through the command line config process, pressing `<TAB>` at a prompt will display valid available inputs."
+/>

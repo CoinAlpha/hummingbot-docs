@@ -25,7 +25,7 @@ Although this might seem pretty straightforward, it does require a certain level
 
 <Callout
   type="note"
-  body="The 4 categories of functions broadly covers the necessary functions that need to be implemented in the `Exchange` class, so feel free to include other utility functions as needed."
+  body="The 6 categories of functions broadly covers the necessary functions that need to be implemented in the `Exchange` class, so feel free to include other utility functions as needed."
 />
 
 ## (1) Placing Orders
@@ -88,9 +88,6 @@ Function that takes the strategy inputs, generates a client order ID(used by Hum
 
 <details>
   <summary><p style="display:inline"><strong>Expected Output(s):</strong></p></summary> 
-
-
-
 
 </details>
 -->
@@ -323,27 +320,216 @@ Updates the user's available and total asset balance.
 
 ## (4) Managing Trading Rules
 
-TBD
+The `Exchange` is also responsible for managing the trading rules of the trading pairs since there are rules enforced by the exchange themselves.
 
-### `get_order_price_quantum()`
-
-### `get_order_size_quantum()`
+Below are the functions used to ensure that orders being placed meet the requirements and ensure that the trading rules are up to date.:
 
 ### **_async_** `_trading_rules_polling_loop()`
 
+Asynchronous task that periodically update trading rules.
+
+Calls [`_update_trading_rules()`](#async-_update_trading_rules)
+
+**Input Parameter(s):** `None`
+
+**Expected Output(s):** `None`
+
 ### **_async_** `_update_trading_rules()`
+
+Queries the necessary API endpoint and intialize the `TradingRule` object for each trading pair being traded.
+
+Calls [\_api_request()](#async-_api_request) and subsequently [`_format_trading_rules()`](#_format_trading_rules)
+
+**Input Parameter(s):** `None`
+
+**Expected Output(s):** `None`
 
 ### `_format_trading_rules()`
 
+Converts JSON API response into a dictionary of [`TradingRule`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/trading_rule.pyx).
+
+**Input Parameter(s):**
+
+| Parameter(s)   | Type             | Description                                           |
+| -------------- | ---------------- | ----------------------------------------------------- |
+| `api_response` | `Dict[str, Any]` | The JSON API response for the exchanges trading rules |
+
+**Expected Output(s):** `None`
+
+<Callout
+  type="note"
+  body="The trading rules can generally be found in the API endpoint that lists all supported trading pairs/markets."
+/>
+
+### `get_order_price_quantum()`
+
+Returns a price step, a minimum price increment for a given trading pair.
+
+**Input Parameter(s):**
+
+| Parameter(s)   | Type      | Description                             |
+| -------------- | --------- | --------------------------------------- |
+| `trading_pair` | `str`     | Trading pair of the order being placed. |
+| `price`        | `Decimal` | Price of the order being placed.        |
+
+**Expected Output(s):**
+
+| Output(s)             | Type      | Description                                       |
+| --------------------- | --------- | ------------------------------------------------- |
+| `min_price_increment` | `Decimal` | Minimum Price increment of specified trading pair |
+
+### `get_order_size_quantum()`
+
+Returns an order amount step, a minimum amount increment for a given trading pair.
+
+**Input Parameter(s):**
+
+| Parameter(s)   | Type      | Description                             |
+| -------------- | --------- | --------------------------------------- |
+| `trading_pair` | `str`     | Trading pair of the order being placed. |
+| `order_size`   | `Decimal` | Order size of the order being placed.   |
+
+**Expected Output(s):**
+
+| Output(s)       | Type      | Description                                                 |
+| --------------- | --------- | ----------------------------------------------------------- |
+| `min_increment` | `Decimal` | Minimum base asset size increment of specified trading pair |
+
 ## (5) Additional Function(s)
 
-TBD
+The list below are the utility functions and its description that the `Exchange` class use.
 
 ### **_async_** `_api_request()`
 
+### `start_network()`
+
+This function is required by `NetworkIterator` base class and is called automatically.
+It starts tracking order book, polling trading rules, updating statuses and tracking user data.
+
+**Input Parameter(s):** `None`
+
+**Expected Output(s):** `None`
+
+### `stop_network()`
+
+This function is required by `NetworkIterator` base class and is called automatically.
+It performs the necessary shut down procedure.
+
+**Input Parameter(s):** `None`
+
+**Expected Output(s):** `None`
+
+### `check_network()`
+
+This function is required by NetworkIterator base class and is called periodically to check the network connection.
+Simply ping the network (or call any light weight public API).
+
+**Input Parameter(s):** `None`
+
+**Expected Output(s):** `None`
+
+### `get_order_book()`
+
+Used by the `OrderBookCommand` to display the order book in the terminal.
+
+**Input Parameter(s):**
+
+| Parameter(s)   | Type  | Description                                                               |
+| -------------- | ----- | ------------------------------------------------------------------------- |
+| `trading_pair` | `str` | Trading pair used to identify the `OrderBook` from the `OrderBookTracker` |
+
+**Expected Output(s):**
+
+| Output(s)    | Type        | Description                                      |
+| ------------ | ----------- | ------------------------------------------------ |
+| `order_book` | `OrderBook` | `OrderBook` object of the specified trading pair |
+
+### `get_open_orders()`
+
+Queries the open order endpoint and parses the response as a `List` of `OpenOrder` objects.
+
+**Input Parameter(s):** `None`
+
+**Expected Output(s):**
+
+| Output(s) | Type              | Description         |
+| --------- | ----------------- | ------------------- |
+| `orders`  | `List[OpenOrder]` | List of open orders |
+
+### `restore_tracking_states()`
+
+Restore in-flight orders from saved tracking states, this is such that the connector can pick up on where it left off should it crash unexpectedly.
+
+The saved tracking states are stored locally as a `sqlite` file in the `/data` folder.
+
+**Input Parameter(s):**
+
+| Parameter(s)   | Type             | Description                                                                  |
+| -------------- | ---------------- | ---------------------------------------------------------------------------- |
+| `saved_states` | `Dict[str, any]` | JSON value of all the saved order states from the locally saved sqlite file. |
+
+**Expected Output(s):** `None`
+
+### `supported_order_types()`
+
+Returns list of OrderType supported by this connector.
+
+**Input Parameter(s):** `None`
+
+**Expected Output(s):**
+
+| Output(s) | Type              | Description                                                                                           |
+| --------- | ----------------- | ----------------------------------------------------------------------------------------------------- |
+| `types`   | `List[OrderType]` | List of `OrderType`. Generally connectors would support `OrderType.LIMIT` and `OrderType.LIMIT_MAKER` |
+
+### **_async_** `_http_client`
+
+Returns the shared `aiohttp.ClientSession` used by the connector. This HTTP client is used for all REST API requests.
+
+**Input Parameter(s):** `None`
+
+**Expected Output(s):**
+
+| Output(s) | Type                    | Description                                                    |
+| --------- | ----------------------- | -------------------------------------------------------------- |
+| `client`  | `aiohttp.ClientSession` | A HTTP client used to interact with the exchanges API servers. |
+
+### `get_fee()`
+
+To get trading fee, this function is simplified by using fee override configuration. Most parameters to this function are ignore except order_type.
+Use `OrderType.LIMIT_MAKER` to specify you want trading fee for maker order.
+
+**Input Parameter(s):**
+
+| Parameter(s)     | Type                                                                                                       | Description                                                                               |
+| ---------------- | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `base_currency`  | `str`                                                                                                      | Base currency of the order.                                                               |
+| `quote_currency` | `str`                                                                                                      | Quote currency of the order.                                                              |
+| `price`          | `Decimal`                                                                                                  | Price in which the order will be placed in `Decimal`                                      |
+| `amount`         | `Decimal`                                                                                                  | Amount in which the order will be placed in `Decimal`                                     |
+| `order_type`     | [`OrderType`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/core/event/events.py#L61-L69) | Specifies the order type of the order(i.e. `OrderType.LIMIT` and `OrderType.LIMIT_MAKER`) |
+| `trade_type`     | [`TradeType`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/core/event/events.py#L61-L69) | Specifies the trade type of the order(i.e. `TradeType.BUY` and `TradeType.SELL`)          |
+
+**Expected Output(s):**
+
+| Output(s) | Type                                                                                                        | Description                       |
+| --------- | ----------------------------------------------------------------------------------------------------------- | --------------------------------- |
+| `fee`     | [`TradeFee`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/core/event/events.py#L257-L287) | Estimated trade fee of the order. |
+
 ## (6) Class Properties
 
-TBD
+Below are the property functions of the `Exchange` class.
+
+| Property Function(s) | Type                       | Description                                                                                                                       |
+| -------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `name`               | `str`                      | Name of the exchange. Used to identify the exchange across Hummingbot.                                                            |
+| `order_books`        | `Dict[str, OrderBook]`     | Dictionary of the `OrderBook` of each active trading pair on the bot. Utilizes the `order_books` property from `OrderBookTracker` |
+| `trading_rules`      | `Dict[str, TradingRule]`   | Returns the `_trading_rule` class variable; a dictionary of the `TradingRule` of each active trading pair on the bot.             |
+| `in_flight_orders`   | `Dict[str, InFlightOrder]` | Dictionary of the all `InFlightOrder` by its client order ID.                                                                     |
+| `status_dict`        | `Dict[str, bool]`          | A dictionary of statuses of various connector's components. Used by the `ready()` property function.                              |
+| `ready`              | `bool`                     | True when all statuses pass, this might take 5-10 seconds for all the connector's components and services to be ready.            |
+| `limit_orders`       | `List[LimitOrder]`         | Returns a list of `InFlightOrder`.                                                                                                |
+| `tracking_states`    | `Dict[str, Any]`           | All `InFlightOrder` in JSON format. Used to save in sqlite db.                                                                    |
 
 ## Debugging & Testing
 

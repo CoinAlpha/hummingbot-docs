@@ -1,14 +1,37 @@
 ---
-title: "Task 3 — Exchange Connector"
+title: "Task 3 — Exchange Connector & InFlightOrder"
 
 description: Info on Exchange connector
 ---
 
 import Callout from "../../src/components/Callout";
 
-## Overview
+# Overview
 
-The **_Class Diagram_**, given below, details the critical variables and functions in the `Exchange` class. The primary bulk of implementing a new exchange connector is in this task.
+In Task 3, we will be required to implement both `InFlightOrder` and `Exchange` Class. The primary bulk of implementing a new exchange connector is in this task.
+
+## InFlightOrder Class
+
+As seen in the [Exchange Component Overview](architecture/#exchange-component-overview), the `Exchange` class depends on the `InFlightOrder` Class.
+The `InFlightOrder` abstracts the details of an order and is primary used by the `Exchange` class to manage all active orders.
+
+The **_InFlightOrder Class Diagram_**, given below, details the critical variables and functions in the `InFlightOrder` class.
+
+![InFlightOrderUMLDiagram](/img/in-flight-order-class-diagram.svg)
+
+Below are the functions that need to be implemented in the new `InFlightOrder` class.
+
+| Function(s)                | Input                          | Output          | Description                                                                                                             |
+| -------------------------- | ------------------------------ | --------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `is_done`                  | `None`                         | `bool`          | Returns `True` if the order state is completely filled or cancelled.                                                    |
+| `is_failure`               | `None`                         | `bool`          | Returns `True` if placing the order is unsuccesfully.                                                                   |
+| `is_cancelled`             | `None`                         | `bool`          | Returns `True` if the order state is cancelled.                                                                         |
+| `from_json`                | data: `Dict[str, Any]`         | `InFlightOrder` | Converts the order data from a JSON object to an `InFlightOrder` object.                                                |
+| `update_with_trade_update` | trade_update: `Dict[str, Any]` | `bool`          | Updates the in flight order with trade update from the REST or WebSocket API. Returns `True` if the order gets updated. |
+
+## Exchange Class
+
+The `Exchange` class is the middle-man between the strategies and the exchange API servers. It provides the necessary order book and user data to the strategies and communicates the order proposals to the exchanges.
 
 The functions of the `Exchange` class can be catergorized into:
 
@@ -20,6 +43,8 @@ The functions of the `Exchange` class can be catergorized into:
 [**(6) Class Properties**](#6-class-properties)
 
 Although this might seem pretty straightforward, it does require a certain level of understanding and knowing the expected side-effect(s) of certain functions.
+
+The **_Exchange Class Diagram_**, given below, details the critical variables and functions in the `Exchange` class.
 
 ![ExchangeUMLDiagram](/img/exchange-class.svg)
 
@@ -520,7 +545,7 @@ Use `OrderType.LIMIT_MAKER` to specify you want trading fee for maker order.
 
 Below are the property functions of the `Exchange` class.
 
-| Property Function(s) | Type                       | Description                                                                                                                       |
+| Property Function(s) | Output                     | Description                                                                                                                       |
 | -------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `name`               | `str`                      | Name of the exchange. Used to identify the exchange across Hummingbot.                                                            |
 | `order_books`        | `Dict[str, OrderBook]`     | Dictionary of the `OrderBook` of each active trading pair on the bot. Utilizes the `order_books` property from `OrderBookTracker` |

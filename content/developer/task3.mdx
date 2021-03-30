@@ -31,11 +31,11 @@ Although this might seem pretty straightforward, it does require a certain level
 ## (1) Placing Orders
 
 The `Exchange` class places orders by either calling the [`buy()`](#buy) or [`sell()`](#sell) method.
-Both these methods first generates a client order ID for the order which will be used locally by Hummingbot to track the orders before calling the [`_create_order()`](#_create_order) method.
+Both these methods first generates a client order ID for the order which will be used locally by Hummingbot to track the orders before calling the [`_create_order()`](#async-_create_order) method.
 
 ### `buy()`
 
-Function that takes the strategy inputs, generates a client order ID(used by Hummingbot for local order tracking), and places a **buy** order by calling the [`_create_order()`](#_create_order) function.
+Function that takes the strategy inputs, generates a client order ID(used by Hummingbot for local order tracking), and places a **buy** order by calling the [`_create_order()`](#async-_create_order) function.
 
 **Input Parameter(s):**
 
@@ -54,7 +54,7 @@ Function that takes the strategy inputs, generates a client order ID(used by Hum
 
 ### `sell()`
 
-Function that takes the strategy inputs, generates a client order ID(used by Hummingbot for local order tracking), and places a **sell** order by calling the [`_create_order()`](#_create_order) function.
+Function that takes the strategy inputs, generates a client order ID(used by Hummingbot for local order tracking), and places a **sell** order by calling the [`_create_order()`](#async-_create_order) function.
 
 **Input Parameter(s):**
 
@@ -105,7 +105,7 @@ This function is responsible for executing the API request to place the order on
 - Create a `params` dictionary with the necessary parameters for the desired order.
 - Pass the `params` to an `Auth` object to generate the request signature.
 - Begin tracking the order by calling [`start_tracking_order(...)`](#start_tracking_order).
-- Places the order by calling the [`_api_request()`](#_api_request) method with the relevant order parameters.
+- Places the order by calling the [`_api_request()`](#async-_api_request) method with the relevant order parameters.
 - Upon successfully placing the order, the tracked order will be updated with the resulting **_exchange order ID_** from the API Response.
 
 <Callout
@@ -134,11 +134,11 @@ This function is responsible for executing the API request to place the order on
 
 ## (2) Cancelling Orders
 
-The strategy and the `exit` command cancels orders by calling [`cancel()`](#cancel) or [`cancel_all()`](#cancel_all) methods respectively.
+The strategy and the `exit` command cancels orders by calling [`cancel()`](#cancel) or [`cancel_all()`](#async-cancel_all) methods respectively.
 
 ### `cancel()`
 
-Function that takes in the trading pair and client order ID from the strategy as inputs and proceeds to a **cancel** the order by calling the [`_execute_cancel()`](#_execute_cancel) function.
+Function that takes in the trading pair and client order ID from the strategy as inputs and proceeds to a **cancel** the order by calling the [`_execute_cancel()`](#async-_execute_cancel) function.
 
 **Input Parameter(s):**
 
@@ -151,7 +151,9 @@ Function that takes in the trading pair and client order ID from the strategy as
 
 ### **_async_** `cancel_all()`
 
-Function that is primarily triggered by the `ExitCommand` that **cancels all** `InFlightOrder`s being tracked by the `Exchange` class.
+Function that is primarily triggered by the `ExitCommand` that **cancels all** `InFlightOrder`s being tracked by the `Exchange` class. It confirms the successful cancellation of the orders by calling the
+
+Calls the [\_api_request()](#async-_api_request) function with the relevant parameters.
 
 **Input Parameter(s):** `None`
 
@@ -161,9 +163,14 @@ Function that is primarily triggered by the `ExitCommand` that **cancels all** `
 | --------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `cancellation_result` | `List[CancellationResult]` | List of `CancellationResult`. `CancellationResult.success` is assigned `True` if the particular order(identified by Client Order ID) is successfully cancelled |
 
+<Callout
+  type="note"
+  body="In some cases, where an exchange does not have a cancel all orders endpoint, the we will have to call `_execute_cancel()` for each in-flight order"
+/>
+
 ### **_async_** `_execute_cancel()`
 
-Cancels all in-flight orders and waits for cancellation results.
+Cancels the specified in-flight order and simply returns the client order ID.
 
 **Input Parameter(s):**
 
@@ -172,14 +179,11 @@ Cancels all in-flight orders and waits for cancellation results.
 | `trading_pair` | `str` | Name of the trading pair symbol(in Hummingbot's format i.e. `BASE-QUOTE`) |
 | `order_id`     | `str` | Client Order ID                                                           |
 
-**Expected Output(s):** order_id: `str`
+**Expected Output(s):**
 
-Executes order cancellation process by first calling cancel-order API. The API result doesn't confirm whether the cancellation is successful, it simply submits submits the request and waits for a response.
-
-<Callout
-  type="note"
-  body="In some cases, where an exchange does not have a cancel all orders endpoint, the we will have to call `_execute_cancel()` for each in-flight order"
-/>
+| Output(s)  | Type  | Description     |
+| ---------- | ----- | --------------- |
+| `order_id` | `str` | Client Order ID |
 
 ## (3) Tracking Orders & Balances
 
@@ -325,9 +329,9 @@ TBD
 
 ### `get_order_size_quantum()`
 
-### `_trading_rules_polling_loop()`
+### **_async_** `_trading_rules_polling_loop()`
 
-### `_update_trading_rules()`
+### **_async_** `_update_trading_rules()`
 
 ### `_format_trading_rules()`
 
@@ -335,7 +339,7 @@ TBD
 
 TBD
 
-### `_api_request()`
+### **_async_** `_api_request()`
 
 ## (6) Class Properties
 

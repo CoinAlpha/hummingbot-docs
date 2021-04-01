@@ -28,6 +28,7 @@ const sidebarCategories = {
     "features/kill-switch",
     "features/telegram",
     "features/debug",
+    "features/rate-oracle",
   ],
   "Exchange Connectors": [
     "exchange-connectors/overview",

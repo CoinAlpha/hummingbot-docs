@@ -18,25 +18,25 @@ import Prompt from "../../src/components/Prompt";
 
 ## How it Works
 
-The Fieldfare Market Making Strategy is designed to scale inventory and keep it at a certain target that a user defines it to. To do so, strategy will optimize both bid and ask spreads and their order amount to maximize profitability.
+The Fieldfare Market Making Strategy is designed to scale inventory and keep it at a specific target that a user defines it with. To achieve this, the strategy will optimize both bid and ask spreads and their order amount to maximize profitability.
 
-In its beginner mode, user will be questioned of min and max spread limits and it's aversion to inventory risk scaled from 0 to 1 (Being 0 more driven to profit but less to inventory in target, and 1 being driven to keep tight control of inventory at the expense of less profit). Additionally, sensitivity to volatility changes will be included with a special parameter `vol_to_spread_multiplier`, to modify spreads in scenarios of big volatility.
+In its beginner mode, the user will be asked to enter min and max spread limits, and it's aversion to inventory risk scaled from 0 to 1 (Being 0 more driven to profit but less to inventory in target, and 1 being driven to keep tight control of inventory at the expense of less profit). Additionally, sensitivity to volatility changes will be included with a particular parameter `vol_to_spread_multiplier`, to modify spreads in big volatility scenarios.
 
-In expert mode, user will need to define directly the basic parameters of the algorithm described in the foundation paper (reference to Avellaneda paper) and no recalculation of parameters will happen.
+In expert mode, the user will need to define directly the basic parameters of the algorithm described in the foundation paper (a reference to Avellaneda paper), and no recalculation of parameters will happen.
 
 ## Prerequisites
 
 ### Inventory
 
-You will need to hold sufficient inventory of quote and/or base currencies on the exchange to place orders of the exchange's minimum order size.
+You will need to hold a sufficient inventory of quote and or base currencies on the exchange to place orders of the exchange's minimum order size.
 
 ### Minimum Order Size
 
-When placing orders, if the size of the order determined by the order price and quantity is below the exchange's minimum order size, then the orders will not be created.
+When placing orders, if the order's size determined by the order price and quantity is below the exchange's minimum order size, then the orders will not be created.
 
 ## Basic Parameters
 
-We aim to teach new users the basics of market making, while enabling experienced users to exercise more control over how their bots behave. By default, when you run `create` we ask you to enter the basic parameters needed for a market making bot.
+We aim to teach new users the basics of market making, while enabling experienced users to exercise more control over how their bots behave. By default, when you run `create,` we ask you to enter the basic parameters needed for a market making bot.
 
 ### `exchange`
 
@@ -59,7 +59,7 @@ Token trading pair symbol you would like to trade on the exchange.
 
 ### `order_amount`
 
-The order amount for the limit bid and ask orders. Ensure you have enough quote and base tokens to place the bid and ask orders. The strategy will not place any orders if you do not have sufficient balance on either sides of the order. <br/>
+The order amount for the limit bid and ask orders. Ensure you have enough quote and base tokens to place the bid and ask orders. The strategy will not place any orders if you do not have sufficient balance on either sides of the order.
 
 ** Prompt: **
 
@@ -68,9 +68,9 @@ The order amount for the limit bid and ask orders. Ensure you have enough quote 
   response=""
 />
 
-### `order_optimization_enabled`
+### `parameters_based_on_spread`
 
-Allows your bid and ask order prices to be adjusted based on the current top bid and ask prices in the market.
+The parameter acts as a toggle between beginner(parameters_based_on_spread=True) and expert mode (False). When equal to true, strategy will require min spread, max spread, volatility multiplier, and inventory risk aversion, while if set to False it will only ask for risk_factor, order_book_depth_factor and order_amount_shape_factor.
 
 ** Prompt: **
 
@@ -103,10 +103,11 @@ The maximum spread related to the mid price allowed by user for bid/ask orders
 
 ### `vol_to_spread_multiplier`
 
-`vol_to_spread_multiplier` will act as a threshold value to override max_spread when volatility is a higher value
-For a multiplier of 1 if volatility is bigger than max_spread, then max_spread will be 1*volatility
-For a multiplier of 2, if volatility is 50% or more of max_spread then max_spread will be replaced by 2*volatility
-For a multiplier of 3, if volatility is 33% or more of max_spread then max_spread will be replaced by 3\*volatility
+`vol_to_spread_multiplier` will act as a threshold value to override max_spread when volatility is a higher value.
+
+For a multiplier of 1 if volatility is bigger than `max_spread`, then `max_spread` will be (1 x volatility).
+For a multiplier of 2, if volatility is 50% or more of `max_spread` then `max_spread` will be replaced by (2 x volatility).
+For a multiplier of 3, if volatility is 33% or more of `max_spread` then `max_spread` will be replaced by (3 x volatility).
 
 ** Prompt: **
 
@@ -116,6 +117,8 @@ For a multiplier of 3, if volatility is 33% or more of max_spread then max_sprea
 />
 
 ### `inventory_risk_aversion`
+
+Inventory Risk Aversion is a quantity between 0 and 1 to measure the compromise between mitigation of inventory risk and profitability. Symmetrical spreads closer to 0 will tend to generate more profitability but inventory will reach its target at a slower pace. Whereas skewed spreads closer to 1 will increase chances of one side of bid/ask to be executed with respect to the other, in that way forcing inventory to converge to target, while decreasing the final profit.
 
 ** Prompt: **
 
@@ -137,6 +140,8 @@ An amount in seconds, which is the duration for the placed limit orders. The lim
 
 ### `inventory_target_base_pct`
 
+It sets a target of base asset balance in relation to a total asset allocation value (in percentage value). It works the same as the pure market making strategy's [inventory_skew](/strategies/inventory-skew/) feature in order to achieve this target.
+
 ** Prompt: **
 
 <Prompt
@@ -148,7 +153,11 @@ An amount in seconds, which is the duration for the placed limit orders. The lim
 
 These are additional parameters that you can reconfigure and use to customize the behavior of your strategy further. To change its settings, run the command `config` followed by the parameter name e.g. `config max_order_age`.
 
+All 3 parameters ‘order_book_depth_factor’, ‘risk_factor’ and ‘order_amount_shape_factor’ are customizable only in expert mode (toggled by ‘parameters_based_on_spread’=False).
+
 ### `order_book_depth_factor`
+
+This parameter denoted by letter kappa is directly proportional to the liquidity of the order book, hence to the probability of an order being filled. For more details see foundation paper.
 
 ** Prompt: **
 
@@ -156,11 +165,15 @@ These are additional parameters that you can reconfigure and use to customize th
 
 ### `risk_factor`
 
+This parameter denoted by letter gamma is related to the aggressiveness when setting the spreads to achieve the inventory target. It is directly proportional to the asymmetry between bid and ask spread. For more details see foundation paper.
+
 ** Prompt: **
 
 <Prompt prompt="Enter risk factor (y)" response=">>>" />
 
 ### `order_amount_shape_factor`
+
+This parameter denoted in letter eta is related to the aggressiveness when setting the order amount to achieve the inventory target. It is inversely proportional to the asymmetry between bid and ask order amount. For more details see foundation paper.
 
 ** Prompt: **
 
@@ -168,10 +181,23 @@ These are additional parameters that you can reconfigure and use to customize th
 
 ### `closing_time`
 
+This parameter will be the limit time (measure in days) for this “trading cycle”. We call trading cycles the interval of time where spreads start the widest possible and end up the smallest. Once the cycle is reseted, spreads will start again being the widest possible.
+
 ** Prompt: **
 
 <Prompt
   prompt="Enter operational closing time (T). (How long will each trading cycle last in days or fractions of day)"
+  response=">>>"
+/>
+
+### `order_optimization_enabled`
+
+Allows your bid and ask order prices to be adjusted based on the current top bid and ask prices in the market. By the default this parameter is set to True.
+
+** Prompt: **
+
+<Prompt
+  prompt="Do you want to enable best bid ask jumping? (Yes/No)"
   response=">>>"
 />
 
@@ -222,6 +248,8 @@ Whether to enable adding transaction costs to order price calculation.
 />
 
 ### `volatility_buffer_size`
+
+Number of ticks used as a sample size for volatility calculation.
 
 ** Prompt: **
 

@@ -37,7 +37,7 @@ const sidebarCategories = {
     "exchange-connectors/binance-futures",
     "exchange-connectors/binance-us",
     "exchange-connectors/bitfinex",
-    "exchange-connectors/bitmax",
+    "exchange-connectors/ascend-ex",
     "exchange-connectors/bittrex",
     "exchange-connectors/blocktane",
     "exchange-connectors/coinbase",

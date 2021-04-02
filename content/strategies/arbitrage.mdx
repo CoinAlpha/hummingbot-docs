@@ -81,7 +81,21 @@ Minimum profitability target required to execute trades.
   response=">>> "
 />
 
-<Callout type="tip" body="For autocomplete inputs during configuration, when going through the command line config process, pressing `<TAB>` at a prompt will display valid available inputs." />
+### `use_oracle_conversion_rate`
+
+Rate oracle conversion is used to compute the rate of a certain market pair using collection of prices from either Binance or Coingecko.
+
+If enabled, when the trading pair symbols mismatch, the bot will use a real-time conversion rate from the oracle.
+For example, if markets are set to trade for `LINK-USDT` and `LINK-USDC`, the bot will use the oracle conversion rate between `USDT` and `USDC`.
+
+You can also edit it from `config_global.yml` to change the `rate_oracle_source`.
+
+** Prompt: **
+
+<Callout
+  type="tip"
+  body="For autocomplete inputs during configuration, when going through the command line config process, pressing `<TAB>` at a prompt will display valid available inputs."
+/>
 
 ## Advanced Parameters
 

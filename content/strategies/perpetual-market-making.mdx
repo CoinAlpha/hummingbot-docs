@@ -13,15 +13,20 @@ Perpetual market making allows Hummingbot users to market make on supported deri
 
 Similar to pure market making strategy, it keeps placing limit buy and sell orders on the order book and waits for other participants (takers) to fill its orders.
 
-In this document, we will explain how the strategy works by dividing it into three main behaviors :
+In this document, we will explain how the strategy works by dividing it into three main behaviors:
 
 1. Creating orders to open a position
 2. Opening positions after a filled order event
 3. Creating orders to close a position
 
-We also did a live demo of the strategy and saved a recording in YouTube :
+You can also watch the recording of our demo of the strategy in the link below:
 
 - [Hummingbot Live - Perpetual Market Making Demo](https://www.youtube.com/watch?v=IclhZWtKiSA&t=2194s)
+
+<Callout
+  type="info"
+  body="Currently, this strategy `only works with Binance Futures` and we plan to support more derivatives connector in the future."
+/>
 
 
 ## Testing The Strategy
@@ -32,15 +37,23 @@ Users can test how this strategy works without risking real funds by connecting 
 - [Creating Binance Futures Testnet API Keys](https://docs.hummingbot.io/exchange-connectors/binance-futures/#creating-binance-futures-testnet-api-keys)
 
 
-## Creating the Strategy
+## Creating a basic strategy configuration
 
-1. In Hummingbot, enter `create`.
-2. Enter `[perpetual_connector_name]_testnet` or `[perpetual_connector_name]`.
-3. Enter the trading pair, for example, `BTC-USDT`.
-4. Follow on-screen prompts and info for Perpetual parameters.
-5. Enter `start` to run the strategy.
+1. Make sure to connect to an exchange supported by Perpetual Market Making strategy.
+- [How to use the `connect` command to connect your API keys](/operation/command-ref/#connect)
+2. Run the `create` command and enter `perpetual_market_making` when prompted for the strategy you want to use
+3. Enter the name of the connector and the trading pair you want to use with this strategy
+4. Enter how much [`leverage`](#leverage) you want to use. Leverage allows you to open a position with a fraction of a cost. The higher the leverage, the higher the risk. Please manage accordingly.
+5. Select a [`position_mode`](#position_mode) from either One-way or Hedge mode. These are both explained further in their respective sections below.
+6. Enter the amount of orders you want to place in `order_amount` prompt
+7. Select a `position_management` from either `Profit_taking` or `Trailing_stop` value
+8. If you selected `Profit_taking`, enter the spreads of your profit taking orders to close a long or short position in `long_profit_taking_spread` `short_profit_taking_spread`
+9. If you selected `Trailing_stop`, enter the spread when you want the bot to start trailing as `ts_activation_spread` and the exit price as `ts_callback_rate`
+10. Enter the spread from entry price to close a position with a stop loss order
+11. Choose between limit or market order when `close_position_order_type` value for stop loss and trailing stop orders
+12. The strategy configuration file is saved in the Hummingbot folder
+- [Where are my configuration files saved?](https://hummingbot.zendesk.com/hc/en-us/articles/900005206343-Where-is-my-config-and-log-file-)
 
-For details on each Perpetual parameters, see the following sections for details. These parameters are fields in Hummingbot configuration files (located in the `/conf` folder, e.g. `conf/perpetual_market_making_[#].yml`).
 
 ## `leverage`
 

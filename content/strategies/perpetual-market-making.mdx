@@ -15,9 +15,9 @@ Similar to pure market making strategy, it keeps placing limit buy and sell orde
 
 In this document, we will explain how the strategy works by dividing it into three main behaviors:
 
-1. Creating orders to open a position
-2. Opening positions after a filled order event
-3. Creating orders to close a position
+1. [Creating orders to open a position](#creating-orders-to-open-a-position)
+2. [Opening positions after a filled order event](#opening-positions-after-a-filled-order-event)
+3. [Creating orders to close a position](#creating-orders-to-close-a-position)
 
 You can also watch the recording of our demo of the strategy in the link below:
 
@@ -73,6 +73,7 @@ In `Hedge` mode, if one order is filled the opposite order is not cancelled. For
 
 
 ## Opening positions after a filled order event
+
 The strategy uses the filled order’s price as the entry price of the position. The number of positions you can open depends on the `position_mode` selected:
 
 ### One-way mode
@@ -145,7 +146,7 @@ These are the logs in Hummingbot. Notice that our position was opened at 08:18:4
 
 **Estimated exit price is Nill USDT when using trailing stop**
 
-Price NILL means the exit price is not profitable based on the current peak price.
+Price `NILL` means the exit price is not profitable based on the current peak price.
 
 [placeholder]()
 
@@ -157,8 +158,17 @@ Taker fees are typically higher than maker fees in most exchanges.
 
 - [Fee Schedule of Binance Futures](https://www.binance.com/en/support/faq/360033544231)
 
-Some users use LIMIT order type for stop loss or trailing stop orders to close a position to take advantage of the maker fees, while some users use MARKET order type in case of network connectivity problems.
+Some users use `LIMIT` order type for stop loss or trailing stop orders to close a position to take advantage of the maker fees, while some users use `MARKET` order type in case of network connectivity problems.
 
 If you’re running the bot or strategy on a machine with poor network connection, chances are the order book prices will not be updated right away which could affect your limit order prices and your positions might be closed at the profitability you were not expecting.
 
 Using market order type helps ensure that your positions are closed at mark price but paying higher fees.
+
+
+## Basic Parameters
+
+
+
+
+## Advanced Parameters
+

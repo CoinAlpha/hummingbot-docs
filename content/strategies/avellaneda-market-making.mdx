@@ -70,7 +70,7 @@ The order amount for the limit bid and ask orders. Ensure you have enough quote 
 
 ### `parameters_based_on_spread`
 
-The parameter acts as a toggle between beginner(parameters_based_on_spread=True) and expert mode (False). When equal to true, strategy will require min spread, max spread, volatility multiplier, and inventory risk aversion, while if set to False it will only ask for risk_factor, order_book_depth_factor and order_amount_shape_factor.
+The parameter acts as a toggle between beginner (parameters_based_on_spread=True) and expert mode (False). When equal to true, strategy will require min spread, max spread, volatility multiplier, and inventory risk aversion, while if set to False it will only ask for risk_factor, order_book_depth_factor and order_amount_shape_factor.
 
 ** Prompt: **
 
@@ -103,11 +103,7 @@ The maximum spread related to the mid price allowed by user for bid/ask orders
 
 ### `vol_to_spread_multiplier`
 
-`vol_to_spread_multiplier` will act as a threshold value to override max_spread when volatility is a higher value.
-
-For a multiplier of 1 if volatility is bigger than `max_spread`, then `max_spread` will be (1 x volatility).
-For a multiplier of 2, if volatility is 50% or more of `max_spread` then `max_spread` will be replaced by (2 x volatility).
-For a multiplier of 3, if volatility is 33% or more of `max_spread` then `max_spread` will be replaced by (3 x volatility).
+`vol_to_spread_multiplier` will act as a threshold value to override max_spread when volatility is a higher value. The value should be higher than 1.
 
 ** Prompt: **
 

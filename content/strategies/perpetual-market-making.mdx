@@ -72,6 +72,13 @@ In `One-way` mode, if an order is filled the opposite order is cancelled. For ex
 In `Hedge` mode, if one order is filled the opposite order is not cancelled. For example, if your buy order is filled it opens a LONG position and creates another closing sell order. The opening sell order that was initially created remains active waiting to get filled so it can open a SHORT position simultaneously.
 
 
+## Opening positions after a filled order event
+The strategy uses the filled order’s price as the entry price of the position. The number of positions you can open depends on the `position_mode` selected:
+- `One-way` mode - only one position can be opened i.e. you only have either a LONG or a SHORT position.
+- `Hedge` mode - two positions can be opened simultaneously i.e. you can have one LONG and one SHORT position.
+
+
+
 
 ## `leverage`
 

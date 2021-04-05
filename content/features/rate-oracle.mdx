@@ -1,0 +1,77 @@
+---
+title: Rate Oracle
+description:
+---
+
+import Callout from "../../src/components/Callout";
+
+import Prompt from "../../src/components/Prompt";
+
+This new feature provides real time, most up-to-date exchange rate on any given token or currency from a reliable and trustworthy data source.
+
+<Callout
+  type="note"
+  body="You can see how the rate oracle works with a strategy on [cross exhange market making] and [arbitrage] strategy."
+  link={["/strategies/cross-exchange-market-making/", "/strategies/arbitrage/"]}
+/>
+
+## `rate_oracle_source`
+
+The source where you want to pull data from, it can either be Binance or Coingecko. Please take note that using Coingecko will have a 30-second delay due to their API rate limit.
+
+** Prompt: **
+
+<Prompt
+  prompt="What source do you want rate oracle to pull data from? (binance, coingecko)"
+  response=">>> "
+/>
+
+## `global_token`
+
+This is a token which you can display other tokens' value in. For example, you can nicely see all your tokens balances in USD (if that your global token choice).
+
+** Prompt: **
+
+<Prompt
+  prompt="What is your default display token? (e.g. USDT,USD,EUR)"
+  response=">>> "
+/>
+
+## `global_token_symbol`
+
+The symbol for the global token.
+
+** Prompt: **
+
+<Prompt
+  prompt="What is your default display token symbol? (e.g. $, €)"
+  response=">>> "
+/>
+
+## How it works
+
+For the rate oracle conversion to show after the `balance`, `pnl`, `open_orders`, `trades`, and `status` command, You have to edit in `config_global.yml` to change the `rate_oracle_source`, `global_token` and `global_token_symbol` or you can edit it by using the `config` command.
+
+Refer to the example below:
+
+Change the default setting in `conf_global.yml` to GBP (Great Britain Pound). The conversion will show up when you run `balance` command.
+
+![](/img/rate-oracle-global-config.png)
+
+![](/img/rate-oracle-balance.png)
+
+The conversion also shows up during the `status` command for the `liquidity_mining` strategy. Under the `Miner` section.
+
+![](/img/oracle-status.png)
+
+The conversion shows up when using the `pnl` command.
+
+![](img/oracle-pnl.png)
+
+The conversion also shows up when running the `trades` command.
+
+![](/img/oracle-trades.png)
+
+The conversion also works with the `open_orders` command.
+
+![](/img/oracle-open-orders.png)

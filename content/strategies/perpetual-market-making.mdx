@@ -4,8 +4,8 @@ description: Learn how to use Perpetual market making strategy
 ---
 
 import Callout from "../../src/components/Callout";
-
 import Prompt from "../../src/components/Prompt";
+
 
 ## How It Works
 
@@ -13,11 +13,24 @@ Perpetual market making allows Hummingbot users to market make on supported deri
 
 Similar to pure market making strategy, it keeps placing limit buy and sell orders on the order book and waits for other participants (takers) to fill its orders.
 
-In this document, we will explain how the strategy works by dividing it into three main behaviors:
+In this document, we will explain how the strategy works by dividing it into three main behaviors :
 
 1. Creating orders to open a position
 2. Opening positions after a filled order event
 3. Creating orders to close a position
+
+We also did a live demo of the strategy and saved a recording in YouTube :
+
+- [Hummingbot Live - Perpetual Market Making Demo](https://www.youtube.com/watch?v=IclhZWtKiSA&t=2194s)
+
+
+## Testing The Strategy
+
+Users can test how this strategy works without risking real funds by connecting their Binance Futures Testnet account to Hummingbot.
+
+- [Create a free account with Binance Futures Testnet](https://testnet.binancefuture.com/en/register?source=futures)
+- [Creating Binance Futures Testnet API Keys](https://docs.hummingbot.io/exchange-connectors/binance-futures/#creating-binance-futures-testnet-api-keys)
+
 
 ## Creating the Strategy
 

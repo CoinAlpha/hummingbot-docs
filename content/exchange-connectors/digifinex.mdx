@@ -74,13 +74,13 @@ Users may experience websocket error and timeout may occur every 2 hours. There 
 
 ### Minimum order sizes
 
-Minimum order size varies per market. All minimum trade quantities can be found in the following public API:
+Minimum order size varies per market. It's the exchange's allowed All minimum trade quantities can be found in the following public API:
 
 ```
 https://openapi.digifinex.com/v3/markets
 ```
 
-`BTC-USDT min 0.00005.`
+Refer to the API response below as an example:
 
 ```
 {
@@ -96,8 +96,9 @@ https://openapi.digifinex.com/v3/markets
     "min_amount":2,
     "min_volume":0.005
 },
-
 ```
+
+The data fields you should focus on are `min_volume` which refers to the minimum order size based on base asset and `min_amount` which is based on quote asset.
 
 ### Transaction Fees
 

@@ -40,25 +40,30 @@ List available exchanges and check whether API keys have been added correctly.
 
 Testing connections, please wait...
                       Exchange    Keys Added   Keys Confirmed    Connector Status
+                         beaxy            No               No              YELLOW
                        binance           Yes              Yes               GREEN
-             binance_perpetual            No               No              YELLOW
-     binance_perpetual_testnet            No               No              YELLOW
+             binance_perpetual            No               No               GREEN
+     binance_perpetual_testnet            No               No               GREEN
                     binance_us            No               No              YELLOW
-                      bitfinex            No               No               GREEN
+                      bitfinex            No               No              YELLOW
+                        bitmax            No               No               GREEN
                        bittrex            No               No              YELLOW
+                     blocktane            No               No               GREEN
                           celo            No               No               GREEN
                   coinbase_pro            No               No               GREEN
                     crypto_com            No               No              YELLOW
-                          dydx            No               No              YELLOW
+                          dydx            No               No               GREEN
                       eterbase            No               No                 RED
                       ethereum            No               No                 RED
-                         huobi            No               No              YELLOW
-                        kraken            No               No              YELLOW
+                         huobi            No               No               GREEN
+                        kraken            No               No               GREEN
                         kucoin            No               No               GREEN
                         liquid            No               No               GREEN
                       loopring            No               No              YELLOW
-                          okex            No               No                 RED
-                         terra            No               No              YELLOW
+                          okex            No               No               GREEN
+                        probit            No               No              YELLOW
+                     probit_kr            No               No              YELLOW
+                         terra            No               No               GREEN
 ```
 
 ** connect [ exchange ] **
@@ -346,7 +351,10 @@ Take note the reconfiguring of `inventory_target_base_pct` for DEX connectors is
 <Callout
   type="note"
   body="Configuring these parameters on the fly only works for the [Pure market making] and [Perpetual market making] strategy"
-  link={["/strategies/pure-market-making/","/strategies/perpetual-market-making/"]}
+  link={[
+    "/strategies/pure-market-making/",
+    "/strategies/perpetual-market-making/",
+  ]}
 />
 
 ## start

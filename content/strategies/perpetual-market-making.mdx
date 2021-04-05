@@ -55,6 +55,24 @@ Users can test how this strategy works without risking real funds by connecting 
 - [Where are my configuration files saved?](https://hummingbot.zendesk.com/hc/en-us/articles/900005206343-Where-is-my-config-and-log-file-)
 
 
+## Creating orders to open a position
+
+Initially, a limit buy and sell order are created based on `bid_spread` and `ask_spread` settings. This determines the entry price of the position we will open later.
+
+**What happens if both my orders are not filled?**
+
+If the orders are not filled when they reach `order_refresh_time`, they are cancelled and a new set of orders are created to ensure our orders are refreshed based on our specified bid/ask spread.
+
+With the exception of `order_refresh_tolerance_pct` value, if the orders are within the tolerable change in spread then they are not cancelled. A log message on the right pane will show “Not cancelling active orders since difference between the new order prices and current order prices is within order_refresh_tolerance_pct”.
+
+**If one of my orders is filled, what happens to the opposite order that was not filled?**
+
+In `One-way` mode, if an order is filled the opposite order is cancelled. For example, if your buy order is filled it opens a LONG position, cancels the opening sell order and creates a closing sell order.
+
+In `Hedge` mode, if one order is filled the opposite order is not cancelled. For example, if your buy order is filled it opens a LONG position and creates another closing sell order. The opening sell order that was initially created remains active waiting to get filled so it can open a SHORT position simultaneously.
+
+
+
 ## `leverage`
 
 Enter the leverage you would like to use.

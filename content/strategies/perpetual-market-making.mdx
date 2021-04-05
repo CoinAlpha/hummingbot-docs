@@ -7,18 +7,17 @@ import Callout from "../../src/components/Callout";
 
 import Prompt from "../../src/components/Prompt";
 
-## How it Works
+## How It Works
 
-Like pure market-making, Hummingbot continually posts limit bids and asks offers on the market, and waits for other participants "takers" to fill their orders. Position management features are introduced to configure the bot further to make managing positions easier and remove the need to interact with the derivative exchange manually.
+Perpetual market making allows Hummingbot users to market make on supported derivatives exchanges. Position management features are introduced to configure the bot further to make managing positions easier and remove the need to interact with the derivative exchange manually.
 
-This strategy has two position management features currently available which has different parameters that users can customize:
+Similar to pure market making strategy, it keeps placing limit buy and sell orders on the order book and waits for other participants (takers) to fill its orders.
 
-- [`Profit_taking`](/strategies/perpetual-market-making/#profit_taking)
-- [`Trailing_stop`](/strategies/perpetual-market-making/#trailing_stop)
+In this document, we will explain how the strategy works by dividing it into three main behaviors:
 
-In addition to those two features, a stop_loss parameter is added to work with both features and would close any active position(s) as soon as loss reaches the limit set in the stop_loss_spread parameter.
-
-Hummingbot uses these to logically determine when positions would be closed when using a particular feature.
+1. Creating orders to open a position
+2. Opening positions after a filled order event
+3. Creating orders to close a position
 
 ## Creating the Strategy
 

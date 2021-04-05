@@ -215,19 +215,28 @@ List of all the order book entries on the ask side.
 Only relevant for `OrderBookMessageType.DIFF` and `OrderBookMessageType.SNAPSHOT` messages.
 List of all the order book entries on the bid side.
 
-## Utils
+## Utility Functions
 
 Contains any miscellaneous functions that are not completely associated to the classes defined in the overall architecture but nonetheless necessary for Hummingbot to perform its functions adequately.
 These are stored in the `*_utils.py` file.
 
 Below are some examples of such functions:
 
-| Function(s)                                    | Description                                                                                 |
-| ---------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `convert_snapshot_message_to_order_book_row()` | Performs the necessary conversion from `OrderBookMessage` to a `Tuplep[List[OrderBookRow]]` |
-| `get_new_client_order_id()`                    | Generates a Hummingbot client order id from which it does its own tracking                  |
+| Function(s)                                    | Description                                                                                                     |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `convert_snapshot_message_to_order_book_row()` | Performs the necessary conversion from `OrderBookMessage` to a `Tuplep[List[OrderBookRow]]`                     |
+| `get_new_client_order_id()`                    | Generates a Hummingbot client order id from which it does its own tracking.                                     |
+| `convert_from_exchange_trading_pair()`         | Converts the exchange's trading pair to `[Base]-[Quote]` formats and return the output.                         |
+| `convert_to_exchange_trading_pair()`           | Converts HB's `[Base]-[Quote]` trading pair format to the exchange's trading pair format and return the output. |
 
-## Constants
+<Callout
+  type="note"
+  body="The `convert_from/to_exchange_trading_pair()` functions are only required if the exchange does not provide trading pairs in `Base-Quote` format"
+/>
+
+For reference you can refer to [Crypto.com](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/crypto_com/crypto_com_utils.py) or [ProBit](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/probit/probit_utils.py).
+
+## Exchange Constants
 
 Contains all the constant variables associated with an exchange
 
@@ -240,7 +249,7 @@ Below are some examples of such variables
 | `WS_PRIVATE_CHANNELS` | `List[str]` | List of all the WebSocket channels that an exchange provides. |
 | `ORDER_STATUSES`      | `List[str]` | List of all the order statuses as defined by the exchange.    |
 
-For reference, of what could/should be included in the `*_constants.py` click [here](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/probit/probit_constants.py)
+For reference you can refer to [Crypto.com](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/crypto_com/crypto_com_utils.py) or [ProBit](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/exchange/probit/probit_utils.py).
 
 ## Debugging & Testing
 

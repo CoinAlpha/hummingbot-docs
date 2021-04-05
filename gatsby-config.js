@@ -101,6 +101,7 @@ const sidebarCategories = {
     "developer/task3",
     "developer/task4",
     "developer/miscellaneous",
+    "developer/debug&test",
   ],
   "Developing Strategies": [
     "developer/strategies-overview",

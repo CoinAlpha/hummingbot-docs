@@ -32,7 +32,7 @@ const sidebarCategories = {
   ],
   "Exchange Connectors": [
     "exchange-connectors/overview",
-   "exchange-connectors/ascend-ex",
+    "exchange-connectors/ascend-ex",
     "exchange-connectors/balancer",
     "exchange-connectors/beaxy",
     "exchange-connectors/binance",
@@ -119,6 +119,7 @@ const sidebarCategories = {
   ],
   "Release Notes": [
     "release-notes/overview",
+    "release-notes/0.38.0",
     "release-notes/0.37.1",
     "release-notes/0.37.0",
     "release-notes/0.36.0",

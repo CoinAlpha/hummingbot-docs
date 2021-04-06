@@ -5,31 +5,34 @@ description: Info and usage about Basic Operation Commands
 
 import Callout from "../../src/components/Callout";
 
+import Prompt from "../../src/components/Prompt";
+
 ## Commands Overview
 
 Below are the available commands in the current Hummingbot release.
 
-| Command        | Function                                                   |
-| -------------- | ---------------------------------------------------------- |
-| connect        | List available exchanges and add API keys to them          |
-| create         | Create a new bot                                           |
-| Import         | Import an existing bot by loading the configuration file   |
-| help           | List available commands                                    |
-| balance        | Display your asset balances across all connected exchanges |
-| config         | Display the current bot's configuration                    |
-| start          | Start the current bot                                      |
-| stop           | Stop the current bot                                       |
-| open_orders    | Show all active open orders                                |
-| trades         | Show trades                                                |
-| pnl            | Show profit and losses                                     |
-| status         | Get the market status of the current bot                   |
-| history        | See the past performance of the current bot                |
-| generate_certs | Create SSL certifications for Gateway communication.       |
-| exit           | Exit and cancel all outstanding orders                     |
-| paper_trade    | Toggle paper trading mode                                  |
-| export         | Export your bot's trades or private keys                   |
-| order_book     | Displays the top 5 bid/ask prices and volume               |
-| ticker         | Show market ticker of current order book                   |
+| Command         | Function                                                      |
+| --------------- | ------------------------------------------------------------- |
+| connect         | List available exchanges and add API keys to them             |
+| create          | Create a new bot                                              |
+| Import          | Import an existing bot by loading the configuration file      |
+| help            | List available commands                                       |
+| balance         | Display your asset balances across all connected exchanges    |
+| config          | Display the current bot's configuration                       |
+| start           | Start the current bot                                         |
+| stop            | Stop the current bot                                          |
+| open_orders     | Show all active open orders                                   |
+| trades          | Show trades                                                   |
+| pnl             | Show profit and losses                                        |
+| status          | Get the market status of the current bot                      |
+| history         | See the past performance of the current bot                   |
+| generate_certs  | Create SSL certifications for Gateway communication.          |
+| exit            | Exit and cancel all outstanding orders                        |
+| paper_trade     | Toggle paper trading mode                                     |
+| export          | Export your bot's trades or private keys                      |
+| order_book      | Displays the top 5 bid/ask prices and volume                  |
+| ticker          | Show market ticker of current order book                      |
+| autofill_import | Choose between `start` and `config` when importing a strategy |
 
 ## connect
 
@@ -639,4 +642,50 @@ When running a cross-exchange or arbitrage strategy, you can specify which excha
 
    Best Bid  Best Ask  Mid Price  Last Trade
    351.41    351.42    351.415      351.42
+```
+
+## autofill import
+
+Choose between `start` and `config` after importing a strategy file. This will be applicable for all imported strategies.
+
+** Prompt: **
+
+<Prompt
+  prompt="What to auto-fill in the prompt after each import command? (start/config)"
+  response=">>>"
+/>
+
+**Sample usage**
+
+`autofill_import = start`
+
+```
+>>>`import conf_pure_mm_1.yml`
+Configuration from conf_pure_mm_1.yml file is imported.
+
+Preliminary checks:
+ - Exchange check: All connections confirmed.
+ - Strategy check: All required parameters confirmed.
+ -All checks: Confirmed.
+
+Enter "start" to start market making
+
+>>> start
+```
+
+Here's an example if using the config command
+`autofill_import = config`
+
+```
+>>>`import conf_pure_mm_1.yml`
+Configuration from conf_pure_mm_1.yml file is imported.
+
+Preliminary checks:
+ - Exchange check: All connections confirmed.
+ - Strategy check: All required parameters confirmed.
+ -All checks: Confirmed.
+
+Enter "start" to start market making
+
+>>> config
 ```

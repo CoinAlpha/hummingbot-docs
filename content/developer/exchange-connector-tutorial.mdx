@@ -80,14 +80,14 @@ Upon receiving a successful response, a `BuyOrderCreatedEvent` or `SellOrderCrea
 
 ### Order Being Filled
 
-An order would be filled by other market participants over time, once it's live on an exchange. If the order is a limit order, then usually it has to wait for market orders from other market participants to fill it.
-If the order is a market order, then usually it is filled as soon as possible by getting matched to limit orders on the exchange.
+An order could be filled by other market participants over time, once it's live on an exchange.
+Depending on the order types, i.e. limit or market, the order could be filled either immediately or after it is fulfilled by another market participant.
 
-For every order fill related to the orders placed, the exchange connector must emit a `OrderFilledEvent`, to notify the strategy modules about the progress of the order.
+For every order fill on our orders, whether partially or fully, the exchange connector must emit a `OrderFilledEvent`, to notify the strategy modules about the progress of the order.
 
 ### Order Completion
 
-Once an order has been completely filled, the exchange connector should emit a `BuyOrderCompletedEvent` or `SellOrderCompletedEvent`.
+Once an order has been completely filled, the exchange connector must emit a `BuyOrderCompletedEvent` or `SellOrderCompletedEvent`.
 The exchange connector would stop tracking the order afterwards.
 
 `BuyOrderCompletedEvent` or `SellOrderCompletedEvent` should always come **after** an `OrderFilledEvent` has been emitted.
@@ -101,9 +101,7 @@ On decentralized exchanges - since it's possible for orders to be filled after c
 
 ### Order Failure
 
-On some exchanges, it is possible for an order to fail or rejected without having completed, having been cancelled or expired.
-For example, on decentralized exchanges, an live order could be rejected by the exchange after initial submission if there is not enough balance on the wallet to fill the order.
-If an order has failed or has been rejected for any reason other than cancellation or expiry, then a `MarketOrderFailureEvent` would be emitted.
+If an order has failed or has been rejected for any reason other than cancellation or expiry, then a `MarketOrderFailureEvent` must be emitted.
 
 ## InFlightOrder Helper
 

@@ -262,3 +262,14 @@ If no exit price has been detected, a stop-loss order will be placed if loss inc
   type="info"
   body="Price `NILL` means the market is yet to move enough to have a peak price that'll give a profitable exit price according to the configured parameters for the feature."
 />
+
+## ** Configure parameters on the fly **
+
+Currently, only the following parameters can be reconfigured without stopping the bot. The changes will take effect in the next order refresh.
+
+- bid_spread
+- ask_spread
+- order_amount
+- order_levels
+- order_level_spread
+- filled_order_delay

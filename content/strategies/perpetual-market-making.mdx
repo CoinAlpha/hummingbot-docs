@@ -30,7 +30,7 @@ You can also watch the recording of our demo of the strategy in the link below:
 
 <Callout
   type="tip"
-  body="Users can test how this strategy works without risking real funds by connecting their Binance Futures Testnet account to Hummingbot."
+  body="Users can test how this strategy works without risking real funds by connecting their Binance Futures Testnet account to Hummingbot. We also recommend to run the bot side-by-side with the exchange to help understand the strategy."
 />
 
 - [Create a free account with Binance Futures Testnet](https://testnet.binancefuture.com/en/register?source=futures)
@@ -82,14 +82,40 @@ The strategy uses the filled order’s price as the entry price of the position.
 
 In `One-way` mode, only one position can be opened i.e. you only have either a LONG or a SHORT position.
 
+Sample scenario:
+
+```
+bid_spread: 0.01
+ask_spread: 1.00
+order_refresh_time: 10
+position_mode: One-way
+```
+
+Using the sample configuration above, we will try to get our buy order only filled on purpose.
+
+If the buy order is filled then the opposite sell order is cancelled and a long position is opened. On the other hand, if your sell order is filled first then the opposite buy order is cancelled and opens a short position.
+
 ### Hedge mode
 
 In `Hedge` mode, two positions can be opened simultaneously i.e. you can have one LONG and one SHORT position.
 
+Sample scenario:
+
+```
+bid_spread: 0.01
+ask_spread: 0.05
+order_refresh_time: 10
+position_mode: Hedge
+```
+
+Using the sample configuration above, we will try to get our buy order filled first on purpose .
+
+If the buy order is filled, a long position is opened and the opposite sell order is not cancelled. If the sell order eventually gets filled even with an open long position, a short position will be opened.
+
 
 ## Creating orders to close a position
 
-Positions are closed in three ways:
+Positions are closed in three different ways:
 
 1. Profit taking orders are filled (for `Profit_taking` position management)
 2. Market falls to or below the estimated exit price (for `Trailing_stop` position management)
@@ -109,6 +135,20 @@ These are the logs in Hummingbot. Notice our position was opened at 03:52 when t
 
 ![closing-orders-3](img/closing-orders-3.png)
 
+**What is the difference between using LIMIT and MARKET order type?**
+
+Most of us are aware that submitting a market order instantly executes a trade by taking the best order in the order book while a limit order is an order that you place on the order book (taker) with a specific limit price, waiting for someone to fill that order therefore adding liquidity to the market.
+
+Taker fees are typically higher than maker fees in most exchanges.
+
+- [Fee Schedule of Binance Futures](https://www.binance.com/en/support/faq/360033544231)
+
+Some users use `LIMIT` order type for stop loss or trailing stop orders to close a position to take advantage of the maker fees, while some users use `MARKET` order type in case of network connectivity problems.
+
+If you’re running the bot or strategy on a machine with poor network connection, chances are the order book prices will not be updated right away which could affect your limit order prices and your positions might be closed at the profitability you were not expecting.
+
+Using market order type helps ensure that your positions are closed at mark price but paying higher fees.
+
 
 ### Profit Taking
 
@@ -117,7 +157,7 @@ Hummingbot creates a sell order to close a long position and a buy order to clos
 Sample scenario:
 
 ```
-position_mode: Profit_taking
+position_management: Profit_taking
 long_profit_taking_spread: 5
 short_profit_taking_spread: 1
 ```
@@ -139,35 +179,21 @@ ts_activation_spread: 10
 ts_callback_rate: 5
 ```
 
-Let’s say your buy order is filled again at $10,000 and opens a long position. It waits for the best sell price to reach $11,000 (10% from the entry price) before the bot can start trailing by monitoring for the peak price. The market went down to $10,500 the next minute and went up again to $12,000. So this time, our new peak price is $12,000 and our exit price is $11,400 (5% callback rate).
+Let’s say your buy order is filled again at $10,000 and opens a long position. It waits for the best sell price to reach $11,000 (10% from the entry price) before the bot can start trailing by monitoring for the peak price. The market went down to $10,500 the next minute and went up again to $12,000. So now our new peak price is $12,000 and our exit price is $11,400 (5% callback rate).
 
-When the market falls to or below $11,400 the bot will create a limit or market (depending on `close_positon_order_type` value) sell order to close the position.
+When the market falls to or below $11,400 the bot will create a limit or market (depending on `close_position_order_type` value) sell order to close the position.
+
+**Estimated exit price is Nill USDT**
+
+Price `NILL` means the exit price is not profitable based on the current peak price.
+
+![price-nill](img/price-nill.png)
 
 ### Stop Loss
 
 If the position’s profitability (PNL) is equal to or below the `stop_loss_spread`, the bot will create a limit or market order (depending on `close_positon_order_type` value) at the current mark price to close the position.
 
 If there are outstanding limit orders, they are cancelled and replaced with a stop loss order. 
-
-**Estimated exit price is Nill USDT when using trailing stop**
-
-Price `NILL` means the exit price is not profitable based on the current peak price.
-
-[placeholder]()
-
-**What is the difference between using LIMIT and MARKET order type?**
-
-Most of us are aware that submitting a market order instantly executes a trade by taking the best order in the order book while a limit order is an order that you place on the order book (taker) with a specific limit price, waiting for someone to fill that order therefore adding liquidity to the market.
-
-Taker fees are typically higher than maker fees in most exchanges.
-
-- [Fee Schedule of Binance Futures](https://www.binance.com/en/support/faq/360033544231)
-
-Some users use `LIMIT` order type for stop loss or trailing stop orders to close a position to take advantage of the maker fees, while some users use `MARKET` order type in case of network connectivity problems.
-
-If you’re running the bot or strategy on a machine with poor network connection, chances are the order book prices will not be updated right away which could affect your limit order prices and your positions might be closed at the profitability you were not expecting.
-
-Using market order type helps ensure that your positions are closed at mark price but paying higher fees.
 
 
 ## Basic Parameters

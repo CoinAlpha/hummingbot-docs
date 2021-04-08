@@ -65,6 +65,8 @@ If the orders are not filled when they reach `order_refresh_time`, they are canc
 
 With the exception of `order_refresh_tolerance_pct` value, if the orders are within the tolerable change in spread then they are not cancelled. A log message on the right pane will show “Not cancelling active orders since difference between the new order prices and current order prices is within order_refresh_tolerance_pct”.
 
+![opening-orders-1](/img/opening-orders-1.gif)
+
 **If one of my orders is filled, what happens to the opposite order that was not filled?**
 
 In `One-way` mode, if an order is filled the opposite order is cancelled. For example, if your buy order is filled it opens a LONG position, cancels the opening sell order and creates a closing sell order.

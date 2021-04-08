@@ -30,7 +30,7 @@ You can also watch the recording of our demo of the strategy in the link below:
 
 <Callout
   type="tip"
-  body="Users can test how this strategy works without risking real funds by connecting their Binance Futures Testnet account to Hummingbot. We also recommend to run the bot side-by-side with the exchange to help understand the strategy."
+  body="Users can test how this strategy works without risking real funds by connecting their Binance Futures Testnet account to Hummingbot. We also recommend to run the bot side-by-side with the exchange to help learning more about the strategy."
 />
 
 - [Create a free account with Binance Futures Testnet](https://testnet.binancefuture.com/en/register?source=futures)
@@ -57,15 +57,20 @@ You can also watch the recording of our demo of the strategy in the link below:
 
 ## Creating orders to open a position
 
-Initially, a limit buy and sell order are created based on `bid_spread` and `ask_spread` settings. This determines the entry price of the position we will open later.
+Initially, a limit buy and sell order are created based on `bid_spread` and `ask_spread` settings. This determines the entry price of the position to be opened when these orders are filled.
 
 **What happens if both my orders are not filled?**
 
-If the orders are not filled when they reach `order_refresh_time`, they are cancelled and a new set of orders are created to ensure our orders are refreshed based on our specified bid/ask spread.
+If the orders are not filled when they reach `order_refresh_time`, they are cancelled and a new set of orders are created to ensure our orders are refreshed based on specified bid/ask spread.
 
 With the exception of `order_refresh_tolerance_pct` value, if the orders are within the tolerable change in spread then they are not cancelled. A log message on the right pane will show “Not cancelling active orders since difference between the new order prices and current order prices is within order_refresh_tolerance_pct”.
 
 ![opening-orders-1](/img/opening-orders-1.gif)
+
+
+## Opening positions after a filled order event
+
+The strategy uses the filled order’s price as the entry price of the position. The number of positions you can open depends on the `position_mode` selected.
 
 **If one of my orders is filled, what happens to the opposite order that was not filled?**
 
@@ -73,10 +78,6 @@ In `One-way` mode, if an order is filled the opposite order is cancelled. For ex
 
 In `Hedge` mode, if one order is filled the opposite order is not cancelled. For example, if your buy order is filled it opens a LONG position and creates another closing sell order. The opening sell order that was initially created remains active waiting to get filled so it can open a SHORT position simultaneously.
 
-
-## Opening positions after a filled order event
-
-The strategy uses the filled order’s price as the entry price of the position. The number of positions you can open depends on the `position_mode` selected:
 
 ### One-way mode
 
@@ -135,20 +136,6 @@ These are the logs in Hummingbot. Notice our position was opened at 03:52 when t
 
 ![closing-orders-3](img/closing-orders-3.png)
 
-**What is the difference between using LIMIT and MARKET order type?**
-
-Most of us are aware that submitting a market order instantly executes a trade by taking the best order in the order book while a limit order is an order that you place on the order book (taker) with a specific limit price, waiting for someone to fill that order therefore adding liquidity to the market.
-
-Taker fees are typically higher than maker fees in most exchanges.
-
-- [Fee Schedule of Binance Futures](https://www.binance.com/en/support/faq/360033544231)
-
-Some users use `LIMIT` order type for stop loss or trailing stop orders to close a position to take advantage of the maker fees, while some users use `MARKET` order type in case of network connectivity problems.
-
-If you’re running the bot or strategy on a machine with poor network connection, chances are the order book prices will not be updated right away which could affect your limit order prices and your positions might be closed at the profitability you were not expecting.
-
-Using market order type helps ensure that your positions are closed at mark price but paying higher fees.
-
 
 ### Profit Taking
 
@@ -193,13 +180,55 @@ Price `NILL` means the exit price is not profitable based on the current peak pr
 
 If the position’s profitability (PNL) is equal to or below the `stop_loss_spread`, the bot will create a limit or market order (depending on `close_positon_order_type` value) at the current mark price to close the position.
 
-If there are outstanding limit orders, they are cancelled and replaced with a stop loss order. 
+If there are outstanding limit orders, they are cancelled and replaced with a stop loss order.
+
+
+## Using limit or market orders to close a position
+
+Most of us are aware that submitting a market order instantly executes a trade by taking the best order in the order book while a limit order is an order that you place on the order book (taker) with a specific limit price, waiting for someone to fill that order therefore adding liquidity to the market.
+
+Taker fees are typically higher than maker fees in most exchanges.
+
+- [Fee Schedule of Binance Futures](https://www.binance.com/en/support/faq/360033544231)
+
+For `close_position_order_type` parameter, some users use `LIMIT` order type for stop loss or trailing stop orders to close a position to take advantage of the maker fees, while some users use `MARKET` order type in case of network connectivity problems.
+
+If you’re running the bot or strategy on a machine with poor network connection, chances are the order book prices will not be updated right away which could affect your limit order prices and your positions might be closed at the profitability you were not expecting.
+
+Using market order type helps ensure that your positions are closed at mark price but paying higher fees.
 
 
 ## Basic Parameters
+
+Hummingbot prompts to enter the values for these parameters when creating the strategy.
+
+| Parameter             | Description      |
+| --------------------- | --------------------- |
+| `derivative` | The derivative exchange where you want to trade |
+| `market` | Token trading pair for the exchange e.g. BTC-USDT |
+| `leverage` | How much the position is increased by |
+| `position_mode` | Determines the number of positions that can be opened simultaneously. <br/><br/> Refer to [this section](#opening-positions-after-a-filled-order-event) for more information. |
+| `bid_spread` | How far away from the price reference (by default, mid price) to place the buy order |
+| `ask_spread` | How far away from the price reference (by default, mid price) to place the sell order |
+| `order_refresh_time` | Time (in seconds) to cancel active orders and place new ones with specified spreads. |
+| `order_amount` | The size or amount of your bid and ask orders |
+| `position_management` | Which position management feature to use. <br/> <br/> Current available options: <br/> [`Profit_taking`](#profit-taking) and [`Trailing_stop`](#trailing_stop) |
+| `long_profit_taking_spread` | When using profit taking mode, the spread of profit taking order from the entry price to close a long position. |
+| `short_profit_taking_spread` | When using profit taking mode, the spread of profit taking order from the entry price to close a short position. |
+| `ts_activation_spread` | Used with trailing stop position management, the profitability % of your position for the bot to start trailing. |
+| `ts_callback_rate` | Used with trailing stop position management, the callback % from the peak price to determine your position's exit price. |
+| `stop_loss_spread` | Triggers to close a position by creating a [stop loss](#stop-loss) order when profitability % falls below this value. |
+| `close_position_order_type` | The order type used (limit or market) when using trailing stop or when a stop loss is triggered. <br/><br/> Refer to [this section](#using-limit-or-market-orders-to-close-a-position) for more information. |
 
 
 
 
 ## Advanced Parameters
 
+Parameters that are not prompted when creating the strategy but can be configured to make the bot more customizable.
+
+- [How to use `config` command](/command-ref/#config)
+
+| Parameter             | Default Value   | Description      |
+| --------------------- | --------------- | --------------------- |
+| `placeholder` | placeholder | placeholder |

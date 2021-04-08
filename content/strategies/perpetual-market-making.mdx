@@ -93,6 +93,21 @@ Positions are closed in three ways:
 2. Market falls to or below the estimated exit price (for `Trailing_stop` position management)
 3. Stop loss is triggered because profitability falls to or below the `stop_loss_spread` value
 
+**Why is my bot not creating orders to close a position?**
+
+The strategy includes a logic that it will not create these orders when the position's profitability is at a loss (PNL at negative value). In the sample screenshot below, you can see that we have an open long position but no profit taking orders because PNL (ROE%) is at a loss.
+
+![closing-orders-1](img/closing-orders-1.png)
+
+These are the logs in Hummingbot. Notice our position was opened at 03:52 when the buy order was filled but only created a profit taking sell order after 8 minutes when our PNL went up to a positive value.
+
+![closing-orders-4](img/closing-orders-4.png)
+
+![closing-orders-2](img/closing-orders-2.png)
+
+![closing-orders-3](img/closing-orders-3.png)
+
+
 ### Profit Taking
 
 Hummingbot creates a sell order to close a long position and a buy order to close a short position. If these orders are filled, the position is closed.
@@ -131,18 +146,6 @@ When the market falls to or below $11,400 the bot will create a limit or market 
 If the position’s profitability (PNL) is equal to or below the `stop_loss_spread`, the bot will create a limit or market order (depending on `close_positon_order_type` value) at the current mark price to close the position.
 
 If there are outstanding limit orders, they are cancelled and replaced with a stop loss order. 
-
-**Why is my bot not creating orders to close a position?**
-
-The strategy includes a logic that it will not create these orders when the position is at a loss (PNL or ROE at negative value). In the sample screenshot below, you can see that we have an open long position but no open orders because PNL (ROE%) is at a loss.
-
-[placeholder]()
-
-These are the logs in Hummingbot. Notice that our position was opened at 08:18:47 when our first buy order was filled but only created the second order to lock profit at 08:45:38 when our PNL went up to a positive value.
-
-[placeholder]()
-[placeholder]()
-[placeholder]()
 
 **Estimated exit price is Nill USDT when using trailing stop**
 

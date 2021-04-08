@@ -120,7 +120,7 @@ Function that takes the strategy inputs, generates a client order ID(used by Hum
 
 This function is responsible for executing the API request to place the order on the exchange. It does the following:
 
-- Verifies that the orders would be legal based on the trading rules pulled from the exchange.
+- Verifies that the order satisfies exchange trading rules.
 - Quantize the order amount to ensure that the precision is as required by the exchange.
 - Create a `params` dictionary with the necessary parameters for the desired order.
 - Pass the `params` to an `Auth` object to generate the request signature.

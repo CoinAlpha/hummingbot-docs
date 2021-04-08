@@ -140,8 +140,7 @@ Below are some of the functions that is required to be implemented in the new ex
 
 - `async get_exchange_order_id(): str`
 
-  This is an asynchronous function and can only be called from `async def` functions in Hummingbot.
-  It returns the exchange-native order ID for the order, if the order has been submitted and the exchange-native order ID is known.
+  Returns the exchange-native order ID for the order, if the order has been submitted and the exchange-native order ID is known.
   Otherwise, it would wait until `update_exchange_order_id(str)` is called by the market connector.
 
 - `to_limit_order(): LimitOrder`

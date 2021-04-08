@@ -128,16 +128,9 @@ The following details are **required** functions to be implemented in the new `O
 
 ### `snapshot_message_from_exchange`
 
-Converts json snapshot data from the exchangee into standard `OrderBookMessage` format.
+Converts json snapshot data from the exchange into standard `OrderBookMessage` format.
 
 **Input Parameter(s):** msg: `Dict[str, any]`, timestamp: `float`, metadata: `Optional[Dict] = None` <br/>
-**Expected Output(s):** `OrderBookMessage`
-
-### `snapshot_message_from_db`
-
-Mainly used for backtesting, it converts a snapshot data from the db into standard `OrderBookMessage` format.
-
-**Input Parameter(s):** record: `RowProxy`, metadata: `Optional[Dict] = None` <br/>
 **Expected Output(s):** `OrderBookMessage`
 
 ### `diff_message_from_exchange`
@@ -147,25 +140,11 @@ Converts json diff data from the exchange into standard `OrderBookMessage` forma
 **Input Parameter(s):** msg: `Dict[str, any]`, timestamp: `float`, metadata: `Optional[Dict] = None` <br/>
 **Expected Output(s):** `OrderBookMessage`
 
-### `diff_message_from_db`
-
-Mainly used for backtesting, it converts a diff data from the db into standard `OrderBookMessage` format.
-
-**Input Parameter(s):** record: `RowProxy`, metadata: `Optional[Dict] = None` <br/>
-**Expected Output(s):** `OrderBookMessage`
-
 ### `trade_message_from_exchange`
 
-Converts json trade data from the exchangee into standard `OrderBookMessage` format.
+Converts json trade data from the exchange into standard `OrderBookMessage` format.
 
 **Input Parameter(s):** msg: `Dict[str, any]`, timestamp: `float`, metadata: `Optional[Dict] = None` <br/>
-**Expected Output(s):** `OrderBookMessage`
-
-### `trade_message_from_db`
-
-Mainly used for backtesting, it converts a trade data from the db into standard `OrderBookMessage` format.
-
-**Input Parameter(s):** record: `RowProxy`, metadata: `Optional[Dict] = None` <br/>
 **Expected Output(s):** `OrderBookMessage`
 
 <Callout

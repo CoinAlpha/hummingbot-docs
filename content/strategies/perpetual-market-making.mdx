@@ -1,6 +1,6 @@
 ---
 title: Perpetual Market Making
-description: Learn how to use Perpetual market making strategy
+description: 
 ---
 
 import Callout from "../../src/components/Callout";
@@ -28,10 +28,10 @@ You can also watch the recording of our demo of the strategy in the link below:
   body="Currently, this strategy `only works with Binance Futures` and we plan to support more derivatives connector in the future."
 />
 
-
-## Testing The Strategy
-
-Users can test how this strategy works without risking real funds by connecting their Binance Futures Testnet account to Hummingbot.
+<Callout
+  type="tip"
+  body="Users can test how this strategy works without risking real funds by connecting their Binance Futures Testnet account to Hummingbot."
+/>
 
 - [Create a free account with Binance Futures Testnet](https://testnet.binancefuture.com/en/register?source=futures)
 - [Creating Binance Futures Testnet API Keys](https://docs.hummingbot.io/exchange-connectors/binance-futures/#creating-binance-futures-testnet-api-keys)
@@ -47,8 +47,8 @@ Users can test how this strategy works without risking real funds by connecting 
 5. Select a [`position_mode`](#position_mode) from either One-way or Hedge mode. These are both explained further in their respective sections below.
 6. Enter the amount of orders you want to place in `order_amount` prompt
 7. Select a `position_management` from either `Profit_taking` or `Trailing_stop` value
-8. If you selected `Profit_taking`, enter the spreads of your profit taking orders to close a long or short position in `long_profit_taking_spread` `short_profit_taking_spread`
-9. If you selected `Trailing_stop`, enter the spread when you want the bot to start trailing as `ts_activation_spread` and the exit price as `ts_callback_rate`
+8. If you selected [`Profit_taking`](#profit-taking), enter the spreads of your profit taking orders to close a long or short position in `long_profit_taking_spread` `short_profit_taking_spread`
+9. If you selected [`Trailing_stop`](#trailing-stop), enter the spread when you want the bot to start trailing as `ts_activation_spread` and the exit price as `ts_callback_rate`
 10. Enter the spread from entry price to close a position with a stop loss order
 11. Choose between limit or market order when `close_position_order_type` value for stop loss and trailing stop orders
 12. The strategy configuration file is saved in the Hummingbot folder

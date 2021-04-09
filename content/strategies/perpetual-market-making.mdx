@@ -9,11 +9,11 @@ import Prompt from "../../src/components/Prompt";
 
 ## How It Works
 
-Perpetual market making allows Hummingbot users to market make on supported derivatives exchanges. Position management features are introduced to configure the bot further to make managing positions easier and remove the need to interact with the derivative exchange manually.
+Perpetual market making allows Hummingbot users to market make on supported derivatives exchanges. Position management features are introduced to configure the bot further to make managing positions easier and remove the need to manually interact with the derivative exchange.
 
-Similar to pure market making strategy, it keeps placing limit buy and sell orders on the order book and waits for other participants (takers) to fill its orders.
+Like pure market making strategy, it keeps placing limit buy and sell orders on the order book and waits for other participants (takers) to fill its orders.
 
-In this document, we will explain how the strategy works by dividing it into three main behaviors:
+In this document, we will explain how the strategy works by dividing it into three behaviors:
 
 1. [Creating orders to open a position](#creating-orders-to-open-a-position)
 2. [Opening positions after a filled order event](#opening-positions-after-a-filled-order-event)
@@ -30,7 +30,7 @@ You can also watch the recording of our demo of the strategy in the link below:
 
 <Callout
   type="tip"
-  body="Users can test how this strategy works without risking real funds by connecting their Binance Futures Testnet account to Hummingbot. We also recommend to run the bot side-by-side with the exchange to help learning more about the strategy."
+  body="Users can test how this strategy works without risking real funds by connecting their Binance Futures Testnet account to Hummingbot. We also recommend running the bot side-by-side with the exchange to help to learn more about the strategy."
 />
 
 - [Create a free account with Binance Futures Testnet](https://testnet.binancefuture.com/en/register?source=futures)
@@ -57,7 +57,7 @@ You can also watch the recording of our demo of the strategy in the link below:
 
 ## Creating orders to open a position
 
-Initially, a limit buy and sell order are created based on `bid_spread` and `ask_spread` settings. This determines the entry price of the position to be opened when these orders are filled.
+Initially, limit buy and sell orders are created based on `bid_spread` and `ask_spread` settings. This determines the entry price of the position to be opened when these orders are filled.
 
 **What happens if both my orders are not filled?**
 
@@ -76,7 +76,7 @@ The strategy uses the filled order’s price as the entry price of the position.
 
 In `One-way` mode, if an order is filled the opposite order is cancelled. For example, if your buy order is filled it opens a LONG position, cancels the opening sell order and creates a closing sell order.
 
-In `Hedge` mode, if one order is filled the opposite order is not cancelled. For example, if your buy order is filled it opens a LONG position and creates another closing sell order. The opening sell order that was initially created remains active waiting to get filled so it can open a SHORT position simultaneously.
+In `Hedge` mode, if one order is filled the opposite order is not cancelled. For example, if your buy order is filled it opens a LONG position and creates a closing sell order. The opening sell order initially created remains active, waiting to get filled to open a SHORT position simultaneously.
 
 
 ### One-way mode
@@ -94,7 +94,7 @@ position_mode: One-way
 
 Using the sample configuration above, we will try to get our buy order only filled on purpose.
 
-If the buy order is filled then the opposite sell order is cancelled and a long position is opened. On the other hand, if your sell order is filled first then the opposite buy order is cancelled and opens a short position.
+If the buy order is filled then the opposite sell order is cancelled and a long position is opened. On the other hand, if your sell order is filled first, the opposite buy order is cancelled and opens a short position.
 
 ### Hedge mode
 
@@ -109,7 +109,7 @@ order_refresh_time: 10
 position_mode: Hedge
 ```
 
-Using the sample configuration above, we will try to get our buy order filled first on purpose .
+Using the sample configuration above, we will try to get our buy order filled first on purpose.
 
 If the buy order is filled, a long position is opened and the opposite sell order is not cancelled. If the sell order eventually gets filled even with an open long position, a short position will be opened.
 
@@ -166,7 +166,7 @@ ts_activation_spread: 10
 ts_callback_rate: 5
 ```
 
-Let’s say your buy order is filled again at $10,000 and opens a long position. It waits for the best sell price to reach $11,000 (10% from the entry price) before the bot can start trailing by monitoring for the peak price. The market went down to $10,500 the next minute and went up again to $12,000. So now our new peak price is $12,000 and our exit price is $11,400 (5% callback rate).
+Let’s say your buy order is filled again at $10,000 and opens a long position. It waits for the best sell price to reach $11,000 (10% from the entry price) before the bot can start trailing by monitoring for the peak price. The market went down to $10,500 the next minute and went up again to $12,000. Our new peak price is now $12,000 and our exit price is $11,400 (5% callback rate).
 
 When the market falls to or below $11,400 the bot will create a limit or market (depending on `close_position_order_type` value) sell order to close the position.
 

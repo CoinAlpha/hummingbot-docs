@@ -412,6 +412,16 @@ Show trades
 | `--market`             | The market you want to see trades                |
 | `--open_order_markets` | See trades from current open order markets       |
 
+<Callout
+  type="note"
+  body="`trades` only works with [binance] exchange connector. 
+  If your desired trading pair does not show any result on your hummingbot terminal when running the `trades` command, 
+  you can use the following command `trades --market < Pair >`."
+  link={["https://www.binance.com/en/"]}
+/>
+
+![](img/trades_sample.png)
+
 ## pnl
 
 Show profit and losses
@@ -419,8 +429,8 @@ Show profit and losses
 | Optional Argument      | Description                                      |
 | :--------------------- | :----------------------------------------------- |
 | `--days`               | How many days in the past (can be decimal value) |
-| `--market`             | The market you want to see trades                |
-| `--open_order_markets` | See trades from current open order markets       |
+| `--market`             | The market you want to see pnl                   |
+| `--open_order_markets` | See pnl from current open order markets          |
 
 <Callout
   type="note"

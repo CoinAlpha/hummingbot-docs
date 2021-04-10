@@ -12,9 +12,9 @@ import Prompt from "../../src/components/Prompt";
   type="note"
   bullets={[
     "This installation method is currently under testing and awaiting feedback from users. Should you run into problems or have found a fix to solve errors along the way, feel free to reach out through our [Discord] support channel.",
-    "Added #version-0.36.0-arm_beta#, see release notes of [v0.36.0]",
+    "Added #version-0.38.0-arm_beta#, see release notes of [v0.38.0]",
   ]}
-  link={["http://discord.hummingbot.io/", "/release-notes/0.36.0/"]}
+  link={["http://discord.hummingbot.io/", "/release-notes/0.38.0/"]}
 />
 
 You can install Hummingbot with **_either_** of the following options:
@@ -65,7 +65,7 @@ chmod a+x *.sh
 
 # 4) Pull Hummingbot ARM image when asked what version to use
 Enter Hummingbot version: [ latest/development ] ( default = 'latest' )
->> version-0.36.0-arm_beta
+>> version-0.38.0-arm_beta
 
 ```
 
@@ -89,7 +89,7 @@ docker run -it \
 --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_logs,destination=/logs/" \
 --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_data,destination=/data/" \
 --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_scripts,destination=/scripts/" \
-coinalpha/hummingbot:version-0.36.0-arm_beta
+coinalpha/hummingbot:version-0.38.0-arm_beta
 ```
 
 ## Install from Source

@@ -67,10 +67,24 @@
 .callout-icon {
   vertical-align: sub;
   line-height: 50px;
+  padding-right: 0.2rem;
 }
 .callout-text {
   vertical-align: middle;
 }
 .callout-table {
   width: 100%;
+}
+
+a {
+  color: #26a29d;
+  text-decoration: none;
+}
+
+a.error-link {
+  color: red;
+}
+
+.bullet-list {
+  margin-top: 0.725rem;
 }

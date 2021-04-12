@@ -146,6 +146,31 @@ Similar to using links in the `body` prop, when applying links in `bullets`, add
   link={["https://miner.hummingbot.io/", "https://docs.hummingbot.io/"]}
 />
 
+
+### Example Body and Bullet Points
+
+```
+<Callout
+  type="note"
+  body="Make sure that you [activate] the Anaconda environment with `conda activate hummingbot` prior to running Hummingbot."
+  bullets={[
+    "This installation method is currently under testing and [awaiting] feedback from users. Should you run into problems or have found a fix to solve errors along the way, feel free to reach out through our [Discord] support channel.",
+    "Added #version-0.36.0-arm_beta#, see release notes of [v0.36.0]",
+  ]}
+  link={["http://discord.hummingbot.io/", "/release-notes/0.36.0/"]}
+/>
+```
+
+<Callout
+  type="note"
+  body="Make sure that you [activate] the Anaconda environment with `conda activate hummingbot` prior to running Hummingbot."
+  bullets={[
+    "This installation method is currently under testing and [awaiting] feedback from users. Should you run into problems or have found a fix to solve errors along the way, feel free to reach out through our [Discord] support channel.",
+    "Added #version-0.36.0-arm_beta#, see release notes of [v0.36.0]",
+  ]}
+  link={["http://discord.hummingbot.io/", "/release-notes/0.36.0/"]}
+/>
+
 **Link Mismatch**
 
 <Callout

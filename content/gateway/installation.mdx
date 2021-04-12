@@ -8,7 +8,6 @@ import Callout from "../../src/components/Callout";
 
 Gateway is a API server that allows Hummingbot to connect to [protocols](/protocol-connectors/overview/) that are used in the [amm-arb strategy](/strategies/amm-arb/) and other future strategies.
 
-
 <Callout
   type="tip"
   body="It is best to use Hummingbot docker build when using Gateway, you can check [here] for installation."
@@ -59,12 +58,16 @@ It downloads the scripts from GitHub, sets their correct permission and runs the
 
 3. Answer each prompt, review the summary and enter **Y** to proceed with the installation.
 
-![](img/create-gateway.gif)
+![](img/gateway.gif)
 
 <Callout
   type="note"
-  body="When creating a Gateway instance for Ethereum protocol connectors such as [Balancer] and [Uniswap], the script picks up the settings from your global config file (`conf_global.yml`). Make sure to connect them first from the Hummingbot client before installing Gateway."
-  link={["/protocol-connectors/balancer", "/protocol-connectors/uniswap"]}
+  body="When creating a Gateway instance for Ethereum protocol connectors such as [Balancer], [Uniswap], and [Perpetual Finance] the script picks up the settings from your global config file (`conf_global.yml`). Make sure to connect them first from the Hummingbot client before installing Gateway."
+  link={[
+    "/protocol-connectors/balancer",
+    "/protocol-connectors/uniswap",
+    "/protocol-connectors/perp-fi",
+  ]}
 />
 
 By default, Gateway will install on port `5000` which Hummingbot will connect to. If the default port is not available, Gateway will find the next port number.
@@ -171,7 +174,6 @@ yarn run start
 
 ![](img/gw_starting.gif)
 
-
 ## Setting up Kovan testnet
 
 This guide will help you setup gateway-api instance for Kovan testnet. This will help you run some test to AMM_Arbitrage strategy without risking your funds.
@@ -189,7 +191,8 @@ When connecting your Hummingbot to ethereum, you need to change to `kovan` inste
 
 ![](/img/gateway-kovan.jpg)
 
-Add the following to your `erc20_tokens_override.json` found on your Hummingbot directory under `conf` or `hummingbot_conf` folder. 
+Add the following to your `erc20_tokens_override.json` found on your Hummingbot directory under `conf` or `hummingbot_conf` folder.
+
 ```
   "BAT": "0x1f1f156E0317167c11Aa412E3d1435ea29Dc3cCE",
   "WETH": "0xd0A1E359811322d97991E03f863a0C30C2cF029C",
@@ -204,4 +207,3 @@ Add the following to your `erc20_tokens_override.json` found on your Hummingbot 
 ```
 
 Relaunch your Hummingbot client and setup an AMM_Arbitrage strategy.
-

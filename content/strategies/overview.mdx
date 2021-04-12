@@ -5,7 +5,7 @@ description: Learn how to use the different strategies
 
 import Callout from "../../src/components/Callout";
 
-The current release of Hummingbot comes with six strategies:
+The current release of Hummingbot comes with nine strategies:
 
 ### Pure Market Making
 
@@ -41,12 +41,25 @@ For more information, please see this [blog post](https://hummingbot.io/blog/202
 
 AMM-arb lets you exploit the differences between AMMs like [Balancer](/protocol-connectors/balancer/) and order book exchanges like Binance. Extending the celo-arb strategy released a few months ago, amm-arb uses a new, simpler design that works with any AMM protocol, on both Ethereum and non-Ethereum chain. You can take a look on our supported [Protocol Connectors](/protocol-connectors/overview/) for this strategy
 
+### Spot Perpetual Arbitrage
+
+Released on [version 0.37.0](/release-notes/0.37.0/).
+
+The Spot Perpetual Arbitrage strategy lets you arbitrage between [Exchange connectors](/exchange-connectors/overview/) and derivatives connectors like [Binance Futures](/exchange-connectors/binance-futures/) and [Perpetual Finance](/protocol-connectors/perp-fi/). This strategy looks at the price on the spot connector and the price on the derivative connector. Then it calculates the spread between the two connectors.
+
 ### Liquidity Mining Strategy (BETA)
 
-Released on [version 0.36.0](/release-notes/0.36.0/)
+Released on [version 0.36.0](/release-notes/0.36.0/).
+
 Liquidity mining strategy is still in **BETA**. This is designed so users can run a single strategy and earn rewards on multiple markets but different pairs without the same base or qoute are not available at the same time. Reduced the number of parameters needed and has dynamic spread adjustment on market volatility.
+
+### Avellaneda Market Making (BETA)
+
+Released on [version 0.38.0](/release-notes/0.38.0/).
+
+Avellaneda Market Making is still in **BETA**. This is designed to scale inventory and keep it at a specific target that a user defines it with. To achieve this, the strategy will optimize both bid and ask spreads and their order amount to maximize profitability.
 
 <Callout
   type="tip"
-  body="Liquidity mining strategy will have more features on future releases"
+  body="Liquidity mining strategy and Avellaneda Market Making strategy will have more features on future releases"
 />

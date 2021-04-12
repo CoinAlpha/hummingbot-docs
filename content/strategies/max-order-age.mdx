@@ -64,12 +64,18 @@ The `max_order_age` parameter tried to refresh the order but `order_refresh_tole
 
 Max order age respects hanging orders and refreshes the orders but does not cancel active hanging orders. See example below.
 
-![](img/max-order-hanging.png)
+```json
+ask_spread: 0.3
+bid_spread: 0.3
+order_refresh_time: 60
+max_order_age: 30
+hanging_order_enabled: True
+```
+
+![](img/max_order_hanging_order.gif)
 
 The hanging orders were not canceled and were only refreshed when `max_order_age` was triggered.
 
-![](img/max-hanging.png)
-
-### example when max order age is important
+### Why max order age is important in liquidity mining?
 
 Suppose you are participating in the `HARD-USDT` campaign with an order refresh time of 30 minutes. Max order age refreshes depending on what you set it on as long as it is lower than the order refresh time. When participating in liquidity mining, outstanding orders that reach the 30-minute mark are not subject to rewards. It is best to use the parameter to refresh the orders' age to be eligible for rewards.

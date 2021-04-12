@@ -19,8 +19,8 @@ import Callout from "../../src/components/Callout";
 ## How it works
 
 This strategy looks at the price on the spot connector and the price on the derivative connector. Then it calculates the spread between the two connectors. The key features for this strategy are `min_divergence` and `min_convergence`.
-When the spread between spot and derivative markets reach a value above `min_divergence`, the first part of the operation will be executed, creating a buy/sell order on the spot connector, while opening an opposing long/short position on the derivative connector.
-With the position open, the bot will scan the prices on both connectors, and once the price spread between them reach a value below `min_convergence`, the bot will close both positions.
+When the spread between spot and derivative markets reaches a value above `min_divergence`, the first part of the operation will be executed, creating a buy/sell order on the spot connector, while opening an opposing long/short position on the derivative connector.
+With the position open, the bot will scan the prices on both connectors, and once the price spread between them reaches a value below `min_convergence`, the bot will close both positions.
 
 ## Pre-requisites
 
@@ -38,6 +38,8 @@ The following walks through all the steps when running the `create` command.
 
 Enter an exchange you would like to trade on.
 
+** Prompt: **
+
 <Prompt
   prompt="Enter a spot connector (Exchange/AMM) "
   response=">>> binance"
@@ -46,6 +48,8 @@ Enter an exchange you would like to trade on.
 ### `spot_market`
 
 Enter the token trading pair for the spot exchange.
+
+** Prompt: **
 
 <Prompt
   prompt="Enter the token trading pair you would like  to trade on binance (e.g ETH-USDT) "
@@ -56,6 +60,8 @@ Enter the token trading pair for the spot exchange.
 
 Enter the derivative exchange you would like to trade on.
 
+** Prompt: **
+
 <Prompt
   prompt="Enter a derivative name (Exchange/AMM) "
   response=">>> binance_perpetuals"
@@ -64,6 +70,8 @@ Enter the derivative exchange you would like to trade on.
 ### `derivative_market`
 
 Enter the token trading pair for the derivative exchange.
+
+** Prompt: **
 
 <Prompt
   prompt="Enter the token trading pair you would like  to trade on binance_futures (e.g ETH-USDC) "
@@ -74,11 +82,15 @@ Enter the token trading pair for the derivative exchange.
 
 The order amount for both the orders. Ensure you have enough balance on quote tokens to place orders.
 
+** Prompt: **
+
 <Prompt prompt="What is the amount of ETH per order? " response=">>> " />
 
 ### `derivative_leverage`
 
 Enter the leverage you would like to use.
+
+** Prompt: **
 
 <Prompt
   prompt="How much leverage would you like to use on the derivative exchange? (Enter 1 to indicate 1x) "
@@ -89,6 +101,8 @@ Enter the leverage you would like to use.
 
 The spread required for the first part of the arbitrage to be executed.
 
+** Prompt: **
+
 <Prompt
   prompt="What is the minimum spread between the spot and derivative market price before starting an arbitrage? (Enter 1 to indicate 1%)"
   response=">>> 1"
@@ -97,6 +111,8 @@ The spread required for the first part of the arbitrage to be executed.
 ### `min_convergence`
 
 The spread required for the second part of the arbitrage to be executed.
+
+** Prompt: **
 
 <Prompt
   prompt="What is the minimum spread between the spot and derivative market price before closing an existing arbitrage? (Enter 1 to indicate 1%)"
@@ -107,6 +123,8 @@ The spread required for the second part of the arbitrage to be executed.
 
 If set to True, the strategy will not execute second arbitrage during the funding period until funding payment is received. If set to False, second arbitrage will be executed depending of the funding payment time.
 
+** Prompt: **
+
 <Prompt
   prompt="Would you like to take advantage of the funding rate on the derivative exchange, even if min convergence is reached during funding time? (True/False)"
   response=">>> False"
@@ -116,6 +134,8 @@ If set to True, the strategy will not execute second arbitrage during the fundin
 
 Percent buffer added to the spot exchange price to account for price movement before trade execution.
 
+** Prompt: **
+
 <Prompt
   prompt="How much buffer do you want to add to the price to account for slippage for orders on the spot market (Enter 1 for 1%)?"
   response=">>> 0.05"
@@ -124,6 +144,8 @@ Percent buffer added to the spot exchange price to account for price movement be
 ### `derivative_market_slippage_buffer`
 
 Percent buffer added to the derivative exchange price to account for price movement before trade execution.
+
+** Prompt: **
 
 <Prompt
   prompt="How much buffer do you want to add to the price to account for slippage for orders on the derivative market (Enter 1 for 1%)?"

@@ -5,31 +5,34 @@ description: Info and usage about Basic Operation Commands
 
 import Callout from "../../src/components/Callout";
 
+import Prompt from "../../src/components/Prompt";
+
 ## Commands Overview
 
 Below are the available commands in the current Hummingbot release.
 
-| Command        | Function                                                   |
-| -------------- | ---------------------------------------------------------- |
-| connect        | List available exchanges and add API keys to them          |
-| create         | Create a new bot                                           |
-| Import         | Import an existing bot by loading the configuration file   |
-| help           | List available commands                                    |
-| balance        | Display your asset balances across all connected exchanges |
-| config         | Display the current bot's configuration                    |
-| start          | Start the current bot                                      |
-| stop           | Stop the current bot                                       |
-| open_orders    | Show all active open orders                                |
-| trades         | Show trades                                                |
-| pnl            | Show profit and losses                                     |
-| status         | Get the market status of the current bot                   |
-| history        | See the past performance of the current bot                |
-| generate_certs | Create SSL certifications for Gateway communication.       |
-| exit           | Exit and cancel all outstanding orders                     |
-| paper_trade    | Toggle paper trading mode                                  |
-| export         | Export your bot's trades or private keys                   |
-| order_book     | Displays the top 5 bid/ask prices and volume               |
-| ticker         | Show market ticker of current order book                   |
+| Command         | Function                                                      |
+| --------------- | ------------------------------------------------------------- |
+| connect         | List available exchanges and add API keys to them             |
+| create          | Create a new bot                                              |
+| Import          | Import an existing bot by loading the configuration file      |
+| help            | List available commands                                       |
+| balance         | Display your asset balances across all connected exchanges    |
+| config          | Display the current bot's configuration                       |
+| start           | Start the current bot                                         |
+| stop            | Stop the current bot                                          |
+| open_orders     | Show all active open orders                                   |
+| trades          | Show trades                                                   |
+| pnl             | Show profit and losses                                        |
+| status          | Get the market status of the current bot                      |
+| history         | See the past performance of the current bot                   |
+| generate_certs  | Create SSL certifications for Gateway communication.          |
+| exit            | Exit and cancel all outstanding orders                        |
+| paper_trade     | Toggle paper trading mode                                     |
+| export          | Export your bot's trades or private keys                      |
+| order_book      | Displays the top 5 bid/ask prices and volume                  |
+| ticker          | Show market ticker of current order book                      |
+| autofill_import | Choose between `start` and `config` when importing a strategy |
 
 ## connect
 
@@ -40,25 +43,30 @@ List available exchanges and check whether API keys have been added correctly.
 
 Testing connections, please wait...
                       Exchange    Keys Added   Keys Confirmed    Connector Status
+                         beaxy            No               No              YELLOW
                        binance           Yes              Yes               GREEN
-             binance_perpetual            No               No              YELLOW
-     binance_perpetual_testnet            No               No              YELLOW
+             binance_perpetual            No               No               GREEN
+     binance_perpetual_testnet            No               No               GREEN
                     binance_us            No               No              YELLOW
-                      bitfinex            No               No               GREEN
+                      bitfinex            No               No              YELLOW
+                        bitmax            No               No               GREEN
                        bittrex            No               No              YELLOW
+                     blocktane            No               No               GREEN
                           celo            No               No               GREEN
                   coinbase_pro            No               No               GREEN
                     crypto_com            No               No              YELLOW
-                          dydx            No               No              YELLOW
+                          dydx            No               No               GREEN
                       eterbase            No               No                 RED
                       ethereum            No               No                 RED
-                         huobi            No               No              YELLOW
-                        kraken            No               No              YELLOW
+                         huobi            No               No               GREEN
+                        kraken            No               No               GREEN
                         kucoin            No               No               GREEN
                         liquid            No               No               GREEN
                       loopring            No               No              YELLOW
-                          okex            No               No                 RED
-                         terra            No               No              YELLOW
+                          okex            No               No               GREEN
+                        probit            No               No              YELLOW
+                     probit_kr            No               No              YELLOW
+                         terra            No               No               GREEN
 ```
 
 ** connect [ exchange ] **
@@ -328,26 +336,6 @@ New configuration saved:
 order_refresh_time: 30.0
 ```
 
-** Configure parameters on the fly **
-
-Currently, only the following parameters can be reconfigured without stopping the bot. The changes will take effect in the next order refresh.
-
-- bid_spread
-- ask_spread
-- order_amount
-- order_levels
-- order_level_spread
-- inventory_target_base_pct
-- inventory_range_multiplier
-- filled_order_delay
-
-Take note the reconfiguring of `inventory_target_base_pct` for DEX connectors is not working at the moment.
-
-<Callout
-  type="note"
-  body="Configuring these parameters on the fly only works for the pure market making strategy"
-/>
-
 ## start
 
 Start the current bot.
@@ -400,6 +388,16 @@ Show trades
 | `--market`             | The market you want to see trades                |
 | `--open_order_markets` | See trades from current open order markets       |
 
+<Callout
+  type="note"
+  body="`trades` only works with [binance] exchange connector. 
+  If your desired trading pair does not show any result on your hummingbot terminal when running the `trades` command, 
+  you can use the following command `trades --market < Pair >`."
+  link={["https://www.binance.com/en/"]}
+/>
+
+![](img/trades_sample.png)
+
 ## pnl
 
 Show profit and losses
@@ -407,8 +405,8 @@ Show profit and losses
 | Optional Argument      | Description                                      |
 | :--------------------- | :----------------------------------------------- |
 | `--days`               | How many days in the past (can be decimal value) |
-| `--market`             | The market you want to see trades                |
-| `--open_order_markets` | See trades from current open order markets       |
+| `--market`             | The market you want to see pnl                   |
+| `--open_order_markets` | See pnl from current open order markets          |
 
 <Callout
   type="note"
@@ -630,4 +628,50 @@ When running a cross-exchange or arbitrage strategy, you can specify which excha
 
    Best Bid  Best Ask  Mid Price  Last Trade
    351.41    351.42    351.415      351.42
+```
+
+## autofill import
+
+Choose between `start` and `config` after importing a strategy file. This will be applicable for all imported strategies.
+
+** Prompt: **
+
+<Prompt
+  prompt="What to auto-fill in the prompt after each import command? (start/config)"
+  response=">>>"
+/>
+
+**Sample usage**
+
+`autofill_import = start`
+
+```
+>>>`import conf_pure_mm_1.yml`
+Configuration from conf_pure_mm_1.yml file is imported.
+
+Preliminary checks:
+ - Exchange check: All connections confirmed.
+ - Strategy check: All required parameters confirmed.
+ -All checks: Confirmed.
+
+Enter "start" to start market making
+
+>>> start
+```
+
+Here's an example if using the config command
+`autofill_import = config`
+
+```
+>>>`import conf_pure_mm_1.yml`
+Configuration from conf_pure_mm_1.yml file is imported.
+
+Preliminary checks:
+ - Exchange check: All connections confirmed.
+ - Strategy check: All required parameters confirmed.
+ -All checks: Confirmed.
+
+Enter "start" to start market making
+
+>>> config
 ```

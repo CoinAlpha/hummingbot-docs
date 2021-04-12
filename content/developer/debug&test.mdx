@@ -3,11 +3,14 @@ title: "Debug & Testing"
 description: Info on Debug & Testing
 ---
 
-import Callout from "../../src/components/Callout";
+import Callout from "../../src/components/Callout";
 
 This section will breakdown some of the ways to debug and test the code. You are not entirely required to use the options during your development process.
 
-<Callout type="warning" body="As part of the QA process, for each tasks(Task 1 through 3) you are #required# to include the unit test cases for the code review process to begin."/>
+<Callout
+  type="warning"
+  body="As part of the QA process, for each tasks(Task 1 through 3) you are #required# to include the unit test cases for the code review process to begin."
+/>
 
 ## Option 1. Unit Test Cases
 
@@ -168,7 +171,7 @@ Below are a list of items required for the Unit Tests:
         ] tasks=4>
         ```
 
-3.  Market Connector | `test_*_market.py`<br/>
+3.  Exchange Class Unit Tests | `test_*_exchange.py`<br/>
     The purpose of this test is to ensure that all components and the order life cycle is working as intended.
     This test determines if the connector is able to place and manage orders.<br/>
     All the tests below are required to pass successfully on both real API calls and mocked API calls modes.<br/>
@@ -286,7 +289,7 @@ In cases where you need to preset `client_order_id` (our internal id), please mo
 - Patch `get_tracking_nonce`
 
   ```python
-  cls._t_nonce_patcher = unittest.mock.patch("hummingbot.market.binance.binance_market.get_tracking_nonce")
+  cls._t_nonce_patcher = unittest.mock.patch("hummingbot.core.utils.tracking_nonce.get_tracking_nonce")
   cls._t_nonce_mock = cls._t_nonce_patcher.start()
   ```
 
@@ -313,25 +316,29 @@ def tearDownClass(cls) -> None:
 <br />
 Below are a list of tests that are **required**:
 
-| Function<div style="width:200px"/>      | Description                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `test_get_fee`                          | Tests the `get_fee` function in the `Market` class. Ensures that calculation of fees are accurate.                                                                                                                                                                                                                                                                                                                           |
-| `test_limit_buy`                        | Utilizes the `place_order` function in the `Market` class and tests if the market connector is capable of placing a LIMIT buy order on the respective exchange. Asserts that a `BuyOrderCompletedEvent` and `OrderFilledEvent`(s) have been captured.<br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: Important to ensure that the amount specified in the order has been completely filled.</td></tr></tbody></table> |
-| `test_limit_sell`                       | Utilizes the `place_order` function in the `Market` class and tests if the market connector is capable of placing a LIMIT sell order on the respective exchange.                                                                                                                                                                                                                                                             |
-| `test_limit_maker_rejections`           | Utilizes the `place_order` function in the `Market` class and tests that the exchage rejects LIMIT_MAKER orders when the prices of such orders cross the orderbook.                                                                                                                                                                                                                                                          |
-| `test_limit_makers_unfilled`            | Utilizes the `place_order` function in the `Market` class to successfully place buy and sell LIMIT_MAKER orders and tests that they are unfilled after they've been placed in the orderbook.                                                                                                                                                                                                                                 |
-| `test_market_buy`                       | Utilizes the `place_order` function in the `Market` class and tests if the market connector is capable of placing a MARKET buy order on the respective exchange.                                                                                                                                                                                                                                                             |
-| `test_market_sell`                      | Utilizes the `place_order` function in the `Market` class and tests if the market connector is capable of placing a MARKET sell order on the respective exchange.                                                                                                                                                                                                                                                            |
-| `test_cancel_order`                     | Utilizes the `cancel_order` function in the `Market` class and tests if the market connector is capable of cancelling an order. <table><tbody><tr><td bgcolor="#ecf3ff">**Note**: Ensures that the Hummingbot client is capable of resolving the `client_order_id` to obtain the `exchange_order_id` before posting the cancel order request. </td></tr></tbody></table>                                                     |
-| `test_cancel_all`                       | Tests the `cancel_all` function in the `Market` class. All orders(being tracked by Hummingbot) would be cancelled.                                                                                                                                                                                                                                                                                                           |
-| `test_list_orders`                      | Places an order before checking calling the `list_orders` function in the `Market` class. Checks the number of orders and the details of the order.                                                                                                                                                                                                                                                                          |
-| `test_order_saving_and_restoration`     | Tests if **tracked orders** are being recorded locally and determines if the Hummingbot client is able to restore the orders.                                                                                                                                                                                                                                                                                                |
-| `test_order_fill_record`                | Tests if **trades** are being recorded locally.                                                                                                                                                                                                                                                                                                                                                                              |
-| `test_get_wallet_balances` (DEXes only) | Tests the `get_all_balances` function in the `Market` class.<br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: This is only required in Decentralized Exchanges.</td></tr></tbody></table>                                                                                                                                                                                                                               |
-| `test_wrap_eth` (DEXes only)            | Tests the `wrap_eth` function in the `Wallet` class. <br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: This is only required in Decentralized Exchanges that support WETH wrapping and unwrapping.</td></tr></tbody></table>                                                                                                                                                                                            |
-| `test_unwrap_eth` (DEXes only)          | Tests the `unwrap_eth` function in the `Wallet class.<br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: This is only required in Decentralized Exchanges that support WETH wrapping and unwrapping.</td></tr></tbody></table>                                                                                                                                                                                            |
+| Function<div style="width:200px"/>      | Description                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `test_get_fee`                          | Tests the `get_fee` function in the `Exchange` class. Ensures that calculation of fees are accurate.                                                                                                                                                                                                                                                                                                                             |
+| `test_limit_buy`                        | Utilizes the `place_order` function in the `Exchange` class and tests if the exchange connector is capable of placing a LIMIT buy order on the respective exchange. Asserts that a `BuyOrderCompletedEvent` and `OrderFilledEvent`(s) have been captured.<br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: Important to ensure that the amount specified in the order has been completely filled.</td></tr></tbody></table> |
+| `test_limit_sell`                       | Utilizes the `place_order` function in the `Exchange` class and tests if the exchange connector is capable of placing a LIMIT sell order on the respective exchange.                                                                                                                                                                                                                                                             |
+| `test_limit_maker_rejections`           | Utilizes the `place_order` function in the `Exchange` class and tests that the exchage rejects LIMIT_MAKER orders when the prices of such orders cross the orderbook.                                                                                                                                                                                                                                                            |
+| `test_limit_makers_unfilled`            | Utilizes the `place_order` function in the `Exchange` class to successfully place buy and sell LIMIT_MAKER orders and tests that they are unfilled after they've been placed in the orderbook.                                                                                                                                                                                                                                   |
+| `test_market_buy`                       | Utilizes the `place_order` function in the `Exchange` class and tests if the exchange connector is capable of placing a MARKET buy order on the respective exchange.                                                                                                                                                                                                                                                             |
+| `test_market_sell`                      | Utilizes the `place_order` function in the `Exchange` class and tests if the exchange connector is capable of placing a MARKET sell order on the respective exchange.                                                                                                                                                                                                                                                            |
+| `test_cancel_order`                     | Utilizes the `cancel_order` function in the `Exchange` class and tests if the exchange connector is capable of cancelling an order. <table><tbody><tr><td bgcolor="#ecf3ff">**Note**: Ensures that the Hummingbot client is capable of resolving the `client_order_id` to obtain the `exchange_order_id` before posting the cancel order request. </td></tr></tbody></table>                                                     |
+| `test_cancel_all`                       | Tests the `cancel_all` function in the `Exchange` class. All orders(being tracked by Hummingbot) would be cancelled.                                                                                                                                                                                                                                                                                                             |
+| `test_list_orders`                      | Places an order before checking calling the `list_orders` function in the `Exchange` class. Checks the number of orders and the details of the order.                                                                                                                                                                                                                                                                            |
+| `test_order_saving_and_restoration`     | Tests if **tracked orders** are being recorded locally and determines if the Hummingbot client is able to restore the orders.                                                                                                                                                                                                                                                                                                    |
+| `test_order_fill_record`                | Tests if **trades** are being recorded locally.                                                                                                                                                                                                                                                                                                                                                                                  |
+| `test_get_wallet_balances` (DEXes only) | Tests the `get_all_balances` function in the `Exchange` class.<br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: This is only required in Decentralized Exchanges.</td></tr></tbody></table>                                                                                                                                                                                                                                 |
+| `test_wrap_eth` (DEXes only)            | Tests the `wrap_eth` function in the `Wallet` class. <br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: This is only required in Decentralized Exchanges that support WETH wrapping and unwrapping.</td></tr></tbody></table>                                                                                                                                                                                                |
+| `test_unwrap_eth` (DEXes only)          | Tests the `unwrap_eth` function in the `Wallet class.<br/><table><tbody><tr><td bgcolor="#ecf3ff">**Note**: This is only required in Decentralized Exchanges that support WETH wrapping and unwrapping.</td></tr></tbody></table>                                                                                                                                                                                                |
 
-<Callout type="note" body="Ensure that you have enough asset balance before testing. Also document the #minimum# and #recommended# asset balance to run the tests. This is to aid testing during the PR review process. Please see `test/integration/test_binance_market.py` as an example on how this task is done."/>
+<Callout
+  type="note"
+  body="Ensure that you have enough asset balance before testing. Also document the #minimum# and #recommended# asset balance to run the tests. 
+    This is to aid testing during the PR review process. Please see `test/integration/test_binance_market.py` as an example on how this task is done."
+/>
 
 ## Option 2. aiopython console
 
@@ -397,7 +404,7 @@ i.e. A simple function to craft the Authentication signature of a request. This 
 
 ### API Request: POST Order
 
-Below is a sample code for POST-ing a LIMIT-BUY order on Bittrex. This script not only tests the `BittrexAuth` class but also outputs the response from the API server.
+Below is a sample code for executing a LIMIT-BUY order on Bittrex. This script not only tests the `BittrexAuth` class but also outputs the response from the API server.
 
 ```python
 #!/usr/bin/env python3
@@ -458,3 +465,40 @@ loop.close()
 
 
 ```
+
+## Option 4: Using Debugger tools.
+
+This section will detail the necessary configurations/setup required to run the debugger tool from your IDE of choice.
+
+### VS Code
+
+Include the following debug configurations into the `launch.json` configuration file
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Hummingbot Application",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceRoot}/bin/hummingbot.py",
+      "console": "integratedTerminal"
+    }
+  ]
+}
+```
+
+Now by executing the `Start Debugging` command, the debugger will automatically attach itself to the Hummingbot process.
+The Hummingbot app will appear in the `integratedTerminal`. You may change this as desired.
+
+### PyCharm
+
+Similarly for PyCharm, you want to setup the debug configurations as seen in the screenshot below.
+
+![PyCharmDebugConfiguration](/img/pycharm-debug-configurations.png)
+
+<Callout
+  type="note"
+  body="For right now, there is no way to add breakpoints/logpoints to any of the Cython code in VS Code or PyCharm."
+/>

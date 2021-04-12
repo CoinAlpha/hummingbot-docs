@@ -336,30 +336,6 @@ New configuration saved:
 order_refresh_time: 30.0
 ```
 
-** Configure parameters on the fly **
-
-Currently, only the following parameters can be reconfigured without stopping the bot. The changes will take effect in the next order refresh.
-
-- bid_spread
-- ask_spread
-- order_amount
-- order_levels
-- order_level_spread
-- inventory_target_base_pct
-- inventory_range_multiplier
-- filled_order_delay
-
-Take note the reconfiguring of `inventory_target_base_pct` for DEX connectors is not working at the moment.
-
-<Callout
-  type="note"
-  body="Configuring these parameters on the fly only works for the [Pure market making] and [Perpetual market making] strategy"
-  link={[
-    "/strategies/pure-market-making/",
-    "/strategies/perpetual-market-making/",
-  ]}
-/>
-
 ## start
 
 Start the current bot.

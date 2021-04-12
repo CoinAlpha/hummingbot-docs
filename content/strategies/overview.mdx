@@ -5,7 +5,7 @@ description: Learn how to use the different strategies
 
 import Callout from "../../src/components/Callout";
 
-The current release of Hummingbot comes with eight strategies:
+The current release of Hummingbot comes with nine strategies:
 
 ### Pure Market Making
 
@@ -53,7 +53,13 @@ Released on [version 0.36.0](/release-notes/0.36.0/).
 
 Liquidity mining strategy is still in **BETA**. This is designed so users can run a single strategy and earn rewards on multiple markets but different pairs without the same base or qoute are not available at the same time. Reduced the number of parameters needed and has dynamic spread adjustment on market volatility.
 
+### Avellaneda Market Making (BETA)
+
+Released on [version 0.38.0](/release-notes/0.38.0/).
+
+Avellaneda Market Making is still in **BETA**. This is designed to scale inventory and keep it at a specific target that a user defines it with. To achieve this, the strategy will optimize both bid and ask spreads and their order amount to maximize profitability.
+
 <Callout
   type="tip"
-  body="Liquidity mining strategy will have more features on future releases"
+  body="Liquidity mining strategy and Avellaneda Market Making strategy will have more features on future releases"
 />

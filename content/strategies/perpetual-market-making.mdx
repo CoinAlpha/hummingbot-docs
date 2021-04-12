@@ -200,6 +200,30 @@ If you’re running the bot or strategy on a machine with poor network connectio
   body="Price `NILL` means the market is yet to move enough to have a peak price that'll give a profitable exit price according to the configured parameters for the feature."
 />
 
+Using market order type helps ensure that your positions are closed at mark price but paying higher fees.
+
+## Basic Parameters
+
+Hummingbot prompts to enter the values for these parameters when creating the strategy.
+
+| Parameter             | Description      |
+| --------------------- | --------------------- |
+| `derivative` | The derivative exchange where you want to trade |
+| `market` | Token trading pair for the exchange e.g. BTC-USDT |
+| `leverage` | How much the position is increased by |
+| `position_mode` | Determines the number of positions that can be opened simultaneously. <br/><br/> Refer to [this section](#opening-positions-after-a-filled-order-event) for more information. |
+| `bid_spread` | How far away from the price reference (by default, mid price) to place the buy order |
+| `ask_spread` | How far away from the price reference (by default, mid price) to place the sell order |
+| `order_refresh_time` | Time (in seconds) to cancel active orders and place new ones with specified spreads. |
+| `order_amount` | The size or amount of your bid and ask orders |
+| `position_management` | Which position management feature to use. <br/> <br/> Current available options: <br/> [`Profit_taking`](#profit-taking) and [`Trailing_stop`](#trailing_stop) |
+| `long_profit_taking_spread` | When using profit taking mode, the spread of profit taking order from the entry price to close a long position. |
+| `short_profit_taking_spread` | When using profit taking mode, the spread of profit taking order from the entry price to close a short position. |
+| `ts_activation_spread` | Used with trailing stop position management, the profitability % of your position for the bot to start trailing. |
+| `ts_callback_rate` | Used with trailing stop position management, the callback % from the peak price to determine your position's exit price. |
+| `stop_loss_spread` | Triggers to close a position by creating a [stop loss](#stop-loss) order when profitability % falls below this value. |
+| `close_position_order_type` | The order type used (limit or market) when using trailing stop or when a stop loss is triggered. <br/><br/> Refer to [this section](#using-limit-or-market-orders-to-close-a-position) for more information. |
+
 ## ** Configure parameters on the fly **
 
 Currently, only the following parameters can be reconfigured without stopping the bot. The changes will take effect in the next order refresh.

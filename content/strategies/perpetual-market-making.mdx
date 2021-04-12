@@ -195,25 +195,12 @@ For `close_position_order_type` parameter, some users use `LIMIT` order type for
 
 If you’re running the bot or strategy on a machine with poor network connection, chances are the order book prices will not be updated right away which could affect your limit order prices and your positions might be closed at the profitability you were not expecting.
 
-<<<<<<< HEAD
 <Callout
   type="info"
   body="Price `NILL` means the market is yet to move enough to have a peak price that'll give a profitable exit price according to the configured parameters for the feature."
 />
 
-## ** Configure parameters on the fly **
-
-Currently, only the following parameters can be reconfigured without stopping the bot. The changes will take effect in the next order refresh.
-
-- bid_spread
-- ask_spread
-- order_amount
-- order_levels
-- order_level_spread
-- filled_order_delay
-=======
 Using market order type helps ensure that your positions are closed at mark price but paying higher fees.
-
 
 ## Basic Parameters
 
@@ -236,4 +223,14 @@ Hummingbot prompts to enter the values for these parameters when creating the st
 | `ts_callback_rate` | Used with trailing stop position management, the callback % from the peak price to determine your position's exit price. |
 | `stop_loss_spread` | Triggers to close a position by creating a [stop loss](#stop-loss) order when profitability % falls below this value. |
 | `close_position_order_type` | The order type used (limit or market) when using trailing stop or when a stop loss is triggered. <br/><br/> Refer to [this section](#using-limit-or-market-orders-to-close-a-position) for more information. |
->>>>>>> master
+
+## ** Configure parameters on the fly **
+
+Currently, only the following parameters can be reconfigured without stopping the bot. The changes will take effect in the next order refresh.
+
+- bid_spread
+- ask_spread
+- order_amount
+- order_levels
+- order_level_spread
+- filled_order_delay

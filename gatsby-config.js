@@ -1,4 +1,5 @@
 require("dotenv").config();
+const remarkMath = require(`remark-math`);
 
 const sidebarCategories = {
   null: ["index", "intro/support"],
@@ -249,6 +250,8 @@ module.exports = {
          */
         algoliaApiKey: process.env.GATSBY_ALGOLIA_API_KEY,
         algoliaIndexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
+        gatsbyRemarkPlugins: [`gatsby-remark-katex`],
+        remarkPlugins: [remarkMath],
       },
     },
     {
@@ -260,20 +263,6 @@ module.exports = {
         background_color: "#0D999E",
         theme_color: "#0D999E",
         icon: "src/images/brand-logo.png",
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-katex`,
-            options: {
-              // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
-              strict: `ignore`,
-            },
-          },
-        ],
       },
     },
   ],

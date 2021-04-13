@@ -1,15 +1,14 @@
-import PropTypes from "prop-types";
 import React, { useRef, useState } from "react";
-import SectionNav from "gatsby-theme-apollo-docs/src/components/section-nav";
+import PropTypes from "prop-types";
+import { withPrefix } from "gatsby";
 import styled from "@emotion/styled";
 import useMount from "react-use/lib/useMount";
+import SectionNav from "gatsby-theme-apollo-docs/src/components/section-nav";
 import { HEADER_HEIGHT } from "gatsby-theme-apollo-docs/src/utils";
 import { PageNav, breakpoints, colors } from "gatsby-theme-apollo-core";
 import { ReactComponent as DiscordLogo } from "gatsby-theme-apollo-docs/src/assets/discord.svg";
 import { ReactComponent as GithubLogo } from "gatsby-theme-apollo-docs/src/assets/github.svg";
-import { withPrefix } from "gatsby";
 import useSiteMetadata from "../../hooks/useSiteMetadata";
-import "katex/dist/katex.min.css";
 
 const Wrapper = styled.div({
   display: "flex",

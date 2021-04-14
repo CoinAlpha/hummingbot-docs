@@ -1,4 +1,5 @@
 require("dotenv").config();
+const remarkMath = require(`remark-math`);
 
 const sidebarCategories = {
   null: ["index", "intro/support"],
@@ -34,6 +35,7 @@ const sidebarCategories = {
     "exchange-connectors/overview",
     "exchange-connectors/ascend-ex",
     "exchange-connectors/balancer",
+    "exchange-connectors/bamboo-relay",
     "exchange-connectors/beaxy",
     "exchange-connectors/binance",
     "exchange-connectors/binance-futures",
@@ -45,6 +47,8 @@ const sidebarCategories = {
     "exchange-connectors/coinzoom",
     "exchange-connectors/crypto-com",
     "exchange-connectors/digifinex",
+    "exchange-connectors/dolomite",
+    "exchange-connectors/dydx",
     "exchange-connectors/hitbtc",
     "exchange-connectors/huobi",
     "exchange-connectors/kucoin",
@@ -54,10 +58,7 @@ const sidebarCategories = {
     "exchange-connectors/okex",
     "exchange-connectors/probit",
     "exchange-connectors/probit-korea",
-    "exchange-connectors/dydx",
     "exchange-connectors/radar-relay",
-    "exchange-connectors/bamboo-relay",
-    "exchange-connectors/dolomite",
   ],
   "Protocol Connectors": [
     "protocol-connectors/overview",
@@ -100,12 +101,13 @@ const sidebarCategories = {
     "developer/overview",
     "developer/contributing",
     "developer/architecture",
-    "developer/tutorial",
+    "developer/exchange-connector-tutorial",
     "developer/task1",
     "developer/task2",
     "developer/task3",
     "developer/task4",
     "developer/miscellaneous",
+    "developer/debug&test",
   ],
   "Developing Strategies": [
     "developer/strategies-overview",
@@ -248,6 +250,8 @@ module.exports = {
          */
         algoliaApiKey: process.env.GATSBY_ALGOLIA_API_KEY,
         algoliaIndexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
+        gatsbyRemarkPlugins: [`gatsby-remark-katex`],
+        remarkPlugins: [remarkMath],
       },
     },
     {
@@ -259,20 +263,6 @@ module.exports = {
         background_color: "#0D999E",
         theme_color: "#0D999E",
         icon: "src/images/brand-logo.png",
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-katex`,
-            options: {
-              // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
-              strict: `ignore`,
-            },
-          },
-        ],
       },
     },
   ],

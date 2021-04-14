@@ -1,6 +1,16 @@
 import React from "react";
+import styled from '@emotion/styled'
 import { Styles, Colors } from "./styles";
 import "./Callout.css";
+
+const CalloutBody = styled.div`
+  ${({isBody})=> isBody && `
+    .bullet-list li {
+      font-size: unset;
+      line-height: unset;
+    }
+  `}
+`;
 
 export default function Callout(props) {
   var linkCount = -1;
@@ -15,9 +25,8 @@ export default function Callout(props) {
       .replace(/#([$-/:-?{-~!"^_\]\\A-Za-z0-9\s]+)#/gi, "<strong>$1</strong>")
       .replace(/\[([$-/:-?{-~!"^_\\A-Za-z0-9\s]+)\]/gi, (_, txt) => {
         linkCount++;
-        return `<a href="${linkArr[linkCount]}" class="${
-          linkArr[linkCount] === undefined ? "error-link" : ""
-        }">&nbsp;${txt}</a>`;
+        return `<a href="${linkArr[linkCount]}" class="${linkArr[linkCount] === undefined ? "error-link" : ""
+          }">&nbsp;${txt}</a>`;
       });
   };
 
@@ -45,12 +54,12 @@ export default function Callout(props) {
                   <span className="callout-text"> {Colors[type].heading}</span>
                 </b>
               </div>
-              <div className={`callout-bottom callout${type}`}>
+              <CalloutBody className={`callout-bottom callout${type}`} isBody={body}>
                 {body && (
                   <div dangerouslySetInnerHTML={{ __html: parseText(body) }} />
                 )}
                 {bullets && <BulletList list={bullets} />}
-              </div>
+              </CalloutBody>
             </div>
           </td>
         </tr>

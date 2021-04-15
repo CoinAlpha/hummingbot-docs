@@ -149,9 +149,9 @@ long_profit_taking_spread: 5
 short_profit_taking_spread: 1
 ```
 
-If the price of your filled buy order is $10,000 then it opens a long position with that entry price. If your `long_profit_taking_spread` is set to 5% it will create a profit taking sell order at $10,500.
+If the price of your filled buy order is 10,000 then it opens a long position with that entry price. If your `long_profit_taking_spread` is set to 5% it will create a profit taking sell order at 10,500.
 
-If the price of your filled sell order is $10,000 it opens a short position. The bot will create a profit taking buy order at $9,900 because our `short_profit_taking_spread` is set to 1% value.
+If the price of your filled sell order is 10,000 it opens a short position. The bot will create a profit taking buy order at 9,900 because our `short_profit_taking_spread` is set to 1% value.
 
 ### Trailing Stop
 
@@ -166,9 +166,9 @@ ts_activation_spread: 10
 ts_callback_rate: 5
 ```
 
-Let’s say your buy order is filled again at $10,000 and opens a long position. It waits for the best sell price to reach $11,000 (10% from the entry price) before the bot can start trailing by monitoring for the peak price. The market went down to $10,500 the next minute and went up again to $12,000. Our new peak price is now $12,000 and our exit price is $11,400 (5% callback rate).
+Let’s say your buy order is filled again at 10,000 and opens a long position. It waits for the best sell price to reach 11,000 (10% from the entry price) before the bot can start trailing by monitoring for the peak price. The market went down to 10,500 the next minute and went up again to 12,000. Our new peak price is now 12,000 and our exit price is 11,400 (5% callback rate).
 
-When the market falls to or below $11,400 the bot will create a limit or market (depending on `close_position_order_type` value) sell order to close the position.
+When the market falls to or below 11,400 the bot will create a limit or market (depending on `close_position_order_type` value) sell order to close the position.
 
 **Estimated exit price is Nill USDT**
 

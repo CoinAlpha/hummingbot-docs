@@ -251,7 +251,21 @@ module.exports = {
          */
         algoliaApiKey: process.env.GATSBY_ALGOLIA_API_KEY,
         algoliaIndexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
-        gatsbyRemarkPlugins: [`gatsby-remark-katex`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+              plugins: [
+                {
+                  resolve: `gatsby-remark-katex`,
+                  options: {
+                    strict: `ignore`,
+                  },
+                },
+              ],
+            },
+          },
+        ],
         remarkPlugins: [remarkMath],
       },
     },

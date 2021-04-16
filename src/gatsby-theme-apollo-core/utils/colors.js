@@ -6,7 +6,9 @@ import { colors as spaceKitColors } from "@apollo/space-kit/colors";
  *
  * @see https://github.com/apollographql/gatsby-theme-apollo/tree/master/packages/gatsby-theme-apollo-core#customizing-colors
  */
-export const hummingbot = {
+
+// eslint-disable-next-line
+const hummingbot = {
   darkest: "#013D54",
   darker: "#04596E",
   dark: "#087887",

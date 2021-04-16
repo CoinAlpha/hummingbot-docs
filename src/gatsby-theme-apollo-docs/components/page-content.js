@@ -48,15 +48,13 @@ const BodyContent = styled.div({
       },
     },
   },
-  "*:not(style) +": {
-    [["h2"]]: {
-      marginTop: -16,
-      paddingTop: HEADER_HEIGHT,
-    },
-    [["h3", "h4"]]: {
-      marginTop: -16,
-      paddingTop: SUB_HEADER_HEIGHT,
-    },
+  [["h2"]]: {
+    marginTop: -16,
+    paddingTop: HEADER_HEIGHT,
+  },
+  [["h3", "h4"]]: {
+    marginTop: -16,
+    paddingTop: SUB_HEADER_HEIGHT,
   },
   img: {
     display: "block",

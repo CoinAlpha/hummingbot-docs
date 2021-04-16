@@ -4,10 +4,7 @@ import { withPrefix } from "gatsby";
 import styled from "@emotion/styled";
 import useMount from "react-use/lib/useMount";
 import SectionNav from "gatsby-theme-apollo-docs/src/components/section-nav";
-import {
-  HEADER_HEIGHT,
-  SUB_HEADER_HEIGHT,
-} from "gatsby-theme-apollo-docs/src/utils";
+import { HEADER_HEIGHT } from "gatsby-theme-apollo-docs/src/utils";
 import { PageNav, breakpoints, colors } from "gatsby-theme-apollo-core";
 import { ReactComponent as DiscordLogo } from "gatsby-theme-apollo-docs/src/assets/discord.svg";
 import { ReactComponent as GithubLogo } from "gatsby-theme-apollo-docs/src/assets/github.svg";
@@ -48,13 +45,13 @@ const BodyContent = styled.div({
       },
     },
   },
-  [["h2"]]: {
+  h2: {
     marginTop: -16,
     paddingTop: HEADER_HEIGHT,
   },
   [["h3", "h4"]]: {
     marginTop: -16,
-    paddingTop: SUB_HEADER_HEIGHT,
+    paddingTop: 36,
   },
   img: {
     display: "block",

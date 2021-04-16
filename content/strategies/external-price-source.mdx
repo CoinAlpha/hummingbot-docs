@@ -17,7 +17,7 @@ With this feature, users have the option to choose a different price reference f
 
 In a situation where the calculation of maker order prices from external sources would result in the order matching any existing orders on the order book, such order will be ignored unless `take_if_crossed` parameter is enabled.
 
-### Price Source: Current Market
+## Price Source: Current Market
 
 By default, `price_source` is set to `current_market`.
 
@@ -37,7 +37,7 @@ By default, `price_source` is set to `current_market`.
 price_source_custom_api: None
 ```
 
-### Price Source: External Market
+## Price Source: External Market
 
 Users can also use an external market from another exchange supported by Hummingbot as the price reference when creating orders.
 
@@ -66,7 +66,7 @@ Run `config price_type` command to change the price reference to `last_price`, `
   body="Currently, the external price source cannot be the same as the maker exchange (i.e. if the bot is trading on Binance, the `price_source_exchange` cannot be Binance)."
 />
 
-### Price Source: Custom API
+## Price Source: Custom API
 
 Custom API is mostly used by advanced users or developers for using a different price reference. Take note that `price_source` should be set to `custom_api` with the API URL indicated in `price_source_custom_api`.
 
@@ -93,9 +93,9 @@ Sample API Output:
 
 External price source is valuable when your bot is market making for a relatively illiquid trading pair, but a more liquid pair with the same underlying exposure is available on a different exchange.
 
-Suppose we are market making for the `ETH-USDT` trading pair. The exchange we are trading on, denoted as **Exchange A**, has the top bid order at $198 and the top ask order at $202, so the mid price is $200.
+Suppose we are market making for the `ETH-USDT` trading pair. The exchange we are trading on, denoted as **Exchange A**, has the top bid order at \$198 and the top ask order at \$202, so the mid price is \$200.
 
-Let's suppose there is **Exchange B** with an `ETH-USD` trading pair. That pair has a top bid order at $200 while the top ask order is $202, so the mid price is $201. These discrepancies often happens between different exchanges as market conditions change. Some exchanges may react more slowly or quickly to market changes due to differences in the trading pair, liquidity, geography.
+Let's suppose there is **Exchange B** with an `ETH-USD` trading pair. That pair has a top bid order at \$200 while the top ask order is \$202, so the mid price is \$201. These discrepancies often happens between different exchanges as market conditions change. Some exchanges may react more slowly or quickly to market changes due to differences in the trading pair, liquidity, geography.
 
 If you believe that `ETH-USD` on Exchange B is more liquid and responds more quickly to market information than `ETH-USDT` on Exchange A, you may want to market make on Exchange A but use `ETH-USD` on Exchange B as the price source. This helps you position your orders based on where the market might go in the future.
 
@@ -107,7 +107,7 @@ In certain cases, this behavior may be desirable even if the fee is higher becau
 
 ## Relevant Parameters
 
-### `price_source`
+## `price_source`
 
 Determines which market to be used as price reference when creating orders.
 
@@ -118,7 +118,7 @@ Determines which market to be used as price reference when creating orders.
   response=">>> current_market"
 />
 
-### `price_type`
+## `price_type`
 
 Price type to be used as price reference when creating orders.
 
@@ -177,21 +177,14 @@ When `price_type` is set to `best_ask`, the price will be based on the best ask 
 **`inventory_cost`**
 
 The bot will calculate the average cost of your inventory every time a buy order is filled, and all sell orders will be created at `inventory_cost` + `ask_spread`.
+When using inventory_cost, you would need to set inventory price before you start your Hummingbot using this command `config inventory_price`
 
 ```json
            price_source: current_market
              price_type: inventory_cost
 ```
 
-<Callout
-  type="tip"
-  body="#Updated as of version 0.36.0#, added [inventory_cost] to price_type. When using inventory_cost, you would need to set inventory price before you start your Hummingbot using this command `config inventory_price`"
-  link={[
-    "/release-notes/0.36.0/#inventory-average-cost-added-as-a-new-price_type-configuration",
-  ]}
-/>
-
-### `price_source_exchange`
+## `price_source_exchange`
 
 Name of exchange to be used for external pricing source.
 
@@ -199,7 +192,7 @@ Name of exchange to be used for external pricing source.
 
 <Prompt prompt="Enter external price source exchange name" response=">>> " />
 
-### `price_source_market`
+## `price_source_market`
 
 The trading pair for the price source exchange.
 
@@ -210,7 +203,7 @@ The trading pair for the price source exchange.
   response=">>> "
 />
 
-### `take_if_crossed`
+## `take_if_crossed`
 
 Take order if they cross orderbook when external price source is enabled.
 
@@ -221,7 +214,7 @@ Take order if they cross orderbook when external price source is enabled.
   response=">>> Yes"
 />
 
-### `price_source_custom_api`
+## `price_source_custom_api`
 
 An external API that returns price.
 

@@ -30,17 +30,21 @@ You can also watch the recording of our demo of the strategy in the link below:
 
 <Callout
   type="tip"
-  body="Users can test how this strategy works without risking real funds by connecting their Binance Futures Testnet account to Hummingbot. We also recommend running the bot side-by-side with the exchange to help to learn more about the strategy."
+  body="Users can test how this strategy works without risking real funds by connecting their Binance Futures Testnet account to Hummingbot."
+  bullets={[
+    "[Create a free account with Binance Futures Testnet]",
+    "[Creating Binance Futures Testnet API Keys]"]}
+  link={[
+    "https://testnet.binancefuture.com/en/register?source=futures",
+    "https://docs.hummingbot.io/exchange-connectors/binance-futures/#creating-binance-futures-testnet-api-keys"
+  ]}
 />
-
-- [Create a free account with Binance Futures Testnet](https://testnet.binancefuture.com/en/register?source=futures)
-- [Creating Binance Futures Testnet API Keys](https://docs.hummingbot.io/exchange-connectors/binance-futures/#creating-binance-futures-testnet-api-keys)
 
 
 ## Creating a basic strategy configuration
 
 1. Make sure to connect to an exchange supported by Perpetual Market Making strategy.
-- [How to use the `connect` command to connect your API keys](/operation/command-ref/#connect)
+    - [How to use the `connect` command to connect your API keys](/operation/command-ref/#connect)
 2. Run the `create` command and enter `perpetual_market_making` when prompted for the strategy you want to use
 3. Enter the name of the connector and the trading pair you want to use with this strategy
 4. Enter how much [`leverage`](#leverage) you want to use. Leverage allows you to open a position with a fraction of a cost. The higher the leverage, the higher the risk. Please manage accordingly.
@@ -52,7 +56,7 @@ You can also watch the recording of our demo of the strategy in the link below:
 10. Enter the spread from entry price to close a position with a stop loss order
 11. Choose between limit or market order when `close_position_order_type` value for stop loss and trailing stop orders
 12. The strategy configuration file is saved in the Hummingbot folder
-- [Where are my configuration files saved?](https://hummingbot.zendesk.com/hc/en-us/articles/900005206343-Where-is-my-config-and-log-file-)
+    - [Where are my configuration files saved?](https://hummingbot.zendesk.com/hc/en-us/articles/900005206343-Where-is-my-config-and-log-file-)
 
 
 ## Creating orders to open a position

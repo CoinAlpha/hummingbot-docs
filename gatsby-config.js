@@ -4,12 +4,13 @@ const remarkMath = require(`remark-math`);
 const sidebarCategories = {
   null: ["index", "intro/support"],
   Installation: [
-    "installation/overview",
+    "installation/system-requirements",
     "installation/windows",
     "installation/mac",
     "installation/linux",
     "installation/raspberry",
-    "installation/updating",
+    "installation/update-version",
+    "installation/restore-previous-version",
     "installation/multiple-bots",
   ],
   Operation: [

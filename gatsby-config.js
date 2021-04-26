@@ -16,6 +16,7 @@ const sidebarCategories = {
   Operation: [
     "operation/overview",
     "operation-2/launch-exit",
+    "operation-2/password",
     "operation-2/connect-exchange",
     "operation-2/balances",
     "operation-2/config-files",

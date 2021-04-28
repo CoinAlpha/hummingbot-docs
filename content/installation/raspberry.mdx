@@ -144,7 +144,7 @@ conda create --name hummingbot
 conda activate hummingbot
 
 # Install the pip dependencies
-pip install pandas cython cachetools aiohttp ruamel.yaml eth_account aiokafka sqlalchemy binance python-binance ujson websockets signalr-client-aio web3 prompt_toolkit 0x-order-utils 0x-contract-wrappers eth_bloom pyperclip telegram python-telegram-bot pyjwt numpy mypy_extensions pyblake2 pysha3 psutil ethsnarks-loopring dydx-python
+pip install pandas cython cachetools aiohttp ruamel.yaml eth_account aiokafka sqlalchemy binance python-binance ujson websockets signalr-client-aio web3 prompt_toolkit 0x-order-utils 0x-contract-wrappers eth_bloom pyperclip telegram python-telegram-bot pyjwt numpy mypy_extensions pyblake2 pysha3 psutil ethsnarks-loopring dydx-python rsa simplejson
 ```
 
 **Install, compile, and run Hummingbot**
@@ -166,9 +166,11 @@ bin/hummingbot.py
 />
 
 ## Create Hummingbot ARM image for Docker
-This guide would help you build your own Hummingbot ARM image when there is a new release. Please be advised that for every new release, you would need to [install from source](#install-from-source) first and follow the steps provided in order to create an image that you can use for your RaspberryPi docker. 
+
+This guide would help you build your own Hummingbot ARM image when there is a new release. Please be advised that for every new release, you would need to [install from source](#install-from-source) first and follow the steps provided in order to create an image that you can use for your RaspberryPi docker.
 
 1. Go to your source directory and run the command below
+
 ```
 # Set a name of your image on insert_name
 docker build -t coinalpha/hummingbot:insert_name -f Dockerfile.arm .
@@ -176,7 +178,6 @@ docker build -t coinalpha/hummingbot:insert_name -f Dockerfile.arm .
 
 On this sample, we set `v036` for the name of the image. This is needed when you run `./create.sh` command
 ![](/img/rpi-docker-img.png)
-
 
 <Callout
   type="warning"

@@ -40,5 +40,6 @@
   "bugs": {
     "url": "https://github.com/CoinAlpha/hummingbot-docs/issues"
   },
-  "homepage": "https://github.com/CoinAlpha/hummingbot-docs#readme"
+  "homepage": "https://github.com/CoinAlpha/hummingbot-docs#readme",
+  "license": "UNLICENSED"
 }

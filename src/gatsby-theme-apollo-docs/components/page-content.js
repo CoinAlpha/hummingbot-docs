@@ -50,8 +50,8 @@ const BodyContent = styled.div({
     paddingTop: HEADER_HEIGHT,
   },
   [["h3", "h4"]]: {
-    marginTop: -16,
-    paddingTop: 36,
+    marginTop: 20 - HEADER_HEIGHT,
+    paddingTop: HEADER_HEIGHT,
   },
   img: {
     display: "block",

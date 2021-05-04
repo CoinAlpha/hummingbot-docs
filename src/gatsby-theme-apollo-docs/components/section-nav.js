@@ -67,7 +67,7 @@ export default function SectionNav(props) {
   const scrollTop = y;
   for (let i = offsets.length - 1; i >= 0; i--) {
     const { id, offset } = offsets[i];
-    if (scrollTop >= offset - HEADER_HEIGHT) {
+    if (scrollTop >= offset - HEADER_HEIGHT / 2) {
       activeHeading = id;
       break;
     }

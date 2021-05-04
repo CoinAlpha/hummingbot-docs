@@ -6,8 +6,9 @@ import striptags from "striptags";
 import cn from "classnames";
 import { Link } from "react-scroll";
 import useWindowScroll from "react-use/lib/useWindowScroll";
-import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 import { colors } from "gatsby-theme-apollo-core";
+import { HEADER_HEIGHT } from "gatsby-theme-apollo-docs/src/utils";
+import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 
 const StyledList = styled.ul({
   marginLeft: 0,
@@ -66,8 +67,7 @@ export default function SectionNav(props) {
   const scrollTop = y;
   for (let i = offsets.length - 1; i >= 0; i--) {
     const { id, offset } = offsets[i];
-    console.log(scrollTop, offset);
-    if (scrollTop >= offset - 70) {
+    if (scrollTop >= offset - HEADER_HEIGHT) {
       activeHeading = id;
       break;
     }

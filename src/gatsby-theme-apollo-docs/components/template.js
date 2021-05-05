@@ -39,7 +39,8 @@ function CustomLink(props) {
     }
   }
 
-  return <a {...linkProps} />;
+  // eslint-disable-next-line
+  return <a {...linkProps} alt={"custom link"} aria-label="custom link" />;
 }
 
 CustomLink.propTypes = {
@@ -153,7 +154,6 @@ const renderAst = new rehypeReact({
 }).Compiler;
 
 export default function Template(props) {
-  console.log(props);
   const { hash, pathname } = props.location;
   const { file, site } = props.data;
   const { frontmatter, headings, fields } =

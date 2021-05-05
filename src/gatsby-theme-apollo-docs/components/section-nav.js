@@ -96,7 +96,7 @@ export default function SectionNav(props) {
               activeClass="active"
               to={slug}
               spy={true}
-              offset={-10}
+              offset={-1 * HEADER_HEIGHT}
               duration={100}
               ignoreCancelEvents={false}
               onSetActive={(e) => handleHeadingClick(e)}

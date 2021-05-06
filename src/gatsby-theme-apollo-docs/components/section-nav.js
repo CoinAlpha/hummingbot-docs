@@ -67,7 +67,7 @@ export default function SectionNav(props) {
   const scrollTop = y;
   for (let i = offsets.length - 1; i >= 0; i--) {
     const { id, offset } = offsets[i];
-    if (scrollTop >= offset - HEADER_HEIGHT / 2) {
+    if (scrollTop >= offset - 1.5 * HEADER_HEIGHT) {
       activeHeading = id;
       break;
     }
@@ -96,7 +96,7 @@ export default function SectionNav(props) {
               activeClass="active"
               to={slug}
               spy={true}
-              offset={-10}
+              offset={-1 * HEADER_HEIGHT}
               duration={100}
               ignoreCancelEvents={false}
               onSetActive={(e) => handleHeadingClick(e)}

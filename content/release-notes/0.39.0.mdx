@@ -1,0 +1,56 @@
+---
+title: May 2021 (v0.39.0)
+---
+
+import Callout from "../../src/components/Callout";
+
+_Released on May 10, 2021_
+
+- **Download Installer**: [Windows](https://dist.hummingbot.io/hummingbot_v0.38.0_setup.exe) | [macOS](https://dist.hummingbot.io/hummingbot_v0.38.0.dmg)
+- **Install via Docker**: [Linux](/installation/linux/#install-via-docker) | [Windows](/installation/windows/#install-via-docker) | [macOS](/installation/mac/#install-via-docker)| [Raspberry Pi](/installation/raspberry/)
+
+---
+
+## New Exchange Connector: FTX
+
+Hummingbot continues to expand functionality by adding more exchanges. Hummingbot now supports [FTX](https://ftx.com), a cryptocurrency exchange built by traders, for traders. FTX offers industry-first derivatives, options, volatility products and leveraged tokens.
+
+FTX is compatible with [pure market making](https://docs.hummingbot.io/strategies/pure-market-making/), [cross-exchange market-making](/strategies/cross-exchange-market-making/), [arbitrage](/strategies/arbitrage/), [amm arbitrage](/strategies/amm-arb/), and [spot perpetual arbitrage](/strategies/spot-perpetual-arb/).
+
+Read more about how to use the FTX connector [here](/exchange-connectors/ftx/).
+
+## New Exchange Connector dy/dx
+
+[Dy/dx](https://dydx.exchange/) is a decentralized exchange with over \$6b in all-time trading volume.
+
+Learn more about the dy/dx connector [here](/exchange-connectors/dydx)
+
+## New Uniswap v3 Connector
+
+[Uniswap](https://uniswap.org) is a decentralized trading protocol guaranteeing liquidity for millions of users and hundreds of Ethereum applications.
+
+Version 3 introduces concentrated liquidity and multiple fee tiers. Read about Uniswap v3 [here](https://uniswap.org/blog/uniswap-v3/). Consult [Uniswap Documentation](https://docs.uniswap.org) for information about Uniswap v3 Core smart contracts.
+
+## New Relative to Start Equity Value feature
+
+The `status` command now displays information about asset values relative to starting equity.
+
+## Uniswap V3 Strategy Development
+
+Version .39 of the Hummingbot client includes the latest development on a strategy for market making on Uniswap using the v3 connector.
+
+## Users Can Now Set Levels of Detail on Aggregate Data Collection
+
+Hummingbot will never share or resell data collected from its users, but nonetheless wants users to have control over the kind and quantity of data that is collected.
+
+Version .39 allows traders to only report trade volume in a `Volume Only` reporting mode.
+
+## Coming Exchange Connector: Himalaya
+
+The [Himalaya Exchange](https://www.himalaya.exchange) connector is not yet in use. See [here](/exchange-connectors/Himalaya/) for more information.
+
+The upcoming Himalaya Exchange will support a crypto ecosystem, including the Himalaya Pay app, and the [Himalaya Dollar (HDO)](https://himalaya.exchange/himalaya-dollar).
+
+## Bug Fixes
+
+- [#3235](https://github.com/CoinAlpha/hummingbot/pull/3235) Now at the maximum distance from inventory_target, opposing order decays 90% from original amount

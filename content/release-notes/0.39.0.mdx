@@ -15,13 +15,15 @@ _Released on May 10, 2021_
 
 Hummingbot continues to expand functionality by adding more exchanges. Hummingbot now supports [FTX](https://ftx.com), a cryptocurrency exchange built by traders, for traders. FTX offers industry-first derivatives, options, volatility products and leveraged tokens.
 
-FTX is compatible with [pure market making](https://docs.hummingbot.io/strategies/pure-market-making/), [cross-exchange market-making](/strategies/cross-exchange-market-making/), [arbitrage](/strategies/arbitrage/), [amm arbitrage](/strategies/amm-arb/), and [spot perpetual arbitrage](/strategies/spot-perpetual-arb/).
+Currently, the FTX connector only supports spot trading, but will be expanded to include perpetuals in the near future.
 
 Read more about how to use the FTX connector [here](/exchange-connectors/ftx/).
 
-## New Exchange Connector dy/dx
+## Support for Perpetual Trading on dy/dx
 
 [Dy/dx](https://dydx.exchange/) is a decentralized exchange with over \$6b in all-time trading volume.
+
+The latest version of Hummingbot allows users to connect to dy/dx's [Perpetuals](https://docs.dydx.exchange/#perpetual-contracts), a non-custodial, decentralized margin product offering synthetic exposure to a variety of assets.
 
 Learn more about the dy/dx connector [here](/exchange-connectors/dydx)
 
@@ -31,19 +33,23 @@ Learn more about the dy/dx connector [here](/exchange-connectors/dydx)
 
 Version 3 introduces concentrated liquidity and multiple fee tiers. Read about Uniswap v3 [here](https://uniswap.org/blog/uniswap-v3/). Consult [Uniswap Documentation](https://docs.uniswap.org) for information about Uniswap v3 Core smart contracts.
 
+Version .39 of the Hummingbot client includes the latest development on a strategy for market making on Uniswap using the v3 connector.
+
+In this strategy, the bot creates two liquidity positions on the Uniswap v3 pool chosen by the trader, a buy and a sell position determined by the price bounds and position spreads. The bot will then monitor the price, automatically swap tokens and replace positions accordingly.
+
+Learn more about the Uniswap connector and how to use a Hummingbot Gateway [here](/protocol-connectors/uniswap/)
+
+## OKEx Upraded to v5
+
+Following the [upgrade](https://www.okex.com/academy/en/complete-guide-to-okex-api-v5-upgrade) of OKEx's API, the Hmmingbot connector is now compatible with v5
+
 ## New Relative to Start Equity Value feature
 
 The `status` command now displays information about asset values relative to starting equity.
 
-## Uniswap V3 Strategy Development
+## Aggregate Data Collection Restricted
 
-Version .39 of the Hummingbot client includes the latest development on a strategy for market making on Uniswap using the v3 connector.
-
-## Users Can Now Set Levels of Detail on Aggregate Data Collection
-
-Hummingbot will never share or resell data collected from its users, but nonetheless wants users to have control over the kind and quantity of data that is collected.
-
-Version .39 allows traders to only report trade volume in a `Volume Only` reporting mode.
+Data collection in v0.39 is reduced to exchange and volume, denominated in USD.
 
 ## Coming Exchange Connector: Himalaya
 
@@ -54,3 +60,4 @@ The upcoming Himalaya Exchange will support a crypto ecosystem, including the Hi
 ## Bug Fixes
 
 - [#3235](https://github.com/CoinAlpha/hummingbot/pull/3235) Now at the maximum distance from inventory_target, opposing order decays 90% from original amount
+- [#3218] (https://github.com/CoinAlpha/hummingbot/pull/3218/commits) Fixes a bug where `max spread` limits would expand when volatility was high, but paramaters were still being calculated using original spreads.

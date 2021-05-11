@@ -180,6 +180,13 @@ const sidebarCategories = {
     "[Hummingbot YouTube](https://www.youtube.com/c/HummingbotChannel)",
     "[Hummingbot whitepaper](https://hummingbot.io/hummingbot.pdf)",
   ],
+  Troubleshooting: [
+    "troubleshooting/installation",
+    "troubleshooting/client",
+    "troubleshooting/strategy",
+    "troubleshooting/connectors",
+    "troubleshooting/gateway",
+  ],
 };
 
 const navConfig = {

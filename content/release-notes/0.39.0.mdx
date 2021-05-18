@@ -13,8 +13,6 @@ _Released on May 10, 2021_
 
 ## New Exchange Connector: FTX
 
-![](img/ftx-logo.png)
-
 Hummingbot continues to expand functionality by adding more exchanges. Hummingbot now supports [FTX](https://ftx.com), a cryptocurrency exchange built by traders, for traders. FTX offers industry-first derivatives, options, volatility products and leveraged tokens.
 
 Currently, the FTX connector only supports spot trading, but will be expanded to include perpetuals in an upcoming release.
@@ -23,15 +21,11 @@ Read more about how to use the FTX connector [here](/exchange-connectors/ftx/).
 
 ## Support for Perpetual Trading on dy/dx
 
-![](img/dydx-logo.png)
-
 [Dy/dx](https://dydx.exchange/) is a full-featured decentralized exchange with over \$6b in all-time trading volume. It is built on Ethereum, and claims to offer one of the most liquid order books across decentralized exchanges.
 
 Join their [Discord community](https://discord.com/invite/2MN3UWg), or learn more about the dy/dx connector [here](/exchange-connectors/dydx)
 
 ## Coming Soon: Uniswap v3 Connector
-
-![](img/uniswap-v3.png)
 
 [Uniswap](https://uniswap.org) is a decentralized trading protocol guaranteeing liquidity for millions of users and hundreds of Ethereum applications.
 
@@ -47,7 +41,7 @@ The new scheme will be:
 
 - `vol_to_spread_multiplier`: min_spread and max_spread will be "inflated" if vol_to_spread_multiplier\*volatility > min_spread
 
-For example: If current volatility is 0.5%, vol_to_spread_multiplier=1.5 and min_spread=0.4%, then min_spread will scaled to min_spread=1.5 _ 0.5%=0.75%, also max_spread=original max_spread _ 0.75%/0.4%.
+For example: If current volatility is 0.5%, vol*to_spread_multiplier=1.5 and min_spread=0.4%, then min_spread will scaled to min_spread=1.5 * 0.5%=0.75%, also max*spread=original max_spread * 0.75%/0.4%.
 
 - `volatility_sensibility`: Parameter recalculation will be triggered every time current volatility goes beyond volatility_sensibility (%) from the original volatility at the time parameters were initially calculated
 
@@ -58,8 +52,6 @@ For example: If parameters were calculated when volatility=0.5% and volatility_s
 The `status` command now displays information about asset values relative to starting equity.
 
 ## Coming Exchange Connector: Himalaya
-
-![](/img/himalaya-logo.png)
 
 The [Himalaya Exchange](https://www.himalaya.exchange) connector is not yet in use. See [here](/exchange-connectors/Himalaya/) for more information.
 

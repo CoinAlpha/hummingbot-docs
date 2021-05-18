@@ -112,6 +112,17 @@ The maximum spread related to the mid price allowed by user for bid/ask orders
   response=""
 />
 
+### `volatility_sensibility`
+
+The Volatility Sensibility will recalculate `gamma`, `kappa` and `eta` after the value of volatility sensibility threshold in percentage is achieved. When parameter is set to 0, it will recalculate `gamma`, `kappa`, and `eta` each time an order is created. The default value for the parameter is 20.
+
+** Prompt: **
+
+<Prompt
+  prompt="Enter volatility change threshold to trigger parameter recalculation"
+  response="20"
+/>
+
 ### `inventory_risk_aversion`
 
 Inventory Risk Aversion is a quantity between 0 and 1 to measure the compromise between mitigation of inventory risk and profitability. When parameters is closer to 0, spreads will be almost symmetrical, this will tend to generate more profitability. When parameters is closer to 1, will increase chances of one side of bid/ask to be executed with respect to the other, in that way forcing inventory to converge to target while decreasing the final profit.

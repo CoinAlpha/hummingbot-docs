@@ -25,41 +25,26 @@ In version 0.34 release, we shipped out the dYdX connector that supports spot tr
 
 Read more in our documentation: [How to use dYdX Perpetual connector](/exchange-connectors/dydx-perpetual/)
 
-## Coming Soon: Uniswap v3 Connector
+## New Avellaneda Market Making Parameter: Volatility Sensibility
 
-[Uniswap](https://uniswap.org) is a decentralized trading protocol guaranteeing liquidity for millions of users and hundreds of Ethereum applications.
+In the previous version, Avellaneda market making strategy's `vol_to_spread_multiplier` is used to expand spreads when it detects volatility and at the same time, acts as a threshold for parameter recalculation when volatility regime changes.
 
-Version 3 introduces concentrated liquidity and multiple fee tiers. Read about Uniswap v3 [here](https://uniswap.org/blog/uniswap-v3/). Consult [Uniswap Documentation](https://docs.uniswap.org) for information about Uniswap v3 Core smart contracts.
+This release introduces a new parameter `volatility_sensibility` to recalcuate every time the current volatility goes beyond its % value from the original volatility at the time the parameters were initially calculated. While `vol_to_spread_multiplier` only expands the minimum and maximum spreads if this value multiplied by volatility is greater than the minimum spread.
 
-Version .40 of Hummingbot, to be releasd in June 2021, will contain the latest development on a strategy for market making on Uniswap using the v3 connector.
+Read more in our documentation: [How to use dYdX Perpetual connector](/strategies/avellaneda-market-making/#volatility_sensibility)
 
-## New Feature: Changed Responsibilities for vol_to_spread_multiplier and volatility_sensibility
+## Other Enhancements
 
-Hummingbot .39 changes the original `vol_to_spread_multiplier` responsibility for both expanding spread due to volatility and acting as a threshold for parameter recalculation when volatility regime changes.
-
-The new scheme will be:
-
-- `vol_to_spread_multiplier`: min_spread and max_spread will be "inflated" if vol_to_spread_multiplier\*volatility > min_spread
-
-For example: If current volatility is 0.5%, vol*to_spread_multiplier=1.5 and min_spread=0.4%, then min_spread will scaled to min_spread=1.5 * 0.5%=0.75%, also max*spread=original max_spread * 0.75%/0.4%.
-
-- `volatility_sensibility`: Parameter recalculation will be triggered every time current volatility goes beyond volatility_sensibility (%) from the original volatility at the time parameters were initially calculated
-
-For example: If parameters were calculated when volatility=0.5% and volatility_sensibility=20%, if now volatility=0.9% which is greater than 120% of 0.5%=0.7%, then parameter recalculation is triggered.
-
-## New Relative to Start Equity Value feature
-
-The `status` command now displays information about asset values relative to starting equity.
-
-## Coming Exchange Connector: Himalaya
-
-The [Himalaya Exchange](https://www.himalaya.exchange) connector is not yet in use. See [here](/exchange-connectors/Himalaya/) for more information.
-
-The upcoming Himalaya Exchange will support a crypto ecosystem, including the Himalaya Pay app, and the [Himalaya Dollar (HDO)](https://himalaya.exchange/himalaya-dollar).
+- OKEx connector updated to support [OKEx v5 API](https://www.okex.com/academy/en/complete-guide-to-okex-api-v5-upgrade)
+- [Himalaya exchange](https://www.himalaya.exchange) connector integrated into codebase. Connector will be usable when the exchange's production endpoints becomes available
+- Hummingbot now only collects total trade volume denominated in USDT when this functionality is enabled. [Important Disclosure re: Hummingbot Data Collection](https://github.com/CoinAlpha/hummingbot/blob/master/DATA_COLLECTION.md)
 
 ## Bug Fixes
 
-- [#3235](https://github.com/CoinAlpha/hummingbot/pull/3235) Now at the maximum distance from inventory_target, opposing order decays 90% from original amount
-- [#3195](https://github.com/CoinAlpha/hummingbot/pull/3195) Changed condition to check for "volatility is not NaN" since when volatility=0 although being valid number "bool(volatility) =False" and status message was not showing
+- [#3328](https://github.com/CoinAlpha/hummingbot/issues/3328) Fixed inconsistent balance updates in AscendEx resulting to orders not created on certain cycles
+- [#3235](https://github.com/CoinAlpha/hummingbot/pull/3235) Fixed Avellaneda eta calculation, now at the maximum distance from inventory_target and opposing order decays 90% from original amount
+- [#3218](https://github.com/CoinAlpha/hummingbot/pull/3218) Fixed Avellaneda spread update during volatility
+- [#3195](https://github.com/CoinAlpha/hummingbot/pull/3195) Changed condition to check for "volatility is not NaN" when using Avellaneda market making, since when volatility=0 although being valid number "bool(volatility) =False" and status message was not showing
 - [#3183](https://github.com/CoinAlpha/hummingbot/issues/3183) Fixed instances when, while running the avellaneda_mm strategy, you enter the `status` command and the output doesn't show the strategy parameters (risk factor, order_book_depth_factor, volatility and closing time)
 - [#3144](https://github.com/CoinAlpha/hummingbot/pull/3144) `get_active_markets` in the Kucoin connector was changed to `fetch_active_markets`, because the former had a check that prevented the reading of newly added markets
+- [#2790](https://github.com/CoinAlpha/hummingbot/issues/2790) Parsing errors on Binance US when selecting a trading pair with 4-letter quote asset

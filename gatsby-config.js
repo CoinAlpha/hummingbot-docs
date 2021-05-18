@@ -49,6 +49,7 @@ const sidebarCategories = {
     "exchange-connectors/digifinex",
     "exchange-connectors/dolomite",
     "exchange-connectors/dydx",
+    "exchange-connectors/dydx-perpetual",
     "exchange-connectors/ftx",
     "exchange-connectors/hitbtc",
     "exchange-connectors/huobi",

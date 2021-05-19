@@ -8,19 +8,13 @@ import Prompt from "../../src/components/Prompt";
 
 ## Install via Docker (BETA)
 
+### Prerequisite
+
 <Callout
   type="note"
-  bullets={[
-    "This installation method is currently under testing and awaiting feedback from users. Should you run into problems or have found a fix to solve errors along the way, feel free to reach out through our [Discord] support channel.",
-    "Added #version-0.38.1-arm_beta#, see release notes of [v0.38.1]",
-  ]}
-  link={["http://discord.hummingbot.io/", "/release-notes/0.38.1/"]}
+  body="This installation method is currently under testing and awaiting feedback from users. Should you run into problems or have found a fix to solve errors along the way, feel free to reach out through our[Discord] support channel."
+  link={["https://discord.com/invite/2MN3UWg"]}
 />
-
-You can install Hummingbot with **_either_** of the following options:
-
-- **Scripts**: download and use automated install scripts.
-- **Manual**: run install commands manually.
 
 1. Install Docker and change permissions.
 
@@ -48,6 +42,11 @@ Exit
 />
 
 4. Install Hummingbot:
+
+You can install Hummingbot with **_either_** of the following options:
+
+- **Scripts**: download and use automated install scripts.
+- **Manual**: run install commands manually.
 
 Scripts
 
@@ -104,7 +103,7 @@ Read through our full blog post about [Deploying Hummingbot on a Raspberry Pi](h
 
 The only way to currently install Hummingbot on a Raspberry Pi is by downloading the source files from GitHub and compiling and running from source. This adds a few more steps than downloading binaries or running from Docker, but below we have provided a step-by-step guide to walk you through the process.
 
-Prerequisites
+### Prerequisites
 
 **Install 64-bit Raspberry Pi OS**
 
@@ -144,7 +143,7 @@ conda create --name hummingbot
 conda activate hummingbot
 
 # Install the pip dependencies
-pip install pandas cython cachetools aiohttp ruamel.yaml eth_account aiokafka sqlalchemy binance python-binance ujson websockets signalr-client-aio web3 prompt_toolkit 0x-order-utils 0x-contract-wrappers eth_bloom pyperclip telegram python-telegram-bot pyjwt numpy mypy_extensions pyblake2 pysha3 psutil ethsnarks-loopring dydx-python
+pip install pandas cython cachetools aiohttp ruamel.yaml eth_account aiokafka sqlalchemy binance python-binance ujson websockets signalr-client-aio web3 prompt_toolkit 0x-order-utils 0x-contract-wrappers eth_bloom pyperclip telegram python-telegram-bot pyjwt numpy mypy_extensions pyblake2 pysha3 psutil ethsnarks-loopring dydx-python rsa simplejson
 ```
 
 **Install, compile, and run Hummingbot**
@@ -166,9 +165,11 @@ bin/hummingbot.py
 />
 
 ## Create Hummingbot ARM image for Docker
-This guide would help you build your own Hummingbot ARM image when there is a new release. Please be advised that for every new release, you would need to [install from source](#install-from-source) first and follow the steps provided in order to create an image that you can use for your RaspberryPi docker. 
+
+This guide would help you build your own Hummingbot ARM image when there is a new release. Please be advised that for every new release, you would need to [install from source](#install-from-source) first and follow the steps provided in order to create an image that you can use for your RaspberryPi docker.
 
 1. Go to your source directory and run the command below
+
 ```
 # Set a name of your image on insert_name
 docker build -t coinalpha/hummingbot:insert_name -f Dockerfile.arm .
@@ -176,7 +177,6 @@ docker build -t coinalpha/hummingbot:insert_name -f Dockerfile.arm .
 
 On this sample, we set `v036` for the name of the image. This is needed when you run `./create.sh` command
 ![](/img/rpi-docker-img.png)
-
 
 <Callout
   type="warning"

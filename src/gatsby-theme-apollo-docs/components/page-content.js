@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import { withPrefix } from "gatsby";
 import styled from "@emotion/styled";
 import useMount from "react-use/lib/useMount";
-import SectionNav from "gatsby-theme-apollo-docs/src/components/section-nav";
 import { HEADER_HEIGHT } from "gatsby-theme-apollo-docs/src/utils";
 import { PageNav, breakpoints, colors } from "gatsby-theme-apollo-core";
 import { ReactComponent as DiscordLogo } from "gatsby-theme-apollo-docs/src/assets/discord.svg";
 import { ReactComponent as GithubLogo } from "gatsby-theme-apollo-docs/src/assets/github.svg";
+import SectionNav from "./section-nav";
 import useSiteMetadata from "../../hooks/useSiteMetadata";
 
 const Wrapper = styled.div({
@@ -23,6 +23,7 @@ const InnerWrapper = styled.div({
 const BodyContent = styled.div({
   // style all anchors with an href and no prior classes
   // this helps avoid anchors with names and styled buttons
+
   "a[href]:not([class])": {
     color: colors.primary,
     textDecoration: "none",
@@ -46,12 +47,10 @@ const BodyContent = styled.div({
     },
   },
   h2: {
-    marginTop: -16,
-    paddingTop: HEADER_HEIGHT,
+    marginTop: HEADER_HEIGHT - 16,
   },
   [["h3", "h4"]]: {
-    marginTop: -16,
-    paddingTop: 36,
+    marginTop: 20,
   },
   img: {
     display: "block",

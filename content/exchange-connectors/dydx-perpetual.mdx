@@ -1,0 +1,51 @@
+---
+title: dYdX Perpetual (BETA)
+description: About dYdX Perpetual Exchange Connector
+---
+
+import Callout from "../../src/components/Callout";
+
+dYdX is a leading decentralized exchange that currently supports perpetual, margin trading, and spot trading, as well as lending, and borrowing. dYdX runs on smart contracts on the Ethereum blockchain, and allows users to trade with no intermediaries.
+
+## Using the connector
+
+Because dYdX perpetual is a decentralized exchange, you will need to create API keys, stark keys and ethereum wallet. See below for information on how to create these:
+
+Here's the [link](https://help.dydx.exchange/en/articles/5108497-how-to-deposit-usdc-or-any-erc-20-token-into-your-l2-perpetual-account?utm_content=article_5108497) on how to signup and deposit on dYdX perpetual.
+
+```
+Enter your dydx Perpetual API key >>>
+Enter your dydx Perpetual API secret >>>
+Enter your dydx Perpetual passphrase >>>
+Enter your dydx Perpetual API account_number >>>
+Enter your stark private key >>>
+Enter your ethereum wallet address >>>
+```
+
+Private keys and API keys are stored locally for the operation of the Hummingbot client only. At no point will private or API keys be shared to CoinAlpha or be used in any way other than to authorize transactions required for the operation of Hummingbot.
+
+<Callout
+  type="tip"
+  body="For copying and pasting into Hummingbot, see [this page] for more instructions in our Support section."
+  link={[
+    "https://hummingbot.zendesk.com/hc/en-us/articles/900004871203-Copy-and-paste-your-API-keys",
+  ]}
+/>
+
+<Callout
+  type="warning"
+  body="Currently, [dydx] and [dydx-perpetual] do not work on Binary Installers. It can only be used when running Hummingbot from source or with Docker."
+  link={["/exchange-connectors/dydx/", "/exchange-connectors/dydx-perpetual/"]}
+/>
+
+## Miscellaneous Info
+
+### Minimum Order Sizes
+
+Minimum order sizes will vary by trading pair. Check out this [link](https://help.dydx.exchange/en/articles/4798055-what-is-the-minimum-order-size-on-perpetuals) for more information.
+
+### Transaction Fees
+
+By default, trading fees are 0.050% for market makers and 0.200% for takers on dYdX. See article below for more details.
+
+- [Perpetual Trade Fees](https://help.dydx.exchange/en/articles/4798040-perpetual-trade-fees)

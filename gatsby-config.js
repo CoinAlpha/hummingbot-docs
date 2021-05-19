@@ -53,6 +53,8 @@ const sidebarCategories = {
     "exchange-connectors/digifinex",
     "exchange-connectors/dolomite",
     "exchange-connectors/dydx",
+    "exchange-connectors/dydx-perpetual",
+    "exchange-connectors/ftx",
     "exchange-connectors/hitbtc",
     "exchange-connectors/huobi",
     "exchange-connectors/kucoin",
@@ -124,6 +126,7 @@ const sidebarCategories = {
   ],
   "Release Notes": [
     "release-notes/overview",
+    "release-notes/0.39.0",
     "release-notes/0.38.1",
     "release-notes/0.38.0",
     "release-notes/0.37.1",
@@ -183,6 +186,13 @@ const sidebarCategories = {
     "resources/glossary",
     "[Hummingbot YouTube](https://www.youtube.com/c/HummingbotChannel)",
     "[Hummingbot whitepaper](https://hummingbot.io/hummingbot.pdf)",
+  ],
+  Troubleshooting: [
+    "troubleshooting/installation",
+    "troubleshooting/client",
+    "troubleshooting/strategy",
+    "troubleshooting/connectors",
+    "troubleshooting/gateway",
   ],
 };
 

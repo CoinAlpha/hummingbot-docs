@@ -1,3 +1,60 @@
 ---
-title: Checking Bot Status
+title: Check Bot and Market Status
 ---
+
+import Callout from "../../src/components/Callout";
+
+## Check bot status
+
+Run `status` command or CTRL+S to show the bot's current status. The output may differ depending on the running strategy, but generally, it shows the following information:
+
+- Market(s) you're trading in
+- Balance or inventory of trading pair assets
+- Active or outstanding orders
+- Error messages
+- Exchange connection status
+- Paper trading mode (when enabled)
+
+## Get live bot status
+
+The `status --live` command displays the real-time status of the bot.
+
+![](/img/status-live.gif)
+
+<Callout
+  type="note"
+  body="Currently, this feature works on all strategies except Liquidity Mining strategy."
+/>
+
+## View market order book
+
+By default, the `order_book` command displays the top 5 bid/ask prices and volume of the current market, similar to how they're displayed in the exchange's order book.
+
+**Optional arguments**
+
+| Command Argument | Description                                                  |
+| ---------------- | ------------------------------------------------------------ |
+| `--live`         | Continuously displays the order book in real-time            |
+| `--lines`        | Number of lines to display                                   |
+| `--exchange`     | Specifies the exchange when running a secondary exchange     |
+| `--market`       | Specifies the trading pair when running a secondary exchange |
+
+**Sample usage**
+
+Run `order_book --live --lines 20` to show the top 20 bid/ask and volume in real-time.
+
+![](/img/orderbook-live-lines.gif)
+
+## View market ticker prices
+
+The `ticker` command displays the market prices, specifically the best bid, best ask, mid price, and last trade price.
+
+![](/img/ticker-command.png)
+
+**Optional arguments**
+
+| Command Argument | Description                                                  |
+| ---------------- | ------------------------------------------------------------ |
+| `--live`         | Displays the ticker in real-time                             |
+| `--exchange`     | Specifies the exchange when running a secondary exchange     |
+| `--market`       | Specifies the trading pair when running a secondary exchange |

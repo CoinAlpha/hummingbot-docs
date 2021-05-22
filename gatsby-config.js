@@ -27,13 +27,13 @@ const sidebarCategories = {
     "operation-2/override-fees",
   ],
   Features: [
-    "features/paper-trade",
     "features/balance-limit",
+    "features/debug",
+    "features/telegram",
     "features/minimum-order-size",
+    "features/paper-trade",
     "features/performance-history",
     "features/kill-switch",
-    "features/telegram",
-    "features/debug",
     "features/rate-oracle",
   ],
   "Exchange Connectors": [

@@ -19,7 +19,13 @@ Enter your OKEx passphrase key >>>
 
 Private keys and API keys are stored locally for the operation of the Hummingbot client only. At no point will private or API keys be shared to CoinAlpha or be used in any way other than to authorize transactions required for the operation of Hummingbot.
 
-<Callout type="tip" body="For copying and pasting into Hummingbot, see [this page] for more instructions in our Support guide." link={["https://hummingbot.zendesk.com/hc/en-us/articles/900004871203-Copy-and-paste-your-API-keys"]} />
+<Callout
+  type="tip"
+  body="For copying and pasting into Hummingbot, see [this page] for more instructions in our Support guide."
+  link={[
+    "https://hummingbot.zendesk.com/hc/en-us/articles/900004871203-Copy-and-paste-your-API-keys",
+  ]}
+/>
 
 ### Creating OKEx API Keys
 
@@ -37,16 +43,16 @@ OKEx recently announce that they are upgrading their API from v3 to v5. Most of 
 5. Account is being verified now, monitor your account and see if v3 is enabled.
 
 ![](/img/okex-api-v5.png)
-   
+
 Here is the link for more info regarding the [OKEx upgrade to API v5](https://www.okex.com/academy/en/complete-guide-to-okex-api-v5-upgrade)
 
 <Callout
-   type="tip"
-   bullets={[
-      "For API key permissions, we recommend using only #trade# enabled API keys; enabling #withdraw#, #transfer, or the equivalent is unnecessary# for current Hummingbot strategies.",
-      "Make sure you store your Secret Key somewhere secure, and do not share it with anyone. Your Secret Key will only be displayed once at the time when you create the API.",
-      "If you lose your Secret Key, you can delete the API and create a new one. However, it will be impossible to reuse the same API."
-   ]}
+  type="tip"
+  bullets={[
+    "For API key permissions, we recommend using only #trade# enabled API keys; enabling #withdraw#, #transfer, or the equivalent is unnecessary# for current Hummingbot strategies.",
+    "Make sure you store your Secret Key somewhere secure, and do not share it with anyone. Your Secret Key will only be displayed once at the time when you create the API.",
+    "If you lose your Secret Key, you can delete the API and create a new one. However, it will be impossible to reuse the same API.",
+  ]}
 />
 
 ## Miscellaneous Info
@@ -59,4 +65,4 @@ For the minimum order size per trading pair, you have to check the indidiviual t
 
 By default, trading fees are 0.1% on OKEx for market makers and 0.15% for takers. Users who trade high volumes can receive more discounts on trading fees, see [OKex trading fees](https://www.okex.com/fees.html) for more details
 
-Users can override the default fees by editing [`conf_fee_overrides.yml`](/operation/adv-command-ref/#fee-override).
+Users can override the default fees by editing [`conf_fee_overrides.yml`](/operation-2/override-fees).

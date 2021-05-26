@@ -1,6 +1,6 @@
 ---
 title: Perpetual Market Making
-description: 
+description:
 ---
 
 import Callout from "../../src/components/Callout";
@@ -8,7 +8,12 @@ import Prompt from "../../src/components/Prompt";
 
 <Callout
   type="info"
-  body="Currently, this strategy `only works with Binance Futures` and we plan to support more derivatives connector in the future."
+  body="This strategy only works with [Binance Futures], [Perpetual Finance (BETA)] & [dYdX Perpetual(BETA)]"
+  link={[
+    "https://docs.hummingbot.io/exchange-connectors/binance-futures/",
+    "https://docs.hummingbot.io/protocol-connectors/perp-fi/",
+    "https://docs.hummingbot.io/exchange-connectors/dydx-perpetual/",
+  ]}
 />
 
 ## How It Works
@@ -28,57 +33,52 @@ In this document, we will explain how the strategy works by dividing it into thr
   body="Users can test how this strategy works without risking real funds by connecting their Binance Futures Testnet account to Hummingbot."
   bullets={[
     "[Create a free account with Binance Futures Testnet]",
-    "[Creating Binance Futures Testnet API Keys]"]}
+    "[Creating Binance Futures Testnet API Keys]",
+  ]}
   link={[
     "https://testnet.binancefuture.com/en/register?source=futures",
-    "https://docs.hummingbot.io/exchange-connectors/binance-futures/#creating-binance-futures-testnet-api-keys"
+    "https://docs.hummingbot.io/exchange-connectors/binance-futures/#creating-binance-futures-testnet-api-keys",
   ]}
 />
 
 <Callout
   type="tip"
   body="You can also watch the recording of our demo of the strategy in the link below:"
-  bullets={[
-    "[Hummingbot Live - Perpetual Market Making Demo]"
-    ]}
-  link={[
-    "https://www.youtube.com/watch?v=IclhZWtKiSA&t=2194s"
-  ]}
+  bullets={["[Hummingbot Live - Perpetual Market Making Demo]"]}
+  link={["https://www.youtube.com/watch?v=IclhZWtKiSA&t=2194s"]}
 />
-
 
 ## Creating a basic strategy configuration
 
 1. Make sure to connect to an exchange supported by Perpetual Market Making strategy
-    - [How to use the `connect` command to connect your API keys](/operation/command-ref/#connect)
+   - [How to use the `connect` command to connect your API keys](/operation/command-ref/#connect)
 1. Run the `create` command and enter `perpetual_market_making` strategy
-  ![](/img/perp-mm-prompt-strategy.png)
+   ![](/img/perp-mm-prompt-strategy.png)
 1. Enter the name of the connector and the trading pair you want to use with this strategy
 1. Enter how much leverage you want to use. Leverage allows you to open a position with a fraction of a cost. The higher the leverage, the higher the risk. Please manage accordingly.
-  ![](/img/perp-mm-prompt-leverage.png)
+   ![](/img/perp-mm-prompt-leverage.png)
 1. Select a `position_mode` from either [`One-way`](#one-way-mode) or [`Hedge`](#hedge-mode) mode. These are both explained further in their respective sections below.
-  ![](/img/perp-mm-prompt-position-mode.png)
+   ![](/img/perp-mm-prompt-position-mode.png)
 1. Enter the bid and ask spreads from mid price of your limit orders (for opening a position)
-  ![](/img/perp-mm-prompt-bid-spread.png)
-  ![](/img/perp-mm-prompt-ask-spread.png)
+   ![](/img/perp-mm-prompt-bid-spread.png)
+   ![](/img/perp-mm-prompt-ask-spread.png)
 1. Enter how many seconds you want orders to refresh when not filled
-  ![](/img/perp-mm-prompt-order-refresh-time.png)
+   ![](/img/perp-mm-prompt-order-refresh-time.png)
 1. Enter the size of orders you want to place in `order_amount` prompt
 1. Select a `position_management` from either [`Profit_taking`](#profit-taking) or [`Trailing_stop`](#trailing-stop) value
-    ![](/img/perp-mm-prompt-position-management.png)
-    - If you selected `Profit_taking`, enter the spreads of your profit taking orders to close a long or short position in `long_profit_taking_spread` `short_profit_taking_spread`
-    ![](/img/perp-mm-prompt-long-profit-taking-spread.png)
-    ![](/img/perp-mm-prompt-short-profit-taking-spread.png)
-    - If you selected `Trailing_stop`, enter the spread when you want the bot to start trailing as `ts_activation_spread` and the exit price as `ts_callback_rate`
-    ![](/img/perp-mm-prompt-ts-activation-spread.png)
-    ![](/img/perp-mm-prompt-ts-callback-rate.png)
+   ![](/img/perp-mm-prompt-position-management.png)
+   - If you selected `Profit_taking`, enter the spreads of your profit taking orders to close a long or short position in `long_profit_taking_spread` `short_profit_taking_spread`
+     ![](/img/perp-mm-prompt-long-profit-taking-spread.png)
+     ![](/img/perp-mm-prompt-short-profit-taking-spread.png)
+   - If you selected `Trailing_stop`, enter the spread when you want the bot to start trailing as `ts_activation_spread` and the exit price as `ts_callback_rate`
+     ![](/img/perp-mm-prompt-ts-activation-spread.png)
+     ![](/img/perp-mm-prompt-ts-callback-rate.png)
 1. Enter the spread from entry price to close a position with a stop loss order
-  ![](/img/perp-mm-prompt-stop-loss.png)
+   ![](/img/perp-mm-prompt-stop-loss.png)
 1. Choose between limit or market order when `close_position_order_type` value for stop loss and trailing stop orders
-  ![](/img/perp-mm-prompt-close-position-order-type.png)
+   ![](/img/perp-mm-prompt-close-position-order-type.png)
 1. The strategy configuration file is saved in the Hummingbot folder
-    - [Where are my configuration files saved?](https://hummingbot.zendesk.com/hc/en-us/articles/900005206343-Where-is-my-config-and-log-file-)
-
+   - [Where are my configuration files saved?](https://hummingbot.zendesk.com/hc/en-us/articles/900005206343-Where-is-my-config-and-log-file-)
 
 ## Creating orders to open a position
 
@@ -92,7 +92,6 @@ With the exception of `order_refresh_tolerance_pct` value, if the orders are wit
 
 ![opening-orders-1](/img/opening-orders-1.gif)
 
-
 ## Opening positions after a filled order event
 
 The strategy uses the filled order’s price as the entry price of the position. The number of positions you can open depends on the `position_mode` selected.
@@ -102,7 +101,6 @@ The strategy uses the filled order’s price as the entry price of the position.
 In `One-way` mode, if an order is filled the opposite order is cancelled. For example, if your buy order is filled it opens a LONG position, cancels the opening sell order and creates a closing sell order.
 
 In `Hedge` mode, if one order is filled the opposite order is not cancelled. For example, if your buy order is filled it opens a LONG position and creates a closing sell order. The opening sell order initially created remains active, waiting to get filled to open a SHORT position simultaneously.
-
 
 ### One-way mode
 
@@ -138,7 +136,6 @@ Using the sample configuration above, we will try to get our buy order filled fi
 
 If the buy order is filled, a long position is opened and the opposite sell order is not cancelled. If the sell order eventually gets filled even with an open long position, a short position will be opened.
 
-
 ## Creating orders to close a position
 
 Positions are closed in three different ways:
@@ -160,7 +157,6 @@ These are the logs in Hummingbot. Notice our position was opened at 03:52 when t
 ![closing-orders-2](img/closing-orders-2.png)
 
 ![closing-orders-3](img/closing-orders-3.png)
-
 
 ### Profit Taking
 
@@ -207,7 +203,6 @@ If the position’s profitability (PNL) is equal to or below the `stop_loss_spre
 
 If there are outstanding limit orders, they are cancelled and replaced with a stop loss order.
 
-
 ## Using limit or market orders to close a position
 
 Most of us are aware that submitting a market order instantly executes a trade by taking the best order in the order book while a limit order is an order that you place on the order book (taker) with a specific limit price, waiting for someone to fill that order therefore adding liquidity to the market.
@@ -226,23 +221,23 @@ Using market order type helps ensure that your positions are closed at mark pric
 
 Hummingbot prompts to enter the values for these parameters when creating the strategy.
 
-| Parameter             | Description      |
-| --------------------- | --------------------- |
-| `derivative` | The derivative exchange where you want to trade |
-| `market` | Token trading pair for the exchange e.g. BTC-USDT |
-| `leverage` | How much the position is increased by |
-| `position_mode` | Determines the number of positions that can be opened simultaneously. <br/><br/> Refer to [this section](#opening-positions-after-a-filled-order-event) for more information. |
-| `bid_spread` | How far away from the price reference (by default, mid price) to place the buy order |
-| `ask_spread` | How far away from the price reference (by default, mid price) to place the sell order |
-| `order_refresh_time` | Time (in seconds) to cancel active orders and place new ones with specified spreads. |
-| `order_amount` | The size or amount of your bid and ask orders |
-| `position_management` | Which position management feature to use. <br/> <br/> Current available options: <br/> [`Profit_taking`](#profit-taking) and [`Trailing_stop`](#trailing_stop) |
-| `long_profit_taking_spread` | When using profit taking mode, the spread of profit taking order from the entry price to close a long position. |
-| `short_profit_taking_spread` | When using profit taking mode, the spread of profit taking order from the entry price to close a short position. |
-| `ts_activation_spread` | Used with trailing stop position management, the profitability % of your position for the bot to start trailing. |
-| `ts_callback_rate` | Used with trailing stop position management, the callback % from the peak price to determine your position's exit price. |
-| `stop_loss_spread` | Triggers to close a position by creating a [stop loss](#stop-loss) order when profitability % falls below this value. |
-| `close_position_order_type` | The order type used (limit or market) when using trailing stop or when a stop loss is triggered. <br/><br/> Refer to [this section](#using-limit-or-market-orders-to-close-a-position) for more information. |
+| Parameter                    | Description                                                                                                                                                                                                  |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `derivative`                 | The derivative exchange where you want to trade                                                                                                                                                              |
+| `market`                     | Token trading pair for the exchange e.g. BTC-USDT                                                                                                                                                            |
+| `leverage`                   | How much the position is increased by                                                                                                                                                                        |
+| `position_mode`              | Determines the number of positions that can be opened simultaneously. <br/><br/> Refer to [this section](#opening-positions-after-a-filled-order-event) for more information.                                |
+| `bid_spread`                 | How far away from the price reference (by default, mid price) to place the buy order                                                                                                                         |
+| `ask_spread`                 | How far away from the price reference (by default, mid price) to place the sell order                                                                                                                        |
+| `order_refresh_time`         | Time (in seconds) to cancel active orders and place new ones with specified spreads.                                                                                                                         |
+| `order_amount`               | The size or amount of your bid and ask orders                                                                                                                                                                |
+| `position_management`        | Which position management feature to use. <br/> <br/> Current available options: <br/> [`Profit_taking`](#profit-taking) and [`Trailing_stop`](#trailing_stop)                                               |
+| `long_profit_taking_spread`  | When using profit taking mode, the spread of profit taking order from the entry price to close a long position.                                                                                              |
+| `short_profit_taking_spread` | When using profit taking mode, the spread of profit taking order from the entry price to close a short position.                                                                                             |
+| `ts_activation_spread`       | Used with trailing stop position management, the profitability % of your position for the bot to start trailing.                                                                                             |
+| `ts_callback_rate`           | Used with trailing stop position management, the callback % from the peak price to determine your position's exit price.                                                                                     |
+| `stop_loss_spread`           | Triggers to close a position by creating a [stop loss](#stop-loss) order when profitability % falls below this value.                                                                                        |
+| `close_position_order_type`  | The order type used (limit or market) when using trailing stop or when a stop loss is triggered. <br/><br/> Refer to [this section](#using-limit-or-market-orders-to-close-a-position) for more information. |
 
 ## ** Configure parameters on the fly **
 

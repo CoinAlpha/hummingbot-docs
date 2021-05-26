@@ -36,7 +36,6 @@ const sidebarCategories = {
     "features/rate-oracle",
   ],
 
-  "Cheat Sheet": ["cheat-sheet/command-ref", "cheat-sheet/docker-commands"],
   "Spot Connectors": [
     "spot-connectors/overview",
     "spot-connectors/ascend-ex",

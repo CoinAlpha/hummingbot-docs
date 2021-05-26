@@ -15,6 +15,7 @@ const sidebarCategories = {
   ],
   Operation: [
     "operation/overview",
+    "operation/user-interface",
     "operation/launch-exit",
     "operation/password",
     "operation/connect-exchange",

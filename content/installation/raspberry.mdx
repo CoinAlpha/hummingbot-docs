@@ -142,18 +142,19 @@ conda create --name hummingbot
 # Activate your conda environment
 conda activate hummingbot
 
-# Install the pip dependencies
-pip install -r setup/requirements-arm.txt
-```
-
-**Install, compile, and run Hummingbot**
-
-```
 # Clone the Hummingbot repo from Github
 git clone https://github.com/CoinAlpha/hummingbot.git
 
+# Install the pip dependencies
+cd hummingbot
+pip install -r setup/requirements-arm.txt
+```
+
+**Compile and run Hummingbot**
+
+```
 # Clean your Hummingbot directory and compile
-cd hummingbot && ./clean && ./compile
+./clean && ./compile
 
 # Run Hummingbot
 bin/hummingbot.py

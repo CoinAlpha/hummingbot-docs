@@ -1,10 +1,12 @@
 ---
-title: Connecting to Exchange
+title: Keys, Wallets, and Nodes
 ---
 
 import Callout from "../../src/components/Callout";
 
-## Requirements
+## Keys
+
+### Security of Keys
 
 Private keys and API keys are stored locally for the operation of the Hummingbot client only. At no point will private or API keys be shared to CoinAlpha or be used in any way other than to authorize transactions required for the operation of Hummingbot.
 
@@ -22,6 +24,22 @@ Example:
   type="warning"
   body="We recommend using only #read + trade# enabled API keys. It is not necessary to enable #withdraw#, #transfer#, or anything equivalent to retrieving assets from your wallet."
 />
+
+## Wallets
+
+### Create a Wallet in MetaMask.io
+
+![metamask](/img/metamask.png)
+
+One of the reliable wallets that traders can use is a MetaMask Wallet. Metamask.io is a browser extension that lets you access Ethereum's Dapp ecosystem. The access provides you a wallet with private keys and passphrase that can store tokens in a specific network.
+(i.e Ethereum Mainnet, Ropsten Test Network, Kovan Test Network)
+
+<Callout
+  type="note"
+  body="Secure the password, private key, and passphrase of your wallet as this can no longer be accessed or changed once forgotten. It is a best practice to secure a cold wallet/offline version of the private keys."
+/>
+
+You can also use other alternatives of Metamask.io wallet. List of alternative wallets can be found [here](https://themoneymongers.com/best-erc20-token-wallets/).
 
 ### Wallet private keys
 
@@ -198,32 +216,3 @@ An Ethereum node is required when trading on Ethereum-based decentralized exchan
    - [DAppNode](https://dappnode.io/) is software that automates the installation and operation of Ethereum (as well as other blockchains) on dedicated hardware. It is easier to start and operate an Ethereum node and can run other blockchains.
    - [IntelⓇ NUC mini PC](https://www.intel.com/content/www/us/en/products/boards-kits/nuc.html) : DIY, customize and configure your own hardware
    - [Avado](https://ava.do/) : purpose-built hardware that is pre-loaded with DAppNode
-
-## Adding or replacing keys in Hummingbot
-
-### Connect to exchanges
-
-1. Run `connect [exchange_name]` command e.g., `connect binance` will prompt connection to Binance exchange
-1. Enter API and secret keys when prompted
-1. Other exchanges may require additional details such as account ID, exchange address, etc.
-
-### Connect to Ethereum
-
-Follow the instructions below to connect to decentralized exchanges or protocol running on Ethereum such as Balancer, Uniswap, and Perpetual Finance.
-
-1. Run `connect ethereum` command
-1. Enter your wallet private key
-1. Enter the Ethereum node endpoint starting with https://
-1. Enter the websocket address starting with wss://
-
-## Checking connection status
-
-Run the `connect` command to view the connection status. It also shows failed connections due to connectivity issues, invalid API key permissions, etc.
-
-![](/img/connection-status.png)
-
-**Keys Added** column indicates if API keys are added to Hummingbot.
-
-**Keys Confirmed** column shows the status if Hummingbot has successfully connected to the exchange or protocol.
-
-**Connector Status** column is an indicator if there are known issues with the connector or working correctly. More info in [Spot Connector Status](/spot-connectors/overview) and [Protocol Connector Status](/protocol-connectors/overview).

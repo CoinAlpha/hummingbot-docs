@@ -23,10 +23,12 @@ const sidebarCategories = {
     "operation/balances",
     "operation/config-files",
     "operation/start-stop",
+    "operation/pause-resume",
     "operation/checking-status",
     "operation/performance-history",
     "operation/override-fees",
     "operation/log-files",
+    "operation/strategy-autostart",
   ],
   Features: [
     "features/balance-limit",

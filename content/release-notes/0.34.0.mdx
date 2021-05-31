@@ -10,7 +10,7 @@ Hummingbot now supports [dYdX](https://dydx.exchange/) exchange! dYdX describes 
 
 dy/dx is compatible with the [pure market making](/strategies/pure-market-making/), [cross-exchange market making](/strategies/cross-exchange-market-making/), and [arbitrage](/strategies/arbitrage/) strategies.
 
-Read more about how to use the dYdX connector [here](/exchange-connectors/dydx/).
+Read more about how to use the dYdX connector [here](/spot-connectors/dydx/).
 
 ## New Protocol Connector: Uniswap
 
@@ -30,7 +30,15 @@ Terra is compatible with the [amm-arb](/strategies/amm-arb/) strategy, as well a
 
 Read more in our documentation how to use the connector [here](/protocol-connectors/terra).
 
-<Callout type="warning" body="Currently [dydx], [terra] and [loopring] don't work on Binary Installers. It can only be used when running Hummingbot from source or with Docker." link={["/exchange-connectors/dydx/","/protocol-connectors/terra","/exchange-connectors/loopring/"]} />
+<Callout
+  type="warning"
+  body="Currently [dydx], [terra] and [loopring] don't work on Binary Installers. It can only be used when running Hummingbot from source or with Docker."
+  link={[
+    "/spot-connectors/dydx/",
+    "/protocol-connectors/terra",
+    "/spot-connectors/loopring/",
+  ]}
+/>
 
 ## Improvements to AMM Arbitrage strategy
 
@@ -44,7 +52,7 @@ We have also simplified the installation script for the Gateway module so that i
 
 ## Improvements to Perpetual Market Making strategy
 
-In the last release, we released the [Binance Futures connector](/exchange-connectors/binance-futures/) and an experimental [perpetual market making](https://docs.hummingbot.io/strategies/perpetual-market-making/) strategy.
+In the last release, we released the [Binance Futures connector](/spot-connectors/binance-futures/) and an experimental [perpetual market making](https://docs.hummingbot.io/strategies/perpetual-market-making/) strategy.
 
 In this release, we have added more features to the strategy that allow for automated management of created positions. Users can now set a **take profit** price as well as a **trailing stop** price for created positions.
 
@@ -74,7 +82,10 @@ For these reasons, in this release, a “heartbeat” data collection mechanism 
 
 If you have any question, please don't hesitate to reach out to anyone from the core team via Discord or email. Thank you again for your support.
 
-<Callout type="warning" body="The data will be neither accessible nor sold to any third party, your personally identifiable data will not be collected." />
+<Callout
+  type="warning"
+  body="The data will be neither accessible nor sold to any third party, your personally identifiable data will not be collected."
+/>
 
 Learn more: https://hummingbot.io/blog/2020-12-aggregate-trade-data-collection-notification/
 

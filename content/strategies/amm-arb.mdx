@@ -17,8 +17,8 @@ Before you can use the AMM arbitrage strategy in Hummingbot, you need to install
 
 Ensure you have setup the Ethereum wallet and nodes, for more details:
 
-- see [Setup Ethereum Wallet](https://docs.hummingbot.io/operation/adv-command-ref/#setup-ethereum-wallet)
-- see [Setup Infura Node](https://docs.hummingbot.io/operation/adv-command-ref/#option-1-infura). Take note of the Ethereum RPC URL to be use later for Gateway Docker settings.
+- see [Setup Ethereum Wallet](https://docs.hummingbot.io/operation/keys-wallets-nodes/)
+- see [Setup Infura Node](https://docs.hummingbot.io/operation/keys-wallets-nodes/). Take note of the Ethereum RPC URL to be use later for Gateway Docker settings.
 
 ## AMM Arbitrage Strategy
 
@@ -53,7 +53,10 @@ Enter the first exchange/AMM you would like to trade on.
 
 ** Prompt: **
 
-<Prompt prompt="Enter your first spot connector (Exchange/AMM)" response=">>> " />
+<Prompt
+  prompt="Enter your first spot connector (Exchange/AMM)"
+  response=">>> "
+/>
 
 ### `market_1`
 
@@ -72,7 +75,10 @@ Enter the secondary exchange/AMM you would like to trade on.
 
 ** Prompt: **
 
-<Prompt prompt="Enter your second spot connector (Exchange/AMM)" response=">>> " />
+<Prompt
+  prompt="Enter your second spot connector (Exchange/AMM)"
+  response=">>> "
+/>
 
 ### `market_2`
 

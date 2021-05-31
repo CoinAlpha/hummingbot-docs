@@ -99,16 +99,16 @@ The Callout component also takes a prop `body` which uses identifiers in the inp
 The Callout component also supports nested links. Similar to regular markdown, You can use opening tag `[` and closing tag `]` to surround the text in the body input string to hyperlink it. When using links it is **required** to add a `link` prop that takes in an array of link strings, which are associated to your `[]` identifier's order.
 
 ```
-<Callout type="warning" body="Currently [dydx], [terra], and [loopring] don't work on Binary Installers. It can only be used when running Hummingbot from source or with Docker." link={["/exchange-connectors/dydx/","/protocol-connectors/terra","/exchange-connectors/loopring/"]}/>
+<Callout type="warning" body="Currently [dydx], [terra], and [loopring] don't work on Binary Installers. It can only be used when running Hummingbot from source or with Docker." link={["/spot-connectors/dydx/","/protocol-connectors/terra","/spot-connectors/loopring/"]}/>
 ```
 
 <Callout
   type="warning"
   body="Currently [dydx], [terra], and [loopring] don't work on Binary Installers. It can only be used when running Hummingbot from source or with Docker."
   link={[
-    "/exchange-connectors/dydx/",
+    "/spot-connectors/dydx/",
     "/protocol-connectors/terra",
-    "/exchange-connectors/loopring/",
+    "/spot-connectors/loopring/",
   ]}
 />
 
@@ -175,7 +175,7 @@ Similar to using links in the `body` prop, when applying links in `bullets`, add
 <Callout
   type="warning"
   body="Currently [dydx], [terra], and [loopring] don't work on Binary Installers. It can only be used when running Hummingbot from source or with Docker."
-  link={["/protocol-connectors/terra", "/exchange-connectors/loopring/"]}
+  link={["/protocol-connectors/terra", "/spot-connectors/loopring/"]}
 />
 
 **Identifier Mismatch**

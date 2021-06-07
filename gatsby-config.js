@@ -83,6 +83,7 @@ const sidebarCategories = {
     "protocol-connectors/perp-fi",
     "protocol-connectors/terra",
     "protocol-connectors/uniswap",
+    "protocol-connectors/uniswapv3",
   ],
   "Hummingbot Gateway": ["gateway/overview", "gateway/installation"],
   Strategies: [
@@ -96,6 +97,7 @@ const sidebarCategories = {
     "strategies/liquidity-mining",
     "strategies/spot-perpetual-arb",
     "strategies/avellaneda-market-making",
+    "strategies/uniswapv3_lp",
   ],
   "Advanced Market Making": [
     "strategies/adv-market-making",

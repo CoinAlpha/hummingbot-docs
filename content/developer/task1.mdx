@@ -24,22 +24,22 @@ The following details are **required** functions to be implemented in `OrderBook
 
 ### `exchange_name`
 
-This function simply returns the appropriate exchange name
+This function returns the appropriate exchange name
 
 **Input Parameter(s):** `None` <br/> **Expected Output(s):** `str`
 
 ### `tracking_single_order_book`
 
 This function applies the snapshot/diff messages received from `OrderBookDataSource` into the appropriate `OrderBook` for any given trading pair.
-Notice that `OrderBookTracker` maintains a dictionary of `OrderBook`s that can be identified by the trading pair.
+Notice that `OrderBookTracker` maintains a dictionary of `OrderBook's that can be identified by the trading pair.
 
 **Input Parameter(s):** trading_pair: `str` <br/> **Expected Output(s):** `None`
 
 ## OrderBookTrackerDataSource
 
-The `OrderBookTrackerDataSource` class is responsible for making API calls and/or WebSocket queries to obtain order book snapshots, order book deltas, and miscellaneous information on order book.
+The `OrderBookTrackerDataSource` class is responsible for making API calls and/or WebSocket queries to obtain order book snapshots, order book deltas, and miscellaneous information on the order book.
 
-Integrating your own data source component requires you to extend from the `OrderBookTrackerDataSource` base class [here](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/core/data_type/order_book_tracker_data_source.py).
+Integrating your data source component requires you to extend from the `OrderBookTrackerDataSource` base class [here](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/core/data_type/order_book_tracker_data_source.py).
 
 The following details the **required** functions in `OrderBookTrackerDataSource`:
 
@@ -52,7 +52,7 @@ It is also expected that the trading pairs are converted into Hummingbot's `Base
 
 ### `get_last_traded_prices`
 
-Performs the necessary API request(s) to get last traded price for the given markets (trading_pairs) and return a dictionary of `trading_pair` its last traded price.
+Performs the necessary API request(s) to get the last traded price for the given markets (trading_pairs) and return a dictionary of `trading_pair` its last traded price.
 
 **Input Parameter(s):** trading_pairs: `List[str]`<br/>
 **Expected Output(s):** `Dict[str, float]`
@@ -92,21 +92,21 @@ This might involve calling `convert_snapshot_message_to_order_book_row()` from t
 
 ### `listen_for_trades`
 
-Subscribes to the trade channel of the exchange. Adds incoming messages(of filled orders) to the `output` queue, to be processed by `OrderBookTracker` (in `_emit_trade_event_loop`)
+Subscribes to the trade channel of an exchange. Adds incoming messages(of filled orders) to the `output` queue, to be processed by `OrderBookTracker` (in `_emit_trade_event_loop`)
 
 **Input Parameter:** ev_loop: `asyncio.BaseEventLoop`, output: `asyncio.Queue` <br/>
 **Expected Output(s):** None
 
 ### `listen_for_order_book_diffs`
 
-Fetches or Subscribes to the order book snapshots for each trading pair. Additionally, parses the incoming message into a `OrderBookMessage` and appends it into the `output` Queue.
+Fetches or Subscribes to the order book snapshots for each trading pair. Additionally, parses the incoming message into an `OrderBookMessage` and appends it into the `output` Queue.
 
 **Input Parameter:** ev_loop: `asyncio.BaseEventLoop`, output: `asyncio.Queue` <br/>
 **Expected Output(s):** None
 
 ### `listen_for_order_book_snapshots`
 
-Fetches or Subscribes to the order book deltas(diffs) for each trading pair. Additionally, parses the incoming message into a `OrderBookMessage` and appends it into the `output` Queue. |
+Fetches or Subscribes to the order book deltas(diffs) for each trading pair. Additionally, parses the incoming message into an `OrderBookMessage` and appends it into the `output` Queue. |
 
 **Input Parameter:** ev_loop: `asyncio.BaseEventLoop`, output: `asyncio.Queue` <br/>
 **Expected Output(s):** None
@@ -121,7 +121,7 @@ Fetches or Subscribes to the order book deltas(diffs) for each trading pair. Add
 
 ## OrderBook
 
-The `OrderBook` is an interface class contains all the necessary functions and variables to maintain an order book of the specified trading pair.
+The `OrderBook` is an interface class that contains all the necessary functions and variables to maintain an order book of the specified trading pair.
 Implementing an exchange connector requires its own order book class that extends from the `OrderBook`.
 
 The following details are **required** functions to be implemented in the new `OrderBook` class:
@@ -156,7 +156,7 @@ Converts json trade data from the exchange into standard `OrderBookMessage` form
 ## OrderBookMessage
 
 The `OrderBookMessage` is an abstract class that stores the relevant order book information obtained from either the exchange or a local db.
-Integrating a new exchange connector will required implementing its own class that extends that extends from `OrderBookMessage`.
+Integrating a new exchange connector will require implementing its own class that extends from `OrderBookMessage`.
 
 The `OrderBookMessage` base class contains 3 main attributes, namely:
 
@@ -196,7 +196,7 @@ List of all the order book entries on the bid side.
 
 ## Utility Functions
 
-Contains any miscellaneous functions that are not completely associated to the classes defined in the overall architecture but nonetheless necessary for Hummingbot to perform its functions adequately.
+It contains any miscellaneous functions that are not completely associated with the classes defined in the overall architecture but necessary for Hummingbot to perform its functions adequately.
 These are stored in the `*_utils.py` file.
 
 Below are some examples of such functions:
@@ -217,7 +217,7 @@ For reference you can refer to [Crypto.com](https://github.com/CoinAlpha/humming
 
 ## Exchange Constants
 
-Contains all the constant variables associated with an exchange
+It contains all the constant variables associated with an exchange.
 
 Below are some examples of such variables
 
@@ -232,5 +232,5 @@ For reference you can refer to [Crypto.com](https://github.com/CoinAlpha/humming
 
 ## Debugging & Testing
 
-As part of the QA process, for each tasks(Task 1 through 3) you are **required** to include the unit test cases for the code review process to begin.
+As part of the QA process, for each task (Task 1 through 3), you are **required** to include the unit test cases for the code review process to begin.
 Refer to [Option 1: Unit Test Cases](/developer/debug&test/#option-1-unit-test-cases) to build your unit tests.

@@ -23,9 +23,11 @@ With the new version's Concentrated Liquidity, traders can control over what pri
 - The order size of the level will be equal to `order_amount` the spread between the orders will be calculated based on the `max_spread`, and the new orders related to order levels will be created between the first order and `max_spread`, distributed exponentially.
 - When `parameters_based_on_spread` = false, the behaviour of `order_levels` will be similar to `pure_market_making`
 
-### `hanging_orders`
+### `order_override`
 
-- With this new strategy feature, traders will be able to
+If you prefer manual control of orders rather than bot calculated `order_amount` and `order_level_parameter`, manually set order value of buy/sell, order spread, and order amount with [`order_override`](/strategies/avellaneda-market-making/#order_override).
+
+**You can only set the `order_override` in the strategy config file you created.**
 
 ## New Strategy : Uniswap v3 Iteration 1
 

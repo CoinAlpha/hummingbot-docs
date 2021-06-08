@@ -1,6 +1,6 @@
 ---
 title: "Windows"
-description: Binary, Docker and Source Installation Guide
+description: Binary, Docker, and Source Installation Guide
 ---
 
 import Callout from "../../src/components/Callout";
@@ -16,12 +16,12 @@ import Callout from "../../src/components/Callout";
   allowfullscreen
 ></iframe>
 
-The Windows setup package is the easiest way for Windows users to setup and run Hummingbot. Windows setup packages are released with every Hummingbot release starting from v0.18.
+The Windows setup package is the easiest way for Windows users to set up and run Hummingbot. Windows setup packages are released with every Hummingbot release starting from v0.18.
 
 To install Hummingbot with Windows setup package:
 
 1. Download Setup.exe from our [download page](https://hummingbot.io/download).
-2. Double-click `Setup.exe` hummingbot binary package to launch the installer.
+2. Double-click the `Setup.exe` hummingbot binary package to launch the installer.
 
 ![Hummingbot installed](/img/windows-setup-1.png)
 
@@ -31,13 +31,13 @@ To install Hummingbot with Windows setup package:
 
 #### Application Data Files
 
-The application data files (e.g. logs and config files) are located differently for binary package installed Hummingbot vs. source compiled Hummingbot.
+The application data files (e.g., logs and config files) are located differently for binary package installed Hummingbot vs. source compiled Hummingbot.
 
 For the Windows binary distribution, the application data files are located in `%localappdata%\hummingbot.io\Hummingbot`.
 
 ## Install via Docker
 
-The Hummingbot code base is designed and optimized for UNIX-based systems such as macOS and Linux. We recommend that Windows users either:
+The Hummingbot codebase is designed and optimized for UNIX-based systems such as macOS and Linux. We recommend that Windows users either:
 
 - Install in the cloud and use a native Linux virtual machine.
 - Install using Docker version: [Docker Desktop](https://docs.docker.com/docker-for-windows/) recommended.
@@ -52,7 +52,7 @@ Hummingbot can also be installed by utilizing the built-in Windows Subsystem for
 
 **Docker Desktop**
 
-Supports Windows Home, Pro and Enterprise edition. Download the latest version of Docker Desktop .exe file via [Docker Hub](https://hub.docker.com/editions/community/docker-ce-desktop-windows/)
+Supports Windows Home, Pro, and Enterprise edition. Download the latest version of Docker Desktop .exe file via [Docker Hub](https://hub.docker.com/editions/community/docker-ce-desktop-windows/)
 
 ![Docker Desktop](/img/docker_desktop_download.gif)
 
@@ -67,13 +67,13 @@ Supports Windows Home, Pro and Enterprise edition. Download the latest version o
    - [Windows Home](https://docs.docker.com/docker-for-windows/install-windows-home/)
    - [Windows Pro / Enterprise](https://docs.docker.com/docker-for-windows/install/)
 
-2. To enable WSL 2, open `Windows PowerShell` and run it as administrator. Use the command below and this will take a while to complete:
+2. To enable WSL 2, open `Windows PowerShell` and run it as administrator. Use the command below, and this will take a while to complete:
 
 ```Windows PowerShell
 wsl.exe --set-version Ubuntu-18.04 2
 ```
 
-3. Open Docker Desktop, Go to Settings > Resources and then enable WSL Integration
+3. Open Docker Desktop, Go to Settings > Resources, and then enable WSL Integration
 
 ![Docker Desktop WSL enable](/img/docker_desktop_WSLenable.gif)
 
@@ -87,7 +87,7 @@ Enter the following commands into the command line. You can install Hummingbot b
 Scripts
 
 ```Scripts
-# 1) Navigate to root folder
+# 1) Navigate to the root folder
 cd ~
 
 # 2) Download Hummingbot install, start, and update script
@@ -105,10 +105,10 @@ chmod a+x *.sh
 Manual
 
 ```Manual
-# 1) Navigate to root folder
+# 1) Navigate to the root folder
 cd ~
 
-# 2) Create folder for your new instance
+# 2) Create a folder for your new instance
 mkdir hummingbot_files
 
 # 2) Create folders for logs, config files and database file
@@ -145,7 +145,7 @@ Step 1. Install required Applications
 3. Install [Anaconda or miniconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/windows.html).
 4. Install [Visual Studio Code](https://code.visualstudio.com/download), [Visual Studio BuildTools 2019, Core Features, C++](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) and [C++ redistributable 2019](https://aka.ms/vs/16/release/VC_redist.x64.exe).
 
-- During installation make sure to add Anaconda or Miniconda to your PATH environmental variable by clicking the tick box as shown below, or you can add them [manually](https://www.geeksforgeeks.org/how-to-setup-anaconda-path-to-environment-variable/).
+- During installation, make sure to add Anaconda or Miniconda to your PATH environmental variable by clicking the tick box as shown below, or you can add them [manually](https://www.geeksforgeeks.org/how-to-setup-anaconda-path-to-environment-variable/).
   ![anaconda-path](/img/anaconda-path.png)
 
 <Callout
@@ -174,7 +174,7 @@ exit
 Scripts
 
 ```scripts
-# 1) Navigate to root folder
+# 1) Navigate to the root folder
 cd ~
 
 # 2) Download install script
@@ -203,4 +203,4 @@ conda activate hummingbot && ./compile
 winpty python bin/hummingbot.py
 ```
 
-After installing Hummingbot from source, see [Launch Hummingbot from source](/operation/launch-exit/) for instructions on how to start and run Hummingbot from source.
+After installing Hummingbot from source, see [Launch Hummingbot from source](/operation/launch-exit/) for instructions on starting and running Hummingbot from source.

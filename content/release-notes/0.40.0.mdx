@@ -15,7 +15,17 @@ _Released on June 11, 2021_
 
 With the new version's Concentrated Liquidity, traders can control over what price ranges their capital is allocated to. In addition, Uniswap v3 allows liquidity providers to be compensated accordingly for taking on varying degrees of risk.
 
-## ⭐ New Strategy Features with Avellaneda Market Making
+## 📊 New UniswapV3 Iteration 1 strategy
+
+### `uniswap_v3_lp`
+
+Create new liquidity positions and automate the process of readjusting these positions once the market price moves outside of the starting price range.
+
+## 🌎 Additional Features : Rate Oracle now in AMM - Arbitrage!
+
+Get rates required to calculate arbitrage proposals profitability.
+
+## ⭐ New Strategy Features with Avellaneda Market-Making
 
 ### `order_levels`
 
@@ -29,25 +39,9 @@ If you prefer manual control of orders rather than bot calculated `order_amount`
 
 **You can only set the `order_override` in the strategy config file you created.**
 
-## New Strategy : Uniswap v3 Iteration 1
-
-### `uniswap_v3_lp`
-
-Create new liquidity positions and automate the process of readjusting these positions once the market price moves outside of the starting price range.
-
-## Other Enhancements
+## 🔧 Other Enhancements
 
 - #3017 Catch and report exceptions when importing scripts in PMM strategy in the event of syntax or module import errors
-
-### Community Contribution
-
-- Input multiple parameters of commands on a single line
-
-  ```
-  config ask_spread 1 bid_spread 1.5 order_refresh_time 60
-  ```
-
-- Configure ask and bid simultaneously with `spread` command
 
 - Hummingbot client unit tests for the following:
   - Performance Calculation
@@ -56,6 +50,16 @@ Create new liquidity positions and automate the process of readjusting these pos
   - Liquidity Mining Strategy
   - Strategy base and common strategy classes
   - Ascendex
+
+### 🏡 Community Contribution
+
+- Input multiple parameters of commands on a single line _(Thanks to zappra and krisj for helping!)_
+
+  ```
+  config ask_spread 1 bid_spread 1.5 order_refresh_time 60
+  ```
+
+- Configure ask and bid simultaneously with `spread` command
 
 ## 🐞 Bug Fixes
 

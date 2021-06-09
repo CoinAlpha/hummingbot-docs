@@ -8,13 +8,13 @@ title: "Version 0.5.0"
 
 As requested by many users, we have codified exchange-specific transaction costs such as trading fees and gas costs (for decentralized exchanges) into each exchange connector.
 
-This allowed us to incorporate fee/gas logic into the [arbitrage](/strategies/arbitrage) strategy, so that users can set a `min_profitability` parameter that is **net of exchange transaction costs**. Please note that we will be testing this feature heavily this sprint, and that issues may arise as a result of this change.
+This allowed us to incorporate fee/gas logic into the [arbitrage](/strategies/arbitrage) strategy so that users can set a `min_profitability` parameter that is **net of exchange transaction costs**. Please note that we will be testing this feature heavily this sprint and that issues may arise due to this change.
 
 We plan to add this to the [cross-exchange market making](/strategies/cross-exchange-market-making) strategy in the next release.
 
 ## 💻 Improved CLI commands
 
-We added and improved a number of the commands in the Hummingbot command line interface:
+We added and improved a number of the commands in the Hummingbot command-line interface:
 
 ![status command](/img/status-command.png)
 
@@ -36,16 +36,16 @@ New documentation in this release includes:
 
 ## 🐞 Bug fixes and miscellaneous updates
 
-We fixed a number of bugs in this release. Thanks 🙏 all the bug reporters who took part in our bug bounty program!
+We fixed several bugs in this release. Thanks to 🙏 all the bug reporters who took part in our bug bounty program!
 
 - Fixed a bug in which Coinbase Pro orders were failing due to overly high precision in the order amount field ([bug bounty recipient](https://github.com/CoinAlpha/hummingbot/issues/106))
-- Fixed an bug in which the bug prints excessive `Maker order size must be greater than 0` log messages ([bug bounty recipient](https://github.com/CoinAlpha/hummingbot/issues/118))
+- Fixed a bug in which the bug prints excessive `Maker order size must be greater than 0` log messages ([bug bounty recipient](https://github.com/CoinAlpha/hummingbot/issues/118))
 - Resolved an issue that prevented installation in Virtual Box for Windows due to file permissions ([bug bounty recipient](https://github.com/CoinAlpha/hummingbot/issues/94))
-- Resolved an issue in which running Hummingbot using Infura nodes causes intermittent `Error fetching logs from block with filters` log messages
+- Resolved an issue in which running Hummingbot using Infura nodes causes intermittent `Error fetching logs from the block with filters` log messages
 - Fixed a bug that causes duplicate orders in DDEX in certain cases
 - Fixed a bug in which Radar Relay orders could be incorrectly sorted, causing unexpected bot behavior
-- Fixed a bug in which the log file was not being generated after installing from source
-- Fixed a bug in which Hummingbot incorrectly warned users of [arbitrage](/strategies/arbitrage) bots that their wallet/exchanges balances were 0.
+- Fixed a bug in which the log file was not being generated after installing from the source
+- Fixed a bug in which Hummingbot incorrectly warned users of [arbitrage](/strategies/arbitrage) bots that their wallet/exchanges balances were 0
 - Fixed a bug in which a temporary lack of order book volume triggers `Volume beyond order book depth` errors
 - Hummingbot no longer prompts users for their Ethereum wallet even when only trading on centralized exchanges
 - Removed legacy `config not found` warnings when starting Hummingbot

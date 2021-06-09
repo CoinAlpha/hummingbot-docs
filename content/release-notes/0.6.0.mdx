@@ -10,7 +10,7 @@ import Callout from "../../src/components/Callout";
 - Improved resilience against network connection issues
 - New `discovery` strategy that helps you discover trading opportunities
 - New `history` and `export_trades` commands that helps you analyze trading performance
-- Stop loss switch that automatically shuts down Hummingbot if losses exceed a certain threshold.
+- Stop-loss switch that automatically shuts down Hummingbot if losses exceed a certain threshold.
 
 See below for more details!
 
@@ -20,7 +20,7 @@ In the last release, we incorporated market-specific transaction costs like trad
 
 ## 📶 Improved resilience against network connection issues
 
-We added network status detection to our market and wallet connectors. If you are running a bot like `arbitrage` that trades on two markets, the bot won't place trades if one of the markets is offline. If a market is offline, the `status` command will display a warning.
+We added network status detection to our market and wallet connectors. If you run a bot like `arbitrage` that trades on two markets, the bot won't place trades if one of the markets is offline. If a market is offline, the `status` command will display a warning.
 
 ## 🔍 New strategy: `discovery`
 
@@ -32,7 +32,7 @@ The discovery scans markets for the best opportunities with which to apply the `
 
 We have added two new CLI commands to help users analyze bot performance:
 
-- `history`: displys information about the trades that the bot has executed during the current session
+- `history`: displays information about the trades that the bot has executed during the current session
 - `export_trades`: exports the list of trades to a CSV file
 
 ## 🛑 Stop loss switch
@@ -41,6 +41,6 @@ We added a feature to automatically shut down a trading bot if it loses a certai
 
 ## 🐞 Bug fixes and miscellaneous updates
 
-- Fixed a bug with the `status` outut of the arbitrage strategy
-- Fixed a bug in which duplicate orders may appear on DDEX. We have discovered an issue with the DDEX API and are working with them to isolate and rectify the bug.
-- Cross-exchange market making strategy now utilizes exchange rates when it displays the expected hedging price.
+- Fixed a bug with the `status` output of the arbitrage strategy
+- Fixed a bug in which duplicate orders may appear on DDEX. We have discovered an issue with the DDEX API and are working to isolate and rectify the bug.
+- Cross-exchange market-making strategy now utilizes exchange rates when it displays the expected hedging price.

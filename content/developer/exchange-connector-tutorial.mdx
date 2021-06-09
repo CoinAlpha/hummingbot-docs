@@ -76,7 +76,7 @@ They would schedule the order to be submitted to the exchange as soon as possibl
 In most of our built-in exchange connectors, order submission occurs in the `_create_order()` function - although it may be different for some decentralized exchange connectors.
 
 The `_create_order()` method is responsible for performing the necessary trading rule checks before submitting the order via the REST API.
-Upon receiving a successful response, a `BuyOrderCreatedEvent` or `SellOrderCreatedEvent` would be emitted. Otherwise, a `MarketOrderFailureEvent` would be emitted. Note that despite the naming, `MarketOrderFailureEvent` is emitted even for limited orders.
+Upon receiving a successful response, a `BuyOrderCreatedEvent` or `SellOrderCreatedEvent` would be emitted. Otherwise, a `MarketOrderFailureEvent` would be emitted. Note that despite the naming, `MarketOrderFailureEvent` is emitted even for limit orders.
 
 ### Order Being Filled
 

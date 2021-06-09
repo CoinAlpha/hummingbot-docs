@@ -5,20 +5,11 @@ description: About Blocktane connector
 
 import Callout from "../../src/components/Callout";
 
-Launched in 2020, Blocktane was designed and built in partnership with Tritum and operates a high-performance digital asset exchange infrastructure designed with technology and principles from traditional financial markets to serve clients with equal confidence and quality as any other financial institution.
-
-<Callout
-  type="note"
-  body="This connector has undergone code review, internal testing and was shipped during one of our most recent releases. As part of User Acceptance Testing, we encourage user to report any issues with this connector to our [Discord server] or [submit a bug report]"
-  link={[
-    "https://discord.com/invite/2MN3UWg",
-    "https://github.com/CoinAlpha/hummingbot/issues/new?assignees=&labels=bug&template=bug_report.md&title=",
-  ]}
-/>
+Launched in 2020, Blocktane was designed and built in partnership with Tritum and operated a high-performance digital asset exchange infrastructure designed with technology and principles from traditional financial markets to serve clients with equal confidence and quality as any other financial institution.
 
 ## Using the Connector
 
-To use [Blocktane](https://blocktane.io/) connector, you will need to generate and provide your API key in order to trade using Hummingbot.
+To use [Blocktane](https://blocktane.io/) connector, you will need to generate and provide your API key to trade using Hummingbot.
 
 ```
 Enter your Blocktane API key >>>
@@ -51,7 +42,7 @@ Private keys and API keys are stored locally for the operation of the Hummingbot
 
 ![](/img/account-blocktane-api.png)
 
-3. After clicking create new API key, enter 2FA code and the key will be generated
+3. After clicking create new API key, enter 2FA code, and the key will be generated
 
 ![](/img/api-blocktane.png)
 
@@ -66,7 +57,7 @@ Make sure you store your Secret Key somewhere secure and do not share it with an
 
 ### Minimum Order Sizes
 
-Each trading pair has a unique minimum order size denominated in the base currency. You can access the minimum order size for a specific token pair using Blocktane's API, at the following URL:
+Each trading pair has a unique minimum order size denominated in the base currency. You can access the minimum order size for a specific token pair using Blocktane's API at the following URL:
 
 ```
 https://trade.blocktane.io/api/v2/xt/public/markets

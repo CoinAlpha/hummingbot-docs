@@ -1,6 +1,6 @@
 ---
 title: Avellaneda Market Making (BETA)
-description: Learn how to use avellaneda market making strategies
+description: Learn how to use Avellaneda market making strategies
 ---
 
 import Callout from "../../src/components/Callout";
@@ -9,7 +9,7 @@ import Prompt from "../../src/components/Prompt";
 
 <Callout
   type="warning"
-  body="This experimental strategy has undergone code review, internal testing and was shipped during one of our most recent releases. As part of User Acceptance Testing, we encourage user to report any issues and/or provide feedback with this strategy in our [Discord server] or [submit a bug report]"
+  body="This experimental strategy has undergone code review, internal testing and was shipped during one of our most recent releases. As part of User Acceptance Testing, we encourage the user to report any issues and/or provide feedback with this strategy in our [Discord server] or [submit a bug report]"
   link={[
     "https://discord.com/invite/2MN3UWg",
     "https://github.com/CoinAlpha/hummingbot/issues/new?assignees=&labels=bug&template=bug_report.md&title=",
@@ -22,7 +22,7 @@ The Avellaneda Market Making Strategy is designed to scale inventory and keep it
 
 In its beginner mode, the user will be asked to enter min and max spread limits, and it's aversion to inventory risk scaled from 0 to 1 (Being 0 more driven to profit but less to inventory in target, and 1 being driven to keep tight control of inventory at the expense of less profit). Additionally, sensitivity to volatility changes will be included with a particular parameter `vol_to_spread_multiplier`, to modify spreads in big volatility scenarios.
 
-In expert mode, the user will need to define directly the basic parameters of the algorithm described in the [foundation paper](https://people.orie.cornell.edu/sfs33/LimitOrderBook.pdf), and no recalculation of parameters will happen.
+In expert mode, the user will need to directly define the algorithm's basic parameters described in the [foundation paper](https://people.orie.cornell.edu/sfs33/LimitOrderBook.pdf), and no recalculation of parameters will happen.
 
 ## Prerequisites
 
@@ -36,11 +36,11 @@ When placing orders, if the order's size determined by the order price and quant
 
 ## Basic Parameters
 
-We aim to teach new users the basics of market making, while enabling experienced users to exercise more control over how their bots behave. By default, when you run `create,` we ask you to enter the basic parameters needed for a market making bot.
+We aim to teach new users the basics of market-making while enabling experienced users to exercise more control over how their bots behave. By default, when you run `create,` we ask you to enter the basic parameters needed for a market-making bot.
 
 ### `exchange`
 
-The exchange where the bot will place bid and ask orders.
+The exchange where the bot will place the bid and ask orders.
 
 ** Prompt: **
 
@@ -59,7 +59,7 @@ Token trading pair symbol you would like to trade on the exchange.
 
 ### `order_amount`
 
-The order amount for the limit bid and ask orders. Ensure you have enough quote and base tokens to place the bid and ask orders. The strategy will not place any orders if you do not have sufficient balance on either sides of the order.
+The order amount for the limit bid and ask orders. Ensure you have enough quote and base tokens to place the bid and ask for orders. The strategy will not place any orders if you do not have sufficient balance on either side of the order.
 
 ** Prompt: **
 
@@ -70,7 +70,7 @@ The order amount for the limit bid and ask orders. Ensure you have enough quote 
 
 ### `parameters_based_on_spread`
 
-The parameter acts as a toggle between beginner (parameters_based_on_spread=True) and expert mode (False). When equal to true, strategy will require min spread, max spread, volatility multiplier, and inventory risk aversion, while if set to False it will only ask for risk_factor, order_book_depth_factor and order_amount_shape_factor.
+The parameter acts as a toggle between beginner (parameters_based_on_spread=True) and expert mode (False). When equal to true, the strategy will require min spread, max spread, volatility multiplier, and inventory risk aversion, while if set to False, it will only ask for risk_factor, order_book_depth_factor, and order_amount_shape_factor.
 
 ** Prompt: **
 
@@ -81,7 +81,7 @@ The parameter acts as a toggle between beginner (parameters_based_on_spread=True
 
 ### `min_spread`
 
-The minimum spread related to the mid price allowed by user for bid/ask orders
+The minimum spread related to the mid-price allowed by the user for bid/ask orders.
 
 ** Prompt: **
 
@@ -114,7 +114,7 @@ The maximum spread related to the mid price allowed by user for bid/ask orders
 
 ### `volatility_sensibility`
 
-The Volatility Sensibility will recalculate `gamma`, `kappa` and `eta` after the value of volatility sensibility threshold in percentage is achieved. When parameter is set to 0, it will recalculate `gamma`, `kappa`, and `eta` each time an order is created. The default value for the parameter is 20.
+The Volatility Sensibility will recalculate `gamma`, `kappa` and `eta` after the value of volatility sensibility threshold in percentage is achieved. For example, when the parameter is set to 0, it will recalculate `gamma`, `kappa`, and `eta` each time an order is created. The default value for the parameter is 20.
 
 ** Prompt: **
 
@@ -125,7 +125,7 @@ The Volatility Sensibility will recalculate `gamma`, `kappa` and `eta` after the
 
 ### `inventory_risk_aversion`
 
-Inventory Risk Aversion is a quantity between 0 and 1 to measure the compromise between mitigation of inventory risk and profitability. When parameters is closer to 0, spreads will be almost symmetrical, this will tend to generate more profitability. When parameters is closer to 1, will increase chances of one side of bid/ask to be executed with respect to the other, in that way forcing inventory to converge to target while decreasing the final profit.
+Inventory Risk Aversion is a quantity between 0 and 1 to measure the compromise between mitigation of inventory risk and profitability. When parameters are closer to 0, spreads will be almost symmetrical. This will tend to generate more profitability. When parameters is closer to 1, will increase chances of one side of bid/ask to be executed with respect to the other, in that way forcing inventory to converge to target while decreasing the final profit.
 
 ** Prompt: **
 
@@ -136,7 +136,7 @@ Inventory Risk Aversion is a quantity between 0 and 1 to measure the compromise 
 
 ### `order_refresh_time`
 
-An amount in seconds, which is the duration for the placed limit orders. The limit bid and ask orders are cancelled and new orders are placed according to the current mid price and spreads at this interval.
+An amount in seconds, which is the duration for the placed limit orders. The limit bid and ask orders are canceled, and new orders are placed according to the current mid-price and spread at this interval.
 
 ** Prompt: **
 
@@ -158,13 +158,13 @@ It sets a target of base asset balance in relation to a total asset allocation v
 
 ## Advanced Parameters
 
-These are additional parameters that you can reconfigure and use to customize the behavior of your strategy further. To change its settings, run the command `config` followed by the parameter name e.g. `config max_order_age`.
+These are additional parameters that you can reconfigure and use to customize the behavior of your strategy further. To change its settings, run the command `config` followed by the parameter name, e.g. `config max_order_age`.
 
 All 3 parameters ‘order_book_depth_factor’, ‘risk_factor’ and ‘order_amount_shape_factor’ are customizable only in expert mode (toggled by ‘parameters_based_on_spread’=False).
 
 ### `order_book_depth_factor`
 
-This parameter denoted by letter kappa is directly proportional to the liquidity of the order book, hence to the probability of an order being filled. For more details see foundation paper.
+This parameter denoted by the letter kappa is directly proportional to the order book's liquidity, hence the probability of an order being filled. For more details, see the foundation paper.
 
 ** Prompt: **
 
@@ -172,7 +172,7 @@ This parameter denoted by letter kappa is directly proportional to the liquidity
 
 ### `risk_factor`
 
-This parameter denoted by letter gamma is related to the aggressiveness when setting the spreads to achieve the inventory target. It is directly proportional to the asymmetry between bid and ask spread. For more details see foundation paper.
+This parameter, denoted by the letter gamma, is related to the aggressiveness when setting the spreads to achieve the inventory target. It is directly proportional to the asymmetry between the bid and ask spread. For more details, see the foundation paper.
 
 ** Prompt: **
 
@@ -180,7 +180,7 @@ This parameter denoted by letter gamma is related to the aggressiveness when set
 
 ### `order_amount_shape_factor`
 
-This parameter denoted in letter eta is related to the aggressiveness when setting the order amount to achieve the inventory target. It is inversely proportional to the asymmetry between bid and ask order amount. For more details see foundation paper.
+This parameter denoted in the letter eta is related to the aggressiveness when setting the order amount to achieve the inventory target. It is inversely proportional to the asymmetry between the bid and ask order amount. For more details, see the foundation paper.
 
 ** Prompt: **
 
@@ -188,7 +188,7 @@ This parameter denoted in letter eta is related to the aggressiveness when setti
 
 ### `closing_time`
 
-This parameter will be the limit time (measure in days) for this “trading cycle”. We call trading cycles the interval of time where spreads start the widest possible and end up the smallest. Once the cycle is reseted, spreads will start again being the widest possible.
+This parameter will be the limit time (measure in days) for this “trading cycle”. We call trading cycles the interval of time where spreads start the widest possible and end up the smallest. Once the cycle is reset, spreads will start again, being the widest possible.
 
 ** Prompt: **
 
@@ -199,7 +199,7 @@ This parameter will be the limit time (measure in days) for this “trading cycl
 
 ### `order_optimization_enabled`
 
-Allows your bid and ask order prices to be adjusted based on the current top bid and ask prices in the market. By the default this parameter is set to True.
+Allows your bid and ask order prices to be adjusted based on the current top bid and ask prices in the market. By default, this parameter is set to True.
 
 ** Prompt: **
 
@@ -210,7 +210,7 @@ Allows your bid and ask order prices to be adjusted based on the current top bid
 
 ### `max_order_age`
 
-The `max_order_age` parameter allows you to set a specific duration when to reset your order's age. It refreshes your orders and automatically creates an order based on the spread and movement of the market.
+The `max_order_age` parameter allows you to set a specific duration when resetting your order's age. It refreshes your orders and automatically creates an order based on the spread and movement of the market.
 
 ** Prompt: **
 
@@ -221,7 +221,7 @@ The `max_order_age` parameter allows you to set a specific duration when to rese
 
 ### `order_refresh_tolerance_pct`
 
-The spread (from mid price) to defer order refresh process to the next cycle.
+The spread (from mid-price) to defer the order refresh process to the next cycle.
 
 ** Prompt: **
 
@@ -232,7 +232,7 @@ The spread (from mid price) to defer order refresh process to the next cycle.
 
 ### `filled_order_delay`
 
-How long to wait before placing the next set of orders in case at least one of your orders gets filled.
+How long to wait before placing the next set of orders in the case at least one of your orders gets filled.
 
 For example, with a filled_order_delay = 300 when an order created by the bot is filled, the next pair of orders will only be created 300 seconds later.
 
@@ -256,7 +256,7 @@ Whether to enable adding transaction costs to order price calculation.
 
 ### `volatility_buffer_size`
 
-Number of ticks used as a sample size for volatility calculation.
+The number of ticks used as a sample size for volatility calculation.
 
 ** Prompt: **
 

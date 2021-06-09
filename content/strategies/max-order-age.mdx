@@ -10,7 +10,7 @@ By default, the parameter is set to 1800 seconds.
 
 To reconfigure, run the command `config max_order_age` and set the desired value in seconds.
 
-The `max_order_age` parameter allows you to set a specific duration when to reset your order's age. It refreshes your orders and automatically creates an order based on the spread and movement of the market. Also, hanging orders remain as hanging orders.
+The `max_order_age` parameter allows you to set a specific duration when resetting your order's age. It refreshes your orders and automatically creates an order based on the spread and movement of the market. Also, hanging orders remain as hanging orders.
 
 ![](img/config.gif)
 
@@ -62,7 +62,7 @@ The `max_order_age` parameter tried to refresh the order but `order_refresh_tole
 
 ### Max order age with hanging orders
 
-Max order age respects hanging orders and refreshes the orders but does not cancel active hanging orders. See example below.
+Max order age respects hanging orders and refreshes the orders but does not cancel active hanging orders. See the example below.
 
 ```json
 ask_spread: 0.3
@@ -78,4 +78,4 @@ The hanging orders were not canceled and were only refreshed when `max_order_age
 
 ### Why max order age is important in liquidity mining?
 
-Suppose you are participating in the `HARD-USDT` campaign with an order refresh time of 30 minutes. Max order age refreshes depending on what you set it on as long as it is lower than the order refresh time. When participating in liquidity mining, outstanding orders that reach the 30-minute mark are not subject to rewards. It is best to use the parameter to refresh the orders' age to be eligible for rewards.
+Suppose you are participating in the `HARD-USDT` campaign with an order refresh time of 30 minutes. Max order age refreshes depending on what you set it on as long as it is lower than the order refresh time. When participating in liquidity mining, outstanding orders that reach the 30-minute mark are not subject to rewards. Therefore, it is best to use the parameter to refresh the orders' age to be eligible for rewards.

@@ -9,9 +9,9 @@ import Prompt from "../../src/components/Prompt";
 
 ## How it Works
 
-In the pure market making strategy, Hummingbot continually posts limit bid and ask offers on a market and waits for other market participants ("takers") to fill their orders.
+In the pure market making strategy, Hummingbot continually posts the limit bid and ask offers on the market, and waits for other market participants ("takers") to fill their orders.
 
-Users can specify how far away ("spreads") from the mid price the bid and asks are, the order quantity, and how often prices should be updated (order cancels + new orders posted).
+Users can specify how far away ("spreads") from the mid-price the bid and asks are, the order quantity, and how often prices should be updated (order cancels + new orders posted).
 
 <Callout
   type="warning"
@@ -33,7 +33,7 @@ The diagram below illustrates how market making works. Hummingbot makes a market
 
 ### Inventory
 
-- You will need to hold sufficient inventory of quote and/or base currencies on the exchange to place orders of the exchange's minimum order size.
+- You will need to hold a sufficient inventory of quote and/or base currencies on the exchange to place orders of the exchange's minimum order size.
 - You will also need some ETH to pay gas for transactions on a decentralized exchange (if applicable).
 
 ### Minimum Order Size
@@ -45,11 +45,11 @@ When placing orders, if the size of the order determined by the order price and 
 `bid order amount * bid price` < `exchange's minimum order size`<br/>
 `ask order amount * ask price` > `exchange's minimum order size`
 
-Only a sell order will be created but no buy order.
+Only a sell order will be created, but no buy order.
 
 ## Basic Parameters
 
-We aim to teach new users the basics of market making, while enabling experienced users to exercise more control over how their bots behave. By default, when you run `create` we ask you to enter the basic parameters needed for a market making bot.
+We aim to teach new users the basics of market-making while enabling experienced users to exercise more control over how their bots behave. By default, when you run `create`, we ask you to enter the basic parameters needed for a market-making bot.
 
 See [Advanced Market Making](/strategies/adv-market-making) for more information about the advanced parameters and how to use them.
 
@@ -76,7 +76,7 @@ Token trading pair symbol you would like to trade on the exchange.
 
 ### `bid_spread`
 
-The strategy will place the buy (bid) order on a certain % away from the mid price.
+The strategy will place the buy (bid) order on a certain % away from the mid-price.
 
 ** Prompt: **
 
@@ -87,7 +87,7 @@ The strategy will place the buy (bid) order on a certain % away from the mid pri
 
 ### `ask_spread`
 
-The strategy will place the sell (ask) order on a certain % away from the mid price.
+The strategy will place the sell (ask) order on a certain % away from the mid-price.
 
 ** Prompt: **
 
@@ -98,7 +98,7 @@ The strategy will place the sell (ask) order on a certain % away from the mid pr
 
 ### `order_refresh_time`
 
-An amount in seconds, which is the duration for the placed limit orders. The limit bid and ask orders are cancelled and new orders are placed according to the current mid price and spreads at this interval.
+An amount in seconds, which is the duration for the placed limit orders. The limit bid and ask orders are canceled, and new orders are placed according to the current mid-price and spread at this interval.
 
 ** Prompt: **
 
@@ -109,7 +109,7 @@ An amount in seconds, which is the duration for the placed limit orders. The lim
 
 ### `order_amount`
 
-The order amount for the limit bid and ask orders. Ensure you have enough quote and base tokens to place the bid and ask orders. The strategy will not place any orders if you do not have sufficient balance on either sides of the order. <br/>
+The order amount for the limit bid and ask orders. Ensure you have enough quote and base tokens to place the bid and ask orders. The strategy will not place any orders if you do not have sufficient balance on either side of the order. <br/>
 
 ** Prompt: **
 
@@ -120,7 +120,7 @@ The order amount for the limit bid and ask orders. Ensure you have enough quote 
 
 ### `ping_pong_enabled`
 
-Whether to alternate between buys and sells. For more information on this parameter click this [link](https://docs.hummingbot.io/strategies/ping-pong/).
+Whether to alternate between buys and sells, for more information on this parameter, click this [link](https://docs.hummingbot.io/strategies/ping-pong/).
 
 ** Prompt: **
 
@@ -148,6 +148,6 @@ Currently, only the following parameters can be reconfigured without stopping th
 - filled_order_delay
 
 <Callout
-type="note"
-body="Reconfiguring of `inventory_target_base_pct` for DEX connectors is not working at the moment."
+  type="note"
+  body="Reconfiguring of `inventory_target_base_pct` for DEX connectors is not working at the moment."
 />

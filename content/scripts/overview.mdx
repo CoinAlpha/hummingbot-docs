@@ -5,7 +5,7 @@ description: Learn how to use scripts
 
 import Callout from "../../src/components/Callout";
 
-Offers dynamic bot controls by running a user defined script alongside a strategy.
+Offers dynamic bot controls by running a user-defined script alongside a strategy.
 
 <Callout
   type="note"
@@ -23,13 +23,13 @@ As with Hummingbot source code, the script is fully compatible with Python 3.7.
 
 ## How it works
 
-After configured, the script will start automatically once a strategy starts and it stops when the strategy stops.
-The script is run on a new dedicated process, in case where the script fails or has a bug, your main Hummingbot
+After configured, the script will start automatically once a strategy starts, and it stops when the strategy stops.
+The script is run on a new dedicated process. In the case where the script fails or has a bug, your main Hummingbot
 application can still function.
 
 ## Create your own script
 
-1. Create a new script file, you can see examples in the Examples section below, and save it into `scripts` folder
+1. Create a new script file. You can see examples in the Examples section below and save it into `scripts` folder
 2. Configure your Hummingbot
    1. Inside Hummingbot run command `config script_enabled` and/or `config script_file_path`.
    2. Editing `conf_global.yml` file using a text editor.
@@ -55,7 +55,7 @@ The following examples can be found in `scripts\` folder.
 
 4. **dynamic_price_band_script.py**
 
-   Demonstrates how to set the band around mid price moving average, the band moves as the average moves.
+   Demonstrates how to set the band around mid-price moving average. The band moves as the average moves.
 
 5. **spreads_adjusted_on_volatility_script.py**
 
@@ -63,13 +63,13 @@ The following examples can be found in `scripts\` folder.
 
 6. **script_template.py**
 
-   Provides you a base template to start using the scripts functions.
+   Provides you a base template to start using the script functions.
 
 ---
 
 ### Updating your scripts
 
-We sometimes add/remove/edit commands in the helper scripts along with certain new features like the [Scripts](/release-notes/0.29.0) we released in version 0.29.0, and you would need to update your scripts.
+We sometimes add/remove/edit commands in the helper scripts and certain new features like the [Scripts](/release-notes/0.29.0) we released in version 0.29.0, and you would need to update your scripts.
 
 Copy the commands below and paste them into the shell or terminal to delete the old scripts and download the most recently updated ones.
 

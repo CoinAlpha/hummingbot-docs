@@ -18,7 +18,7 @@ import Prompt from "../../src/components/Prompt";
 
 ## How It Works
 
-Perpetual market making allows Hummingbot users to market make on supported derivatives exchanges. Position management features are introduced to configure the bot further to make managing positions easier and remove the need to manually interact with the derivative exchange.
+Perpetual market making allows Hummingbot users to market make on supported derivatives exchanges. In addition, position management features are introduced to configure the bot further to make managing positions easier and remove the need to interact with the derivative exchange manually.
 
 Like pure market making strategy, it keeps placing limit buy and sell orders on the order book and waits for other participants (takers) to fill its orders.
 
@@ -55,16 +55,16 @@ In this document, we will explain how the strategy works by dividing it into thr
 1. Run the `create` command and enter `perpetual_market_making` strategy
    ![](/img/perp-mm-prompt-strategy.png)
 1. Enter the name of the connector and the trading pair you want to use with this strategy
-1. Enter how much leverage you want to use. Leverage allows you to open a position with a fraction of a cost. The higher the leverage, the higher the risk. Please manage accordingly.
+1. Enter how much leverage you want to use. Leverage allows you to open a position at a fraction of a cost. The higher the leverage, the higher the risk. Please manage accordingly.
    ![](/img/perp-mm-prompt-leverage.png)
 1. Select a `position_mode` from either [`One-way`](#one-way-mode) or [`Hedge`](#hedge-mode) mode. These are both explained further in their respective sections below.
    ![](/img/perp-mm-prompt-position-mode.png)
-1. Enter the bid and ask spreads from mid price of your limit orders (for opening a position)
+1. Enter the bid and ask spreads from mid-price of your limit orders (for opening a position)
    ![](/img/perp-mm-prompt-bid-spread.png)
    ![](/img/perp-mm-prompt-ask-spread.png)
 1. Enter how many seconds you want orders to refresh when not filled
    ![](/img/perp-mm-prompt-order-refresh-time.png)
-1. Enter the size of orders you want to place in `order_amount` prompt
+1. Enter the size of orders you want to place in the `order_amount` prompt
 1. Select a `position_management` from either [`Profit_taking`](#profit-taking) or [`Trailing_stop`](#trailing-stop) value
    ![](/img/perp-mm-prompt-position-management.png)
    - If you selected `Profit_taking`, enter the spreads of your profit taking orders to close a long or short position in `long_profit_taking_spread` `short_profit_taking_spread`
@@ -73,7 +73,7 @@ In this document, we will explain how the strategy works by dividing it into thr
    - If you selected `Trailing_stop`, enter the spread when you want the bot to start trailing as `ts_activation_spread` and the exit price as `ts_callback_rate`
      ![](/img/perp-mm-prompt-ts-activation-spread.png)
      ![](/img/perp-mm-prompt-ts-callback-rate.png)
-1. Enter the spread from entry price to close a position with a stop loss order
+1. Enter the spread from the entry price to close a position with a stop-loss order
    ![](/img/perp-mm-prompt-stop-loss.png)
 1. Choose between limit or market order when `close_position_order_type` value for stop loss and trailing stop orders
    ![](/img/perp-mm-prompt-close-position-order-type.png)
@@ -86,25 +86,25 @@ Initially, limit buy and sell orders are created based on `bid_spread` and `ask_
 
 **What happens if both my orders are not filled?**
 
-If the orders are not filled when they reach `order_refresh_time`, they are cancelled and a new set of orders are created to ensure our orders are refreshed based on specified bid/ask spread.
+If the orders are not filled when they reach `order_refresh_time`, they are canceled, and a new set of orders are created to ensure our orders are refreshed based on specified bid/ask spread.
 
-With the exception of `order_refresh_tolerance_pct` value, if the orders are within the tolerable change in spread then they are not cancelled. A log message on the right pane will show “Not cancelling active orders since difference between the new order prices and current order prices is within order_refresh_tolerance_pct”.
+With the exception of the `order_refresh_tolerance_pct` value, if the orders are within the tolerable change in the spread, then they are not canceled. A log message on the right pane will show “Not canceling active orders since the difference between the new order prices and current order prices is within order_refresh_tolerance_pct”.
 
 ![opening-orders-1](/img/opening-orders-1.gif)
 
 ## Opening positions after a filled order event
 
-The strategy uses the filled order’s price as the entry price of the position. The number of positions you can open depends on the `position_mode` selected.
+The strategy uses the filled order’s price as the entry price of the position. Thus, the number of positions you can open depends on the `position_mode` selected.
 
 **If one of my orders is filled, what happens to the opposite order that was not filled?**
 
-In `One-way` mode, if an order is filled the opposite order is cancelled. For example, if your buy order is filled it opens a LONG position, cancels the opening sell order and creates a closing sell order.
+In `One-way` mode, if an order is filled, the opposite order is canceled. For example, if your buy order is filled, it opens a LONG position, cancels the opening sell order, and creates a closing sell order.
 
-In `Hedge` mode, if one order is filled the opposite order is not cancelled. For example, if your buy order is filled it opens a LONG position and creates a closing sell order. The opening sell order initially created remains active, waiting to get filled to open a SHORT position simultaneously.
+In `Hedge` mode, if one order is filled, the opposite order is not canceled. For example, if your buy order is filled, it opens a LONG position and creates a closing sell order. The opening sell order initially created remains active, waiting to get filled to open a SHORT position simultaneously.
 
 ### One-way mode
 
-In `One-way` mode, only one position can be opened i.e. you only have either a LONG or a SHORT position.
+In `One-way` mode, only one position can be opened i.e., you only have either a LONG or a SHORT position.
 
 Sample scenario:
 
@@ -117,7 +117,7 @@ position_mode: One-way
 
 Using the sample configuration above, we will try to get our buy order only filled on purpose.
 
-If the buy order is filled then the opposite sell order is cancelled and a long position is opened. On the other hand, if your sell order is filled first, the opposite buy order is cancelled and opens a short position.
+If the buy order is filled, then the opposite sell order is canceled, and a long position is opened. On the other hand, if your sell order is filled first, the opposite buy order is canceled and opens a short position.
 
 ### Hedge mode
 

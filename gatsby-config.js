@@ -18,7 +18,6 @@ const sidebarCategories = {
     "operation/user-interface",
     "operation/launch-exit",
     "operation/password",
-    "operation/keys-wallets-nodes",
     "operation/connect-exchange",
     "operation/balances",
     "operation/config-files",

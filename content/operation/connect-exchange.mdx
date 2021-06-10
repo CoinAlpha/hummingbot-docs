@@ -23,6 +23,22 @@ Example:
   body="We recommend using only #read + trade# enabled API keys. It is not necessary to enable #withdraw#, #transfer#, or anything equivalent to retrieving assets from your wallet."
 />
 
+## Wallets
+
+### Create a Wallet in MetaMask.io
+
+![metamask](/img/metamask.png)
+
+One of the reliable wallets that traders can use is a MetaMask Wallet. Metamask.io is a browser extension that lets you access Ethereum's Dapp ecosystem. The access provides you a wallet with private keys and passphrase that can store tokens in a specific network.
+(i.e Ethereum Mainnet, Ropsten Test Network, Kovan Test Network)
+
+<Callout
+  type="note"
+  body="Secure the password, private key, and passphrase of your wallet as this can no longer be accessed or changed once forgotten. It is a best practice to secure a cold wallet/offline version of the private keys."
+/>
+
+You can also use other alternatives of Metamask.io wallet. List of alternative wallets can be found [here](https://themoneymongers.com/best-erc20-token-wallets/).
+
 ### Wallet private keys
 
 Strategies that transact on decentralized exchanges and protocols directly interact with smart contracts on the Ethereum blockchain. Therefore, transactions must be signed and authorized, which requires your private key. Check with your wallet provider on how to export private keys.
@@ -79,6 +95,41 @@ When you import a wallet with Hummingbot, a JSON file named `key_file_[address].
 #### Private key
 
 Within the Hummingbot CLI, you can use the `export_private_key` command to display the private key associated with a wallet address. You can import your wallet to dApps like Metamask and MyCrypto using this private key as well.
+
+### Export Keys
+
+### `export keys`
+
+Displays API keys, secret keys and wallet private key in the command output pane.
+
+```
+>>>  export keys
+
+Enter your password >>> *****
+
+Warning: Never disclose API keys or private keys. Anyone with your keys can steal any assets held in your account.
+
+API keys:
+binance_api_key:
+binance_api_secret:
+
+Ethereum wallets:
+Public address:
+Private key:
+
+```
+
+### `export trades`
+
+Exports all trades in the current session to a .csv file.
+
+```
+>>>  export trades
+
+Enter a new csv file name >>> trade_list
+Successfully exported trades to logs/trade_list.csv
+
+```
 
 ## Setup Ethereum Nodes
 

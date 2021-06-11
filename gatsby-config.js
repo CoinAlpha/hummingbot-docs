@@ -97,7 +97,7 @@ const sidebarCategories = {
     "strategies/liquidity-mining",
     "strategies/spot-perpetual-arb",
     "strategies/avellaneda-market-making",
-    "strategies/uniswapv3_lp",
+    "strategies/uniswapv3-lp",
   ],
   "Advanced Market Making": [
     "strategies/adv-market-making",

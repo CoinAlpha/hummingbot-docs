@@ -5,7 +5,7 @@ description:
 
 ## How It Works
 
-When setting the `order_amount` for pure market making or cross-exchange market making, Hummingbot has set its own minimum order size to help ensure orders are created when running the strategy.
+When setting the `order_amount` for pure market making or cross-exchange market-making, Hummingbot has set its own minimum order size to help ensure orders are created when running the strategy.
 
 ![config-order-amount](img/config-order-amount.gif)
 
@@ -13,7 +13,7 @@ It is important to note that this will not always be exactly the same as the exc
 
 ![minimum-order-size-calculation](img/min-order-size-calc-1.png)
 
-By default, we set the minimum to an equivalent of $11 which is defined under `min_quote_order_amount` in the global config file. The `market_mid_price` is the average of the order book's best bid and best ask.
+By default, we set the minimum to an equivalent of \$11, which is defined under `min_quote_order_amount` in the global config file. The `market_mid_price` is the average of the order book's best bid and best ask.
 
 ![](img/min-order-comparison.png)
 

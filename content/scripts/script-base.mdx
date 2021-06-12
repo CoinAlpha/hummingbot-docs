@@ -1,26 +1,29 @@
 ---
 title: Script Base
-description: Info about scriptbase
+description: Info about script base
 ---
 
 import Callout from "../../src/components/Callout";
 
 ## ScriptBase
 
-This is the base class (`hummingbot/script/script_base.py`) for your script, it provides data, events and functions
+This is the base class (`hummingbot/script/script_base.py`) for your script. It provides data, events, and functions
 as below.
 
 ### Data
 
-At every tick, the script gets current market price (`mid_price`), strategy configuration (`pmm_parameters`) and
+At every tick, the script gets the current market price (`mid_price`), strategy configuration (`pmm_parameters`), and
 total balances (`all_total_balances`). The `mid_price` is stored in a list (`mid_prices`) where a new `mid_price`
 is added to the end of the list, whereas strategy configuration and total balances are replaced every time.
 
-<Callout type="note" body="The current script feature supports only pure_market_making strategy configuration." />
+<Callout
+  type="note"
+  body="The current script feature supports only pure_market_making strategy configuration."
+/>
 
 ### pmm_parameters
 
-To set a pure market making strategy parameter to a new value, simply assign a new value to it.
+Setting a pure market making strategy parameter to a new value assigns a new value to it.
 
 Usage Example: `self.pmm_parameters.bid_spread = Decimal("0.03")` - to update bid spread to 3%
 
@@ -44,7 +47,7 @@ These below are configurable parameters:
 
 - **on_tick**
 
-  The code here will be executed on every tick which is every second on a default Hummingbot configuration.
+  The code here will be executed on every tick, which is every second on a default Hummingbot configuration.
 
 - **on_buy_order_completed**
 
@@ -58,21 +61,21 @@ These below are configurable parameters:
 
 - **on_status**
 
-  This is called upon `status` command issued on the Hummingbot application. You can provide your custom status message
+  This is called upon the `status` command issued on the Hummingbot application. You can provide your custom status message
   here.
 
 ### Functions
 
 - **notify**
 
-  Notifies the user, the message will appear on top left panel of HB application.
-  If Telegram integration enabled, the message will also be sent to the telegram user.
+  Notifies the user, the message will appear on the top left panel of HB application.
+  If Telegram integration is enabled, the message will also be sent to the telegram user.
 
   Usage Example: `self.notify("Hello world")`
 
 - **log**
 
-  Logs message to the strategy log file and display it on Running Logs section of HB.
+  Logs message to the strategy log file and display it on the Running Logs section of HB.
 
   Usage Example: `self.log("Hello world")`
 
@@ -85,8 +88,7 @@ These below are configurable parameters:
 
 - **avg_price_volatility**
 
-  Calculates average (mean) price volatility, volatility is a price change compared to the previous cycle regardless of
-  its direction, e.g. if price changes -3% (or 3%), the volatility is 3%.
+  Calculates average (mean) price volatility. Volatility is a price change compared to the previous cycle regardless of its direction, e.g., if the price changes -3% (or 3%), the volatility is 3%.
 
   Usage Example: `avg_value = self.avg_price_volatility(60, 30)` - to calculate average price volatility at a minute
   interval for the last 30 minutes
@@ -101,7 +103,7 @@ These below are configurable parameters:
 - **locate_central_price_volatility**
 
   Calculates central located price volatility based on a given mean function. The mean function can be one
-  that is supported by `statistics` library e.g. mean, median, geometric_mean and many more.
+  that is supported by the `statistics` library, e.g., mean, median, geometric_mean, and many more.
 
   Usage Example: `median_value = self.locate_central_price_volatility(60, 30, median)` - to calculate median price
   volatility at a minute interval for the last 30 minutes

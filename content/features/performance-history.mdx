@@ -7,7 +7,7 @@ import Callout from "../../src/components/Callout";
 
 ## How It Works
 
-Run the `history` command in Hummingbot to display the current duration of total past trades, assets inventory and value, market trading pair performance.
+Run the `history` command in Hummingbot to display the current duration of total past trades, assets inventory, and value, market trading pair performance.
 
 ## Sample Output
 
@@ -48,7 +48,7 @@ The following displays the formula for key calculations:
 
 <Callout
   type="note"
-  body="For more details on all the individual item formula, see [google sheet] for the formulas in the cells."
+  body="For more details on all the individual item formulas, see [google sheet] for the formulas in the cells."
   link={[
     "https://docs.google.com/spreadsheets/d/1zp8EmeJdiP5soR_Bu7hRjaSy65bc7lsg98J5jKanRn8/edit#gid=875477664",
   ]}
@@ -74,7 +74,7 @@ From the above example, for the Hold portfolio value is (155248\*0.0000809)+23.3
 
 Current portfolio value = (base current asset\*current market price)+ quote current asset
 
-From the above example, for the Current portfolio value is (202671\*0.0000809)+16.419=32.815
+From the above example, the Current portfolio value is (202671\*0.0000809)+16.419=32.815
 
 ## Trade P&L
 
@@ -94,10 +94,10 @@ Return% = Total P&L/Hold portfolio value
 
 From the above example, for the Return% is -3.075/-35.89 = -9.76%
 
-The **Return %** (bottom navbar) matches the calculated return on **History** after the last trade, see following screenshot:
+The **Return %** (bottom navbar) matches the calculated return on **History** after the last trade. See the following screenshot:
 
 ![](img/same_return.png)
 
-If the trading pair price moves, the **History** changes but **Return %** retains the calculated return based on the last price, see following screenshot:
+If the trading pair price moves, the **History** changes, but **Return %** retains the calculated return based on the last price, see the following screenshot:
 
 ![](img/price_changes.png)

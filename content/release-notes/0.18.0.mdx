@@ -14,7 +14,7 @@ The connector is now available in Hummingbot and should work with existing strat
 
 ## 💾 Binary installation: you can now download Hummingbot directly!
 
-Hummingbot can now be installed easily on Windows and macOS using a setup/install package that is available for download and will be updated with every new version release.
+Hummingbot can now be installed easily on Windows and macOS using a setup/install package available for download and updated with every new version release.
 
 Follow the links below for more information:
 
@@ -33,19 +33,19 @@ Thanks to everyone who reported bugs! **Note that we pay bug bounties to anyone 
 - Failed to submit cancel orders in Huobi: [#750](https://github.com/CoinAlpha/hummingbot/issues/750)
 - Added trading pair fetcher in Bittrex to prevent issues related to entering incorrect pair format: [#985](https://github.com/CoinAlpha/hummingbot/issues/985)
 - Added available balances feature in Radar Relay to fix errors and issues not creating orders: [#942](https://github.com/CoinAlpha/hummingbot/issues/942) [#943](https://github.com/CoinAlpha/hummingbot/issues/943)
-- Fixed issues with performance analysis where the asset is initialized with current trading pair but the trades being analyzed can include other trading pair that causes key error during processing: [#974](https://github.com/CoinAlpha/hummingbot/issues/974)
+- Fixed issues with performance analysis where the asset is initialized with current trading pair but the trades being analyzed can include other trading pair that causes a key error during processing: [#974](https://github.com/CoinAlpha/hummingbot/issues/974)
 - Fixed cross-exchange strategy where `order_size_portfolio_ratio_limit` was showing `order_size_taker_balance_factor`: [#989](https://github.com/CoinAlpha/hummingbot/issues/989)
-- Added version number to global and strategy config files to copy existing configs from an outdated file to the new one, to avoid reconfiguring API keys. Any outdated parameters will be deleted and empty ones will be prompted.
+- Added version number to global and strategy config files to copy existing configs from an outdated file to the new one to avoid reconfiguring API keys. Any outdated parameters will be deleted and empty ones will be prompted.
 - Reduced excessive warning messages in Bittrex exchange.
 - Unit testing for Bittrex market.
-- Fixed unit tests for IDEX market and other tests that do not run in development branch.
-- Strategy config files will now use a base-quote (e.g. ETH-USDT) format. Hummingbot users can still continue using the exchange’s trading pair syntax.
+- Fixed unit tests for IDEX market and other tests that do not run in the development branch.
+- Strategy config files will now use a base-quote (e.g., ETH-USDT) format. Hummingbot users can continue using the exchange's trading pair syntax.
 - Fixed available balances feature in Bamboo Relay.
 - Applied fix for a rare case where the API could respond with a 404 for a tracked limit order in Bamboo Relay.
 
 ## 🚀 Coming soon
 
-Here's what we currently working on that we expect to ship in the next 2-6 weeks:
+Here's what we are currently working on that we expect to ship in the next 2-6 weeks:
 
 - Additional documentation on adding new connectors into Hummingbot
 - Developer tutorial on building custom strategies

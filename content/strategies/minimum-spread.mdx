@@ -11,7 +11,7 @@ This parameter allows Hummingbot to cancel the active order right away when its 
 
 ## `minimum_spread`
 
-If the spread of any active order fall below this param value, it will be automatically cancelled.
+If the spread of any active order falls below this param value, it will be automatically canceled.
 
 ** Prompt: **
 
@@ -24,7 +24,7 @@ If the spread of any active order fall below this param value, it will be automa
 
 The strategy checks the active order's spread on every tick (1 second).
 
-By default this is set to `-100` setting this parameter to a negative value disables this feature. To enable, run `config minimum_spread` command in the Hummingbot client and specify your minimum spread value.
+By default, this is set to `-100`. Setting this parameter to a negative value disables this feature. To enable, run the `config minimum_spread` command in the Hummingbot client and specify your minimum spread value.
 
 This only applies to active orders and does not affect hanging orders.
 
@@ -37,7 +37,7 @@ This only applies to active orders and does not affect hanging orders.
 - order_refresh_time : 60.0
 ```
 
-With the above configuration, the bot creates buy and sell orders at 0.5% spread from mid price.
+With the above configuration, the bot creates buy and sell orders at 0.5% spread from mid-price.
 
 ```
 00:28:31 - Creating 1 bid orders at (Size, Price): ['0.05 ETH, 227.41USDC']
@@ -53,7 +53,7 @@ Orders:
        1   buy 227.41  0.50%          0.05          0.05  00:00:00
 ```
 
-Even before the 60 seconds refresh time was up, the sell order was cancelled when its spread went below the minimum.
+Even before the 60 seconds refresh time was up, the sell order was canceled when its spread went below the minimum.
 
 ```
 00:28:40 - Order is below minimum spread (0.0049). Cancelling Order: (Sell) ID - x-XEKWYICX-SEHUC1593217711002203
@@ -66,4 +66,4 @@ Orders:
        1  buy 227.41  0.52%          0.05          0.05  00:00:12
 ```
 
-In the next order refresh new buy and sell orders with 0.5% spreads will be created.
+In the next order refresh, new buy and sell orders with 0.5% spreads will be created.

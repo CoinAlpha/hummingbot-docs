@@ -14,7 +14,7 @@ Read more about how to use the dYdX connector [here](/spot-connectors/dydx/).
 
 ## New Protocol Connector: Uniswap
 
-[Uniswap](https://uniswap.org/) is a protocol on Ethereum for swapping ERC20 tokens. Unlike most exchanges, which are designed to take fees, Uniswap is designed to function as a public good — a tool for the community trade tokens without platform fees or middlemen.
+[Uniswap](https://uniswap.org/) is a protocol on Ethereum for swapping ERC20 tokens. Unlike most exchanges, which are designed to take fees, Uniswap is designed to function as a public good — a tool for the community to trade tokens without platform fees or middlemen.
 
 Uniswap is compatible with the [amm-arb](/strategies/amm-arb/) strategy, as well as user-created strategies.
 
@@ -48,25 +48,25 @@ In this release, we have made substantial improvements to the `amm-arb` strategy
 - [#2734](https://github.com/CoinAlpha/hummingbot/issues/2734): Correctly add gas cost to Ethereum transactions
 - [#2694](https://github.com/CoinAlpha/hummingbot/issues/2694): Poll for Ethereum transactions from Hummingbot
 
-We have also simplified the installation script for the Gateway module so that it automatically pulls certain values from the user's Hummingbot installation.
+We have also simplified the installation script for the Gateway module to pull specific values from the user's Hummingbot installation automatically.
 
 ## Improvements to Perpetual Market Making strategy
 
 In the last release, we released the [Binance Futures connector](/derivative-connectors/binance-futures/) and an experimental [perpetual market making](https://docs.hummingbot.io/strategies/perpetual-market-making/) strategy.
 
-In this release, we have added more features to the strategy that allow for automated management of created positions. Users can now set a **take profit** price as well as a **trailing stop** price for created positions.
+In this release, we have added more features to the strategy to automate created positions. Users can now set a **take profit** price as well as a **trailing stop** price for created positions.
 
 ## New commands: `open_orders`, `pnl`, `trades`
 
-For users participating in Liquidity Mining, these new commands are useful when running Hummingbot on multiple pairs.
+For users participating in Liquidity Mining, these new commands are helpful when running Hummingbot on multiple pairs.
 
-The [`open_orders`](/operation/checking-status/#open_orders) command displays all current open (active) orders that the bots have placed across all markets. The [`pnl`](/operation/checking-status/#pnl) command lets users see all trade profits and lossses across all markets normalised in USD. And [`trades`](/operation/checking-status/#trades) command lets users see the trades across all markets in more detail.
+The [`open_orders`](/operation/checking-status/#open_orders) command displays all current open (active) orders that the bots have placed across all markets. The [`pnl`](/operation/checking-status/#pnl) command lets users see all trade profits and losses across all markets normalized in USD. And [`trades`](/operation/checking-status/#trades) command lets users see the trades across all markets in more detail.
 
 ## New PMM parameter: `max_order_age`
 
-We added a new parameter called `max_order_age` to the pure market making strategy. This parameter refreshes orders that are older than the number of seconds defined in this parameter and keeps their original status (active or hanging).
+We added a new parameter called `max_order_age` to the pure market-making strategy. This parameter refreshes orders that are older than the number of seconds defined in this parameter and keeps their original status (active or hanging).
 
-We added this parameter to help users who participate on Hummingbot Miner consistently earn rewards, since Miner has a 30-minute order limit.
+We added this parameter to help users who participate on Hummingbot Miner consistently earn rewards since Miner has a 30-minute order limit.
 
 By default, `max_order_age` is set at 1800 (30 minutes).
 
@@ -76,11 +76,11 @@ Users can now pause a running strategy using the command `exit --suspend`. This 
 
 ## Aggregate Trade Data Collection
 
-To sustain the development of the open source Hummingbot client, we partner with exchanges and protocols to build connectors and/or strategies. These partners need actionable data to convince their stakeholders and community members that a Hummingbot integration is worth the investment. Since the Hummingbot client doesn’t currently collect any data, we currently can't answer these questions well and rely on guesstimates based on volume measured on the Hummingbot Miner platform.
+To sustain the development of the open-source Hummingbot client, we partner with exchanges and protocols to build connectors and/or strategies. These partners need actionable data to convince their stakeholders and community members that a Hummingbot integration is worth the investment. Since the Hummingbot client doesn’t collect any data, we currently can't answer these questions well and rely on guesstimates based on volume measured on the Hummingbot Miner platform.
 
 For these reasons, in this release, a “heartbeat” data collection mechanism will be implemented. "Heartbeat" will send aggregate trade volume data to Hummingbot servers every 15 minutes. We hope you understand that this mechanism will vastly improve the Hummingbot ecosystem in the long run.
 
-If you have any question, please don't hesitate to reach out to anyone from the core team via Discord or email. Thank you again for your support.
+If you have any questions, please don't hesitate to reach out to anyone from the core team via Discord or email. Thank you again for your support.
 
 <Callout
   type="warning"
@@ -92,7 +92,7 @@ Learn more: https://hummingbot.io/blog/2020-12-aggregate-trade-data-collection-n
 ## Bug Fixes
 
 - [#2318](https://github.com/CoinAlpha/hummingbot/issues/2318): Websocket connection issues on Crypto.com connector
-- [#2472](https://github.com/CoinAlpha/hummingbot/issues/2472): Bot keeps looping on cancelling orders on Crypto.com connector
+- [#2472](https://github.com/CoinAlpha/hummingbot/issues/2472): Bot keeps looping on canceling orders on Crypto.com connector
 - [#2539](https://github.com/CoinAlpha/hummingbot/issues/2539): Kraken: Unexpected error in user stream listener loop
 - [#2569](https://github.com/CoinAlpha/hummingbot/issues/2569): Bot unable to display both open positions
 - [#2573](https://github.com/CoinAlpha/hummingbot/issues/2573): binance_perpetual_testnet price_source external_market does not seem to work

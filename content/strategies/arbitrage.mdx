@@ -25,7 +25,7 @@ An opportunity arises when Hummingbot can buy on one exchange at a lower price a
 
 ## Prerequisites: Inventory
 
-1. Similar to cross-exchange market making, you will need to hold inventory on two exchanges (a **primary** and **secondary** exchange), in order to be able to trade and capture price differentials (i.e. buy low on one exchange, sell high on the other).
+1. Like cross-exchange market making, you will need to hold inventory on two exchanges (a **primary** and **secondary** exchange) to trade and capture price differentials (i.e., buy low on one exchange, sell high on the other).
 2. You will also need some Ethereum to pay gas for transactions on a DEX (if applicable).
 
 ## Basic Parameters
@@ -83,14 +83,14 @@ Minimum profitability target required to execute trades.
 
 <Callout
   type="note"
-  body="While running this strategy, `min_profitability` excludes the `transaction fees` when calculating profitability from your chosen exchanges"
+  body="While running this strategy, `min_profitability` excludes the `transaction fees` when calculating profitability from your chosen exchanges."
 />
 
 ### `use_oracle_conversion_rate`
 
-Rate oracle conversion is used to compute the rate of a certain market pair using collection of prices from either Binance or Coingecko.
+Rate oracle conversion is used to compute the rate of a particular market pair using a collection of prices from either Binance or Coingecko.
 
-If enabled, when the trading pair symbols mismatch, the bot will use a real-time conversion rate from the oracle.
+If enabled, the bot will use a real-time conversion rate from the oracle when the trading pair symbols mismatch.
 For example, if markets are set to trade for `LINK-USDT` and `LINK-USDC`, the bot will use the oracle conversion rate between `USDT` and `USDC`.
 
 You can also edit it from `config_global.yml` to change the `rate_oracle_source`.
@@ -121,11 +121,11 @@ Specifies conversion rate for secondary quote asset value to primary quote asset
 
 ## Exchange Rate Conversion
 
-From past versions of Hummingbot it uses [CoinGecko](https://www.coingecko.com/en/api) and [CoinCap](https://docs.coincap.io/?version=latest) public APIs to fetch asset prices. However, this dependency caused issues for users when those APIs were unavailable. Starting on version [0.28.0](/release-notes/0.28.0/#removed-dependency-on-external-data-feeds), Hummingbot uses exchange order books to perform necessary conversions rather than data feeds.
+From past versions of Hummingbot, it uses [CoinGecko](https://www.coingecko.com/en/api) and [CoinCap](https://docs.coincap.io/?version=latest) public APIs to fetch asset prices. However, this dependency caused issues for users when those APIs were unavailable. Therefore, starting on version [0.28.0](/release-notes/0.28.0/#removed-dependency-on-external-data-feeds), Hummingbot uses exchange order books to perform necessary conversions rather than data feeds.
 
 When you run strategies on multiple exchanges, there may be instances where you need to utilize an exchange rate to convert between assets.
 
-In particular, you may need to convert the value of one stablecoin to another when you use different stablecoins in multi-legged strategy like [arbitrage](/strategies/arbitrage/).
+In particular, you may need to convert the value of one stable coin to another when you use different stablecoins in a multi-legged strategy like [arbitrage](/strategies/arbitrage/).
 
 For example, if you make a market in the WETH/DAI pair on a decentralized exchange, you may want to hedge filled orders using the ETH-USDT pair on Binance. Using exchange rates for USDT and DAI against ETH allows Hummingbot to take into account differences in prices.
 
@@ -138,13 +138,13 @@ secondary_to_primary_base_conversion_rate: 1
 secondary_to_primary_quote_conversion_rate: 1
 ```
 
-By default secondary to primary base conversion rate and secondary to primary quote conversion rate value are both `1`.
+By default, secondary to primary base conversion rate and secondary to primary quote conversion rate value are both `1`.
 
 Our maker base asset is WETH and taker is ETH. 1 WETH is worth 0.99 ETH (1 / 0.99) so we will set the `secondary_to_primary_base_conversion_rate` value to 1.01.
 
-While our maker quote asset is DAI, taker is USDT and 1 DAI is worth 1.01 USDT (1 / 1.01). similar to the calculation we did for the base asset. In this case, we will set the `secondary_to_primary_quote_conversion_rate` to 0.99.
+While our maker quote asset is DAI, the taker is USDT, and 1 DAI is worth 1.01 USDT (1 / 1.01). Similar to the calculation we did for the base asset. In this case, we will set the `secondary_to_primary_quote_conversion_rate` to 0.99.
 
-To configure a parameter value without going through the prompts, input command as `config [ key ] [ value ]`. These can be reconfigured without stopping the bot however, it will only take effect after restarting the strategy.
+To configure a parameter value without going through the prompts, input command as `config [ key ] [ value ]`. These can be reconfigured without stopping the bot. However, it will only take effect after restarting the strategy.
 
 ```
 config secondary_to_primary_base_conversion_rate: 1.01

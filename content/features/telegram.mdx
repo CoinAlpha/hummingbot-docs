@@ -52,6 +52,6 @@ Start Hummingbot as you would normally. Telegram will be connected as soon as yo
 
 <Callout
   type="tip"
-  body="If you are running multiple bots with Telegram enabled, you can use the same Telegram chat ID with different API tokens from each bot you created to control all of them. You can also use their [chat folders] feature to organize your bots."
+  body="If you are running multiple bots with Telegram enabled, you can use the same Telegram chat ID with different API tokens from each bot you created to control all of them. You can also use their [chat folders] feature to organize your bots. Please note that this does not work with multiple instances of the binary version, because they share a single global config file, which is where the telegram API token is stored."
   link={["https://telegram.org/blog/folders"]}
 />

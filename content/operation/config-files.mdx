@@ -4,6 +4,8 @@ title: Create or Import Config Files
 
 import Callout from "../../src/components/Callout";
 
+import Prompt from "../../src/components/Prompt";
+
 ## Creating a new strategy file
 
 Run `create` command and answer the prompts to configure your bot's behavior depending on the strategy you want to use.
@@ -89,3 +91,51 @@ You can also skip the prompt by running `import [file_name]` command.
   type="tip"
   body="Press #TAB# to scroll through the auto-complete selections."
 />
+
+## Autofill import
+
+Choose between `start` and `config` after importing a strategy file. This will be applicable for all imported strategies.
+
+** Prompt: **
+
+<Prompt
+  prompt="What to auto-fill in the prompt after each import command? (start/config)"
+  response=">>>"
+/>
+
+**Sample usage**
+
+`autofill_import = start`
+
+```
+>>>`import conf_pure_mm_1.yml`
+Configuration from conf_pure_mm_1.yml file is imported.
+
+Preliminary checks:
+ - Exchange check: All connections confirmed.
+ - Strategy check: All required parameters confirmed.
+ -All checks: Confirmed.
+
+Enter "start" to start market making
+
+>>> start
+
+```
+
+Here's an example if using the config command
+`autofill_import = config`
+
+```
+>>>`import conf_pure_mm_1.yml`
+Configuration from conf_pure_mm_1.yml file is imported.
+
+Preliminary checks:
+ - Exchange check: All connections confirmed.
+ - Strategy check: All required parameters confirmed.
+ -All checks: Confirmed.
+
+Enter "start" to start market making
+
+>>> config
+
+```

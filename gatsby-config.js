@@ -83,6 +83,7 @@ const sidebarCategories = {
     "protocol-connectors/perp-fi",
     "protocol-connectors/terra",
     "protocol-connectors/uniswap",
+    "protocol-connectors/uniswapv3",
   ],
   "Hummingbot Gateway": ["gateway/overview", "gateway/installation"],
   Strategies: [
@@ -96,6 +97,7 @@ const sidebarCategories = {
     "strategies/liquidity-mining",
     "strategies/spot-perpetual-arb",
     "strategies/avellaneda-market-making",
+    "strategies/uniswapv3-lp",
   ],
   "Advanced Market Making": [
     "strategies/adv-market-making",
@@ -138,6 +140,7 @@ const sidebarCategories = {
   "Release Notes": [
     "release-notes/overview",
     "release-notes/0.40.0",
+    "release-notes/0.39.1",
     "release-notes/0.39.0",
     "release-notes/0.38.1",
     "release-notes/0.38.0",

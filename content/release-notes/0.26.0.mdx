@@ -4,9 +4,12 @@ title: "Version 0.26.0"
 
 import Callout from "../../src/components/Callout";
 
-🚀 Welcome to `hummingbot` version 0.26.0! This release contains a lot of changes in the Hummingbot client, aimed at improving the user experience for new and existing users alike.
+🚀 Welcome to `hummingbot` version 0.26.0! This release contains many changes in the Hummingbot client aimed at improving the user experience for new and existing users alike.
 
-<Callout type="note" body="`Old config files won't work` This release contains many changes to the import process, so previous strategy configuration files will not be compatible with this version." />
+<Callout
+  type="note"
+  body="`Old config files won't work` This release contains many changes to the import process, so previous strategy configuration files will not be compatible with this version."
+/>
 
 ## 🔐 New password screen
 
@@ -31,23 +34,23 @@ We have changed parameter names in the Pure Market Making strategy to make them 
 
 In addition, we have standardized all **spread** and **percent** inputs, so that users enter percentage values. For example, to set a 1% `bid_spread`, enter `1` instead of `0.01`. To set a 5% `kill_switch_pct`, enter `5` instead of `0.05`.
 
-Any parameter names that ends with `-pct` or `-spread` use this format.
+Any parameter names that end with `-pct` or `-spread` use this format.
 
 ## 💸 Change spreads on the fly
 
-An often-requested feature is the ability to adjust the bot without stopping it. We have started to make more parameters adjustable on the fly, starting with spreads.
+An often-requested feature is the ability to adjust the bot without stopping it. So we have started to make more parameters adjustable on the fly, starting with spreads.
 
 Now you can use the revamped [config](/operation/command-ref/#config) command to adjust spreads without stopping the bot. We plan to extend this functionality to other parameters such as order amount in the future.
 
 ## 🔗 New Kraken connector
 
-Hummingbot now supports [Kraken](https://www.kraken.com/) exchange! Kraken is a centralized exchange where users can trade not only several cryptocurrencies but as well as various fiat currencies such as USD, CAD, EUR, GBP, CHF and JPY.
+Hummingbot now supports [Kraken](https://www.kraken.com/) exchange! Kraken is a centralized exchange where users can trade several cryptocurrencies and various fiat currencies such as USD, CAD, EUR, GBP, CHF, and JPY.
 
 Read more about how to use Kraken connector [here](/spot-connectors/kraken/).
 
 ## 📱 Improved Telegram integration
 
-The Telegram integration now has a smaller keyboard that doesn't block the main view. Displayed messages are now in HTML instead of Markdown to improve readability.
+The Telegram integration now has a smaller keyboard that doesn't block the main view. In addition, displayed messages are now in HTML instead of Markdown to improve readability.
 
 ## 🐞 Bug fixes
 
@@ -60,7 +63,7 @@ The Telegram integration now has a smaller keyboard that doesn't block the main 
 
 ## 🚀 Coming soon
 
-Here's what we currently working on that we expect to ship in the 1-2 releases:
+Here's what we are currently working on that we expect to ship in the 1-2 releases:
 
 - Improved order refresh logic to avoid hitting exchange rate limits when placing many orders
 - [Bitfinex](https://www.bitfinex.com/) connector (in progress [#1482](https://github.com/CoinAlpha/hummingbot/pull/1482))

@@ -9,7 +9,7 @@ description:
 binance.exceptions.BinanceAPIException: APIError(code=-1021): Timestamp for this request is outside of the recvWindow.
 ```
 
-Timestamp errors in logs happen when the Binance clock gets de-synced from time to time as they can drift apart for a number of reasons. Hummingbot should safely recover from this and continue running normally.
+Timestamp errors in logs happen when the Binance clock gets de-synced from time to time as they can drift apart for several reasons. Hummingbot should safely recover from this and continue running normally.
 
 ---
 
@@ -18,7 +18,7 @@ Timestamp errors in logs happen when the Binance clock gets de-synced from time 
 ### Sample log error message
 
 ```
-binance.exceptions.BinanceAPIException: APIError(code=-1003): Way too much request weight used; IP banned until 1573987680818. Please use the websocket for live updates to avoid bans
+binance.exceptions.BinanceAPIException: APIError(code=-1003): Way too much request weight used; IP banned until 1573987680818. Please use the WebSocket for live updates to avoid bans
 ```
 
 This error occurs when the Binance API rate limit is reached. Causes include:
@@ -41,4 +41,4 @@ Failed connections:                                                             
 10:12:24 - kraken_market - Error received from https://api.kraken.com/0/private/Balance. Response is {'error': []}.
 ```
 
-This error occurs when Kraken account currently has no funds on the exchange. Fund your account to fix the error. For more info visit this [here](https://support.kraken.com/hc/en-us/articles/360001491786-API-Error-Codes).
+This error occurs when Kraken account currently has no funds on the exchange. Fund your account to fix the error. For more info, visit this [here](https://support.kraken.com/hc/en-us/articles/360001491786-API-Error-Codes).

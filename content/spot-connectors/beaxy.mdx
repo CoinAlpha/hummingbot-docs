@@ -5,20 +5,11 @@ description: About Beaxy connector
 
 import Callout from "../../src/components/Callout";
 
-Beaxy is a digital asset exchange that aims to set itself apart from others in the field by offering a feature rich platform built from the ground up with clients of every experience level in mind.
-
-<Callout
-  type="note"
-  body="This connector has undergone code review, internal testing and was shipped during one of our most recent releases. As part of User Acceptance Testing, we encourage user to report any issues with this connector to our [Discord server] or [submit a bug report]"
-  link={[
-    "https://discord.com/invite/2MN3UWg",
-    "https://github.com/CoinAlpha/hummingbot/issues/new?assignees=&labels=bug&template=bug_report.md&title=",
-  ]}
-/>
+Beaxy is a digital asset exchange that aims to set itself apart from others in the field by offering a feature-rich platform built from the ground up with clients of every experience level in mind.
 
 ## Using the Connector
 
-To use [Beaxy](https://beaxy.com/) connector, you will need to generate and provide your API key in order to trade using Hummingbot.
+To use [Beaxy](https://beaxy.com/) connector, you will need to generate and provide your API key to trade using Hummingbot.
 
 ```
 Enter your Beaxy API key >>>
@@ -37,11 +28,11 @@ Private keys and API keys are stored locally for the operation of the Hummingbot
 
 ### Creating Beaxy API Keys
 
-1. Log in to your account at https://beaxy.com/ then click your account then, from the drop down click on API management (If you do not have an account, you will have to create one and enable 2FA.).
+1. Log in to your account at https://beaxy.com/, then click your account then, from the drop-down, click on API management (If you do not have an account, you will have to create one and enable 2FA.).
 
 <Callout
   type="tip"
-  body="You must enable 2FA in yur Beaxy account to create the API key. [How to enable 2FA]?"
+  body="You must enable 2FA in your Beaxy account to create the API key. [How to enable 2FA]?"
   link={[
     "https://beaxy.com/faq/how-do-i-enable-disable-2fa-two-factor-authentication/",
   ]}
@@ -49,15 +40,15 @@ Private keys and API keys are stored locally for the operation of the Hummingbot
 
 ![](/img/beaxyapi.png)
 
-2. Then click create API key.
+2. Then click create an API key.
 
 ![](/img/beaxyapi-key.png)
 
-3. Give the API a name then click create.
+3. Give the API a name, then click create.
 
 ![](img/beaxycreate.png)
 
-3. Now you have created an API key, connect it to Hummingbot by using the `connect` command.
+3. Now that you have created an API key, connect it to Hummingbot using the `connect` command.
 
 Make sure you store your Secret Key somewhere secure and do not share it with anyone. Your Secret Key will only be displayed once at the time when you create the API.
 

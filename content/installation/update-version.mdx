@@ -2,15 +2,22 @@
 title: "Update Version"
 ---
 
+import Callout from "../../src/components/Callout";
+
 ## Update via Binary
 
-Simply uninstall Hummingbot locally from your computer, then download and install the latest version from the website https://hummingbot.io/download/
+Uninstall Hummingbot locally from your computer, then download and install the latest version from the website https://hummingbot.io/download/
 
 ## Update via Docker
 
-Hummingbot is regularly updated each month (see [Release Notes](/release-notes/overview)) and recommend users to regularly update their installations to get the latest version of the software.
+Hummingbot is regularly updated each month (see [Release Notes](/release-notes/overview)) and recommends users to periodically update their installations to get the latest version of the software.
 
-Updating to the latest docker image (e.g. `coinalpha/hummingbot:latest`) make sure to stop all the containers that are using the same image first before running the `./update.sh` script.
+Updating to the latest docker image (e.g. `coinalpha/hummingbot:latest`)
+
+<Callout
+  type="note"
+  body="Make sure to stop all the containers using the same image first  before running the `./update.sh` script."
+/>
 
 Scripts
 

@@ -26,7 +26,7 @@ This strategy has parameters like [`volatility_interval`](/strategies/liquidity-
 
 Market volatility is calculated using ATR (Average True Range) of historical mid-price. The true range is a difference between the maximum and minimum mid-price value of the period expressed in percentage value.
 
-How to calculate Average True Range of historical mid price.
+How to calculate Average True Range of historical mid-price.
 
 ![](/img/Average-true-range.png)
 
@@ -104,7 +104,7 @@ The strategy will place the order on a certain % away from the current mid-price
 ** Prompt: **
 
 <Prompt
-  prompt="How far away from the mid price do you want to place bid and ask orders? (Enter 1 to indicate 1%) "
+  prompt="How far away from the mid-price do you want to place bid and ask orders? (Enter 1 to indicate 1%) "
   response=">>> 1"
 />
 
@@ -121,7 +121,7 @@ It sets a target of base asset balance in relation to a total asset allocation v
 
 ## Advanced Parameters
 
-These are additional parameters that you can reconfigure and use to customize the behavior of your strategy further. To change its settings, run the command `config` followed by the parameter name e.g. `config volatility_interval`.
+These are additional parameters that you can reconfigure and use to customize the behavior of your strategy further. To change its settings, run the command `config` followed by the parameter name, e.g. `config volatility_interval`.
 
 See [this page](https://docs.hummingbot.io/operation/config-files/#gatsby-focus-wrapper) for more information how to use `config` command.
 
@@ -243,7 +243,7 @@ max_order_age: 3600.0
 
 ![](/img/lm.png)
 
-These values will show after running `status` command. `Budget`, `Markets`, `Miner`, and `Orders`.
+These values will show after running the `status` command. `Budget`, `Markets`, `Miner`, and `Orders`.
 
 <Callout
   type="note"
@@ -252,19 +252,19 @@ These values will show after running `status` command. `Budget`, `Markets`, `Min
 
 **Budget**
 
-This table lets you see the markets you are participating in, the balance you currently have and also the budget allocation for each pair.
+This table lets you see the markets you are participating in, the balance you currently have, and also the budget allocation for each pair.
 
 **Markets**
 
-This table displays the market, mid price, best bid, best ask, and volatility. Under the market it shows the markets chosen to join liquidity mining. The mid price is the average of the best bid and best ask price in the orderbook. The best bid and best ask shown above are the current best bid and best ask in the orderbook. The adjustment in volatility will apply to your current spread at `order_refresh_time` if the value of the volatility is higher than your current spread.
+This table displays the market, mid-price, best bid, best ask, and volatility. Under the market, it shows the markets chosen to join liquidity mining. The mid-price is the average of the best bid and best ask price in the order book. The best bid and best ask shown above are the best bid and best ask in the order book. The volatility adjustment will apply to your current spread at `order_refresh_time` if the value of the volatility is higher than your current spread.
 
 **Miner**
 
-This shows the markets chosen, rewards for that certain campaign, rewards per week, current liquidity of that market, yield, and maximum spread for that campaign. This gives you insight on the campaigns you are participating to easily check what are the details for the campaigns.
+This shows the markets are chosen, rewards for that certain campaign, rewards per week, current liquidity of that market, yield, and maximum spread for that campaign. This gives you insight on the campaigns you are participating to easily check what are the details for the campaigns.
 
 **Orders**
 
-Other than the markets, this shows the side of the order created, price, current spread, order amount, order size and the age.
+Other than the markets, this shows the side of the order created, price, current spread, order amount, order size, and the age.
 
 ## Sample Configurations
 

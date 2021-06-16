@@ -18,7 +18,6 @@ const sidebarCategories = {
     "operation/user-interface",
     "operation/launch-exit",
     "operation/password",
-    "operation/keys-wallets-nodes",
     "operation/connect-exchange",
     "operation/balances",
     "operation/config-files",
@@ -199,7 +198,7 @@ const sidebarCategories = {
   Resources: [
     "resources/faq",
     "resources/glossary",
-    "[Hummingbot YouTube](https://www.youtube.com/c/HummingbotChannel)",
+    "[Hummingbot YouTube](https://www.youtube.com/c/Hummingbot)",
     "[Hummingbot whitepaper](https://hummingbot.io/hummingbot.pdf)",
   ],
   Troubleshooting: [

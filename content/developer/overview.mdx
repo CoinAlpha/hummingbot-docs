@@ -5,17 +5,17 @@ description: Overview on developing connectors
 
 import Callout from "../../src/components/Callout";
 
-Exchange connectors are modules that allow Hummingbot to connect to an exchange. This requires constant retrieval of live exchange/order book data as well as handling interactions with the exchange.
+Exchange connectors are modules that allow Hummingbot to connect to an exchange. This requires constant retrieval of live exchange/order book data and handling interactions with the exchange.
 
 ## Examples / templates
 
-There are [existing connectors](https://github.com/CoinAlpha/hummingbot/tree/master/hummingbot/connector). Note that each folder contained here marks a different exchange connector types. These should serve as a template for creating a new exchange connector.
+There are [existing connectors](https://github.com/CoinAlpha/hummingbot/tree/master/hummingbot/connector). Note that each folder contained here marks different exchange connector types. These should serve as a template for creating a new exchange connector.
 
 Building a new exchange connector requires conforming to the template code to the new exchange's APIs, identifying and handling any differences in functions/behaviors, and testing the new exchange connector on that exchange.
 
 <Callout
   type="info"
-  body="For new developers building a connector, we recommend to use Crypto.com as a template to start understanding the functions and behaviors."
+  body="For new developers building a connector, we recommend using Crypto.com as a template to start understanding the functions and behaviors."
 />
 
 The following list some examples/templates that you can refer to when building the connector:
@@ -67,16 +67,16 @@ We encourage and welcome contributions from the community, subject to the guidel
 
 ### Acceptance
 
-- The best way to create a connector that adheres to Hummingbot’s standard is by cloning the logic of existing connectors. We’ve done a lot of work to build our core connectors, so no need to reinvent the wheel.
+- The best way to create a connector that adheres to Hummingbot's standard is by cloning the logic of existing connectors. We've done a lot of work to build our core connectors, so no need to reinvent the wheel.
 - Existing connector files to use as code samples are in [Exchange connector requirements](#exchange-connector-requirements).
-- While we don't require developers to have every file (You don’t need to implement a user stream if the exchange doesn’t support user stream, for instance), some general guidelines are:
-  - Websocket > REST. Hummingbot is a high-frequency trading bot, which means it’d perform better when it has all the information in real-time.
-  - Adhere to conventions. Using the same naming pattern / code structure will help our developers review your code and get your connector approved faster.
+- While we don't require developers to have every file (You don't need to implement a user stream if the exchange doesn't support user stream, for instance), some general guidelines are:
+  - Websocket > REST. Hummingbot is a high-frequency trading bot, which means it'd perform better when it has all the information in real-time.
+  - Adhere to conventions. Using the same naming pattern/code structure will help our developers review your code and get your connector approved faster.
   - Always add in-code comments for your custom logic.
 - Required functionalities;
   - Tracking real-time order book snapshots / diffs / trades
   - Getting prices from the order book
-  - Order parameter quantization (Adjust any order price / quantity inputs into values accepted by the exchange, taking into account min / max order size requirement, number of digits, etc)
+  - Order parameter quantization (Adjust any order price/quantity inputs into values accepted by the exchange, considering min/max order size requirement, number of digits, etc.)
   - Submitting limit buy and sell orders
   - Submitting market buy and sell orders
   - Cancelling a single order
@@ -84,15 +84,15 @@ We encourage and welcome contributions from the community, subject to the guidel
   - Tracking all in-flight orders
   - Updating statuses of in-flight orders
   - Updating user balance (all balance & balance available for trading)
-  - Any other functionalities / error handling required in order to trade on the exchange
+  - Any other functionalities/error handling required to trade on the exchange
   - Extensive unit tests that cover all functionalities above
 - Once the PR is submitted, our developers will review your code and likely request changes. Please expect the review process to take 2-3 weeks before the PR is merged.
-- After the requirements above are fulfilled, we will merge the PR to `development` branch, which will be merged into `master` in the next release.
-- In the future, we may separate community-contributed connectors and strategies from the core Hummingbot codebase, so that users can choose to install exchange connectors that they are using. However, we will not do that right now.
+- After the requirements above are fulfilled, we will merge the PR to the `development` branch, which will be merged into `master` in the next release.
+- In the future, we may separate community-contributed connectors and strategies from the core Hummingbot codebase so that users can choose to install exchange connectors that they are using. However, we will not do that right now.
 
 <Callout
   type="note"
-  body="#Trading Pair Conversion#, HummingBot's standard pair format is: `Base_Asset-Quote_Asset`. Therefore, a new connector that doesn't follow that convention of naming pairs would require both `convert_to_exchange_trading_pair` and `convert_from_exchange_trading_pair` methods to be implemented in the connector's connector_util.py file. In addition, such connectors have to perform the necessary conversions when performing certain API requests. Additonally, ensure that the dictionary keys for `self._trading_rules` are in HummingBot's pair format.
+  body="#Trading Pair Conversion#, HummingBot's standard pair format is: `Base_Asset-Quote_Asset`. Therefore, a new connector that doesn't follow that convention of naming pairs would require both `convert_to_exchange_trading_pair` and `convert_from_exchange_trading_pair` methods to be implemented in the connector's connector_util.py file. In addition, such connectors have to perform the necessary conversions when performing certain API requests. Additionally, ensure that the dictionary keys for `self._trading_rules` are in HummingBot's pair format.
 "
 />
 
@@ -100,7 +100,7 @@ We encourage and welcome contributions from the community, subject to the guidel
 
 - Make available a dedicated channel on discord (https://discord.hummingbot.io) during the initial development process.
 - Provide a main point of contact for the developer.
-- Notify developer of code changes that may affect the connector.
+- Notify the developer of code changes that may affect the connector.
 - Notify the developer of any bug reports or issues reported by Hummingbot users.
 - Code review.
 - Testing and QA.

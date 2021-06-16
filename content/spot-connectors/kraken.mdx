@@ -5,13 +5,13 @@ description: About Kraken Connector
 
 import Callout from "../../src/components/Callout";
 
-Kraken is a centralized exchange based in San Francisco, CA founded in 2011 where users can trade not only several cryptocurrencies but as well as various fiat currencies such as USD, CAD, EUR, GBP, CHF and JPY.
+Kraken is a centralized exchange based in San Francisco, CA, founded in 2011. Users can trade several cryptocurrencies and various fiat currencies such as USD, CAD, EUR, GBP, CHF, and JPY.
 
-It was the first bitcoin exchange to have its market data displayed on the [Bloomberg Terminal](https://www.investopedia.com/terms/b/bloomberg_terminal.asp), the first to pass a cryptographically verifiable proof-of-reserves audit, and one of the first exchanges to offer leveraged bitcoin margin trading.
+It was the first bitcoin exchange to display its market data on the [Bloomberg Terminal](https://www.investopedia.com/terms/b/bloomberg_terminal.asp), the first to pass a cryptographically verifiable proof-of-reserves audit, and one of the first exchanges to offer leveraged bitcoin margin trading.
 
 ## Using the Connector
 
-Because [Kraken](https://www.kraken.com/) is a centralized exchange, you will need to generate and provide your API keys in order to trade using Hummingbot.
+Because [Kraken](https://www.kraken.com/) is a centralized exchange, you will need to generate and provide your API keys to trade using Hummingbot.
 
 ```
 Enter your Kraken API key >>>
@@ -30,7 +30,7 @@ Private keys and API keys are stored locally for the operation of the Hummingbot
 
 ### Creating Kraken API keys
 
-This article below in their documentation shows step-by-step instructions on how to create API keys in Kraken exchange.
+The article below in their documentation shows step-by-step instructions on how to create API keys in the Kraken exchange.
 
 - [How to create an API](https://support.kraken.com/hc/en-us/articles/360000919966-How-to-generate-an-API-key-pair-)
 
@@ -47,7 +47,7 @@ Shows nonce reminder when adding API keys to Kraken.
 
 ![kraken](/img/kraken_nonce.png)
 
-Also note that your account must have funds to avoid getting this error when trying to connect your Kraken API on Hummingbot.
+Also, note that your account must have funds to avoid getting this error when connecting your Kraken API on Hummingbot.
 
 ```
 Failed connections:                                                                                      |
@@ -60,10 +60,10 @@ Failed connections:                                                             
 
 Kraken uses asset codes in front of some pairs as a classification system. Asset codes starting with **'X'** represent cryptocurrencies, though this is no longer followed for the newest coins. Asset codes starting with **'Z'** represent fiat currencies.
 
-BTC is represented as XBT in this exchange. Therefore trading on this pair is viewed as XXBT e.g. XXBT-USDT. However Hummingbot uses symbol conversion so it will be entered as `BTC-USDT`. For e.g.
+BTC is represented as XBT in this exchange. Therefore trading on this pair is viewed as XXBT, e.g., XXBT-USDT. However, Hummingbot uses symbol conversion so that it will be entered as `BTC-USDT`. For e.g.
 ![kraken](/img/kraken_sample.png)
 
-This article shows the complete list assets and their corresponding asset codes.
+This article shows the complete list of assets and their corresponding asset codes.
 
 - [How to interpret asset codes](https://support.kraken.com/hc/en-us/articles/360001185506-How-to-interpret-asset-codes)
 
@@ -77,7 +77,7 @@ Kraken's minimum order volume is denominated in **base currency**. Refer to thei
 
 ### Transaction Fees
 
-Kraken charges 0.16% on maker fees and 0.26% on taker orders for almost all of their cryptocurrency pairs. While they charge 0.20% on both maker and taker orders if trading on fiat and stablecoin base currency pairs.
+Kraken charges 0.16% on maker fees and 0.26% on taker orders for almost all of their cryptocurrency pairs. At the same time, they charge 0.20% on both maker and taker orders if trading on fiat and stablecoin base currency pairs.
 
 Users who trade high volumes can receive more discounts on trading fees. Read through below for more information.
 

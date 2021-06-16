@@ -1,6 +1,6 @@
 ---
-title: Avellaneda Market Making (BETA)
-description: Learn how to use Avellaneda market making strategies
+title: Avellaneda Market Making
+description: Learn how to use avellaneda market making strategies
 ---
 
 import Callout from "../../src/components/Callout";
@@ -264,3 +264,36 @@ The number of ticks used as a sample size for volatility calculation.
   prompt="Enter amount of ticks that will be stored to calculate volatility"
   response=">>>"
 />
+
+### `order_levels`
+
+Quantity of orders to be placed on each side of the order book.
+
+For example, if `order_levels = 2` , it will place **2 Buy Orders & 2 Sell Orders**.
+
+** Prompt: **
+
+<Prompt
+  prompt="How many orders do you want to place on both sides?"
+  response=">>>"
+/>
+
+### `order_override`
+
+Directly override orders placed by `order_amount` and `order_level_parameter`.
+
+To start this override feature, users must input the parameters manually in the strategy config file they intend to use. Learn how to access config files with this [documentation](/operation/config-files).
+
+Below is a sample input in dictionary format.
+
+The key is a user-defined order name and the value is a list which includes **buy/sell, order spread, and order amount**:
+
+```
+order_override:
+  order_1: [buy, 0.5, 100]
+  order_2: [buy, 0.75, 200]
+  order_3: [sell, 0.1, 500]
+
+  # Please make sure there is a space between : and [
+  # order_1 label can be renamed to custom labels
+```

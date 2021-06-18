@@ -25,7 +25,7 @@ These configuration files created and used by Hummingbot are saved in the `conf/
 - Installed via Binary (Windows): `%localappdata%\hummingbot.io\Hummingbot\conf`
 - Installed via Binary (MacOS): `~/Library/Application\ Support/Hummingbot/Conf`
 
-The template configuration files can be found here: [Config Templates](https://github.com/CoinAlpha/hummingbot/tree/master/hummingbot/templates).\
+The template configuration files can be found here: [Config Templates](https://github.com/CoinAlpha/hummingbot/tree/master/hummingbot/templates).
 
 <Callout
   type="warning"
@@ -141,3 +141,36 @@ Enter "start" to start market making
 >>> config
 
 ```
+
+## Create command shortcuts : Multiple commands setup
+
+To use this feature, open and configure `conf_global.yml`.
+
+Import the lines of code to create a custom command shortcut.
+
+```
+# Command Shortcuts
+# Define abbreviations for often used commands
+# or batch grouped commands together
+
+command_shortcuts:
+  # Assign shortcut command
+  command: spreads_refresh
+
+  # Reference
+  help: Set bid spread, ask spread, and order refresh time
+
+  # Argument Label
+  arguments: [Bid Spread, Ask Spread, Order Refresh Time]
+
+  # Original config output with value
+  output: [config bid_spread $1, config ask_spread $2, config order_refresh_time $3]
+```
+
+<Callout
+  type="note"
+  body="Custom made commands can only be used once a strategy has been imported."
+  link={["/spot-connectors/overview/"]}
+/>
+
+![Custom Script Instructions](/img/script-command.gif)

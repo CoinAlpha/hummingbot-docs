@@ -80,6 +80,8 @@ Docker
 
 3. Go to the folder locations listed under Source.
 
+---
+
 ### MAC Mismatch error
 
 ```
@@ -113,6 +115,8 @@ Copying the encrypted Binance key file from Instance1 to Instance2 will result i
 2. Restart Hummingbot and password 5678 remains unchanged
 3. Run `connect binance` and add the API keys - this will encrypt it with 5678 password and sync it with the rest of the API keys
 
+---
+
 ### Copy and paste your API keys
 
 Copying and pasting your API keys into Hummingbot may be problematic, especially in Docker installations or for PuTTY users. See below for how to copy/paste in different environments.
@@ -136,6 +140,8 @@ Ctrl + Insert
 Ctrl + Shift + v
 Shift + Right mouse click
 ```
+
+---
 
 ### Reset your global configuration to default settings
 
@@ -161,6 +167,8 @@ If Hummingbot is installed on macOS, simply delete the `conf_global.yml` found 
   body="If telegram is enabled make sure to backup your telegram token and chat id when deleting `conf_global.yml`"
   link={[""]}
 />
+
+---
 
 ### Edit your config files from the command line
 
@@ -207,3 +215,13 @@ Then save and restart the hummingbot if it is running
   body="Keep in mind that using a value near to the exchange's minimum order size (not Hummingbot's) may cause orders not created due to volatility"
   link={[""]}
 />
+
+---
+
+### How to move Hummingbot configuration to new Hummingbot instance?
+
+Here are steps you can follow:
+
+1. Copy `hummingbot_conf` folder from the source bot files to the target bot files.
+
+2. You can also run this command on your terminal `cp -a [source_bot]_files/hummingbot_conf/* [target_bot]_files/hummingbot_conf/`

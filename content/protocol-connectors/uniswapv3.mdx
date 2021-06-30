@@ -49,3 +49,27 @@ After adding your Ethereum wallet and node in Hummingbot, follow the guide in th
   body="For setting up gas estimator, you can check our [ETH Gas Station] for more info"
   link={["/gateway/installation/#eth-gas-station"]}
 />
+
+## Confirm connection
+
+Check the connection of Uniswap v3 and gateway.
+
+[Open and access gateway](/gateway/installation/#install-gateway-via-source) **global_conf.yml** with a text editor.
+
+Make sure the value of the connections for Uniswap v3 below are open and ended with double quotation marks (**""**) in your **global_conf.yml**.
+
+- UNISWAP_ROUTER
+- UNISWAP_V3_CORE
+- UNISWAP_V3_ROUTER
+- UNISWAP_V3_NFT_MANAGER
+
+```
+# UNISWAP_V3_CORE is deployed at 0x1F98431c8aD98523631AE4a59f267346ea31F984 on the Ethereum mainnet, and the Ropsten, Rinkeby, Görli, and Kovan testnets.
+# UNISWAP_V3_ROUTER is deployed at 0xE592427A0AEce92De3Edee1F18E0157C05861564 on the Ethereum mainnet, and the Ropsten, Rinkeby, Görli, and Kovan testnets.
+# UNISWAP_V3_NFT_MANAGER is deployed at 0xC36442b4a4522E871399CD717aBDD847Ab11FE88 on the Ethereum mainnet, and the Ropsten, Rinkeby, Görli, and Kovan testnets.
+
+UNISWAP_ROUTER: "0x7a250d5630B4cF539739dF2C5dAcB4c659F2488D"
+UNISWAP_V3_CORE: "0x1F98431c8aD98523631AE4a59f267346Ea31F984"
+UNISWAP_V3_ROUTER: "0xE592427A0AEce92De3Edee1F18E0157c05861564"
+UNISWAP_V3_NFT_MANAGER: "0xC36442b4a4522E871399CD717aBDD847AB11FE88"
+```

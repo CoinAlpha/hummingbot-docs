@@ -57,3 +57,18 @@ This error occurs when the exchange has an insufficient balance to create an ord
 
 - `order_amount` was set to a higher value compared to your token balance
 - When using a `liquidity_mining` strategy, check if you have the proper `token` set to provide liquidity
+
+---
+
+## Terra
+
+### Failed to connect wallet address and wallet seeds
+
+```
+Error: [Errno 2] No such file or directory
+```
+
+![](img/terra_wall_error.png)
+
+- Make sure to have Terra set up when you create your [gateway](/protocol-connectors/terra/) instance
+- Make sure that the address that your trying to `connect` is from the right network, either mainnet or testnet

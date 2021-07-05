@@ -1,0 +1,77 @@
+---
+title: TWAP Strategy
+description: Info on how to use Time Weighted Average Price Strategy
+---
+
+import Prompt from "../../src/components/Prompt";
+
+**Updated as of `v0.41`**
+
+An easy to configure automated strategy that expands the opportunities of professional trading beyond market-making.
+
+This is for traders who want to sell/buy a big amount of capital on the markets without moving prices.
+
+## Start a TWAP Strategy
+
+Enter `create`and input `twap` to start the strategy configuration settings.
+
+** Prompt: **
+
+<Prompt prompt="Enter the name of spot connector?" response=">>>" />
+
+** Prompt: **
+
+<Prompt
+  prompt="Enter the trading pair you would like to trade on Binance (e.g ZRX-ETH)"
+  response=">>>"
+/>
+
+** Prompt: **
+
+<Prompt prompt="What operation will be executed? (buy/sell)" response=">>> " />
+
+** Prompt: **
+
+<Prompt
+  prompt="What is the total amount of SUN to be traded (Default is 1.0)"
+  response=">>>"
+/>
+
+** Prompt: **
+
+<Prompt
+  prompt="What is the amount of each individual order (denominated in the base asset, default is 1)?"
+  response=">>>"
+/>
+
+** Prompt: **
+
+<Prompt prompt="What is the price for the limit orders?" response=">>>" />
+
+** Prompt: **
+
+<Prompt
+  prompt="Do you want to specify a start time and an end time for the execution? (Yes/No)"
+  response=">>>"
+/>
+
+** Prompt: **
+
+<Prompt
+  prompt="How long do you want to wait before cancelling your limit order (in seconds). (Default is 60 seconds) ?"
+  response=">>>"
+/>
+
+### Adjust the configurations of the initial strategy with the following commands:
+
+### `config trading_pair`
+
+### `config target_asset_amount`
+
+### `config order_step_size amount`
+
+### `config order_delay_time`
+
+### `config order_price`
+
+### `config trade_side`

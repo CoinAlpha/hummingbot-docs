@@ -68,6 +68,7 @@ const sidebarCategories = {
     "spot-connectors/probit",
     "spot-connectors/probit-korea",
     "spot-connectors/radar-relay",
+    "spot-connectors/gate-io",
   ],
 
   "Derivative Connectors": [

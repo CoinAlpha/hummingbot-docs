@@ -1,5 +1,5 @@
 ---
-title: Gate IO
+title: Gate io
 description: About Gateio Connector
 ---
 
@@ -11,11 +11,61 @@ Gate io is a one stop shop exchange connector. Trade in Markets, Margin, Perpetu
 
 ## Using the Connector
 
-Connect to [Gate IO](https://www.gate.io/ref/4566709) Spot Trading by creating an account and generating an api key.
+To use [Gate io](https://www.gate.io/ref/4566709) connector for Spot Trading, create an acount and generate an API Key
 
-Input the api key from your Gate io account in the client cli.
+### Creating Gate io API Keys
 
-```
-Enter your gate_io API key >>>
-Enter your gate_io secret key >>>
-```
+1. Log in to your account [here](https://www.gate.io/login) then click your profile > API management
+
+(If you do not have an account, you will have to create one and verify your ID.)
+
+<Callout
+  type="tip"
+  body="You must enable 2FA in your Gate io account to create the API key. [How to enable 2FA]?"
+  link={[
+    "https://support.gate.io/hc/en-us/articles/360006647533-Should-I-setup-SMS-or-2FA-for-my-account-",
+  ]}
+/>
+
+![](/img/gateio-api.png)
+
+2. Then click the new API key.
+
+![](/img/gateio-account.png)
+
+<Callout
+  type="warning"
+  body=" For API key permissions, we recommend using `trade` and `view` enabled API keys; enabling `transfer,` `or the equivalent is unnecessary `for current Hummingbot strategies."
+/>
+
+3. Now that you have created an API key, connect it to Hummingbot by using the `connect` command.
+
+Make sure to store & secure the Secret Key. A Secret Key will be displayed only once during the API creation.
+
+<Callout
+  type="warning"
+  body="If you lose your Secret Key, you can delete the API and create a new one. However, it will be impossible to reuse the same API."
+/>
+
+### Connecting to Gate io
+
+1. Type `connect gate_io`. Prompt will ask for your API key & Secret Key.
+
+![Connecting to Gate io](/img/gateio-connect.gif)
+
+2.  Input the API key & Secret key from your Gate io account in the hummingbot input pane and press enter.
+
+## Miscellaneous Info
+
+### Maximum and Minimum Order Sizes
+
+See [this page](https://support.gate.io/hc/en-us/articles/360000808414-What-is-minimum-order-size-) for minimum order size for all trading pairs.
+There is no documentation that shows what is the maximum order in Gate io but the minimum order size is equivalent to 1 USD.
+
+### Transaction Fees
+
+Gate io has a Tier based discount and Maker-Taker fee schedule. Gate io claims to offer the lowest fees possible for spot traders, margin traders, or perpetual contract traders.
+
+For more info, please visit Gate io [support page](https://support.gate.io/hc/en-us/articles/360022907633--Fees-Gate-io-charge-you-).
+
+Users can override the default fees by editing [`conf_fee_overrides.yml`](/operation/override-fees/).

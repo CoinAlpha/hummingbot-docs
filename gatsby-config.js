@@ -58,6 +58,7 @@ const sidebarCategories = {
     "spot-connectors/dolomite",
     "spot-connectors/dydx",
     "spot-connectors/ftx",
+    "spot-connectors/gate-io",
     "spot-connectors/hitbtc",
     "spot-connectors/huobi",
     "spot-connectors/kucoin",
@@ -68,7 +69,6 @@ const sidebarCategories = {
     "spot-connectors/probit",
     "spot-connectors/probit-korea",
     "spot-connectors/radar-relay",
-    "spot-connectors/gate-io",
   ],
 
   "Derivative Connectors": [

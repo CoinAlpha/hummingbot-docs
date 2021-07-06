@@ -17,13 +17,15 @@ Type and enter `create` then input `twap` to start the strategy configuration se
 
 ![](/img/twap-connect.gif)
 
-### `config connector`
+Adjust the configuration settings by typing `config` and the strategy command in the input pane.
+
+### `connector`
 
 ** Prompt: **
 
 <Prompt prompt="Enter the name of spot connector?" response=">>>" />
 
-### `config trading_pair`
+### `trading_pair`
 
 ** Prompt: **
 
@@ -32,22 +34,22 @@ Type and enter `create` then input `twap` to start the strategy configuration se
   response=">>>"
 />
 
-### `config trade_side`
+### `trade_side`
 
 ** Prompt: **
 
 <Prompt prompt="What operation will be executed? (buy/sell)" response=">>> " />
 
-### `config target_asset_amount`
+### `target_asset_amount`
 
 ** Prompt: **
 
 <Prompt
-  prompt="What is the total amount of SUN to be traded (Default is 1.0)"
+  prompt="What is the total amount of BTC to be traded (Default is 1.0)"
   response=">>>"
 />
 
-### `config order_step_size amount`
+### `order_step_size amount`
 
 ** Prompt: **
 
@@ -56,13 +58,13 @@ Type and enter `create` then input `twap` to start the strategy configuration se
   response=">>>"
 />
 
-### `config order_price`
+### `order_price`
 
 ** Prompt: **
 
 <Prompt prompt="What is the price for the limit orders?" response=">>>" />
 
-### `config is_time_span_execution`
+### `is_time_span_execution`
 
 ** Prompt: **
 
@@ -71,7 +73,7 @@ Type and enter `create` then input `twap` to start the strategy configuration se
   response=">>>"
 />
 
-### `config order_delay_time`
+### `order_delay_time`
 
 ** Prompt: **
 
@@ -80,7 +82,7 @@ Type and enter `create` then input `twap` to start the strategy configuration se
   response=">>>"
 />
 
-### `config cancel_order_wait_time`
+### `cancel_order_wait_time`
 
 ** Prompt: **
 

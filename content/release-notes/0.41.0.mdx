@@ -2,81 +2,45 @@
 title: July 2021 (v0.41.0)
 ---
 
-import Callout from "../../src/components/Callout";
-
 _Released on July 9, 2021_
 
 - **Download Installer**: [Windows](https://dist.hummingbot.io/hummingbot_v0.41.0_setup.exe) | [macOS](https://dist.hummingbot.io/hummingbot_v0.41.0.dmg)
-- **Install via Docker**: [Linux](/installation/linux/#install-via-docker) | [Windows](/installation/windows/#install-via-docker) | [macOS](/installation/mac/#install-via-docker)| [Raspberry Pi](/installation/raspberry/)
+- **Install via Docker**: [Linux](/installation/linux/#install-via-docker) | [Windows](/installation/windows/#install-via-docker) | [Mac](/installation/mac/#install-via-docker) | [Raspberry Pi](/installation/raspberry/)
 
 ---
 
-## New Strategy Feature : Hanging Orders
+## New Spot Connector : Gate.io
 
-To activate this advanced feature, users must configure their saved Avellaneda Strategy Config File.
+## New Strategy : TWAP
 
-Enable `hanging_orders_enabled = false` with `hanging_orders_enabled = true`.
+We took our existing TWAP strategy (Time-weighted Average Price) from the development branch into production to be used in the latest version. This strategy allows users to execute either buy or sell orders continuously at a specified time interval.
 
-You can also set your Aggregation Type in the computation of your hanging orders `hanging_orders_aggregation-type`.
+## New Avellaneda Market Making Feature : Hanging Orders
 
-- default = no_aggregation
-- volume_weighted
-- volume_time_weighted
-- volume_distance_weighted
+The hanging orders feature that was previously available only in Pure Market Making strategy, is now added to Avellaneda Market Making. In addition to this feature, users can also aggregate hanging orders based on volume using the `hanging_orders_aggregation-type` parameter.
 
-Lastly, you can now cancel hanging orders by indicating mid price spread in percentage.
-
-`hanging_orders_cancel_pct = (Enter 1 to indicate 1%)`
-
-**Learn more in this [documentation](/strategies/avellaneda-market-making).**
+**Learn more on how to use this feature in this [documentation](/strategies/avellaneda-market-making).**
 
 ## Other Enhancements
 
-[#81](https://github.com/CoinAlpha/gateway-api/pull/81) Architecture Redesign ESlint
+- [#3097](https://github.com/CoinAlpha/hummingbot/issues/3097) Timestamps are now included in the notifications when a buy or sell order is filled. **We want to thank our community member [willzs03](https://github.com/willzs03) for the initial contribution! 🙏**
 
-[#88](https://github.com/CoinAlpha/gateway-api/pull/88/commits) Added TypeScript
+## Developer Updates
 
-[#3562](https://github.com/CoinAlpha/hummingbot/pull/3562) Clean up redundant error catches
-
-[#3233](https://github.com/CoinAlpha/hummingbot/pull/3233) Unit tests for core network modules
-
-- time_iterator.pyx
-- pubsub.pyx
-- network_iterator.pyx
-- network_base.py
-
-[#3621](https://github.com/CoinAlpha/hummingbot/pull/3621) Refactor Binance Perpetual Derivative connector
-
-[#3624](https://github.com/CoinAlpha/hummingbot/pull/3624) Refactor Spot Perpetual Arbitrage Strategy for PerpetualTrading
-
-[#3639](https://github.com/CoinAlpha/hummingbot/pull/3639) Refactor Perpetual Market Making Strategy for PerpetualTrading
-
-**We want to thank 🙏 community member [keithbaum](https://github.com/keithbaum) for helping!**
-
-[#3640](https://github.com/CoinAlpha/hummingbot/pull/3640) Added Historical Volatility Indicator in Avellaneda Strategy and Refactor of Average Volatility
-
-### Community Contribution
-
-**We want to thank 🙏 community member [willzs03](https://github.com/willzs03) for helping!**
-
-- Timestamps are included in the notifications when a buy/sell order is filled.
+- Unit tests for [core network module](https://github.com/CoinAlpha/hummingbot/tree/master/hummingbot/core) have been added. **Thanks to our community member **[petioprv](https://github.com/petioptrv)** for creating the unit tests for `pubsub.pyx`! 🙏**
+- Cleaned up and deleted redundant error catches as well as unused exception in the codebase
+- New connector base class [`PerpetualTrading`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/perpetual_trading.py#L12) based on `hummingbot/connector/derivative_base.py` to define perpetual trading. More details in this story [#3308](https://github.com/CoinAlpha/hummingbot/issues/3308)
+- Refactored Spot Perpetual Arbitrage and Perpetual Market Making strategies to comply with `PerpetualTrading` interface
+- Updated Binance Perpetual, Perpetual Finance, and DyDx derivative connectors to derive from `ExchangeBase` and `PerpetualTrading` instead of `DerivativeBase` class
+- Added [`HistoricalVolatilityIndicator`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/strategy/__utils__/trailing_indicators/historical_volatility.py#L5) indicator class that can be used by any strategy. More details in this story [#3629](https://github.com/CoinAlpha/hummingbot/issues/3629)
+- Renamed `AverageVolatilityIndicator` class to [`InstantVolatilityIndicator`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/strategy/__utils__/trailing_indicators/instant_volatility.py#L5) used by Avellaneda Market Making strategy
+- Unit tests added to Avellaneda Market Making strategy
 
 ## Bug Fixes
 
-- [#3590](https://github.com/CoinAlpha/hummingbot/pull/3590) KuCoin balance pulling from both "Trading" and "Main" accounts
-
-**We want to thank 🙏 community member [zappra](https://github.com/zappra)**
-
-- [#3346](https://github.com/CoinAlpha/hummingbot/pull/3346) Fixed funding fee events notification `get_funding_info()` on Binance Perpetual
-
-- [#3549](https://github.com/CoinAlpha/hummingbot/pull/3549) WAXP trading symbol in Kucoin not recognized
-
-- [#3568](https://github.com/CoinAlpha/hummingbot/pull/3568) MockWebSocketServer hang during execution
-
-- [#3581](https://github.com/CoinAlpha/hummingbot/pull/3581) Fixed max order age refresh in Pure Market Making hanging orders
-
-- [#3585](https://github.com/CoinAlpha/hummingbot/pull/3585) Fixed MockWebSocketServer test connection error
-
-- [#3594](https://github.com/CoinAlpha/hummingbot/pull/3594) Fixed MockWebSocketServer threads sync
-
-- [#3605](https://github.com/CoinAlpha/hummingbot/pull/3605) Fixed ProBit listing inactive markets
+- [#2971](https://github.com/CoinAlpha/hummingbot/issues/2971) Fixed issue with KuCoin balance pulling from both Trading and Main accounts. **We want to thank our community member [zappra](https://github.com/zappra) for contributing! 🙏**
+- [#3226](https://github.com/CoinAlpha/hummingbot/issues/3226) Fixed funding fee events notification `get_funding_info()` on Binance Perpetual. **Credits again to [zappra](https://github.com/zappra) for this contribution!**
+- [#3521](https://github.com/CoinAlpha/hummingbot/issues/3521) Fixed an issue where some trading pairs in KuCoin are not recognized
+- [#3578](https://github.com/CoinAlpha/hummingbot/issues/3578) Fixed issue where hanging orders are not recreated when refreshed after `max_order_age` takes into effect
+- [#3596](https://github.com/CoinAlpha/hummingbot/issues/3596) Inactive markets in Probit connectors are no longer shown when selecting a trading pair during market configuration
+- [#3611](https://github.com/CoinAlpha/hummingbot/issues/3611) Trading fees in Hummingbot and Kraken exchange should now be displayed correctly

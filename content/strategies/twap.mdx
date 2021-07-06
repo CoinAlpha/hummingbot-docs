@@ -13,11 +13,17 @@ This is for traders who want to sell/buy a big amount of capital on the markets 
 
 ## Start a TWAP Strategy
 
-Enter `create`and input `twap` to start the strategy configuration settings.
+Type and enter `create` then input `twap` to start the strategy configuration settings.
+
+![](/img/twap-connect.gif)
+
+### `config connector`
 
 ** Prompt: **
 
 <Prompt prompt="Enter the name of spot connector?" response=">>>" />
+
+### `config trading_pair`
 
 ** Prompt: **
 
@@ -26,9 +32,13 @@ Enter `create`and input `twap` to start the strategy configuration settings.
   response=">>>"
 />
 
+### `config trade_side`
+
 ** Prompt: **
 
 <Prompt prompt="What operation will be executed? (buy/sell)" response=">>> " />
+
+### `config target_asset_amount`
 
 ** Prompt: **
 
@@ -37,6 +47,8 @@ Enter `create`and input `twap` to start the strategy configuration settings.
   response=">>>"
 />
 
+### `config order_step_size amount`
+
 ** Prompt: **
 
 <Prompt
@@ -44,9 +56,13 @@ Enter `create`and input `twap` to start the strategy configuration settings.
   response=">>>"
 />
 
+### `config order_price`
+
 ** Prompt: **
 
 <Prompt prompt="What is the price for the limit orders?" response=">>>" />
+
+### `config is_time_span_execution`
 
 ** Prompt: **
 
@@ -55,23 +71,20 @@ Enter `create`and input `twap` to start the strategy configuration settings.
   response=">>>"
 />
 
+### `config order_delay_time`
+
 ** Prompt: **
 
 <Prompt
-  prompt="How long do you want to wait before cancelling your limit order (in seconds). (Default is 60 seconds) ?"
+  prompt="How long do you want to wait between each individual order? (Enter 10 to indicate 10 seconds/ Default is 10)?"
   response=">>>"
 />
 
-### Adjust the configurations of the initial strategy with the following commands:
+### `config cancel_order_wait_time`
 
-### `config trading_pair`
+** Prompt: **
 
-### `config target_asset_amount`
-
-### `config order_step_size amount`
-
-### `config order_delay_time`
-
-### `config order_price`
-
-### `config trade_side`
+<Prompt
+  prompt="How long do you want to wait before cancelling your limit order (in seconds). (Default is 60 seconds)?"
+  response=">>>"
+/>

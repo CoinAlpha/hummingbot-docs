@@ -17,9 +17,15 @@ We took our existing TWAP strategy (Time-weighted Average Price) from the develo
 
 ## New Avellaneda Market Making Feature : Hanging Orders
 
-The hanging orders feature that was previously available only in Pure Market Making strategy, is now added to Avellaneda Market Making. In addition to this feature, users can also aggregate hanging orders based on volume using the `hanging_orders_aggregation-type` parameter.
+The hanging orders feature that was previously available only in Pure Market Making strategy, is now added to Avellaneda Market Making.
 
 **Learn more on how to use this feature in this [documentation](/strategies/avellaneda-market-making).**
+
+## New Rate Oracle Sources : KuCoin and AscendEX
+
+There were reported issues where some assets are not showing their equivalent USD value as described in [#3136](https://github.com/CoinAlpha/hummingbot/issues/3136). This is because previously, Hummingbot can only use Binance and CoinGecko as sources i.e. if the asset is not listed in any of those two, it cannot be converted.
+
+Starting this release, users can now select KuCoin and AscendEX from the list of options as the source. This will also help liquidity mining participants who are trading on the said exchanges when checking their balances.
 
 ## Other Enhancements
 
@@ -27,6 +33,7 @@ The hanging orders feature that was previously available only in Pure Market Mak
 
 ## Developer Updates
 
+- Implemented 66% minimum unit test coverage requirement for all incoming code changes (with the exception of connectors)
 - Unit tests for [core network module](https://github.com/CoinAlpha/hummingbot/tree/master/hummingbot/core) have been added. **Thanks to our community member **[petioprv](https://github.com/petioptrv)** for creating the unit tests for `pubsub.pyx`! 🙏**
 - Cleaned up and deleted redundant error catches as well as unused exception in the codebase
 - New connector base class [`PerpetualTrading`](https://github.com/CoinAlpha/hummingbot/blob/master/hummingbot/connector/perpetual_trading.py#L12) based on `hummingbot/connector/derivative_base.py` to define perpetual trading. More details in this story [#3308](https://github.com/CoinAlpha/hummingbot/issues/3308)

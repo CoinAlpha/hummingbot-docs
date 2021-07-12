@@ -18,24 +18,7 @@ For example:
 Limit for USDT on binance exchange set to 100.0
 ```
 
-Run the `balance` command again or `balance limit` to confirm the limit has been applied.
-
-```
->>>  balance
-Updating balances, please wait...
-
-binance:
-     Asset    Amount     Limit
-       BNB    0.0000         -
-       BTC    0.0000         -
-       ETH    0.0000         -
-     TFUEL    0.0187         -
-     THETA    0.5880         -
-      USDC    0.0090         -
-      USDT  158.8197  100.0000
-       XRP    0.8440         -
-       XZC    0.0076         -
-```
+Run the `balance limit` to confirm the limit has been applied.
 
 ```
 >>>  balance limit
@@ -54,7 +37,7 @@ Create pure market making strategy, run `config` to view the whole configuration
 
 Run `balance limit binance ETH 0.0513` to set the balance limit to 0.0513 ETH. Run `balance limit binance USDT 30` to set the balance limit to 30 USDT. Both ETH and USDT value is equivalent to \$30.
 
-![run balance](img/run_balance.png)
+![run balance](img/bal_limit.PNG)
 
 Each order is 0.0188 equivalent to \$11.20
 

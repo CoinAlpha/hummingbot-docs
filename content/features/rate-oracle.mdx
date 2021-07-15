@@ -19,13 +19,19 @@ In version 0.40, rate oracle has been integrated with [AMM-Arbitrage Strategy](/
 
 ## `rate_oracle_source`
 
-The source where you want to pull data from can either be Binance or Coingecko. Please take note that using Coingecko will have a 30-second delay due to their API rate limit.
+The source where you want to pull data from can either be Binance, Coingecko, KuCoin, or AscendEX. Please take note that using Coingecko will have a 30-second delay due to their API rate limit.
 
 ** Prompt: **
 
 <Prompt
-  prompt="What source do you want rate oracle to pull data from? (binance, coingecko)"
+  prompt="What source do you want rate oracle to pull data from? (binance, coingecko, kucoin, ascend_ex)"
   response=">>> "
+/>
+
+<Callout
+  type="note"
+  body="Currently, USD (default) global token does not work with Kucoin and Ascendex, you may need to change your `global_token` to USDT."
+  link={[]}
 />
 
 ## `global_token`

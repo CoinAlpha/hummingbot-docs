@@ -2,6 +2,8 @@
 title: July 2021 (v0.41.0)
 ---
 
+import Callout from "../../src/components/Callout";
+
 _Released on July 15, 2021_
 
 - **Download Installer**: [Windows](https://dist.hummingbot.io/hummingbot_v0.41.0_setup.exe) | [macOS](https://dist.hummingbot.io/hummingbot_v0.41.0.dmg)
@@ -34,6 +36,12 @@ There were reported issues where some assets are not showing their equivalent US
 Starting this release, users can now select KuCoin and AscendEX from the list of options as the source. This will also help liquidity mining participants who are trading on the said exchanges when checking their balances.
 
 Run `config rate_oracle_source` in Hummingbot to change this setting.
+
+<Callout
+  type="note"
+  body="Currently, USD (default) global token does not work with Kucoin and Ascendex, you may need to change your `global_token` to USDT."
+  link={[]}
+/>
 
 ## Uniswap v3 LP Improvements
 

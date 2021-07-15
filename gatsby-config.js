@@ -58,6 +58,7 @@ const sidebarCategories = {
     "spot-connectors/dolomite",
     "spot-connectors/dydx",
     "spot-connectors/ftx",
+    "spot-connectors/gate-io",
     "spot-connectors/hitbtc",
     "spot-connectors/huobi",
     "spot-connectors/kucoin",
@@ -97,6 +98,7 @@ const sidebarCategories = {
     "strategies/spot-perpetual-arb",
     "strategies/avellaneda-market-making",
     "strategies/uniswapv3-lp",
+    "strategies/twap",
   ],
   "Advanced Market Making": [
     "strategies/adv-market-making",
@@ -138,6 +140,7 @@ const sidebarCategories = {
   ],
   "Release Notes": [
     "release-notes/overview",
+    "release-notes/0.41.0",
     "release-notes/0.40.0",
     "release-notes/0.39.1",
     "release-notes/0.39.0",

@@ -38,6 +38,7 @@ const sidebarCategories = {
     "features/performance-history",
     "features/kill-switch",
     "features/rate-oracle",
+    "features/rate-limits-share-pct",
   ],
 
   "Spot Connectors": [
@@ -65,6 +66,7 @@ const sidebarCategories = {
     "spot-connectors/kraken",
     "spot-connectors/liquid",
     "spot-connectors/loopring",
+    "spot-connectors/ndax",
     "spot-connectors/okex",
     "spot-connectors/probit",
     "spot-connectors/probit-korea",
@@ -140,6 +142,7 @@ const sidebarCategories = {
   ],
   "Release Notes": [
     "release-notes/overview",
+    "release-notes/0.42.0",
     "release-notes/0.41.0",
     "release-notes/0.40.0",
     "release-notes/0.39.1",

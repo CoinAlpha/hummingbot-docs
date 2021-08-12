@@ -75,6 +75,63 @@ Hummingbot prompts to enter the values for these parameters when creating the st
 | `order_delay_time`       | The time interval (in seconds) in between orders                         |
 | `cancel_order_wait_time` | How long you want to wait before canceling any unfilled order            |
 
+<Callout
+  type="note"
+  body="Enabling and setting the time parameters for `is_time_span_execution` will automatically ignore the parameters set for `order_delay_time`. 
+  
+  Calculation formula of `is_time_span_execution` is creation_delta = (span_end_time - span_start_time)/initial_number_of_orders_to_create."
+/>
+
+## Using `is_time_span_execution`
+
+Enabling and setting the time parameters for `is_time_span_execution` will automatically ignore the parameters set for `order_delay_time`.
+
+Calculation: `creation_delta = (span_end_time - span_start_time)/initial_number_of_orders_to_create`
+
+while `initial_number_of_orders_to_create` = `target_asset_amount` / `order_step_size`.
+
+### Sample TWAP Strategy Config file
+
+```
+# Connector and token parameters
+connector: binance
+trading_pair: DOGE-USDT
+
+# Total amount to be traded, considering all orders
+target_asset_amount: 200
+
+# Size of the Order
+order_step_size: 50
+
+...
+
+# Specifies if the strategy should run during a fixed time span
+is_time_span_execution: true
+
+# Date and time the strategy should start running
+# Only valid if is_time_span_execution is True
+start_datetime: '2021-08-12 10:15:00'
+
+# Date and time the strategy should stop running
+# Only valid if is_time_span_execution is True
+end_datetime: '2021-08-12 10:35:00'
+
+# How long to between placing incremental orders
+# Only valid if is_time_span_execution is False
+order_delay_time: 1
+
+```
+
+### Calculation of order execution time
+
+```
+target_asset_amount = 200
+order_step_size = 50
+initial_number_of_orders_to_create = 4
+is_time_span_execution = 20 minutes
+Order execution time will be every 5 minutes.
+```
+
 ## Troubleshooting
 
 - If the strategy is not creating orders even with enough balance, your order may be below the exchange’s minimum trade size. Adjust the `order_step_size` and/or `order_price` accordingly

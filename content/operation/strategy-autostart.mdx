@@ -61,7 +61,7 @@ export CONFIG_FILE_NAME=<strategy config file name>
 export CONFIG_PASSWORD=<config password>
 
 # 5) Launch unattended instance of Hummingbot
-docker run -d \
+docker run -itd \
   --name hummingbot-instance \
   --network host \
   --mount "type=bind,source=$(pwd)/hummingbot_files/hummingbot_conf,destination=/conf/" \

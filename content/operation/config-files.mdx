@@ -150,21 +150,23 @@ Import the lines of code to create a custom command shortcut.
 
 ```
 # Command Shortcuts
-# Define abbreviations for often used commands
+# Define multiple abbreviations for often used commands
 # or batch grouped commands together
 
 command_shortcuts:
   # Assign shortcut command
-  command: spreads_refresh
-
+- command: spreads_refresh
   # Reference
   help: Set bid spread, ask spread, and order refresh time
-
   # Argument Label
   arguments: [Bid Spread, Ask Spread, Order Refresh Time]
-
   # Original config output with value
   output: [config bid_spread $1, config ask_spread $2, config order_refresh_time $3]
+  # Assign shortcut command
+- command: spreads
+  help: Set bid and ask spread
+  arguments: ['Bid Spread', 'Ask Spread']
+  output: ['config bid_spread $1', 'config ask_spread $2']
 ```
 
 <Callout
